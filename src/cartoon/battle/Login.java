@@ -26,6 +26,49 @@ public class Login extends javax.swing.JFrame {
     private Timer t;
     private static int waktu = 0;
     
+    private void invisibleIcon() {
+        Background.setVisible(false);
+        Username.setVisible(false);
+        IsiUser.setVisible(false);
+        Warning.setVisible(false);
+        Play.setVisible(false);
+        Title.setVisible(false);
+        New.setVisible(false);
+        Load.setVisible(false);
+        Setting.setVisible(false);
+        Help.setVisible(false);
+    }
+    
+    private void menuUtama() {
+        Background1.setVisible(false);
+        Background2.setVisible(false);
+        Cartoon.setVisible(false);
+        Back.setVisible(false);
+        Username.setVisible(false);
+        IsiUser.setVisible(false);
+        Warning.setVisible(false);
+        Play.setVisible(false);
+        Background.setVisible(true);
+        Title.setVisible(true);
+        New.setVisible(true);
+        Load.setVisible(true);
+        Setting.setVisible(true);
+        Help.setVisible(true);
+    }
+    
+    private void newGame() {
+        Title.setVisible(false);
+        New.setVisible(false);
+        Load.setVisible(false);
+        Setting.setVisible(false);
+        Help.setVisible(false);
+        Back.setVisible(true);
+        Background.setVisible(true);
+        Username.setVisible(true);
+        IsiUser.setVisible(true);
+        Play.setVisible(true);
+    }
+    
     public Login() {
         initComponents();
         
@@ -37,16 +80,7 @@ public class Login extends javax.swing.JFrame {
         this.setIconImage(img.getImage());
         
         //Icon Invisible
-        Background.setVisible(false);
-        Username.setVisible(false);
-        IsiUser.setVisible(false);
-        Warning.setVisible(false);
-        Play.setVisible(false);
-        Title.setVisible(false);
-        New.setVisible(false);
-        Load.setVisible(false);
-        Setting.setVisible(false);
-        Help.setVisible(false);
+        invisibleIcon();
         
         //Timer
         ActionListener act = new ActionListener(){
@@ -55,26 +89,15 @@ public class Login extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent event) {
                 waktu++;
                 if (waktu == 10) {
-                    Background1.setVisible(false);
-                    Background2.setVisible(false);
-                    Cartoon.setVisible(false);
-                    Background.setVisible(true);
-                    Title.setVisible(true);
-                    New.setVisible(true);
-                    Load.setVisible(true);
-                    Setting.setVisible(true);
-                    Help.setVisible(true);
+                    menuUtama();
+                    Back.addMouseListener(new MouseAdapter(){
+                        public void mousePressed(MouseEvent me){
+                            menuUtama();
+                        }
+                    });
                     New.addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            Title.setVisible(false);
-                            New.setVisible(false);
-                            Load.setVisible(false);
-                            Setting.setVisible(false);
-                            Help.setVisible(false);
-                            Background.setVisible(true);
-                            Username.setVisible(true);
-                            IsiUser.setVisible(true);
-                            Play.setVisible(true);
+                            newGame();
                         }
                     });
                     Load.addMouseListener(new MouseAdapter(){
@@ -149,6 +172,7 @@ public class Login extends javax.swing.JFrame {
         New = new javax.swing.JButton();
         Title = new javax.swing.JLabel();
         Warning = new javax.swing.JLabel();
+        Back = new javax.swing.JButton();
         Username = new javax.swing.JLabel();
         IsiUser = new javax.swing.JTextField();
         Play = new javax.swing.JButton();
@@ -196,6 +220,7 @@ public class Login extends javax.swing.JFrame {
 
         Warning.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Warning.png"))); // NOI18N
         getContentPane().add(Warning, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 390, -1));
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         Username.setFont(new java.awt.Font("Lato Black", 1, 36)); // NOI18N
         Username.setText("Username");
@@ -275,6 +300,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Back;
     private javax.swing.JLabel Background;
     private javax.swing.JLabel Background1;
     private javax.swing.JLabel Background2;
