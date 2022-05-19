@@ -66,6 +66,7 @@ public class Login extends javax.swing.JFrame {
     
     public void menuUtama() {
         IsiUser.setText("");
+        VolumeControl.setVisible(false);
         BlackBackground.setVisible(false);
         Background1.setVisible(false);
         Background2.setVisible(false);
@@ -106,6 +107,7 @@ public class Login extends javax.swing.JFrame {
         BlackBackground.setVisible(true);
         Volume.setVisible(true);
         XMark.setVisible(true);
+        VolumeControl.setVisible(true);
     }
     
     private void help() {
@@ -223,6 +225,7 @@ public class Login extends javax.swing.JFrame {
         Background1 = new javax.swing.JLabel();
         Background2 = new javax.swing.JLabel();
         XMark = new javax.swing.JButton();
+        VolumeControl = new javax.swing.JSlider();
         Volume = new javax.swing.JLabel();
         BlackBackground = new javax.swing.JLabel();
         New = new javax.swing.JButton();
@@ -264,6 +267,7 @@ public class Login extends javax.swing.JFrame {
         XMark.setBorderPainted(false);
         XMark.setContentAreaFilled(false);
         getContentPane().add(XMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 170, -1, -1));
+        getContentPane().add(VolumeControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 420, -1));
 
         Volume.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Volume.png"))); // NOI18N
         getContentPane().add(Volume, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
@@ -423,6 +427,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Title;
     private javax.swing.JLabel Username;
     private javax.swing.JLabel Volume;
+    private javax.swing.JSlider VolumeControl;
     private javax.swing.JLabel Warning;
     private javax.swing.JButton XMark;
     // End of variables declaration//GEN-END:variables
