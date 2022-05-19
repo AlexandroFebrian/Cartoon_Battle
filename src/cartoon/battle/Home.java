@@ -23,6 +23,10 @@ public class Home extends javax.swing.JFrame {
         Kingdom.setVisible(false);
         Shop.setVisible(false);
         Battle.setVisible(false);
+        Volume.setVisible(false);
+        BlackBackground.setVisible(false);
+        XMark.setVisible(false);
+        Logout.setVisible(false);
     }
     
     public Home(String user, String gold) {
@@ -45,8 +49,8 @@ public class Home extends javax.swing.JFrame {
         this.setIconImage(img.getImage());
     }
     
-    public javax.swing.JButton getSetting() {
-        return Setting;
+    public javax.swing.JButton getLogout() {
+        return Logout;
     }
 
     /**
@@ -58,6 +62,10 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Logout = new javax.swing.JButton();
+        XMark = new javax.swing.JButton();
+        Volume = new javax.swing.JLabel();
+        BlackBackground = new javax.swing.JLabel();
         Gold = new javax.swing.JLabel();
         Username = new javax.swing.JLabel();
         Setting = new javax.swing.JButton();
@@ -72,10 +80,36 @@ public class Home extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logout.png"))); // NOI18N
+        Logout.setBorderPainted(false);
+        Logout.setContentAreaFilled(false);
+        Logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, -1, -1));
+
+        XMark.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/X Mark.png"))); // NOI18N
+        XMark.setBorderPainted(false);
+        XMark.setContentAreaFilled(false);
+        XMark.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                XMarkActionPerformed(evt);
+            }
+        });
+        getContentPane().add(XMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 110, -1, -1));
+
+        Volume.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Home Volume.png"))); // NOI18N
+        getContentPane().add(Volume, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, -1, -1));
+
+        BlackBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Black.png"))); // NOI18N
+        getContentPane().add(BlackBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         Gold.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
         Gold.setForeground(new java.awt.Color(255, 255, 51));
         Gold.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        Gold.setText("1");
+        Gold.setText("x");
         getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 50, -1, -1));
 
         Username.setFont(new java.awt.Font("Lato Black", 1, 36)); // NOI18N
@@ -85,6 +119,11 @@ public class Home extends javax.swing.JFrame {
         Setting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Home Setting.png"))); // NOI18N
         Setting.setBorderPainted(false);
         Setting.setContentAreaFilled(false);
+        Setting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SettingActionPerformed(evt);
+            }
+        });
         getContentPane().add(Setting, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 20, -1, -1));
 
         Kingdom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kingdom1.png"))); // NOI18N
@@ -120,7 +159,7 @@ public class Home extends javax.swing.JFrame {
                 BattleActionPerformed(evt);
             }
         });
-        getContentPane().add(Battle, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 460, -1, -1));
+        getContentPane().add(Battle, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 460, -1, -1));
 
         DefaultKingdom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kingdom.png"))); // NOI18N
         DefaultKingdom.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -192,6 +231,27 @@ public class Home extends javax.swing.JFrame {
         DefaultBattle.setVisible(true);
     }//GEN-LAST:event_BattleMouseExited
 
+    private void SettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingActionPerformed
+        // TODO add your handling code here:
+        Volume.setVisible(true);
+        XMark.setVisible(true);
+        BlackBackground.setVisible(true);
+        Logout.setVisible(true);
+    }//GEN-LAST:event_SettingActionPerformed
+
+    private void XMarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XMarkActionPerformed
+        // TODO add your handling code here:
+        Volume.setVisible(false);
+        XMark.setVisible(false);
+        BlackBackground.setVisible(false);
+        Logout.setVisible(false);
+    }//GEN-LAST:event_XMarkActionPerformed
+
+    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_LogoutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,13 +290,17 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JButton Battle;
+    private javax.swing.JLabel BlackBackground;
     private javax.swing.JLabel DefaultBattle;
     private javax.swing.JLabel DefaultKingdom;
     private javax.swing.JLabel DefaultShop;
     private javax.swing.JLabel Gold;
     private javax.swing.JButton Kingdom;
+    private javax.swing.JButton Logout;
     private javax.swing.JButton Setting;
     private javax.swing.JButton Shop;
     private javax.swing.JLabel Username;
+    private javax.swing.JLabel Volume;
+    private javax.swing.JButton XMark;
     // End of variables declaration//GEN-END:variables
 }

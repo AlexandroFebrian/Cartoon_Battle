@@ -38,11 +38,10 @@ public class CartoonBattle {
                     h.setLocationRelativeTo(null);
                     h.setResizable(false);
                     h.setVisible(true);
-                    h.getSetting().addMouseListener(new MouseAdapter(){
+                    h.getLogout().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            h.setVisible(false);
-                            l.menuUtama();
                             l.setVisible(true);
+                            l.menuUtama();
                         }
                     });
                 } else if (!l.getIsiUser().getText().equals("") && u.size() == 5) {
@@ -54,12 +53,17 @@ public class CartoonBattle {
                     h.setLocationRelativeTo(null);
                     h.setResizable(false);
                     h.setVisible(true);
+                    h.getLogout().addMouseListener(new MouseAdapter(){
+                        public void mousePressed(MouseEvent me){
+                            l.setVisible(true);
+                            l.menuUtama();
+                        }
+                    });
                 } else {
                     l.warnMessage();
                 }
             }
         });
-        
     }
     
 }
