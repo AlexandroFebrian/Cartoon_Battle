@@ -19,12 +19,20 @@ public class Home extends javax.swing.JFrame {
      * Creates new form Home
      */
     
+    private void defaultDisplay() {
+        Kingdom.setVisible(false);
+        Shop.setVisible(false);
+        Battle.setVisible(false);
+    }
+    
     public Home(String user) {
         initComponents();
+        defaultDisplay();
+        
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("src\\Images\\Icon.jpg");
         this.setIconImage(img.getImage());
-        Welcome.setText("Welcome, " + user);
+        Username.setText(user);
     }
     
     public Home() {
@@ -43,32 +51,132 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Welcome = new javax.swing.JLabel();
+        Username = new javax.swing.JLabel();
+        Setting = new javax.swing.JButton();
+        Kingdom = new javax.swing.JButton();
+        Shop = new javax.swing.JButton();
+        Battle = new javax.swing.JButton();
+        DefaultKingdom = new javax.swing.JLabel();
+        DefaultShop = new javax.swing.JLabel();
+        DefaultBattle = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Welcome.setFont(new java.awt.Font("Lato Black", 1, 24)); // NOI18N
-        Welcome.setText("Welcome, <username>");
+        Username.setFont(new java.awt.Font("Lato Black", 1, 36)); // NOI18N
+        Username.setText("<username>");
+        getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(Welcome)
-                .addContainerGap(994, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(Welcome)
-                .addContainerGap(676, Short.MAX_VALUE))
-        );
+        Setting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Home Setting.png"))); // NOI18N
+        Setting.setBorderPainted(false);
+        Setting.setContentAreaFilled(false);
+        getContentPane().add(Setting, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 20, -1, -1));
+
+        Kingdom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kingdom1.png"))); // NOI18N
+        Kingdom.setBorderPainted(false);
+        Kingdom.setContentAreaFilled(false);
+        Kingdom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                KingdomMouseExited(evt);
+            }
+        });
+        getContentPane().add(Kingdom, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
+
+        Shop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Shop1.png"))); // NOI18N
+        Shop.setBorderPainted(false);
+        Shop.setContentAreaFilled(false);
+        Shop.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ShopMouseExited(evt);
+            }
+        });
+        getContentPane().add(Shop, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, -1, -1));
+
+        Battle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Battle1.png"))); // NOI18N
+        Battle.setBorderPainted(false);
+        Battle.setContentAreaFilled(false);
+        Battle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BattleMouseExited(evt);
+            }
+        });
+        Battle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BattleActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Battle, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 460, -1, -1));
+
+        DefaultKingdom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kingdom.png"))); // NOI18N
+        DefaultKingdom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                DefaultKingdomMouseEntered(evt);
+            }
+        });
+        getContentPane().add(DefaultKingdom, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
+
+        DefaultShop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Shop.png"))); // NOI18N
+        DefaultShop.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                DefaultShopMouseEntered(evt);
+            }
+        });
+        getContentPane().add(DefaultShop, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 200, -1, -1));
+
+        DefaultBattle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Battle.png"))); // NOI18N
+        DefaultBattle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                DefaultBattleMouseEntered(evt);
+            }
+        });
+        getContentPane().add(DefaultBattle, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 470, -1, -1));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Home.png"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BattleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BattleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BattleActionPerformed
+
+    private void DefaultKingdomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DefaultKingdomMouseEntered
+        // TODO add your handling code here:
+        Kingdom.setVisible(true);
+        DefaultKingdom.setVisible(false);
+    }//GEN-LAST:event_DefaultKingdomMouseEntered
+
+    private void KingdomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KingdomMouseExited
+        // TODO add your handling code here:
+        Kingdom.setVisible(false);
+        DefaultKingdom.setVisible(true);
+    }//GEN-LAST:event_KingdomMouseExited
+
+    private void DefaultShopMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DefaultShopMouseEntered
+        // TODO add your handling code here:
+        Shop.setVisible(true);
+        DefaultShop.setVisible(false);
+    }//GEN-LAST:event_DefaultShopMouseEntered
+
+    private void ShopMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShopMouseExited
+        // TODO add your handling code here:
+        Shop.setVisible(false);
+        DefaultShop.setVisible(true);
+    }//GEN-LAST:event_ShopMouseExited
+
+    private void DefaultBattleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DefaultBattleMouseEntered
+        // TODO add your handling code here:
+        Battle.setVisible(true);
+        DefaultBattle.setVisible(false);
+    }//GEN-LAST:event_DefaultBattleMouseEntered
+
+    private void BattleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BattleMouseExited
+        // TODO add your handling code here:
+        Battle.setVisible(false);
+        DefaultBattle.setVisible(true);
+    }//GEN-LAST:event_BattleMouseExited
 
     /**
      * @param args the command line arguments
@@ -106,6 +214,14 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Welcome;
+    private javax.swing.JLabel Background;
+    private javax.swing.JButton Battle;
+    private javax.swing.JLabel DefaultBattle;
+    private javax.swing.JLabel DefaultKingdom;
+    private javax.swing.JLabel DefaultShop;
+    private javax.swing.JButton Kingdom;
+    private javax.swing.JButton Setting;
+    private javax.swing.JButton Shop;
+    private javax.swing.JLabel Username;
     // End of variables declaration//GEN-END:variables
 }
