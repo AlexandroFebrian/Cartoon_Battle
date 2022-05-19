@@ -220,6 +220,10 @@ public class Login extends javax.swing.JFrame {
 
         Warning.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Warning.png"))); // NOI18N
         getContentPane().add(Warning, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 390, -1));
+
+        Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
+        Back.setBorderPainted(false);
+        Back.setContentAreaFilled(false);
         getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         Username.setFont(new java.awt.Font("Lato Black", 1, 36)); // NOI18N
