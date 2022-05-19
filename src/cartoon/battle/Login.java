@@ -29,7 +29,7 @@ public class Login extends javax.swing.JFrame {
         ImageIcon img = new ImageIcon("C:\\Users\\User\\Documents\\iSTTS\\Semester 2\\4 - Kamis\\2 - Pemrograman Berorientasi Objek\\Pelajaran\\Proyek Cartoon Wars\\Cartoon Battle\\src\\Images\\Icon.jpg");
         this.setIconImage(img.getImage());
         //Icon Invisible
-        Background.setVisible(true);
+        Background.setVisible(false);
         Username.setVisible(false);
         IsiUser.setVisible(false);
         Warning.setVisible(false);
