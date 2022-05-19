@@ -40,6 +40,7 @@ public class CartoonBattle {
                     h.setVisible(true);
                     h.getLogout().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
+                            h.setVisible(false);
                             l.setVisible(true);
                             l.menuUtama();
                         }
@@ -55,6 +56,7 @@ public class CartoonBattle {
                     h.setVisible(true);
                     h.getLogout().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
+                            h.setVisible(false);
                             l.setVisible(true);
                             l.menuUtama();
                         }
