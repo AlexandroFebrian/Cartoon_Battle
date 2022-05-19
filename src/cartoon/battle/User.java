@@ -13,11 +13,13 @@ import java.util.ArrayList;
 public class User {
     private String username;
     private int levelEnemy;
+    private int gold;
     private ArrayList <Troops> troop = new ArrayList<>();
 
     public User(String username) {
         this.username = username;
         this.levelEnemy = 1;
+        this.gold = 0;
     }    
 
     public String getUsername() {
@@ -26,5 +28,29 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
+    public int getLevelEnemy() {
+        return levelEnemy;
+    }
+
+    public void setLevelEnemy(int levelEnemy) {
+        this.levelEnemy = levelEnemy;
+    }
+
+    public ArrayList<Troops> getTroop() {
+        return troop;
+    }
+
+    public void setTroop(ArrayList<Troops> troop) {
+        this.troop = troop;
     }
 }

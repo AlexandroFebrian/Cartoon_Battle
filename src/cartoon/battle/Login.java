@@ -64,7 +64,8 @@ public class Login extends javax.swing.JFrame {
         XMark.setVisible(false);
     }
     
-    private void menuUtama() {
+    public void menuUtama() {
+        IsiUser.setText("");
         BlackBackground.setVisible(false);
         Background1.setVisible(false);
         Background2.setVisible(false);
@@ -86,7 +87,6 @@ public class Login extends javax.swing.JFrame {
     }
     
     private void newGame() {
-        Title.setVisible(false);
         New.setVisible(false);
         Load.setVisible(false);
         Setting.setVisible(false);
@@ -125,7 +125,7 @@ public class Login extends javax.swing.JFrame {
         ImageIcon img = new ImageIcon("src\\Images\\Icon.jpg");
         this.setIconImage(img.getImage());
         
-        //Icon Invisible
+        //Default Display
         invisibleIcon();
         
         //Timer
@@ -192,6 +192,10 @@ public class Login extends javax.swing.JFrame {
 
     public int getWaktu() {
         return waktu;
+    }
+    
+    public void setWaktu(int waktu) {
+        this.waktu = waktu;
     }
 
     public JButton getPlay() {
@@ -306,7 +310,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(Load, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, -1, -1));
 
         Warning.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Warning.png"))); // NOI18N
-        getContentPane().add(Warning, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, -1));
+        getContentPane().add(Warning, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, -1, -1));
 
         IsiUser.setFont(new java.awt.Font("Lato Black", 1, 48)); // NOI18N
         IsiUser.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -315,11 +319,11 @@ public class Login extends javax.swing.JFrame {
                 IsiUserActionPerformed(evt);
             }
         });
-        getContentPane().add(IsiUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 410, -1));
+        getContentPane().add(IsiUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, 410, -1));
 
         Username.setFont(new java.awt.Font("Lato Black", 1, 36)); // NOI18N
         Username.setText("Username");
-        getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 240, -1, -1));
+        getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, -1, -1));
 
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
         Back.setBorderPainted(false);
@@ -335,7 +339,7 @@ public class Login extends javax.swing.JFrame {
                 PlayActionPerformed(evt);
             }
         });
-        getContentPane().add(Play, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, -1, -1));
+        getContentPane().add(Play, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, -1, -1));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Intro.jpg"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));

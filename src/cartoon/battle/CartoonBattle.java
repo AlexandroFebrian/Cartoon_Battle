@@ -22,29 +22,44 @@ public class CartoonBattle {
     public static void main(String[] args) {
         // TODO code application logic here
         Login l = new Login();
+        Home h = new Home();
         ArrayList <User> u = new ArrayList<>();
         
+        l.setLocationRelativeTo(null);
+        l.setResizable(false);
         l.setVisible(true);
         l.getT().start();
         l.getPlay().addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
                 if (!l.getIsiUser().getText().equals("") && u.size() < 5) {
                     u.add(new User(l.getIsiUser().getText()));
-                    l.dispose();
-                    Home h = new Home(u.get(0).getUsername());
+                    l.setVisible(false);
+                    Home h = new Home(u.get(u.size() - 1).getUsername(), String.valueOf(u.get(u.size() - 1).getGold()));
+                    h.setLocationRelativeTo(null);
+                    h.setResizable(false);
                     h.setVisible(true);
+                    h.getSetting().addMouseListener(new MouseAdapter(){
+                        public void mousePressed(MouseEvent me){
+                            h.setVisible(false);
+                            l.menuUtama();
+                            l.setVisible(true);
+                        }
+                    });
                 } else if (!l.getIsiUser().getText().equals("") && u.size() == 5) {
-                    JOptionPane.showMessageDialog(l, "The oldest save would be deleted!", "warning",  JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(l, "The oldest save would be deleted!", "Warning",  JOptionPane.WARNING_MESSAGE);
                     u.remove(0);
                     u.add(new User(l.getIsiUser().getText()));
-                    l.dispose();
-                    Home h = new Home(u.get(0).getUsername());
+                    l.setVisible(false);
+                    Home h = new Home(u.get(4).getUsername(), String.valueOf(u.get(4).getGold()));
+                    h.setLocationRelativeTo(null);
+                    h.setResizable(false);
                     h.setVisible(true);
                 } else {
                     l.warnMessage();
                 }
             }
         });
+        
     }
     
 }

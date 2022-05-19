@@ -25,14 +25,17 @@ public class Home extends javax.swing.JFrame {
         Battle.setVisible(false);
     }
     
-    public Home(String user) {
+    public Home(String user, String gold) {
         initComponents();
+        
+        //Default Display
         defaultDisplay();
         
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("src\\Images\\Icon.jpg");
         this.setIconImage(img.getImage());
         Username.setText(user);
+        Gold.setText(gold);
     }
     
     public Home() {
@@ -40,6 +43,10 @@ public class Home extends javax.swing.JFrame {
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("src\\Images\\Icon.jpg");
         this.setIconImage(img.getImage());
+    }
+    
+    public javax.swing.JButton getSetting() {
+        return Setting;
     }
 
     /**
@@ -51,6 +58,7 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Gold = new javax.swing.JLabel();
         Username = new javax.swing.JLabel();
         Setting = new javax.swing.JButton();
         Kingdom = new javax.swing.JButton();
@@ -63,6 +71,12 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Gold.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
+        Gold.setForeground(new java.awt.Color(255, 255, 51));
+        Gold.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Gold.setText("1");
+        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 50, -1, -1));
 
         Username.setFont(new java.awt.Font("Lato Black", 1, 36)); // NOI18N
         Username.setText("<username>");
@@ -219,6 +233,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel DefaultBattle;
     private javax.swing.JLabel DefaultKingdom;
     private javax.swing.JLabel DefaultShop;
+    private javax.swing.JLabel Gold;
     private javax.swing.JButton Kingdom;
     private javax.swing.JButton Setting;
     private javax.swing.JButton Shop;
