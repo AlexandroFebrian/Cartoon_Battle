@@ -10,14 +10,35 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 
 /**
  *
  * @author User
  */
+
+//JTextField class limit
+class JTextFieldLimit extends PlainDocument {
+    private int limit;
+    
+    JTextFieldLimit(int limit) {
+        super();
+        this.limit = limit;
+    }
+    public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+        if (str == null) {
+            return;
+        }
+        if ((getLength() + str.length()) <= limit) {
+            super.insertString(offset, str, attr);
+        }
+    }
+}
+
 public class Login extends javax.swing.JFrame {
 
     /**
@@ -69,14 +90,29 @@ public class Login extends javax.swing.JFrame {
         Play.setVisible(true);
     }
     
+    private void loadGame() {
+        
+    }
+    
+    private void setting() {
+        
+    }
+    
+    private void help() {
+        
+    }
+    
     public Login() {
         initComponents();
+        
+        //JTextField Limit
+        IsiUser.setDocument(new JTextFieldLimit(10));
         
         //Center Text Field
         IsiUser.setHorizontalAlignment(JTextField.CENTER);
         
         //Icon Image <Wajib di tiap form>
-        ImageIcon img = new ImageIcon("C:\\Users\\User\\Documents\\iSTTS\\Semester 2\\4 - Kamis\\2 - Pemrograman Berorientasi Objek\\Pelajaran\\Proyek Cartoon Wars\\Cartoon Battle\\src\\Images\\Icon.jpg");
+        ImageIcon img = new ImageIcon("src\\Images\\Icon.jpg");
         this.setIconImage(img.getImage());
         
         //Icon Invisible
@@ -102,17 +138,17 @@ public class Login extends javax.swing.JFrame {
                     });
                     Load.addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            //Tampilan Load Game
+                            loadGame();
                         }
                     });
                     Setting.addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            //Tampilan Setting
+                            setting();
                         }
                     });
                     Help.addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            //Tampilan Help
+                            help();
                         }
                     });
                     t.stop();
@@ -182,6 +218,11 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Cartoon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cartoon.png"))); // NOI18N
+        Cartoon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CartoonMouseEntered(evt);
+            }
+        });
         getContentPane().add(Cartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
         Background1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Intro1.jpg"))); // NOI18N
@@ -216,6 +257,11 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(New, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, -1, -1));
 
         Title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Title.png"))); // NOI18N
+        Title.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                TitleMouseEntered(evt);
+            }
+        });
         getContentPane().add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
 
         Warning.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Warning.png"))); // NOI18N
@@ -267,6 +313,14 @@ public class Login extends javax.swing.JFrame {
     private void NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NewActionPerformed
+
+    private void CartoonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CartoonMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CartoonMouseEntered
+
+    private void TitleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TitleMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TitleMouseEntered
 
     /**
      * @param args the command line arguments

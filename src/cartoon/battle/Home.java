@@ -22,7 +22,7 @@ public class Home extends javax.swing.JFrame {
     public Home(String user) {
         initComponents();
         //Icon Image <Wajib di tiap form>
-        ImageIcon img = new ImageIcon("C:\\Users\\User\\Documents\\iSTTS\\Semester 2\\4 - Kamis\\2 - Pemrograman Berorientasi Objek\\Pelajaran\\Proyek Cartoon Wars\\Cartoon Battle\\src\\Images\\Icon.jpg");
+        ImageIcon img = new ImageIcon("src\\Images\\Icon.jpg");
         this.setIconImage(img.getImage());
         Welcome.setText("Welcome, " + user);
     }
@@ -30,7 +30,7 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         //Icon Image <Wajib di tiap form>
-        ImageIcon img = new ImageIcon("C:\\Users\\User\\Documents\\iSTTS\\Semester 2\\4 - Kamis\\2 - Pemrograman Berorientasi Objek\\Pelajaran\\Proyek Cartoon Wars\\Cartoon Battle\\src\\Images\\Icon.jpg");
+        ImageIcon img = new ImageIcon("src\\Images\\Icon.jpg");
         this.setIconImage(img.getImage());
     }
 
@@ -48,23 +48,23 @@ public class Home extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Welcome.setFont(new java.awt.Font("Lato Black", 1, 24)); // NOI18N
-        Welcome.setText("Welcome, ");
+        Welcome.setText("Welcome, <username>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(Welcome)
-                .addContainerGap(1151, Short.MAX_VALUE))
+                .addContainerGap(994, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(Welcome)
-                .addContainerGap(684, Short.MAX_VALUE))
+                .addContainerGap(676, Short.MAX_VALUE))
         );
 
         pack();
