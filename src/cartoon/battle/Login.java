@@ -25,6 +25,7 @@ public class Login extends javax.swing.JFrame {
     
     public Login() {
         initComponents();
+        IsiUser.setHorizontalAlignment(JTextField.CENTER);
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("C:\\Users\\User\\Documents\\iSTTS\\Semester 2\\4 - Kamis\\2 - Pemrograman Berorientasi Objek\\Pelajaran\\Proyek Cartoon Wars\\Cartoon Battle\\src\\Images\\Icon.jpg");
         this.setIconImage(img.getImage());
@@ -124,6 +125,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
 
         IsiUser.setFont(new java.awt.Font("Lato Black", 1, 48)); // NOI18N
+        IsiUser.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         IsiUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IsiUserActionPerformed(evt);
