@@ -6,8 +6,11 @@ package cartoon.battle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
@@ -25,16 +28,27 @@ public class Login extends javax.swing.JFrame {
     
     public Login() {
         initComponents();
+        
+        //Center Text Field
         IsiUser.setHorizontalAlignment(JTextField.CENTER);
+        
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("C:\\Users\\User\\Documents\\iSTTS\\Semester 2\\4 - Kamis\\2 - Pemrograman Berorientasi Objek\\Pelajaran\\Proyek Cartoon Wars\\Cartoon Battle\\src\\Images\\Icon.jpg");
         this.setIconImage(img.getImage());
+        
         //Icon Invisible
         Background.setVisible(false);
         Username.setVisible(false);
         IsiUser.setVisible(false);
         Warning.setVisible(false);
         Play.setVisible(false);
+        Title.setVisible(false);
+        New.setVisible(false);
+        Load.setVisible(false);
+        Setting.setVisible(false);
+        Help.setVisible(false);
+        
+        //Timer
         ActionListener act = new ActionListener(){
             boolean x = true;
             boolean y = false;
@@ -45,9 +59,39 @@ public class Login extends javax.swing.JFrame {
                     Background2.setVisible(false);
                     Cartoon.setVisible(false);
                     Background.setVisible(true);
-                    Username.setVisible(true);
-                    IsiUser.setVisible(true);
-                    Play.setVisible(true);
+                    Title.setVisible(true);
+                    New.setVisible(true);
+                    Load.setVisible(true);
+                    Setting.setVisible(true);
+                    Help.setVisible(true);
+                    New.addMouseListener(new MouseAdapter(){
+                        public void mousePressed(MouseEvent me){
+                            Title.setVisible(false);
+                            New.setVisible(false);
+                            Load.setVisible(false);
+                            Setting.setVisible(false);
+                            Help.setVisible(false);
+                            Background.setVisible(true);
+                            Username.setVisible(true);
+                            IsiUser.setVisible(true);
+                            Play.setVisible(true);
+                        }
+                    });
+                    Load.addMouseListener(new MouseAdapter(){
+                        public void mousePressed(MouseEvent me){
+                            //Tampilan Load Game
+                        }
+                    });
+                    Setting.addMouseListener(new MouseAdapter(){
+                        public void mousePressed(MouseEvent me){
+                            //Tampilan Setting
+                        }
+                    });
+                    Help.addMouseListener(new MouseAdapter(){
+                        public void mousePressed(MouseEvent me){
+                            //Tampilan Help
+                        }
+                    });
                     t.stop();
                 } else {
                     if (x) {
@@ -99,6 +143,11 @@ public class Login extends javax.swing.JFrame {
         Cartoon = new javax.swing.JLabel();
         Background1 = new javax.swing.JLabel();
         Background2 = new javax.swing.JLabel();
+        Load = new javax.swing.JButton();
+        Help = new javax.swing.JButton();
+        Setting = new javax.swing.JButton();
+        New = new javax.swing.JButton();
+        Title = new javax.swing.JLabel();
         Warning = new javax.swing.JLabel();
         Username = new javax.swing.JLabel();
         IsiUser = new javax.swing.JTextField();
@@ -108,14 +157,42 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Cartoon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Cartoon.png"))); // NOI18N
-        getContentPane().add(Cartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, -1));
+        Cartoon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cartoon.png"))); // NOI18N
+        getContentPane().add(Cartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
         Background1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Intro1.jpg"))); // NOI18N
         getContentPane().add(Background1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
 
         Background2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Intro2.jpg"))); // NOI18N
         getContentPane().add(Background2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Load.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Load Game.png"))); // NOI18N
+        Load.setBorderPainted(false);
+        Load.setContentAreaFilled(false);
+        getContentPane().add(Load, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, -1, -1));
+
+        Help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help.png"))); // NOI18N
+        Help.setBorderPainted(false);
+        Help.setContentAreaFilled(false);
+        getContentPane().add(Help, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 350, -1, -1));
+
+        Setting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Setting.png"))); // NOI18N
+        Setting.setBorderPainted(false);
+        Setting.setContentAreaFilled(false);
+        getContentPane().add(Setting, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, -1, -1));
+
+        New.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/New Game.png"))); // NOI18N
+        New.setBorderPainted(false);
+        New.setContentAreaFilled(false);
+        New.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewActionPerformed(evt);
+            }
+        });
+        getContentPane().add(New, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, -1, -1));
+
+        Title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Title.png"))); // NOI18N
+        getContentPane().add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
 
         Warning.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Warning.png"))); // NOI18N
         getContentPane().add(Warning, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 390, -1));
@@ -158,6 +235,10 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PlayActionPerformed
 
+    private void NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NewActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -198,8 +279,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Background1;
     private javax.swing.JLabel Background2;
     private javax.swing.JLabel Cartoon;
+    private javax.swing.JButton Help;
     private javax.swing.JTextField IsiUser;
+    private javax.swing.JButton Load;
+    private javax.swing.JButton New;
     private javax.swing.JButton Play;
+    private javax.swing.JButton Setting;
+    private javax.swing.JLabel Title;
     private javax.swing.JLabel Username;
     private javax.swing.JLabel Warning;
     // End of variables declaration//GEN-END:variables
