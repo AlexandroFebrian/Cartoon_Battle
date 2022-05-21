@@ -23,10 +23,14 @@ public class CartoonBattle {
         // TODO code application logic here
         Login l = new Login();
         Home h = new Home();
+        Battle b = new Battle();
         ArrayList <User> u = new ArrayList<>();
         
         l.setLocationRelativeTo(null);
         l.setResizable(false);
+        b.setLocationRelativeTo(null);
+        b.setResizable(false);
+        
         l.setVisible(true);
         l.getT().start();
         l.getPlay().addMouseListener(new MouseAdapter(){
@@ -43,6 +47,12 @@ public class CartoonBattle {
                             h.setVisible(false);
                             l.setVisible(true);
                             l.menuUtama();
+                        }
+                    });
+                    h.getBattle().addMouseListener(new MouseAdapter(){
+                        public void mousePressed(MouseEvent me){
+                            h.setVisible(false);
+                            b.setVisible(true);
                         }
                     });
                 } else if (!l.getIsiUser().getText().equals("") && u.size() == 5) {

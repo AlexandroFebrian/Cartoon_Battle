@@ -6,6 +6,8 @@ package cartoon.battle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
@@ -18,6 +20,7 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
+    private Timer t;
     
     private void defaultDisplay() {
         Kingdom.setVisible(false);
@@ -36,7 +39,7 @@ public class Home extends javax.swing.JFrame {
         defaultDisplay();
         
         //Icon Image <Wajib di tiap form>
-        ImageIcon img = new ImageIcon("src\\Images\\Icon.jpg");
+        ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
         this.setIconImage(img.getImage());
         Username.setText(user);
         Gold.setText(gold);
@@ -44,9 +47,10 @@ public class Home extends javax.swing.JFrame {
     
     public Home() {
         initComponents();
-        //Icon Image <Wajib di tiap form>
-        ImageIcon img = new ImageIcon("src\\Images\\Icon.jpg");
-        this.setIconImage(img.getImage());
+    }
+    
+    public javax.swing.JButton getBattle() {
+        return Battle;
     }
     
     public javax.swing.JButton getLogout() {

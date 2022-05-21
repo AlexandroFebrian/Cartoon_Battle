@@ -66,10 +66,10 @@ public class Login extends javax.swing.JFrame {
     
     public void menuUtama() {
         IsiUser.setText("");
+        Troop.setVisible(false);
         VolumeControl.setVisible(false);
         BlackBackground.setVisible(false);
         Background1.setVisible(false);
-        Background2.setVisible(false);
         Cartoon.setVisible(false);
         Back.setVisible(false);
         Username.setVisible(false);
@@ -124,7 +124,7 @@ public class Login extends javax.swing.JFrame {
         IsiUser.setHorizontalAlignment(JTextField.CENTER);
         
         //Icon Image <Wajib di tiap form>
-        ImageIcon img = new ImageIcon("src\\Images\\Icon.jpg");
+        ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
         this.setIconImage(img.getImage());
         
         //Default Display
@@ -132,10 +132,9 @@ public class Login extends javax.swing.JFrame {
         
         //Timer
         ActionListener act = new ActionListener(){
-            boolean x = true;
-            boolean y = false;
-            public void actionPerformed(ActionEvent event) {
+            public void actionPerformed(ActionEvent event){
                 waktu++;
+                Troop.setLocation(Troop.getLocation().x + 48, Troop.getLocation().y);
                 Loading.setValue(waktu * 10);
                 if (waktu == 10) {
                     menuUtama();
@@ -170,18 +169,6 @@ public class Login extends javax.swing.JFrame {
                         }
                     });
                     t.stop();
-                } else {
-                    if (x) {
-                        x = false;
-                        y = true;
-                        Background1.setVisible(true);
-                        Background2.setVisible(false);
-                    } else {
-                        x = true;
-                        y = false;
-                        Background1.setVisible(false);
-                        Background2.setVisible(true);
-                    }
                 }
             }
         };
@@ -220,10 +207,10 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Troop = new javax.swing.JLabel();
         Cartoon = new javax.swing.JLabel();
         Loading = new javax.swing.JProgressBar();
         Background1 = new javax.swing.JLabel();
-        Background2 = new javax.swing.JLabel();
         XMark = new javax.swing.JButton();
         VolumeControl = new javax.swing.JSlider();
         Volume = new javax.swing.JLabel();
@@ -244,24 +231,24 @@ public class Login extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Troop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Melee1.gif"))); // NOI18N
+        getContentPane().add(Troop, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, -1, -1));
+
         Cartoon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Cartoon.png"))); // NOI18N
         Cartoon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 CartoonMouseEntered(evt);
             }
         });
-        getContentPane().add(Cartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 830, -1));
+        getContentPane().add(Cartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 920, -1));
 
         Loading.setBackground(new java.awt.Color(255, 255, 255));
         Loading.setForeground(new java.awt.Color(0, 255, 51));
         Loading.setBorderPainted(false);
         getContentPane().add(Loading, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 570, 510, 40));
 
-        Background1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Intro1.jpg"))); // NOI18N
+        Background1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Intro1.gif"))); // NOI18N
         getContentPane().add(Background1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        Background2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Intro2.jpg"))); // NOI18N
-        getContentPane().add(Background2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         XMark.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/X Mark.png"))); // NOI18N
         XMark.setBorderPainted(false);
@@ -414,7 +401,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton Back;
     private javax.swing.JLabel Background;
     private javax.swing.JLabel Background1;
-    private javax.swing.JLabel Background2;
     private javax.swing.JLabel BlackBackground;
     private javax.swing.JLabel Cartoon;
     private javax.swing.JButton Help;
@@ -425,6 +411,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton Play;
     private javax.swing.JButton Setting;
     private javax.swing.JLabel Title;
+    private javax.swing.JLabel Troop;
     private javax.swing.JLabel Username;
     private javax.swing.JLabel Volume;
     private javax.swing.JSlider VolumeControl;
