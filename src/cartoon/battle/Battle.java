@@ -29,8 +29,9 @@ public class Battle extends javax.swing.JFrame {
         
         ActionListener act = new ActionListener(){
             public void actionPerformed(ActionEvent event){
-                Troop1.setLocation(Troop1.getLocation().x + 1, Troop1.getLocation().y);
-                Troop2.setLocation(Troop2.getLocation().x + 1, Troop2.getLocation().y);
+                Melee1.setLocation(Melee1.getLocation().x + 1, Melee1.getLocation().y);
+                Tank1.setLocation(Tank1.getLocation().x + 1, Tank1.getLocation().y);
+                Ranged1.setLocation(Ranged1.getLocation().x + 1, Ranged1.getLocation().y);
             }
         };
         t = new Timer(10, act);
@@ -46,19 +47,23 @@ public class Battle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Troop2 = new javax.swing.JLabel();
-        Troop1 = new javax.swing.JLabel();
+        Ranged1 = new javax.swing.JLabel();
+        Tank1 = new javax.swing.JLabel();
+        Melee1 = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Troop2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tank1.gif"))); // NOI18N
-        getContentPane().add(Troop2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, -1, 110));
+        Ranged1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ranged1.gif"))); // NOI18N
+        getContentPane().add(Ranged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, -1, -1));
 
-        Troop1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Melee1.gif"))); // NOI18N
-        getContentPane().add(Troop1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, -1, -1));
+        Tank1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tank1.gif"))); // NOI18N
+        getContentPane().add(Tank1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, -1, 110));
+
+        Melee1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Melee1.gif"))); // NOI18N
+        getContentPane().add(Melee1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, -1, -1));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Battle Map.png"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -103,7 +108,8 @@ public class Battle extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
-    private javax.swing.JLabel Troop1;
-    private javax.swing.JLabel Troop2;
+    private javax.swing.JLabel Melee1;
+    private javax.swing.JLabel Ranged1;
+    private javax.swing.JLabel Tank1;
     // End of variables declaration//GEN-END:variables
 }
