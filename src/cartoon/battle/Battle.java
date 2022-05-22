@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 /**
@@ -23,6 +24,10 @@ public class Battle extends javax.swing.JFrame {
     
     public Battle() {
         initComponents();
+        
+        //Icon Image <Wajib di tiap form>
+        ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
+        this.setIconImage(img.getImage());
         
         ActionListener act = new ActionListener(){
             public void actionPerformed(ActionEvent event){
@@ -48,6 +53,7 @@ public class Battle extends javax.swing.JFrame {
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Troop2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tank1.gif"))); // NOI18N
