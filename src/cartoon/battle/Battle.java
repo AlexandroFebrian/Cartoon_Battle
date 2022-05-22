@@ -27,6 +27,7 @@ public class Battle extends javax.swing.JFrame {
         ActionListener act = new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 Troop1.setLocation(Troop1.getLocation().x + 1, Troop1.getLocation().y);
+                Troop2.setLocation(Troop2.getLocation().x + 1, Troop2.getLocation().y);
             }
         };
         t = new Timer(10, act);
@@ -42,11 +43,15 @@ public class Battle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Troop2 = new javax.swing.JLabel();
         Troop1 = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Troop2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tank1.gif"))); // NOI18N
+        getContentPane().add(Troop2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, -1, 110));
 
         Troop1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Melee1.gif"))); // NOI18N
         getContentPane().add(Troop1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, -1, -1));
@@ -95,5 +100,6 @@ public class Battle extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JLabel Troop1;
+    private javax.swing.JLabel Troop2;
     // End of variables declaration//GEN-END:variables
 }
