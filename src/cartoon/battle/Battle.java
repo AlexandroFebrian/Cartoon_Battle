@@ -29,7 +29,7 @@ public class Battle extends javax.swing.JFrame {
     
     private Timer Rt;
     private ArrayList<JLabel> Rlab = new ArrayList<>();
-    private ImageIcon Ricon = new ImageIcon("src\\images\\Melee1.gif");
+    private ImageIcon Ricon = new ImageIcon("src\\images\\Ranged1.gif");
     
     private Timer Tt;
     private ArrayList<JLabel> Tlab = new ArrayList<>();
@@ -127,6 +127,22 @@ public class Battle extends javax.swing.JFrame {
 
     private void AddRangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRangeActionPerformed
         // TODO add your handling code here:
+        Rlab.add(new JLabel());
+        Rlab.get(Rlab.size()-1).setIcon(Ricon);
+        Rlab.get(Rlab.size()-1).setBounds(120, 435, 120, 120); //x, y, lebar, tinggi
+        getContentPane().add(Rlab.get(Rlab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
+
+        ActionListener act = new ActionListener(){
+            public void actionPerformed(ActionEvent event) {
+                for(int i = 0; i < Rlab.size(); i++){
+                    Rlab.get(i).setLocation(Rlab.get(i).getLocation().x+1, Rlab.get(i).getLocation().y);
+                }
+            }
+        };
+        if(Rt == null){
+            Rt = new Timer(10, act);
+            Rt.start();
+        }
     }//GEN-LAST:event_AddRangeActionPerformed
 
     private void AddTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTankActionPerformed
