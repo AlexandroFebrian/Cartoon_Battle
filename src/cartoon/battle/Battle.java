@@ -8,7 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 
 /**
@@ -20,23 +23,25 @@ public class Battle extends javax.swing.JFrame {
     /**
      * Creates new form Battle
      */
-    private Timer t;
+    private Timer Mt;
+    private ArrayList<JLabel> Mlab = new ArrayList<>();
+    private ImageIcon Micon = new ImageIcon("src\\images\\Melee1.gif");
+    
+    private Timer Rt;
+    private ArrayList<JLabel> Rlab = new ArrayList<>();
+    private ImageIcon Ricon = new ImageIcon("src\\images\\Melee1.gif");
+    
+    private Timer Tt;
+    private ArrayList<JLabel> Tlab = new ArrayList<>();
+    private ImageIcon Ticon = new ImageIcon("src\\images\\Tank1.gif");
     
     public Battle() {
         initComponents();
         
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
-        this.setIconImage(img.getImage());
+        this.setIconImage(img.getImage());        
         
-        ActionListener act = new ActionListener(){
-            public void actionPerformed(ActionEvent event){
-                Troop1.setLocation(Troop1.getLocation().x + 1, Troop1.getLocation().y);
-                Troop2.setLocation(Troop2.getLocation().x + 1, Troop2.getLocation().y);
-            }
-        };
-        t = new Timer(10, act);
-        t.start();
     }
 
     /**
@@ -48,7 +53,9 @@ public class Battle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Troop2 = new javax.swing.JLabel();
+        AddMelee = new javax.swing.JButton();
+        AddRange = new javax.swing.JButton();
+        AddTank = new javax.swing.JButton();
         Troop1 = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
@@ -56,17 +63,91 @@ public class Battle extends javax.swing.JFrame {
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Troop2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tank1.gif"))); // NOI18N
-        getContentPane().add(Troop2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, -1, 110));
+        AddMelee.setBackground(new java.awt.Color(0, 0, 0));
+        AddMelee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rounded_Rectangle_3.png"))); // NOI18N
+        AddMelee.setBorderPainted(false);
+        AddMelee.setContentAreaFilled(false);
+        AddMelee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddMeleeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(AddMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, 110, 100));
+
+        AddRange.setBackground(new java.awt.Color(0, 0, 0));
+        AddRange.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rounded_Rectangle_3.png"))); // NOI18N
+        AddRange.setBorderPainted(false);
+        AddRange.setContentAreaFilled(false);
+        AddRange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddRangeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(AddRange, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 590, 110, 100));
+
+        AddTank.setBackground(new java.awt.Color(0, 0, 0));
+        AddTank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rounded_Rectangle_3.png"))); // NOI18N
+        AddTank.setBorderPainted(false);
+        AddTank.setContentAreaFilled(false);
+        AddTank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddTankActionPerformed(evt);
+            }
+        });
+        getContentPane().add(AddTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 590, 110, 100));
 
         Troop1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Melee1.gif"))); // NOI18N
-        getContentPane().add(Troop1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, -1, -1));
+        getContentPane().add(Troop1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 480, -1, -1));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Battle Map.png"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AddMeleeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMeleeActionPerformed
+        // TODO add your handling code here:
+        Mlab.add(new JLabel());
+        Mlab.get(Mlab.size()-1).setIcon(Micon);
+        Mlab.get(Mlab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
+        getContentPane().add(Mlab.get(Mlab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
+
+        ActionListener act = new ActionListener(){
+            public void actionPerformed(ActionEvent event) {
+                for(int i = 0; i < Mlab.size(); i++){
+                    Mlab.get(i).setLocation(Mlab.get(i).getLocation().x+1, Mlab.get(i).getLocation().y);
+                }
+            }
+        };
+        if(Mt == null){
+            Mt = new Timer(10, act);
+            Mt.start();
+        }
+    }//GEN-LAST:event_AddMeleeActionPerformed
+
+    private void AddRangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRangeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddRangeActionPerformed
+
+    private void AddTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTankActionPerformed
+        // TODO add your handling code here:
+        Tlab.add(new JLabel());
+        Tlab.get(Tlab.size()-1).setIcon(Ticon);
+        Tlab.get(Tlab.size()-1).setBounds(119, 430, 130, 130); //x, y, lebar, tinggi
+        getContentPane().add(Tlab.get(Tlab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
+
+        ActionListener act = new ActionListener(){
+            public void actionPerformed(ActionEvent event) {
+                for(int i = 0; i < Tlab.size(); i++){
+                    Tlab.get(i).setLocation(Tlab.get(i).getLocation().x+1, Tlab.get(i).getLocation().y);
+                }
+            }
+        };
+        if(Tt == null){
+            Tt = new Timer(10, act);
+            Tt.start();
+        }
+    }//GEN-LAST:event_AddTankActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,8 +185,10 @@ public class Battle extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddMelee;
+    private javax.swing.JButton AddRange;
+    private javax.swing.JButton AddTank;
     private javax.swing.JLabel Background;
     private javax.swing.JLabel Troop1;
-    private javax.swing.JLabel Troop2;
     // End of variables declaration//GEN-END:variables
 }
