@@ -56,7 +56,6 @@ public class Battle extends javax.swing.JFrame {
         AddMelee = new javax.swing.JButton();
         AddRange = new javax.swing.JButton();
         AddTank = new javax.swing.JButton();
-        Troop1 = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -95,9 +94,6 @@ public class Battle extends javax.swing.JFrame {
             }
         });
         getContentPane().add(AddTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 590, 110, 100));
-
-        Troop1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Melee1.gif"))); // NOI18N
-        getContentPane().add(Troop1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 480, -1, -1));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Battle Map.png"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -205,6 +201,5 @@ public class Battle extends javax.swing.JFrame {
     private javax.swing.JButton AddRange;
     private javax.swing.JButton AddTank;
     private javax.swing.JLabel Background;
-    private javax.swing.JLabel Troop1;
     // End of variables declaration//GEN-END:variables
 }
