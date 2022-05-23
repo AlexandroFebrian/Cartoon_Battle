@@ -22,14 +22,10 @@ public class CartoonBattle {
     public static void main(String[] args) {
         // TODO code application logic here
         Login l = new Login();
-        Home h = new Home();
-        Battle b = new Battle();
         ArrayList <User> u = new ArrayList<>();
         
         l.setLocationRelativeTo(null);
         l.setResizable(false);
-        b.setLocationRelativeTo(null);
-        b.setResizable(false);
         
         l.setVisible(true);
         l.getT().start();
@@ -52,11 +48,19 @@ public class CartoonBattle {
                     h.getBattle().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
                             Battle b = new Battle(u.get(u.size()-1).getTroop());
+                            b.setLocationRelativeTo(null);
+                            b.setResizable(false);
                             h.setVisible(false);
                             b.setVisible(true);
                             b.getBack().addMouseListener(new MouseAdapter(){
                                 public void mousePressed(MouseEvent me){
                                     b.dispose();
+                                    if(b.getTroopT() != null){
+                                        b.getTroopT().stop();
+                                        b.setTroopT(null);
+                                        b.setTroop(null);
+                                        b.setTrooplab(null);
+                                    }
                                     h.setVisible(true);
                                 }
                             });

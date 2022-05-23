@@ -34,9 +34,26 @@ public class Battle extends javax.swing.JFrame {
     private ArrayList<Troops> userT = new ArrayList<>();
     
     public javax.swing.JButton getBack() {
-        
         return Back;
     }
+
+    public void setTrooplab(ArrayList<JLabel> Trooplab) {
+        this.Trooplab = Trooplab;
+    }
+
+    public void setTroop(ArrayList<Troops> Troop) {
+        this.Troop = Troop;
+    }
+
+    public void setTroopT(Timer TroopT) {
+        this.TroopT = TroopT;
+    }
+
+    public Timer getTroopT() {
+        return TroopT;
+    }
+    
+    
     
     public Battle() {
         initComponents();
@@ -91,6 +108,11 @@ public class Battle extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Back.setText("Back");
+        Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackActionPerformed(evt);
+            }
+        });
         getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 90, 30));
 
         AddMelee.setBackground(new java.awt.Color(0, 0, 0));
@@ -136,6 +158,7 @@ public class Battle extends javax.swing.JFrame {
         // TODO add your handling code here:
         Troop.add(userT.get(0));
         System.out.println(Troop.get(0).getAtk());
+        System.out.println(Troop.size());
         Trooplab.add(new JLabel());
         Trooplab.get(Trooplab.size()-1).setIcon(Micon);
         Trooplab.get(Trooplab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
@@ -206,6 +229,10 @@ public class Battle extends javax.swing.JFrame {
             TroopT.start();
         }
     }//GEN-LAST:event_AddTankActionPerformed
+
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BackActionPerformed
 
     /**
      * @param args the command line arguments
