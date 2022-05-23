@@ -23,23 +23,20 @@ public class Battle extends javax.swing.JFrame {
     /**
      * Creates new form Battle
      */
-//    private Timer Mt;
-//    private ArrayList<JLabel> Mlab = new ArrayList<>();
     private ImageIcon Micon = new ImageIcon("src\\images\\Melee1.gif");
-    
-//    private Timer Rt;
-//    private ArrayList<JLabel> Rlab = new ArrayList<>();
     private ImageIcon Ricon = new ImageIcon("src\\images\\Ranged1.gif");
-    
-//    private Timer Tt;
-//    private ArrayList<JLabel> Tlab = new ArrayList<>();
     private ImageIcon Ticon = new ImageIcon("src\\images\\Tank1.gif");
     
     private ArrayList<JLabel> Trooplab = new ArrayList<>();
     private ArrayList<Troops> Troop = new ArrayList<>();
     private Timer TroopT;
     
-    private Home H = new Home();
+    private ArrayList<Troops> userT = new ArrayList<>();
+    
+    public javax.swing.JButton getBack() {
+        
+        return Back;
+    }
     
     public Battle() {
         initComponents();
@@ -50,6 +47,30 @@ public class Battle extends javax.swing.JFrame {
         
     }
 
+    public Battle(ArrayList<Troops> t){
+        initComponents();
+        AddRange.setVisible(false);
+        AddTank.setVisible(false);
+        
+        userT = t;
+        
+        if(userT.size() == 2){
+            if(userT.get(1) instanceof Ranged){
+                AddRange.setVisible(true);
+            }else{
+                AddTank.setVisible(true);
+            }
+        }else if(userT.size() == 3){
+            AddRange.setVisible(true);
+            AddTank.setVisible(true);
+        }
+        
+        
+        
+        //Icon Image <Wajib di tiap form>
+        ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
+        this.setIconImage(img.getImage());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,6 +80,7 @@ public class Battle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Back = new javax.swing.JButton();
         AddMelee = new javax.swing.JButton();
         AddRange = new javax.swing.JButton();
         AddTank = new javax.swing.JButton();
@@ -67,6 +89,9 @@ public class Battle extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Back.setText("Back");
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 90, 30));
 
         AddMelee.setBackground(new java.awt.Color(0, 0, 0));
         AddMelee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rounded_Rectangle_3.png"))); // NOI18N
@@ -109,7 +134,7 @@ public class Battle extends javax.swing.JFrame {
 
     private void AddMeleeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMeleeActionPerformed
         // TODO add your handling code here:
-        Troop.add(H.getM());
+        Troop.add(userT.get(0));
         System.out.println(Troop.get(0).getAtk());
         Trooplab.add(new JLabel());
         Trooplab.get(Trooplab.size()-1).setIcon(Micon);
@@ -128,30 +153,15 @@ public class Battle extends javax.swing.JFrame {
             TroopT = new Timer(10, act);
             TroopT.start();
         }
-        
-//        Mlab.add(new JLabel());
-//        Mlab.get(Mlab.size()-1).setIcon(Micon);
-//        Mlab.get(Mlab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
-//        getContentPane().add(Mlab.get(Mlab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
-
-//        ActionListener act = new ActionListener(){
-//            public void actionPerformed(ActionEvent event) {
-//                for(int i = 0; i < Mlab.size(); i++){
-//                    Mlab.get(i).setLocation(Mlab.get(i).getLocation().x+1, Mlab.get(i).getLocation().y);
-//                }
-//            }
-//        };
-        
-        
-//        if(Mt == null){
-//            Mt = new Timer(10, act);
-//            Mt.start();
-//        }
     }//GEN-LAST:event_AddMeleeActionPerformed
 
     private void AddRangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRangeActionPerformed
         // TODO add your handling code here:
-        Troop.add(H.getR());
+        if(userT.get(1) instanceof Ranged){
+            Troop.add(userT.get(1));
+        }else{
+            Troop.add(userT.get(2));
+        }
         Trooplab.add(new JLabel());
         Trooplab.get(Trooplab.size()-1).setIcon(Ricon);
         Trooplab.get(Trooplab.size()-1).setBounds(120, 435, 120, 120); //x, y, lebar, tinggi
@@ -169,28 +179,15 @@ public class Battle extends javax.swing.JFrame {
             TroopT = new Timer(10, act);
             TroopT.start();
         }
-        
-//        Rlab.add(new JLabel());
-//        Rlab.get(Rlab.size()-1).setIcon(Ricon);
-//        Rlab.get(Rlab.size()-1).setBounds(120, 435, 120, 120); //x, y, lebar, tinggi
-//        getContentPane().add(Rlab.get(Rlab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
-//
-//        ActionListener act = new ActionListener(){
-//            public void actionPerformed(ActionEvent event) {
-//                for(int i = 0; i < Rlab.size(); i++){
-//                    Rlab.get(i).setLocation(Rlab.get(i).getLocation().x+1, Rlab.get(i).getLocation().y);
-//                }
-//            }
-//        };
-//        if(Rt == null){
-//            Rt = new Timer(10, act);
-//            Rt.start();
-//        }
     }//GEN-LAST:event_AddRangeActionPerformed
 
     private void AddTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTankActionPerformed
         // TODO add your handling code here:
-        Troop.add(H.getT());
+        if(userT.get(1) instanceof Tank){
+            Troop.add(userT.get(1));
+        }else{
+            Troop.add(userT.get(2));
+        }
         Trooplab.add(new JLabel());
         Trooplab.get(Trooplab.size()-1).setIcon(Ticon);
         Trooplab.get(Trooplab.size()-1).setBounds(119, 430, 130, 130); //x, y, lebar, tinggi
@@ -208,23 +205,6 @@ public class Battle extends javax.swing.JFrame {
             TroopT = new Timer(10, act);
             TroopT.start();
         }
-        
-//        Tlab.add(new JLabel());
-//        Tlab.get(Tlab.size()-1).setIcon(Ticon);
-//        Tlab.get(Tlab.size()-1).setBounds(119, 430, 130, 130); //x, y, lebar, tinggi
-//        getContentPane().add(Tlab.get(Tlab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
-//
-//        ActionListener act = new ActionListener(){
-//            public void actionPerformed(ActionEvent event) {
-//                for(int i = 0; i < Tlab.size(); i++){
-//                    Tlab.get(i).setLocation(Tlab.get(i).getLocation().x+1, Tlab.get(i).getLocation().y);
-//                }
-//            }
-//        };
-//        if(Tt == null){
-//            Tt = new Timer(10, act);
-//            Tt.start();
-//        }
     }//GEN-LAST:event_AddTankActionPerformed
 
     /**
@@ -266,6 +246,7 @@ public class Battle extends javax.swing.JFrame {
     private javax.swing.JButton AddMelee;
     private javax.swing.JButton AddRange;
     private javax.swing.JButton AddTank;
+    private javax.swing.JButton Back;
     private javax.swing.JLabel Background;
     // End of variables declaration//GEN-END:variables
 }

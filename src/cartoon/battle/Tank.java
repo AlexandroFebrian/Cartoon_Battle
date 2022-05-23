@@ -9,13 +9,11 @@ package cartoon.battle;
  * @author User
  */
 public class Tank extends Troops {
+    //HP, ATK
 
-    public Tank(int BaseHP, int BaseAtk) {
-        super(BaseHP, BaseAtk);
+    public Tank() {
+        super(75, 10);
     }
-
-//    public Tank() {
-//        super();
-//    }
+    
     
 }

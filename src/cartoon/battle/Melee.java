@@ -9,16 +9,9 @@ package cartoon.battle;
  * @author User
  */
 public class Melee extends Troops {
-    
-    public Melee(int BaseHP, int BaseAtk) {
-        super(BaseHP, BaseAtk);
+    //HP, ATK
+    public Melee() {
+        super(30, 5);
     }
-
-//    public Melee() {
-//        super();
-//    }
-    
-    
-    
     
 }

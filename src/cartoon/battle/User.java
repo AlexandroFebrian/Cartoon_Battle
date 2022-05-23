@@ -20,6 +20,7 @@ public class User {
         this.username = username;
         this.levelEnemy = 1;
         this.gold = 0;
+        this.troop.add(new Melee());
     }    
 
     public String getUsername() {
@@ -49,8 +50,8 @@ public class User {
     public ArrayList<Troops> getTroop() {
         return troop;
     }
-
-    public void setTroop(ArrayList<Troops> troop) {
-        this.troop = troop;
+    //menerima parameter new tank/range
+    public void addTroop(Troops troop) {
+        this.troop.add(troop);
     }
 }

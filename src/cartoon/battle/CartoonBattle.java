@@ -51,8 +51,15 @@ public class CartoonBattle {
                     });
                     h.getBattle().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
+                            Battle b = new Battle(u.get(u.size()-1).getTroop());
                             h.setVisible(false);
                             b.setVisible(true);
+                            b.getBack().addMouseListener(new MouseAdapter(){
+                                public void mousePressed(MouseEvent me){
+                                    b.dispose();
+                                    h.setVisible(true);
+                                }
+                            });
                         }
                     });
                 } else if (!l.getIsiUser().getText().equals("") && u.size() == 5) {
