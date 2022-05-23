@@ -10,4 +10,15 @@ package cartoon.battle;
  */
 public class Melee extends Troops {
     
+    public Melee(int BaseHP, int BaseAtk) {
+        super(BaseHP, BaseAtk);
+    }
+
+    public Melee() {
+        super();
+    }
+    
+    
+    
+    
 }

@@ -23,17 +23,21 @@ public class Battle extends javax.swing.JFrame {
     /**
      * Creates new form Battle
      */
-    private Timer Mt;
-    private ArrayList<JLabel> Mlab = new ArrayList<>();
+//    private Timer Mt;
+//    private ArrayList<JLabel> Mlab = new ArrayList<>();
     private ImageIcon Micon = new ImageIcon("src\\images\\Melee1.gif");
     
-    private Timer Rt;
-    private ArrayList<JLabel> Rlab = new ArrayList<>();
+//    private Timer Rt;
+//    private ArrayList<JLabel> Rlab = new ArrayList<>();
     private ImageIcon Ricon = new ImageIcon("src\\images\\Ranged1.gif");
     
-    private Timer Tt;
-    private ArrayList<JLabel> Tlab = new ArrayList<>();
+//    private Timer Tt;
+//    private ArrayList<JLabel> Tlab = new ArrayList<>();
     private ImageIcon Ticon = new ImageIcon("src\\images\\Tank1.gif");
+    
+    private ArrayList<JLabel> Trooplab = new ArrayList<>();
+    private ArrayList<Troops> Troop = new ArrayList<>();
+    private Timer TroopT;
     
     public Battle() {
         initComponents();
@@ -103,62 +107,121 @@ public class Battle extends javax.swing.JFrame {
 
     private void AddMeleeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMeleeActionPerformed
         // TODO add your handling code here:
-        Mlab.add(new JLabel());
-        Mlab.get(Mlab.size()-1).setIcon(Micon);
-        Mlab.get(Mlab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
-        getContentPane().add(Mlab.get(Mlab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
-
+        Troop.add(new Melee());
+        Trooplab.add(new JLabel());
+        Trooplab.get(Trooplab.size()-1).setIcon(Micon);
+        Trooplab.get(Trooplab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
+        getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
+        
         ActionListener act = new ActionListener(){
             public void actionPerformed(ActionEvent event) {
-                for(int i = 0; i < Mlab.size(); i++){
-                    Mlab.get(i).setLocation(Mlab.get(i).getLocation().x+1, Mlab.get(i).getLocation().y);
+                for(int i = 0; i < Trooplab.size(); i++){
+                    Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
                 }
             }
         };
-        if(Mt == null){
-            Mt = new Timer(10, act);
-            Mt.start();
+        
+        if(TroopT == null){
+            TroopT = new Timer(10, act);
+            TroopT.start();
         }
+        
+//        Mlab.add(new JLabel());
+//        Mlab.get(Mlab.size()-1).setIcon(Micon);
+//        Mlab.get(Mlab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
+//        getContentPane().add(Mlab.get(Mlab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
+
+//        ActionListener act = new ActionListener(){
+//            public void actionPerformed(ActionEvent event) {
+//                for(int i = 0; i < Mlab.size(); i++){
+//                    Mlab.get(i).setLocation(Mlab.get(i).getLocation().x+1, Mlab.get(i).getLocation().y);
+//                }
+//            }
+//        };
+        
+        
+//        if(Mt == null){
+//            Mt = new Timer(10, act);
+//            Mt.start();
+//        }
     }//GEN-LAST:event_AddMeleeActionPerformed
 
     private void AddRangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRangeActionPerformed
         // TODO add your handling code here:
-        Rlab.add(new JLabel());
-        Rlab.get(Rlab.size()-1).setIcon(Ricon);
-        Rlab.get(Rlab.size()-1).setBounds(120, 435, 120, 120); //x, y, lebar, tinggi
-        getContentPane().add(Rlab.get(Rlab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
-
+        Troop.add(new Ranged());
+        Trooplab.add(new JLabel());
+        Trooplab.get(Trooplab.size()-1).setIcon(Ricon);
+        Trooplab.get(Trooplab.size()-1).setBounds(120, 435, 120, 120); //x, y, lebar, tinggi
+        getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
+        
         ActionListener act = new ActionListener(){
             public void actionPerformed(ActionEvent event) {
-                for(int i = 0; i < Rlab.size(); i++){
-                    Rlab.get(i).setLocation(Rlab.get(i).getLocation().x+1, Rlab.get(i).getLocation().y);
+                for(int i = 0; i < Trooplab.size(); i++){
+                    Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
                 }
             }
         };
-        if(Rt == null){
-            Rt = new Timer(10, act);
-            Rt.start();
+        
+        if(TroopT == null){
+            TroopT = new Timer(10, act);
+            TroopT.start();
         }
+        
+//        Rlab.add(new JLabel());
+//        Rlab.get(Rlab.size()-1).setIcon(Ricon);
+//        Rlab.get(Rlab.size()-1).setBounds(120, 435, 120, 120); //x, y, lebar, tinggi
+//        getContentPane().add(Rlab.get(Rlab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
+//
+//        ActionListener act = new ActionListener(){
+//            public void actionPerformed(ActionEvent event) {
+//                for(int i = 0; i < Rlab.size(); i++){
+//                    Rlab.get(i).setLocation(Rlab.get(i).getLocation().x+1, Rlab.get(i).getLocation().y);
+//                }
+//            }
+//        };
+//        if(Rt == null){
+//            Rt = new Timer(10, act);
+//            Rt.start();
+//        }
     }//GEN-LAST:event_AddRangeActionPerformed
 
     private void AddTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTankActionPerformed
         // TODO add your handling code here:
-        Tlab.add(new JLabel());
-        Tlab.get(Tlab.size()-1).setIcon(Ticon);
-        Tlab.get(Tlab.size()-1).setBounds(119, 430, 130, 130); //x, y, lebar, tinggi
-        getContentPane().add(Tlab.get(Tlab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
-
+        Troop.add(new Tank());
+        Trooplab.add(new JLabel());
+        Trooplab.get(Trooplab.size()-1).setIcon(Ticon);
+        Trooplab.get(Trooplab.size()-1).setBounds(119, 430, 130, 130); //x, y, lebar, tinggi
+        getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
+        
         ActionListener act = new ActionListener(){
             public void actionPerformed(ActionEvent event) {
-                for(int i = 0; i < Tlab.size(); i++){
-                    Tlab.get(i).setLocation(Tlab.get(i).getLocation().x+1, Tlab.get(i).getLocation().y);
+                for(int i = 0; i < Trooplab.size(); i++){
+                    Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
                 }
             }
         };
-        if(Tt == null){
-            Tt = new Timer(10, act);
-            Tt.start();
+        
+        if(TroopT == null){
+            TroopT = new Timer(10, act);
+            TroopT.start();
         }
+        
+//        Tlab.add(new JLabel());
+//        Tlab.get(Tlab.size()-1).setIcon(Ticon);
+//        Tlab.get(Tlab.size()-1).setBounds(119, 430, 130, 130); //x, y, lebar, tinggi
+//        getContentPane().add(Tlab.get(Tlab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
+//
+//        ActionListener act = new ActionListener(){
+//            public void actionPerformed(ActionEvent event) {
+//                for(int i = 0; i < Tlab.size(); i++){
+//                    Tlab.get(i).setLocation(Tlab.get(i).getLocation().x+1, Tlab.get(i).getLocation().y);
+//                }
+//            }
+//        };
+//        if(Tt == null){
+//            Tt = new Timer(10, act);
+//            Tt.start();
+//        }
     }//GEN-LAST:event_AddTankActionPerformed
 
     /**

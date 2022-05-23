@@ -9,5 +9,13 @@ package cartoon.battle;
  * @author User
  */
 public class Ranged extends Troops {
+
+    public Ranged(int BaseHP, int BaseAtk) {
+        super(BaseHP, BaseAtk);
+    }
+
+    public Ranged() {
+        super();
+    }
     
 }
