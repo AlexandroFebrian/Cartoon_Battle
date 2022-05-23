@@ -14,8 +14,8 @@ public class Ranged extends Troops {
         super(BaseHP, BaseAtk);
     }
 
-    public Ranged() {
-        super();
-    }
+//    public Ranged() {
+//        super();
+//    }
     
 }

@@ -39,6 +39,8 @@ public class Battle extends javax.swing.JFrame {
     private ArrayList<Troops> Troop = new ArrayList<>();
     private Timer TroopT;
     
+    private Home H = new Home();
+    
     public Battle() {
         initComponents();
         
@@ -57,6 +59,7 @@ public class Battle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         AddMelee = new javax.swing.JButton();
         AddRange = new javax.swing.JButton();
         AddTank = new javax.swing.JButton();
@@ -65,6 +68,14 @@ public class Battle extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 100, 40));
 
         AddMelee.setBackground(new java.awt.Color(0, 0, 0));
         AddMelee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rounded_Rectangle_3.png"))); // NOI18N
@@ -107,7 +118,8 @@ public class Battle extends javax.swing.JFrame {
 
     private void AddMeleeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMeleeActionPerformed
         // TODO add your handling code here:
-        Troop.add(new Melee());
+        Troop.add(H.getM());
+        System.out.println(Troop.get(0).getAtk());
         Trooplab.add(new JLabel());
         Trooplab.get(Trooplab.size()-1).setIcon(Micon);
         Trooplab.get(Trooplab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
@@ -148,7 +160,7 @@ public class Battle extends javax.swing.JFrame {
 
     private void AddRangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRangeActionPerformed
         // TODO add your handling code here:
-        Troop.add(new Ranged());
+        Troop.add(H.getR());
         Trooplab.add(new JLabel());
         Trooplab.get(Trooplab.size()-1).setIcon(Ricon);
         Trooplab.get(Trooplab.size()-1).setBounds(120, 435, 120, 120); //x, y, lebar, tinggi
@@ -187,7 +199,7 @@ public class Battle extends javax.swing.JFrame {
 
     private void AddTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTankActionPerformed
         // TODO add your handling code here:
-        Troop.add(new Tank());
+        Troop.add(H.getT());
         Trooplab.add(new JLabel());
         Trooplab.get(Trooplab.size()-1).setIcon(Ticon);
         Trooplab.get(Trooplab.size()-1).setBounds(119, 430, 130, 130); //x, y, lebar, tinggi
@@ -223,6 +235,10 @@ public class Battle extends javax.swing.JFrame {
 //            Tt.start();
 //        }
     }//GEN-LAST:event_AddTankActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,5 +280,6 @@ public class Battle extends javax.swing.JFrame {
     private javax.swing.JButton AddRange;
     private javax.swing.JButton AddTank;
     private javax.swing.JLabel Background;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

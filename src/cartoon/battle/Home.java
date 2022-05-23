@@ -26,6 +26,20 @@ public class Home extends javax.swing.JFrame {
     private Melee M = new Melee(10, 15);
     private Ranged R = new Ranged(7, 20);
     private Tank T = new Tank(20, 10);
+
+    public Melee getM() {
+        return M;
+    }
+
+    public Ranged getR() {
+        return R;
+    }
+
+    public Tank getT() {
+        return T;
+    }
+    
+    
     
     private void defaultDisplay() {
         Kingdom.setVisible(false);

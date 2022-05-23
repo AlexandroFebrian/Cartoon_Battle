@@ -15,12 +15,14 @@ public abstract class Troops {
     public Troops(int BaseHP, int BaseAtk) {
         this.BaseHP = BaseHP;
         this.BaseAtk = BaseAtk;
-    }
-
-    public Troops() {
         HP = BaseHP;
         Atk = BaseAtk;
     }
+
+//    public Troops() {
+//        HP = BaseHP;
+//        Atk = BaseAtk;
+//    }
 
     public int getBaseHP() {
         return BaseHP;

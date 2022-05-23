@@ -14,9 +14,9 @@ public class Melee extends Troops {
         super(BaseHP, BaseAtk);
     }
 
-    public Melee() {
-        super();
-    }
+//    public Melee() {
+//        super();
+//    }
     
     
     

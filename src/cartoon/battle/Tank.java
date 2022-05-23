@@ -14,8 +14,8 @@ public class Tank extends Troops {
         super(BaseHP, BaseAtk);
     }
 
-    public Tank() {
-        super();
-    }
+//    public Tank() {
+//        super();
+//    }
     
 }
