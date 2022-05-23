@@ -22,6 +22,11 @@ public class Home extends javax.swing.JFrame {
      */
     private Timer t;
     
+    
+    private Melee M = new Melee(10, 15);
+    private Ranged R = new Ranged(7, 20);
+    private Tank T = new Tank(20, 10);
+    
     private void defaultDisplay() {
         Kingdom.setVisible(false);
         Shop.setVisible(false);

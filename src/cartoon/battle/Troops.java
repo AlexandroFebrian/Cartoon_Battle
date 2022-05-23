@@ -9,7 +9,7 @@ package cartoon.battle;
  * @author User
  */
 public abstract class Troops {
-    protected static int BaseHP, BaseAtk;
+    protected int BaseHP, BaseAtk;
     protected int HP, Atk;
 
     public Troops(int BaseHP, int BaseAtk) {
@@ -21,24 +21,24 @@ public abstract class Troops {
         HP = BaseHP;
         Atk = BaseAtk;
     }
-    
-    
 
-    public static int getBaseHP() {
+    public int getBaseHP() {
         return BaseHP;
     }
 
-    public static void setBaseHP(int BaseHP) {
-        Troops.BaseHP = BaseHP;
+    public void setBaseHP(int BaseHP) {
+        this.BaseHP = BaseHP;
     }
 
-    public static int getBaseAtk() {
+    public int getBaseAtk() {
         return BaseAtk;
     }
 
-    public static void setBaseAtk(int BaseAtk) {
-        Troops.BaseAtk = BaseAtk;
+    public void setBaseAtk(int BaseAtk) {
+        this.BaseAtk = BaseAtk;
     }
+    
+    
 
     public int getHP() {
         return HP;
