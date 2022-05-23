@@ -14,12 +14,14 @@ public class User {
     private String username;
     private int levelEnemy;
     private int gold;
+    private int skill;
     private ArrayList <Troops> troop = new ArrayList<>();
 
     public User(String username) {
         this.username = username;
         this.levelEnemy = 1;
         this.gold = 0;
+        this.skill = 0;
         this.troop.add(new Melee());
     }    
 
@@ -50,8 +52,17 @@ public class User {
     public ArrayList<Troops> getTroop() {
         return troop;
     }
+    
     //menerima parameter new tank/range
     public void addTroop(Troops troop) {
         this.troop.add(troop);
+    }
+
+    public int getSkill() {
+        return skill;
+    }
+
+    public void setSkill(int skill) {
+        this.skill = skill;
     }
 }

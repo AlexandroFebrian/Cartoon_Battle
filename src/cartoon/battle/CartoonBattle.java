@@ -45,16 +45,18 @@ public class CartoonBattle {
                             l.menuUtama();
                         }
                     });
-//                    h.getShop().addMouseListener(new MouseAdapter(){
-//                        public void mousePressed(MouseEvent me){
-//                            System.out.println("Test Shop");
-//                        }
-//                    });
-//                    h.getKingdom().addMouseListener(new MouseAdapter(){
-//                        public void mousePressed(MouseEvent me){
-//                            System.out.println("Test Kingdom");
-//                        }
-//                    });
+                    h.getShop().addMouseListener(new MouseAdapter(){
+                        public void mousePressed(MouseEvent me){
+                            //Pindah form Shop <Daniello>
+                            System.out.println("Test Shop");
+                        }
+                    });
+                    h.getKingdom().addMouseListener(new MouseAdapter(){
+                        public void mousePressed(MouseEvent me){
+                            //Pindah form Kingdom <Jees>
+                            System.out.println("Test Kingdom");
+                        }
+                    });
                     h.getBattle().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
                             Battle b = new Battle(u.get(u.size()-1).getTroop());

@@ -58,13 +58,13 @@ public class Home extends javax.swing.JFrame {
         return Logout;
     }
     
-//    public javax.swing.JButton getShop() {
-//        return Shop;
-//    }
-//    
-//    public javax.swing.JButton getKingdom() {
-//        return Kingdom;
-//    }
+    public javax.swing.JButton getShop() {
+        return Shop;
+    }
+    
+    public javax.swing.JButton getKingdom() {
+        return Kingdom;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
