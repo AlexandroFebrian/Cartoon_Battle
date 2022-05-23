@@ -66,6 +66,7 @@ public class Battle extends javax.swing.JFrame {
 
     public Battle(ArrayList<Troops> t){
         initComponents();
+//        Attack.setVisible(false);
         AddRange.setVisible(false);
         AddTank.setVisible(false);
         
@@ -168,6 +169,11 @@ public class Battle extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent event) {
                 for(int i = 0; i < Trooplab.size(); i++){
                     Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
+//                    if (Trooplab.get(i).getLocation().x == Attack.getLocation().x) {
+//                        TroopT.stop();
+//                        Attack.setVisible(true);
+//                        Trooplab.get(i).setVisible(false);
+//                    }
                 }
             }
         };
@@ -194,6 +200,11 @@ public class Battle extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent event) {
                 for(int i = 0; i < Trooplab.size(); i++){
                     Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
+//                    if (Trooplab.get(i).getLocation().x == Attack.getLocation().x) {
+//                        TroopT.stop();
+//                        Attack.setVisible(true);
+//                        Trooplab.get(i).setVisible(false);
+//                    }
                 }
             }
         };
