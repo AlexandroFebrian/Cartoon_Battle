@@ -30,8 +30,9 @@ public class Battle extends javax.swing.JFrame {
     private ArrayList<JLabel> Trooplab = new ArrayList<>();
     private ArrayList<Troops> Troop = new ArrayList<>();
     private Timer TroopT;
-    
     private ArrayList<Troops> userT = new ArrayList<>();
+    
+    private ArrayList<JLabel> Enemylab = new ArrayList<>();
     
     public javax.swing.JButton getBack() {
         return Back;
@@ -154,7 +155,8 @@ public class Battle extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //Add Melee
     private void AddMeleeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMeleeActionPerformed
         // TODO add your handling code here:
         Troop.add(userT.get(0));
@@ -184,6 +186,7 @@ public class Battle extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AddMeleeActionPerformed
 
+    //Add Ranged
     private void AddRangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRangeActionPerformed
         // TODO add your handling code here:
         if(userT.get(1) instanceof Ranged){
@@ -215,6 +218,7 @@ public class Battle extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AddRangeActionPerformed
 
+    //Add Tank
     private void AddTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTankActionPerformed
         // TODO add your handling code here:
         if(userT.get(1) instanceof Tank){
@@ -241,6 +245,11 @@ public class Battle extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AddTankActionPerformed
 
+    //Add Enemy
+    private void AddEnemy(){
+        
+    }
+    
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BackActionPerformed
