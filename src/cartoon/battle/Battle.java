@@ -158,8 +158,8 @@ public class Battle extends javax.swing.JFrame {
     private void AddMeleeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMeleeActionPerformed
         // TODO add your handling code here:
         Troop.add(userT.get(0));
-        System.out.println(Troop.get(0).getAtk());
-        System.out.println(Troop.size());
+//        System.out.println(Troop.get(0).getAtk());
+//        System.out.println(Troop.size());
         Trooplab.add(new JLabel());
         Trooplab.get(Trooplab.size()-1).setIcon(Micon);
         Trooplab.get(Trooplab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
