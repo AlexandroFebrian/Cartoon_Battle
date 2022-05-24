@@ -24,6 +24,7 @@ public class Battle extends javax.swing.JFrame {
      * Creates new form Battle
      */
     private ImageIcon Micon = new ImageIcon("src\\images\\Melee1.gif");
+    private ImageIcon Micon2 = new ImageIcon("src\\images\\Melee2.gif");
     private ImageIcon Ricon = new ImageIcon("src\\images\\Ranged1.gif");
     private ImageIcon Ticon = new ImageIcon("src\\images\\Tank1.gif");
     
@@ -101,6 +102,7 @@ public class Battle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Enemy = new javax.swing.JLabel();
         Back = new javax.swing.JButton();
         AddMelee = new javax.swing.JButton();
         AddRange = new javax.swing.JButton();
@@ -110,6 +112,9 @@ public class Battle extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Enemy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Enemy1.gif"))); // NOI18N
+        getContentPane().add(Enemy, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 430, -1, -1));
 
         Back.setText("Back");
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -173,10 +178,22 @@ public class Battle extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent event) {
                 for(int i = 0; i < Trooplab.size(); i++){
                     Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
-//                    if (Trooplab.get(i).getLocation().x == Attack.getLocation().x) {
+//                    Enemy.setLocation(Enemy.getLocation().x-1, Enemy.getLocation().y);
+//                    if (Trooplab.get(0).getLocation().x == Enemy.getLocation().x) {
+//                        if(Trooplab.size() == 1){
+//                            TroopT.stop();
+//                            TroopT = null;
+//                        }
+//                        remove(Trooplab.get(0));
+//                        Trooplab.remove(0);
+//                        validate();
+//                        repaint();
+//                        Trooplab.add(new JLabel());
+//                        Trooplab.get(i).setIcon(Micon2);
+//                        Enemy.setLocation(520, 430);
+//                        Trooplab.get(i).setBounds(Enemy.getLocation().x, 480, 68, 68); //x, y, lebar, tinggi
+//                        getContentPane().add(Trooplab.get(i), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
 //                        TroopT.stop();
-//                        Attack.setVisible(true);
-//                        Trooplab.get(i).setVisible(false);
 //                    }
                 }
             }
@@ -302,5 +319,6 @@ public class Battle extends javax.swing.JFrame {
     private javax.swing.JButton AddTank;
     private javax.swing.JButton Back;
     private javax.swing.JLabel Background;
+    private javax.swing.JLabel Enemy;
     // End of variables declaration//GEN-END:variables
 }
