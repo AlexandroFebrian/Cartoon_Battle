@@ -102,7 +102,6 @@ public class Battle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Enemy = new javax.swing.JLabel();
         Back = new javax.swing.JButton();
         AddMelee = new javax.swing.JButton();
         AddRange = new javax.swing.JButton();
@@ -112,9 +111,6 @@ public class Battle extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Enemy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Enemy1.gif"))); // NOI18N
-        getContentPane().add(Enemy, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 430, -1, -1));
 
         Back.setText("Back");
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -319,6 +315,5 @@ public class Battle extends javax.swing.JFrame {
     private javax.swing.JButton AddTank;
     private javax.swing.JButton Back;
     private javax.swing.JLabel Background;
-    private javax.swing.JLabel Enemy;
     // End of variables declaration//GEN-END:variables
 }
