@@ -112,13 +112,15 @@ public class Battle extends javax.swing.JFrame {
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Back.setText("Back");
+        Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
+        Back.setBorderPainted(false);
+        Back.setContentAreaFilled(false);
         Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackActionPerformed(evt);
             }
         });
-        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 90, 30));
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 100, 100));
 
         AddMelee.setBackground(new java.awt.Color(0, 0, 0));
         AddMelee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rounded_Rectangle_3.png"))); // NOI18N
