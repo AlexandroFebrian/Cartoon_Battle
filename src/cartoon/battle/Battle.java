@@ -27,13 +27,17 @@ public class Battle extends javax.swing.JFrame {
     private ImageIcon Micon2 = new ImageIcon("src\\images\\Melee2.gif");
     private ImageIcon Ricon = new ImageIcon("src\\images\\Ranged1.gif");
     private ImageIcon Ticon = new ImageIcon("src\\images\\Tank1.gif");
+    private ImageIcon Eicon = new ImageIcon("src\\images\\Enemy1.gif");
     
     private ArrayList<JLabel> Trooplab = new ArrayList<>();
     private ArrayList<Troops> Troop = new ArrayList<>();
-    private Timer TroopT;
+    private Timer TroopMove;
     private ArrayList<Troops> userT = new ArrayList<>();
     
     private ArrayList<JLabel> Enemylab = new ArrayList<>();
+    private Timer EnemyMove;
+    private Timer EnemySpawnT;
+    private int SpawnTime = 0;
     
     public javax.swing.JButton getBack() {
         return Back;
@@ -48,11 +52,11 @@ public class Battle extends javax.swing.JFrame {
     }
 
     public void setTroopT(Timer TroopT) {
-        this.TroopT = TroopT;
+        this.TroopMove = TroopT;
     }
 
     public Timer getTroopT() {
-        return TroopT;
+        return TroopMove;
     }
     
     
@@ -87,7 +91,34 @@ public class Battle extends javax.swing.JFrame {
             AddTank.setVisible(true);
         }
         
+        //Spawn Enemy
+        ActionListener spawn = new ActionListener(){
+            public void actionPerformed(ActionEvent event) {
+                SpawnTime+=1;
+                System.out.println(SpawnTime);
+                if(SpawnTime == 10){
+                    SpawnTime = 0;
+                    Enemylab.add(new JLabel());
+                    Enemylab.get(Enemylab.size()-1).setIcon(Eicon);
+                    Enemylab.get(Enemylab.size()-1).setBounds(1050, 410, 200, 133); //x, y, lebar, tinggi
+                    getContentPane().add(Enemylab.get(Enemylab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
+                }
+            }
+        };
+        EnemySpawnT = new Timer(1000, spawn);
+        EnemySpawnT.start();
         
+        //Enemy Gerak
+        ActionListener move = new ActionListener(){
+            public void actionPerformed(ActionEvent event) {
+                for(int i = 0; i < Enemylab.size(); i++){
+                    Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
+                }
+            }
+        };
+        EnemyMove = new Timer(20, move);
+        EnemyMove.start();
+
         
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
@@ -197,9 +228,9 @@ public class Battle extends javax.swing.JFrame {
             }
         };
         
-        if(TroopT == null){
-            TroopT = new Timer(10, act);
-            TroopT.start();
+        if(TroopMove == null){
+            TroopMove = new Timer(10, act);
+            TroopMove.start();
         }
     }//GEN-LAST:event_AddMeleeActionPerformed
 
@@ -229,9 +260,9 @@ public class Battle extends javax.swing.JFrame {
             }
         };
         
-        if(TroopT == null){
-            TroopT = new Timer(10, act);
-            TroopT.start();
+        if(TroopMove == null){
+            TroopMove = new Timer(10, act);
+            TroopMove.start();
         }
     }//GEN-LAST:event_AddRangeActionPerformed
 
@@ -261,9 +292,9 @@ public class Battle extends javax.swing.JFrame {
             }
         };
         
-        if(TroopT == null){
-            TroopT = new Timer(10, act);
-            TroopT.start();
+        if(TroopMove == null){
+            TroopMove = new Timer(10, act);
+            TroopMove.start();
         }
     }//GEN-LAST:event_AddTankActionPerformed
 
