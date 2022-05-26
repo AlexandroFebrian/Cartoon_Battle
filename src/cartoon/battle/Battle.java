@@ -28,13 +28,16 @@ public class Battle extends javax.swing.JFrame {
     private ImageIcon Ricon = new ImageIcon("src\\images\\Ranged1.gif");
     private ImageIcon Ticon = new ImageIcon("src\\images\\Tank1.gif");
     private ImageIcon Eicon = new ImageIcon("src\\images\\Enemy1.gif");
+    private ImageIcon Eicon2 = new ImageIcon("src\\images\\Enemy2.gif");
     
     private ArrayList<JLabel> Trooplab = new ArrayList<>();
     private ArrayList<Troops> Troop = new ArrayList<>();
     private Timer TroopMove;
     private ArrayList<Troops> userT = new ArrayList<>();
+    private ArrayList<Integer> TroopX = new ArrayList<>();
     
     private ArrayList<JLabel> Enemylab = new ArrayList<>();
+    private ArrayList<Integer> EnemyX = new ArrayList<>();
     private Timer EnemyMove;
     private Timer EnemySpawnT;
     private int SpawnTime = 0;
@@ -96,8 +99,9 @@ public class Battle extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent event) {
                 SpawnTime+=1;
                 System.out.println(SpawnTime);
-                if(SpawnTime == 10){
+                if(SpawnTime == 5){
                     SpawnTime = 0;
+                    EnemyX.add(0);
                     Enemylab.add(new JLabel());
                     Enemylab.get(Enemylab.size()-1).setIcon(Eicon);
                     Enemylab.get(Enemylab.size()-1).setBounds(1050, 410, 200, 133); //x, y, lebar, tinggi
@@ -109,16 +113,67 @@ public class Battle extends javax.swing.JFrame {
         EnemySpawnT.start();
         
         //Enemy Gerak
-        ActionListener move = new ActionListener(){
+        ActionListener Emove = new ActionListener(){
             public void actionPerformed(ActionEvent event) {
                 for(int i = 0; i < Enemylab.size(); i++){
-                    Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
+                    if(Enemylab.get(i).getLocation().x != 0){
+                        EnemyX.set(i, Enemylab.get(i).getLocation().x);
+                    }else{
+                        Enemylab.get(i).setLocation(EnemyX.get(i), 410);
+                    }
+                    if(Trooplab.size() >= 1){
+                        if(Enemylab.get(i).getLocation().x == Trooplab.get(0).getLocation().x+100){
+                            //Nyerang
+                            Enemylab.get(i).setIcon(Eicon2);
+                        }
+                        else if(Enemylab.get(i).getIcon() == Eicon2){
+//                            Enemylab.get(i).setLocation(EnemyX.get(i), 410);
+                        }
+                        else{
+                            Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
+                        }
+                    }
+                    else{
+                        Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
+                    }
                 }
             }
         };
-        EnemyMove = new Timer(20, move);
-        EnemyMove.start();
-
+        if(EnemyMove == null){
+            EnemyMove = new Timer(20, Emove);
+            EnemyMove.start();
+        }
+        
+        //Troop gerak
+        ActionListener Tmove = new ActionListener(){
+            public void actionPerformed(ActionEvent event) {
+                for(int i = 0; i < Trooplab.size(); i++){
+                    if(Trooplab.get(i).getLocation().x != 0){
+                        TroopX.set(i, Trooplab.get(i).getLocation().x);
+                    }else{
+                        Trooplab.get(i).setLocation(TroopX.get(i), 480);
+                    }
+                    if(Enemylab.size() >= 1){
+                        if(Enemylab.get(0).getLocation().x-100 == Trooplab.get(i).getLocation().x){
+                            //Nyerang
+                            Trooplab.get(i).setIcon(Micon2);
+                        }
+                        else if(Trooplab.get(i).getIcon() == Micon2){
+//                            Trooplab.get(i).setLocation(TroopX.get(i), 480);
+                        }
+                        else{
+                            Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
+                        }
+                    }else{
+                        Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
+                    }
+                }
+            }
+        };
+        if(TroopMove == null){
+            TroopMove = new Timer(10, Tmove);
+            TroopMove.start();
+        }
         
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
@@ -195,18 +250,15 @@ public class Battle extends javax.swing.JFrame {
     //Add Melee
     private void AddMeleeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMeleeActionPerformed
         // TODO add your handling code here:
+        TroopX.add(0);
         Troop.add(userT.get(0));
-//        System.out.println(Troop.get(0).getAtk());
-//        System.out.println(Troop.size());
         Trooplab.add(new JLabel());
         Trooplab.get(Trooplab.size()-1).setIcon(Micon);
         Trooplab.get(Trooplab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
         getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
         
-        ActionListener act = new ActionListener(){
-            public void actionPerformed(ActionEvent event) {
-                for(int i = 0; i < Trooplab.size(); i++){
-                    Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
+        
+    }//GEN-LAST:event_AddMeleeActionPerformed
 //                    Enemy.setLocation(Enemy.getLocation().x-1, Enemy.getLocation().y);
 //                    if (Trooplab.get(0).getLocation().x == Enemy.getLocation().x) {
 //                        if(Trooplab.size() == 1){
@@ -224,15 +276,6 @@ public class Battle extends javax.swing.JFrame {
 //                        getContentPane().add(Trooplab.get(i), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
 //                        TroopT.stop();
 //                    }
-                }
-            }
-        };
-        
-        if(TroopMove == null){
-            TroopMove = new Timer(10, act);
-            TroopMove.start();
-        }
-    }//GEN-LAST:event_AddMeleeActionPerformed
 
     //Add Ranged
     private void AddRangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRangeActionPerformed
@@ -247,23 +290,23 @@ public class Battle extends javax.swing.JFrame {
         Trooplab.get(Trooplab.size()-1).setBounds(120, 435, 120, 120); //x, y, lebar, tinggi
         getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
         
-        ActionListener act = new ActionListener(){
-            public void actionPerformed(ActionEvent event) {
-                for(int i = 0; i < Trooplab.size(); i++){
-                    Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
-//                    if (Trooplab.get(i).getLocation().x == Attack.getLocation().x) {
-//                        TroopT.stop();
-//                        Attack.setVisible(true);
-//                        Trooplab.get(i).setVisible(false);
-//                    }
-                }
-            }
-        };
-        
-        if(TroopMove == null){
-            TroopMove = new Timer(10, act);
-            TroopMove.start();
-        }
+//        ActionListener act = new ActionListener(){
+//            public void actionPerformed(ActionEvent event) {
+//                for(int i = 0; i < Trooplab.size(); i++){
+//                    Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
+////                    if (Trooplab.get(i).getLocation().x == Attack.getLocation().x) {
+////                        TroopT.stop();
+////                        Attack.setVisible(true);
+////                        Trooplab.get(i).setVisible(false);
+////                    }
+//                }
+//            }
+//        };
+//        
+//        if(TroopMove == null){
+//            TroopMove = new Timer(10, act);
+//            TroopMove.start();
+//        }
     }//GEN-LAST:event_AddRangeActionPerformed
 
     //Add Tank
@@ -279,23 +322,23 @@ public class Battle extends javax.swing.JFrame {
         Trooplab.get(Trooplab.size()-1).setBounds(119, 430, 130, 130); //x, y, lebar, tinggi
         getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
         
-        ActionListener act = new ActionListener(){
-            public void actionPerformed(ActionEvent event) {
-                for(int i = 0; i < Trooplab.size(); i++){
-                    Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
-//                    if (Trooplab.get(i).getLocation().x == Attack.getLocation().x) {
-//                        TroopT.stop();
-//                        Attack.setVisible(true);
-//                        Trooplab.get(i).setVisible(false);
-//                    }
-                }
-            }
-        };
-        
-        if(TroopMove == null){
-            TroopMove = new Timer(10, act);
-            TroopMove.start();
-        }
+//        ActionListener act = new ActionListener(){
+//            public void actionPerformed(ActionEvent event) {
+//                for(int i = 0; i < Trooplab.size(); i++){
+//                    Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
+////                    if (Trooplab.get(i).getLocation().x == Attack.getLocation().x) {
+////                        TroopT.stop();
+////                        Attack.setVisible(true);
+////                        Trooplab.get(i).setVisible(false);
+////                    }
+//                }
+//            }
+//        };
+//        
+//        if(TroopMove == null){
+//            TroopMove = new Timer(10, act);
+//            TroopMove.start();
+//        }
     }//GEN-LAST:event_AddTankActionPerformed
 
     //Add Enemy
