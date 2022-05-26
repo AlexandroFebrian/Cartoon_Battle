@@ -8,6 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -114,6 +118,18 @@ public class Login extends javax.swing.JFrame {
         //Belum diisi
     }
     
+    private void playMusic() {
+        try {
+            File music = new File("src\\music\\Good Night, Liyue.wav");
+            AudioInputStream audio = AudioSystem.getAudioInputStream(music);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audio);
+            clip.start();
+        } catch (Exception e) {
+            System.out.println("Failed!");
+        }
+    }
+    
     public Login() {
         initComponents();
         
@@ -129,6 +145,8 @@ public class Login extends javax.swing.JFrame {
         
         //Default Display
         invisibleIcon();
+        
+        playMusic();
         
         //Timer
         ActionListener act = new ActionListener(){
