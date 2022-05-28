@@ -4,11 +4,13 @@
  */
 package cartoon.battle;
 
+import java.io.Serializable;
+
 /**
  *
  * @author User
  */
-public abstract class Troops {
+public abstract class Troops implements Serializable{
     protected int HP, Atk;
 
     public Troops(int HP, int Atk) {

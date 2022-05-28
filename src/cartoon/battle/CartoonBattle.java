@@ -29,6 +29,7 @@ public class CartoonBattle {
         
         l.setVisible(true);
         l.getT().start();
+        
         //Masuk Home
         l.getPlay().addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
@@ -56,14 +57,34 @@ public class CartoonBattle {
                     //Shop <Daniello>
                     h.getShop().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            System.out.println("Test Shop");
+                            Shop s = new Shop(/*Parameter*/);
+                            s.setLocationRelativeTo(null);
+                            s.setResizable(false);
+                            h.setVisible(false);
+                            s.setVisible(true);
+                            s.getBack().addMouseListener(new MouseAdapter(){
+                                public void mousePressed(MouseEvent me){
+                                    s.dispose();
+                                    h.setVisible(true);
+                                }
+                            });
                         }
                     });
                     
                     //Kingdom <Jessica>
                     h.getKingdom().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            System.out.println("Test Kingdom");
+                            Kingdom k = new Kingdom(/*Parameter*/);
+                            k.setLocationRelativeTo(null);
+                            k.setResizable(false);
+                            h.setVisible(false);
+                            k.setVisible(true);
+                            k.getBack().addMouseListener(new MouseAdapter(){
+                                public void mousePressed(MouseEvent me){
+                                    k.dispose();
+                                    h.setVisible(true);
+                                }
+                            });
                         }
                     });
                     
@@ -81,8 +102,8 @@ public class CartoonBattle {
                                     if(b.getTroopT() != null){
                                         b.getTroopT().stop();
                                         b.setTroopT(null);
-                                        b.setTroop(null);
-                                        b.setTrooplab(null);
+                                        b.setTroop(new ArrayList<>());
+                                        b.setTrooplab(new ArrayList<>());
                                     }
                                     h.setVisible(true);
                                 }

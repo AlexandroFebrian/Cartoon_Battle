@@ -5,6 +5,7 @@
 package cartoon.battle;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**
  *
@@ -23,6 +24,10 @@ public class Kingdom extends javax.swing.JFrame {
         this.setIconImage(img.getImage());
     }
 
+    public JButton getBack() {
+        return Back;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,8 +37,15 @@ public class Kingdom extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Back = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
+        Back.setBorderPainted(false);
+        Back.setContentAreaFilled(false);
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -74,5 +86,6 @@ public class Kingdom extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Back;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,6 +17,7 @@ public class User implements Serializable {
     private int gold;
     private int skill;
     private ArrayList <Troops> troop = new ArrayList<>();
+    private Tower tower;
 
     public User(String username) {
         this.username = username;
@@ -24,6 +25,7 @@ public class User implements Serializable {
         this.gold = 0;
         this.skill = 0;
         this.troop.add(new Melee());
+        this.tower = new Tower();
     }    
 
     public String getUsername() {
@@ -42,6 +44,15 @@ public class User implements Serializable {
         this.gold = gold;
     }
 
+    public Tower getTower() {
+        return tower;
+    }
+
+    public void setTower(int level, int hp) {
+        this.tower.setLevel(level);
+        this.tower.setHp(hp);
+    }
+    
     public int getLevelEnemy() {
         return levelEnemy;
     }

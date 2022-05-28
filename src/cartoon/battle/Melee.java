@@ -4,14 +4,15 @@
  */
 package cartoon.battle;
 
+import java.io.Serializable;
+
 /**
  *
  * @author User
  */
-public class Melee extends Troops {
+public class Melee extends Troops implements Serializable {
     //HP, ATK
     public Melee() {
         super(30, 5);
     }
-    
 }
