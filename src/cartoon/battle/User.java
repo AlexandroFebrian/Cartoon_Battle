@@ -4,13 +4,14 @@
  */
 package cartoon.battle;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author User
  */
-public class User {
+public class User implements Serializable {
     private String username;
     private int levelEnemy;
     private int gold;
