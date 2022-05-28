@@ -29,6 +29,7 @@ public class CartoonBattle {
         
         l.setVisible(true);
         l.getT().start();
+        //Masuk Home
         l.getPlay().addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
                 if (!l.getIsiUser().getText().equals("")) {
@@ -42,6 +43,8 @@ public class CartoonBattle {
                     h.setLocationRelativeTo(null);
                     h.setResizable(false);
                     h.setVisible(true);
+                    
+                    //Logout
                     h.getLogout().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
                             h.setVisible(false);
@@ -49,18 +52,22 @@ public class CartoonBattle {
                             l.menuUtama();
                         }
                     });
+                    
+                    //Shop <Daniello>
                     h.getShop().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            //Pindah form Shop <Daniello>
                             System.out.println("Test Shop");
                         }
                     });
+                    
+                    //Kingdom <Jessica>
                     h.getKingdom().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            //Pindah form Kingdom <Jees>
                             System.out.println("Test Kingdom");
                         }
                     });
+                    
+                    //Battle <Febrian>
                     h.getBattle().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
                             Battle b = new Battle(u.get(u.size()-1).getTroop());

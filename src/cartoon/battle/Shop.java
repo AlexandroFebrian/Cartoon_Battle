@@ -4,6 +4,8 @@
  */
 package cartoon.battle;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author User
@@ -15,6 +17,10 @@ public class Shop extends javax.swing.JFrame {
      */
     public Shop() {
         initComponents();
+        
+        //Icon Image <Wajib di tiap form>
+        ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
+        this.setIconImage(img.getImage());
     }
 
     /**

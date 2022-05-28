@@ -69,7 +69,7 @@ public class Battle extends javax.swing.JFrame {
         
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
-        this.setIconImage(img.getImage());        
+        this.setIconImage(img.getImage());
         
     }
 

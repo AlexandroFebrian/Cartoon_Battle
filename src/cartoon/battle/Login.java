@@ -151,6 +151,7 @@ public class Login extends javax.swing.JFrame {
         //Default Display
         invisibleIcon();
         
+        //Music
         playMusic();
         
         //Timer
