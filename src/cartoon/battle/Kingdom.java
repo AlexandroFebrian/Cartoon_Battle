@@ -38,6 +38,11 @@ public class Kingdom extends javax.swing.JFrame {
     private void initComponents() {
 
         Back = new javax.swing.JButton();
+        UpgradeTower = new javax.swing.JButton();
+        UpgradeRanged = new javax.swing.JButton();
+        UpgradeTank = new javax.swing.JButton();
+        UpgradeMelee = new javax.swing.JButton();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -45,10 +50,42 @@ public class Kingdom extends javax.swing.JFrame {
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
         Back.setBorderPainted(false);
         Back.setContentAreaFilled(false);
-        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        UpgradeTower.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Tower.png"))); // NOI18N
+        UpgradeTower.setBorderPainted(false);
+        UpgradeTower.setContentAreaFilled(false);
+        UpgradeTower.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpgradeTowerActionPerformed(evt);
+            }
+        });
+        getContentPane().add(UpgradeTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 530, -1, -1));
+
+        UpgradeRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
+        UpgradeRanged.setBorderPainted(false);
+        UpgradeRanged.setContentAreaFilled(false);
+        getContentPane().add(UpgradeRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 570, -1, -1));
+
+        UpgradeTank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
+        UpgradeTank.setBorderPainted(false);
+        UpgradeTank.setContentAreaFilled(false);
+        getContentPane().add(UpgradeTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, -1, -1));
+
+        UpgradeMelee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
+        UpgradeMelee.setBorderPainted(false);
+        UpgradeMelee.setContentAreaFilled(false);
+        getContentPane().add(UpgradeMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kingdom Map.png"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void UpgradeTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTowerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpgradeTowerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,5 +124,10 @@ public class Kingdom extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
+    private javax.swing.JLabel Background;
+    private javax.swing.JButton UpgradeMelee;
+    private javax.swing.JButton UpgradeRanged;
+    private javax.swing.JButton UpgradeTank;
+    private javax.swing.JButton UpgradeTower;
     // End of variables declaration//GEN-END:variables
 }
