@@ -206,7 +206,7 @@ public class Battle extends javax.swing.JFrame {
         getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 100, 100));
 
         AddMelee.setBackground(new java.awt.Color(0, 0, 0));
-        AddMelee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rounded_Rectangle_3.png"))); // NOI18N
+        AddMelee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Melee Icon.png"))); // NOI18N
         AddMelee.setBorderPainted(false);
         AddMelee.setContentAreaFilled(false);
         AddMelee.addActionListener(new java.awt.event.ActionListener() {
@@ -214,10 +214,10 @@ public class Battle extends javax.swing.JFrame {
                 AddMeleeActionPerformed(evt);
             }
         });
-        getContentPane().add(AddMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, 110, 100));
+        getContentPane().add(AddMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 580, 130, 120));
 
         AddRange.setBackground(new java.awt.Color(0, 0, 0));
-        AddRange.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rounded_Rectangle_3.png"))); // NOI18N
+        AddRange.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tank Icon.png"))); // NOI18N
         AddRange.setBorderPainted(false);
         AddRange.setContentAreaFilled(false);
         AddRange.addActionListener(new java.awt.event.ActionListener() {
@@ -225,10 +225,10 @@ public class Battle extends javax.swing.JFrame {
                 AddRangeActionPerformed(evt);
             }
         });
-        getContentPane().add(AddRange, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 590, 110, 100));
+        getContentPane().add(AddRange, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 580, 130, 120));
 
         AddTank.setBackground(new java.awt.Color(0, 0, 0));
-        AddTank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Rounded_Rectangle_3.png"))); // NOI18N
+        AddTank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ranged Icon.png"))); // NOI18N
         AddTank.setBorderPainted(false);
         AddTank.setContentAreaFilled(false);
         AddTank.addActionListener(new java.awt.event.ActionListener() {
@@ -236,7 +236,7 @@ public class Battle extends javax.swing.JFrame {
                 AddTankActionPerformed(evt);
             }
         });
-        getContentPane().add(AddTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 590, 110, 100));
+        getContentPane().add(AddTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 580, 130, 120));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Battle Map.png"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
