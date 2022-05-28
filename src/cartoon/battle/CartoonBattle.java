@@ -6,7 +6,6 @@ package cartoon.battle;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.Normalizer.Form;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -26,9 +25,7 @@ public class CartoonBattle {
         
         l.setLocationRelativeTo(null);
         l.setResizable(false);
-        
         l.setVisible(true);
-        l.getT().start();
         
         //Masuk Home
         l.getPlay().addMouseListener(new MouseAdapter(){

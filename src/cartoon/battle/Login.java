@@ -9,13 +9,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
-import javax.sound.sampled.LineUnavailableException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -197,18 +193,11 @@ public class Login extends javax.swing.JFrame {
             }
         };
         t = new Timer(300, act);
-    }
-    
-    public Timer getT() {
-        return t;
+        t.start();
     }
 
     public int getWaktu() {
         return waktu;
-    }
-    
-    public void setWaktu(int waktu) {
-        this.waktu = waktu;
     }
 
     public JButton getPlay() {
