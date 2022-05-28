@@ -12,10 +12,13 @@ import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
@@ -48,6 +51,7 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    private Sound sound;
     private Timer t;
     private static int waktu = 0;
     
@@ -64,6 +68,7 @@ public class Login extends javax.swing.JFrame {
         Setting.setVisible(false);
         Help.setVisible(false);
         Volume.setVisible(false);
+        VolumeControl.setVisible(false);
         Back.setVisible(false);
         XMark.setVisible(false);
     }
@@ -119,16 +124,15 @@ public class Login extends javax.swing.JFrame {
     }
     
     private void playMusic() {
-        try {
-            File music = new File("src\\music\\Good Night, Liyue.wav");
-            AudioInputStream audio = AudioSystem.getAudioInputStream(music);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audio);
-            clip.start();
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
-        } catch (Exception e) {
-            System.out.println("Failed!");
-        }
+        sound = new Sound(new File("src\\music\\Good Night, Liyue.wav"));
+        VolumeControl.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                sound.changeVolume(VolumeControl.getValue());
+                System.out.println(VolumeControl.getValue());
+            }
+            
+        });
     }
     
     public Login() {
@@ -268,7 +272,12 @@ public class Login extends javax.swing.JFrame {
         XMark.setBorderPainted(false);
         XMark.setContentAreaFilled(false);
         getContentPane().add(XMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 170, -1, -1));
-        getContentPane().add(VolumeControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 420, -1));
+
+        VolumeControl.setBackground(new java.awt.Color(0, 208, 196));
+        VolumeControl.setMaximum(6);
+        VolumeControl.setMinimum(-30);
+        VolumeControl.setValue(-15);
+        getContentPane().add(VolumeControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 430, -1));
 
         Volume.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Volume.png"))); // NOI18N
         getContentPane().add(Volume, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
