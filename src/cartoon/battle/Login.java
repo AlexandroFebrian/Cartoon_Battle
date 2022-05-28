@@ -8,11 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -123,19 +118,17 @@ public class Login extends javax.swing.JFrame {
         //Belum diisi
     }
     
-    private void playMusic() {
-        sound = new Sound(new File("src\\music\\Good Night, Liyue.wav"));
+    public void playMusic(Sound sound) {
+        VolumeControl.setValue((int)sound.getVolume());
         VolumeControl.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 sound.changeVolume(VolumeControl.getValue());
-                System.out.println(VolumeControl.getValue());
             }
-            
         });
     }
     
-    public Login() {
+    public Login(Sound sound) {
         initComponents();
         
         //JTextField Limit
@@ -152,7 +145,7 @@ public class Login extends javax.swing.JFrame {
         invisibleIcon();
         
         //Music
-        playMusic();
+        playMusic(sound);
         
         //Timer
         ActionListener act = new ActionListener(){
@@ -198,6 +191,10 @@ public class Login extends javax.swing.JFrame {
         };
         t = new Timer(300, act);
         t.start();
+    }
+    
+    public Login() {
+        initComponents();
     }
 
     public int getWaktu() {

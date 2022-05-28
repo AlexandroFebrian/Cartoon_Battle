@@ -16,6 +16,7 @@ import javax.sound.sampled.FloatControl;
  */
 public class Sound {
     private Clip clip;
+    private float volume;
     private FloatControl fc;
 
     public Sound(File music) {
@@ -27,6 +28,7 @@ public class Sound {
             clip.loop(Clip.LOOP_CONTINUOUSLY);
             fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             fc.setValue(-15.0f);
+            volume = -15.0f;
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -37,7 +39,12 @@ public class Sound {
             if (volume == -30.0f) {
                 volume = -80.0f;
             }
+            this.volume = volume;
             this.fc.setValue(volume);
         }
+    }
+
+    public float getVolume() {
+        return volume;
     }
 }

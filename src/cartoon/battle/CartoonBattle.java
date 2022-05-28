@@ -6,6 +6,7 @@ package cartoon.battle;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -20,9 +21,11 @@ public class CartoonBattle {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Login l = new Login();
+        Sound sound = new Sound(new File("src\\music\\Good Night, Liyue.wav"));
+        Login l = new Login(sound);
         ArrayList <User> u = new ArrayList<>();
         
+        //Set tampilan form di tengah
         l.setLocationRelativeTo(null);
         l.setResizable(false);
         l.setVisible(true);
@@ -37,7 +40,7 @@ public class CartoonBattle {
                     }
                     u.add(new User(l.getIsiUser().getText()));
                     l.setVisible(false);
-                    Home h = new Home(u.get(u.size() - 1).getUsername(), String.valueOf(u.get(u.size() - 1).getGold()));
+                    Home h = new Home(u.get(u.size() - 1).getUsername(), String.valueOf(u.get(u.size() - 1).getGold()), sound);
                     h.setLocationRelativeTo(null);
                     h.setResizable(false);
                     h.setVisible(true);
@@ -47,6 +50,7 @@ public class CartoonBattle {
                         public void mousePressed(MouseEvent me){
                             h.setVisible(false);
                             l.setVisible(true);
+                            l.playMusic(sound);
                             l.menuUtama();
                         }
                     });

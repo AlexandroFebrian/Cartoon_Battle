@@ -6,6 +6,8 @@ package cartoon.battle;
 
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -23,16 +25,30 @@ public class Home extends javax.swing.JFrame {
         Shop.setVisible(false);
         Battle.setVisible(false);
         Volume.setVisible(false);
+        VolumeControl.setVisible(false);
         BlackBackground.setVisible(false);
         XMark.setVisible(false);
         Logout.setVisible(false);
     }
     
-    public Home(String user, String gold) {
+    private void playMusic(Sound sound) {
+        VolumeControl.setValue((int)sound.getVolume());
+        VolumeControl.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                sound.changeVolume(VolumeControl.getValue());
+            }
+        });
+    }
+    
+    public Home(String user, String gold, Sound sound) {
         initComponents();
         
         //Default Display
         defaultDisplay();
+        
+        //Music
+        playMusic(sound);
         
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
@@ -71,6 +87,7 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        VolumeControl = new javax.swing.JSlider();
         Logout = new javax.swing.JButton();
         XMark = new javax.swing.JButton();
         Volume = new javax.swing.JLabel();
@@ -89,6 +106,12 @@ public class Home extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Caroon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        VolumeControl.setBackground(new java.awt.Color(0, 208, 196));
+        VolumeControl.setMaximum(6);
+        VolumeControl.setMinimum(-30);
+        VolumeControl.setValue(-15);
+        getContentPane().add(VolumeControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, 420, -1));
 
         Logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logout.png"))); // NOI18N
         Logout.setBorderPainted(false);
@@ -244,6 +267,7 @@ public class Home extends javax.swing.JFrame {
     private void SettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingActionPerformed
         // TODO add your handling code here:
         Volume.setVisible(true);
+        VolumeControl.setVisible(true);
         XMark.setVisible(true);
         BlackBackground.setVisible(true);
         Logout.setVisible(true);
@@ -252,6 +276,7 @@ public class Home extends javax.swing.JFrame {
     private void XMarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XMarkActionPerformed
         // TODO add your handling code here:
         Volume.setVisible(false);
+        VolumeControl.setVisible(false);
         XMark.setVisible(false);
         BlackBackground.setVisible(false);
         Logout.setVisible(false);
@@ -311,6 +336,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton Shop;
     private javax.swing.JLabel Username;
     private javax.swing.JLabel Volume;
+    private javax.swing.JSlider VolumeControl;
     private javax.swing.JButton XMark;
     // End of variables declaration//GEN-END:variables
 }
