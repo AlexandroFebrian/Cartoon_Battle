@@ -121,20 +121,22 @@ public class Battle extends javax.swing.JFrame {
                     }else{
                         Enemylab.get(i).setLocation(EnemyX.get(i), 410);
                     }
-                    if(Trooplab.size() >= 1){
-                        if(Enemylab.get(i).getLocation().x == Trooplab.get(0).getLocation().x+100){
-                            //Nyerang
-                            Enemylab.get(i).setIcon(Eicon2);
-                        }
-                        else if(Enemylab.get(i).getIcon() == Eicon2){
-//                            Enemylab.get(i).setLocation(EnemyX.get(i), 410);
+                    if (Trooplab != null) {
+                        if(Trooplab.size() >= 1){
+                            if(Enemylab.get(i).getLocation().x == Trooplab.get(0).getLocation().x+100){
+                                //Nyerang
+                                Enemylab.get(i).setIcon(Eicon2);
+                            }
+                            else if(Enemylab.get(i).getIcon() == Eicon2){
+    //                            Enemylab.get(i).setLocation(EnemyX.get(i), 410);
+                            }
+                            else{
+                                Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
+                            }
                         }
                         else{
                             Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
                         }
-                    }
-                    else{
-                        Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
                     }
                 }
             }
