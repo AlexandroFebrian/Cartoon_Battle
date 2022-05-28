@@ -37,15 +37,51 @@ public class Shop extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        SkillCount = new javax.swing.JLabel();
+        BuyRanged = new javax.swing.JButton();
+        BuyTank = new javax.swing.JButton();
+        BuySkill = new javax.swing.JButton();
+        ShopRanged = new javax.swing.JLabel();
+        ShopTank = new javax.swing.JLabel();
         Back = new javax.swing.JButton();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        SkillCount.setFont(new java.awt.Font("Lato Black", 0, 38)); // NOI18N
+        SkillCount.setForeground(new java.awt.Color(255, 255, 255));
+        SkillCount.setText("0");
+        getContentPane().add(SkillCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, -1, -1));
+
+        BuyRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
+        BuyRanged.setBorderPainted(false);
+        BuyRanged.setContentAreaFilled(false);
+        getContentPane().add(BuyRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 490, -1, -1));
+
+        BuyTank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
+        BuyTank.setBorderPainted(false);
+        BuyTank.setContentAreaFilled(false);
+        getContentPane().add(BuyTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 490, -1, -1));
+
+        BuySkill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
+        BuySkill.setBorderPainted(false);
+        BuySkill.setContentAreaFilled(false);
+        getContentPane().add(BuySkill, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, -1, -1));
+
+        ShopRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Shop Ranged.png"))); // NOI18N
+        getContentPane().add(ShopRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, -1, -1));
+
+        ShopTank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ShopTank.png"))); // NOI18N
+        getContentPane().add(ShopTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, -1, -1));
+
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
         Back.setBorderPainted(false);
         Back.setContentAreaFilled(false);
-        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Shop Map.png"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -87,5 +123,12 @@ public class Shop extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
+    private javax.swing.JLabel Background;
+    private javax.swing.JButton BuyRanged;
+    private javax.swing.JButton BuySkill;
+    private javax.swing.JButton BuyTank;
+    private javax.swing.JLabel ShopRanged;
+    private javax.swing.JLabel ShopTank;
+    private javax.swing.JLabel SkillCount;
     // End of variables declaration//GEN-END:variables
 }
