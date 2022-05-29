@@ -39,6 +39,11 @@ public class Battle extends javax.swing.JFrame {
     private Timer EnemySpawnT;
     private int SpawnTime = 0;
     
+    private int EnemyHP = 20;
+    private ArrayList<Integer> EnemyList = new ArrayList<>();
+//    private int EnemyAtk = 5;
+    private Timer EnemyAtkTime;
+    
     public javax.swing.JButton getBack() {
         return Back;
     }
@@ -95,10 +100,10 @@ public class Battle extends javax.swing.JFrame {
         ActionListener spawn = new ActionListener(){
             public void actionPerformed(ActionEvent event) {
                 SpawnTime+=1;
-                System.out.println(SpawnTime);
                 if(SpawnTime == 5){
                     SpawnTime = 0;
                     EnemyX.add(0);
+                    EnemyList.add(EnemyHP);
                     Enemylab.add(new JLabel());
                     Enemylab.get(Enemylab.size()-1).setIcon(Eicon);
                     Enemylab.get(Enemylab.size()-1).setBounds(1050, 410, 200, 133); //x, y, lebar, tinggi
@@ -119,12 +124,34 @@ public class Battle extends javax.swing.JFrame {
                         Enemylab.get(i).setLocation(EnemyX.get(i), 410);
                     }
                     if(Trooplab.size() >= 1){
-                        if(Enemylab.get(i).getLocation().x == Trooplab.get(0).getLocation().x+100){
+                        if(Enemylab.get(i).getLocation().x == Trooplab.get(0).getLocation().x+75 && Enemylab.get(i).getIcon() != Eicon2){
                             //Nyerang
                             Enemylab.get(i).setIcon(Eicon2);
                         }
                         else if(Enemylab.get(i).getIcon() == Eicon2){
-//                            Enemylab.get(i).setLocation(EnemyX.get(i), 410);
+                            ActionListener Eatk = new ActionListener(){
+                                public void actionPerformed(ActionEvent event) {
+                                    Troop.get(0).setHP(Troop.get(0).getHP()-5);
+                                    System.out.println(Troop.get(0).getHP());
+                                }
+                            };
+                            
+                            if(EnemyAtkTime == null){
+                                EnemyAtkTime = new Timer(500, Eatk);
+                                EnemyAtkTime.start();
+                            }
+                            
+                            if(Troop.get(0).getHP() <= 0){
+                                getContentPane().remove(Trooplab.get(0));
+                                Troop.remove(0);
+                                Trooplab.remove(0);
+                                TroopX.remove(0);
+                                getContentPane().validate();
+                                getContentPane().repaint();
+                                EnemyAtkTime.stop();
+                                EnemyAtkTime = null;
+                                Enemylab.get(i).setIcon(Eicon);
+                            }
                         }
                         else{
                             Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
@@ -136,6 +163,7 @@ public class Battle extends javax.swing.JFrame {
                 }
             }
         };
+        
         if(EnemyMove == null){
             EnemyMove = new Timer(20, Emove);
             EnemyMove.start();
@@ -151,7 +179,7 @@ public class Battle extends javax.swing.JFrame {
                         Trooplab.get(i).setLocation(TroopX.get(i), 480);
                     }
                     if(Enemylab.size() >= 1){
-                        if(Enemylab.get(0).getLocation().x-100 == Trooplab.get(i).getLocation().x){
+                        if(Enemylab.get(0).getLocation().x-75 == Trooplab.get(i).getLocation().x){
                             //Nyerang
                             Trooplab.get(i).setIcon(Micon2);
                         }
@@ -185,6 +213,7 @@ public class Battle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         Back = new javax.swing.JButton();
         AddMelee = new javax.swing.JButton();
         AddRange = new javax.swing.JButton();
@@ -194,6 +223,14 @@ public class Battle extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("Delete");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 80, 120, 40));
 
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
         Back.setBorderPainted(false);
@@ -253,7 +290,6 @@ public class Battle extends javax.swing.JFrame {
         Trooplab.get(Trooplab.size()-1).setIcon(Micon);
         Trooplab.get(Trooplab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
         getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
-        
         
     }//GEN-LAST:event_AddMeleeActionPerformed
 //                    Enemy.setLocation(Enemy.getLocation().x-1, Enemy.getLocation().y);
@@ -347,6 +383,16 @@ public class Battle extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BackActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:0
+        getContentPane().remove(Trooplab.get(Trooplab.size()-1));
+        Troop.remove(Troop.get(Troop.size()-1));
+        Trooplab.remove(Trooplab.get(Trooplab.size()-1));
+        TroopX.remove(TroopX.get(TroopX.size()-1));
+        getContentPane().validate();
+        getContentPane().repaint();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -388,5 +434,6 @@ public class Battle extends javax.swing.JFrame {
     private javax.swing.JButton AddTank;
     private javax.swing.JButton Back;
     private javax.swing.JLabel Background;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
