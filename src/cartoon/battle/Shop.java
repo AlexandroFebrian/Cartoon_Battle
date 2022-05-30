@@ -57,17 +57,17 @@ public class Shop extends javax.swing.JFrame {
         BuyRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
         BuyRanged.setBorderPainted(false);
         BuyRanged.setContentAreaFilled(false);
-        getContentPane().add(BuyRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 490, -1, -1));
+        getContentPane().add(BuyRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 490, -1, -1));
 
         BuyTank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
         BuyTank.setBorderPainted(false);
         BuyTank.setContentAreaFilled(false);
-        getContentPane().add(BuyTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 490, -1, -1));
+        getContentPane().add(BuyTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 490, -1, -1));
 
         BuySkill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
         BuySkill.setBorderPainted(false);
         BuySkill.setContentAreaFilled(false);
-        getContentPane().add(BuySkill, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, -1, -1));
+        getContentPane().add(BuySkill, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 490, -1, -1));
 
         ShopRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Shop Ranged.png"))); // NOI18N
         getContentPane().add(ShopRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, -1, -1));

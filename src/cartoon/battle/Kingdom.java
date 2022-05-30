@@ -98,22 +98,22 @@ public class Kingdom extends javax.swing.JFrame {
         UpgradeTower.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Tower.png"))); // NOI18N
         UpgradeTower.setBorderPainted(false);
         UpgradeTower.setContentAreaFilled(false);
-        getContentPane().add(UpgradeTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 530, -1, -1));
+        getContentPane().add(UpgradeTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 530, -1, -1));
 
         UpgradeRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeRanged.setBorderPainted(false);
         UpgradeRanged.setContentAreaFilled(false);
-        getContentPane().add(UpgradeRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 570, -1, -1));
+        getContentPane().add(UpgradeRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 570, -1, -1));
 
         UpgradeTank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeTank.setBorderPainted(false);
         UpgradeTank.setContentAreaFilled(false);
-        getContentPane().add(UpgradeTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, -1, -1));
+        getContentPane().add(UpgradeTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, -1, -1));
 
         UpgradeMelee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeMelee.setBorderPainted(false);
         UpgradeMelee.setContentAreaFilled(false);
-        getContentPane().add(UpgradeMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
+        getContentPane().add(UpgradeMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, -1, -1));
 
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
         Back.setBorderPainted(false);
