@@ -47,6 +47,7 @@ public class Shop extends javax.swing.JFrame {
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         SkillCount.setFont(new java.awt.Font("Lato Black", 0, 38)); // NOI18N

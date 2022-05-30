@@ -35,12 +35,6 @@ public class Kingdom extends javax.swing.JFrame {
         HpTower.setText(hpTower);
         LevelTower.setText(levelTower);
         troop = t;
-        
-        
-        
-        //Icon Image <Wajib di tiap form>
-        ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
-        this.setIconImage(img.getImage());
     }
     
 
@@ -75,6 +69,7 @@ public class Kingdom extends javax.swing.JFrame {
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Gold.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
