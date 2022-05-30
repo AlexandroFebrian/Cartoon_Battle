@@ -30,22 +30,11 @@ public class Kingdom extends javax.swing.JFrame {
     
     public Kingdom(String gold, String hpTower, String levelTower, ArrayList<Troops> t) {
         initComponents();
-        
+//        Warning.setVisible(false);
         Gold.setText(gold);
         HpTower.setText(hpTower);
         LevelTower.setText(levelTower);
         troop = t;
-        
-//        if(troop.size() == 2){
-//            if(troop.get(1) instanceof Ranged){
-//                AddRange.setVisible(true);
-//            }else{
-//                AddTank.setVisible(true);
-//            }
-//        }else if(troop.size() == 3){
-//            AddRange.setVisible(true);
-//            AddTank.setVisible(true);
-//        }
         
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
@@ -175,8 +164,16 @@ public class Kingdom extends javax.swing.JFrame {
     }//GEN-LAST:event_UpgradeMeleeActionPerformed
 
     private void UpgradeTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTowerActionPerformed
-        int temp = Integer.parseInt(LevelTower.getText()) + 1;
-        LevelTower.setText(String.valueOf(temp));
+        int tempGold = Integer.parseInt(Gold.getText());
+        int bayar = ((Integer.parseInt(LevelTower.getText())-1)*50) + 50;
+        if(tempGold >= bayar){ // berhasil
+            tempGold-=bayar;
+            Gold.setText(String.valueOf(tempGold));
+            int temp = Integer.parseInt(LevelTower.getText()) + 1;
+            LevelTower.setText(String.valueOf(temp));
+        } else {
+//            Warning.setVisible(true);
+        }
     }//GEN-LAST:event_UpgradeTowerActionPerformed
 
     /**
