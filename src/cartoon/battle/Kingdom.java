@@ -23,6 +23,17 @@ public class Kingdom extends javax.swing.JFrame {
         ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
         this.setIconImage(img.getImage());
     }
+    
+    public Kingdom(String gold) {
+        initComponents();
+        
+        Gold.setText(gold);
+        
+        //Icon Image <Wajib di tiap form>
+        ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
+        this.setIconImage(img.getImage());
+    }
+    
 
     public JButton getBack() {
         return Back;
@@ -49,6 +60,7 @@ public class Kingdom extends javax.swing.JFrame {
         UpgradeRanged = new javax.swing.JButton();
         UpgradeTank = new javax.swing.JButton();
         UpgradeMelee = new javax.swing.JButton();
+        Gold = new javax.swing.JLabel();
         Back = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
 
@@ -115,6 +127,10 @@ public class Kingdom extends javax.swing.JFrame {
         UpgradeMelee.setContentAreaFilled(false);
         getContentPane().add(UpgradeMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
 
+        Gold.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        Gold.setText("x");
+        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 20, -1, -1));
+
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
         Back.setBorderPainted(false);
         Back.setContentAreaFilled(false);
@@ -167,6 +183,7 @@ public class Kingdom extends javax.swing.JFrame {
     private javax.swing.JLabel AtkTank1;
     private javax.swing.JButton Back;
     private javax.swing.JLabel Background;
+    private javax.swing.JLabel Gold;
     private javax.swing.JLabel HpMelee;
     private javax.swing.JLabel HpTank;
     private javax.swing.JLabel HpTank1;
