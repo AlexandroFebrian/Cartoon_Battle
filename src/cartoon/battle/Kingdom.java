@@ -135,7 +135,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeTowerActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 530, -1, -1));
+        getContentPane().add(UpgradeTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 530, -1, -1));
 
         UpgradeRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeRanged.setBorderPainted(false);
@@ -145,7 +145,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeRangedActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 570, -1, -1));
+        getContentPane().add(UpgradeRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 570, -1, -1));
 
         UpgradeTank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeTank.setBorderPainted(false);
@@ -155,7 +155,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeTankActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, -1, -1));
+        getContentPane().add(UpgradeTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, -1, -1));
 
         UpgradeMelee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeMelee.setBorderPainted(false);
@@ -165,7 +165,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeMeleeActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
+        getContentPane().add(UpgradeMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, -1, -1));
 
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
         Back.setBorderPainted(false);

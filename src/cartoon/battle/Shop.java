@@ -67,7 +67,7 @@ public class Shop extends javax.swing.JFrame {
         BuySkill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
         BuySkill.setBorderPainted(false);
         BuySkill.setContentAreaFilled(false);
-        getContentPane().add(BuySkill, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 490, -1, -1));
+        getContentPane().add(BuySkill, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, -1, -1));
 
         ShopRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Shop Ranged.png"))); // NOI18N
         getContentPane().add(ShopRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, -1, -1));
