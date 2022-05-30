@@ -85,6 +85,7 @@ public class Kingdom extends javax.swing.JFrame {
 //                System.out.println("Berhasil Upgrade Melee");
             }
         });
+        
         if(troop.size() == 2){
             if(troop.get(1) instanceof Tank){
                 UpgradeTank.addMouseListener(new MouseAdapter(){
@@ -106,6 +107,120 @@ public class Kingdom extends javax.swing.JFrame {
         //                    Warning.setVisible(true);
                         }
         //                System.out.println("Berhasil Upgrade Tank");
+                    }
+                });
+            } else if(troop.get(1) instanceof Ranged){
+                UpgradeRanged.addMouseListener(new MouseAdapter(){
+                    public void mousePressed(MouseEvent me){
+                        Troops t = troop.get(1);
+                        int tempGold = u.getGold();
+                        int bayar = (t.getAtk()*5) + 5;
+                        if(tempGold >= bayar){ // berhasil
+                            tempGold-=bayar;
+                            u.setGold(tempGold);
+                            int atk = t.getAtk() + 5;
+                            t.setAtk(atk);
+                            int hp = t.getHP() + 10;
+                            t.setHP(hp);
+                            Gold.setText(String.valueOf(u.getGold()));
+                            HpTank.setText(String.valueOf(t.getHP()));
+                            AtkTank.setText(String.valueOf(t.getAtk()));
+                        } else { //gold ga cukup
+        //                    Warning.setVisible(true);
+                        }
+        //                System.out.println("Berhasil Upgrade Ranged");
+                    }
+                });
+            }
+        }
+        
+        if(troop.size() == 3){
+            if(troop.get(1) instanceof Tank){
+                UpgradeTank.addMouseListener(new MouseAdapter(){
+                    public void mousePressed(MouseEvent me){
+                        Troops t = troop.get(1);
+                        int tempGold = u.getGold();
+                        int bayar = (t.getAtk()*5) + 5;
+                        if(tempGold >= bayar){ // berhasil
+                            tempGold-=bayar;
+                            u.setGold(tempGold);
+                            int atk = t.getAtk() + 5;
+                            t.setAtk(atk);
+                            int hp = t.getHP() + 10;
+                            t.setHP(hp);
+                            Gold.setText(String.valueOf(u.getGold()));
+                            HpTank.setText(String.valueOf(t.getHP()));
+                            AtkTank.setText(String.valueOf(t.getAtk()));
+                        } else { //gold ga cukup
+        //                    Warning.setVisible(true);
+                        }
+        //                System.out.println("Berhasil Upgrade Tank");
+                    }
+                });
+            } else if(troop.get(1) instanceof Ranged){
+                UpgradeRanged.addMouseListener(new MouseAdapter(){
+                    public void mousePressed(MouseEvent me){
+                        Troops t = troop.get(1);
+                        int tempGold = u.getGold();
+                        int bayar = (t.getAtk()*5) + 5;
+                        if(tempGold >= bayar){ // berhasil
+                            tempGold-=bayar;
+                            u.setGold(tempGold);
+                            int atk = t.getAtk() + 5;
+                            t.setAtk(atk);
+                            int hp = t.getHP() + 10;
+                            t.setHP(hp);
+                            Gold.setText(String.valueOf(u.getGold()));
+                            HpTank.setText(String.valueOf(t.getHP()));
+                            AtkTank.setText(String.valueOf(t.getAtk()));
+                        } else { //gold ga cukup
+        //                    Warning.setVisible(true);
+                        }
+        //                System.out.println("Berhasil Upgrade Ranged");
+                    }
+                });
+            } else if(troop.get(2) instanceof Tank){
+                UpgradeTank.addMouseListener(new MouseAdapter(){
+                    public void mousePressed(MouseEvent me){
+                        Troops t = troop.get(2);
+                        int tempGold = u.getGold();
+                        int bayar = (t.getAtk()*5) + 5;
+                        if(tempGold >= bayar){ // berhasil
+                            tempGold-=bayar;
+                            u.setGold(tempGold);
+                            int atk = t.getAtk() + 5;
+                            t.setAtk(atk);
+                            int hp = t.getHP() + 10;
+                            t.setHP(hp);
+                            Gold.setText(String.valueOf(u.getGold()));
+                            HpTank.setText(String.valueOf(t.getHP()));
+                            AtkTank.setText(String.valueOf(t.getAtk()));
+                        } else { //gold ga cukup
+        //                    Warning.setVisible(true);
+                        }
+        //                System.out.println("Berhasil Upgrade Tank");
+                    }
+                });
+            } else if(troop.get(2) instanceof Ranged){
+                UpgradeRanged.addMouseListener(new MouseAdapter(){
+                    public void mousePressed(MouseEvent me){
+                        Troops t = troop.get(2);
+                        int tempGold = u.getGold();
+                        int bayar = (t.getAtk()*5) + 5;
+                        if(tempGold >= bayar){ // berhasil
+                            tempGold-=bayar;
+                            u.setGold(tempGold);
+                            int atk = t.getAtk() + 5;
+                            t.setAtk(atk);
+                            int hp = t.getHP() + 10;
+                            t.setHP(hp);
+                            Gold.setText(String.valueOf(u.getGold()));
+                            HpTank.setText(String.valueOf(t.getHP()));
+                            AtkTank.setText(String.valueOf(t.getAtk()));
+                        } else { //gold ga cukup
+        //                    Warning.setVisible(true);
+                        }
+        //                System.out.println("Berhasil Upgrade Ranged");
                     }
                 });
             }
@@ -258,36 +373,10 @@ public class Kingdom extends javax.swing.JFrame {
 
     private void UpgradeTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTankActionPerformed
         // TODO add your handling code here:
-        int tempGold = Integer.parseInt(Gold.getText());
-        int bayar = ((Integer.parseInt(AtkTank.getText()))*5) + 5;
-        if(tempGold >= bayar){ // berhasil
-            tempGold-=bayar;
-            Gold.setText(String.valueOf(tempGold));
-            int atk = Integer.parseInt(AtkTank.getText()) + 5;
-            AtkTank.setText(String.valueOf(atk));
-            int hp = Integer.parseInt(HpTank.getText()) + 10;
-            HpTank.setText(String.valueOf(hp));
-        } else { //gold ga cukup
-//            Warning.setVisible(true);
-        }
-//        System.out.println("Berhasil Upgrade Tank");
     }//GEN-LAST:event_UpgradeTankActionPerformed
 
     private void UpgradeRangedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeRangedActionPerformed
         // TODO add your handling code here:
-        int tempGold = Integer.parseInt(Gold.getText());
-        int bayar = ((Integer.parseInt(AtkRanged.getText()))*5) + 5;
-        if(tempGold >= bayar){ // berhasil
-            tempGold-=bayar;
-            Gold.setText(String.valueOf(tempGold));
-            int atk = Integer.parseInt(AtkRanged.getText()) + 5;
-            AtkRanged.setText(String.valueOf(atk));
-            int hp = Integer.parseInt(HpRanged.getText()) + 10;
-            HpRanged.setText(String.valueOf(hp));
-        } else { //gold ga cukup
-//            Warning.setVisible(true);
-        }
-//        System.out.println("Berhasil Upgrade Tank");
     }//GEN-LAST:event_UpgradeRangedActionPerformed
 
     /**
