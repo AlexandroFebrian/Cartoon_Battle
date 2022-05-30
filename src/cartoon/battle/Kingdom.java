@@ -55,6 +55,7 @@ public class Kingdom extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Gold = new javax.swing.JLabel();
         Warning = new javax.swing.JLabel();
         HpTower = new javax.swing.JLabel();
         LevelTower = new javax.swing.JLabel();
@@ -68,12 +69,16 @@ public class Kingdom extends javax.swing.JFrame {
         UpgradeRanged = new javax.swing.JButton();
         UpgradeTank = new javax.swing.JButton();
         UpgradeMelee = new javax.swing.JButton();
-        Gold = new javax.swing.JLabel();
         Back = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Gold.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
+        Gold.setForeground(new java.awt.Color(255, 255, 51));
+        Gold.setText("x");
+        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 30, 20, -1));
 
         Warning.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Warning.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,10 +155,6 @@ public class Kingdom extends javax.swing.JFrame {
         });
         getContentPane().add(UpgradeMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
 
-        Gold.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
-        Gold.setText("x");
-        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 20, -1, -1));
-
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
         Back.setBorderPainted(false);
         Back.setContentAreaFilled(false);
@@ -167,6 +168,18 @@ public class Kingdom extends javax.swing.JFrame {
 
     private void UpgradeMeleeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeMeleeActionPerformed
         // TODO add your handling code here:
+        int tempGold = Integer.parseInt(Gold.getText());
+        int bayar = ((Integer.parseInt(AtkMelee.getText()))*5) + 5;
+        if(tempGold >= bayar){ // berhasil
+            tempGold-=bayar;
+            Gold.setText(String.valueOf(tempGold));
+            int atk = Integer.parseInt(AtkMelee.getText()) + 5;
+            AtkMelee.setText(String.valueOf(atk));
+            int hp = Integer.parseInt(HpMelee.getText()) + 10;
+            HpMelee.setText(String.valueOf(hp));
+        } else { //gold ga cukup
+//            Warning.setVisible(true);
+        }
     }//GEN-LAST:event_UpgradeMeleeActionPerformed
 
     private void UpgradeTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTowerActionPerformed
