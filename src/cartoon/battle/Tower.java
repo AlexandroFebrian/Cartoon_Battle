@@ -16,7 +16,7 @@ public class Tower implements Serializable {
 
     public Tower() {
         this.level = 1;
-        this.hp = 0;
+        this.hp = 1000;
     }
 
     public int getLevel() {
