@@ -42,22 +42,46 @@ public class Kingdom extends javax.swing.JFrame {
         HpMelee.setText(String.valueOf(troop.get(0).getHP()));
         AtkMelee.setText(String.valueOf(troop.get(0).getAtk()));
         
+        UpgradeTower.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                Tower t = u.getTower();
+                int tempGold = u.getGold();
+                int bayar = ((t.getLevel()-1)*50) + 50;
+                if(tempGold >= bayar){ // berhasil
+                    tempGold -= bayar;
+                    u.setGold(tempGold);
+                    int level= t.getLevel() + 1;
+                    t.setLevel(level);
+                    int hp = t.getHp() + (level*5) + 5;
+                    t.setHp(hp);
+                    Gold.setText(String.valueOf(u.getGold()));
+                    HpTower.setText(String.valueOf(t.getHp()));
+                    LevelTower.setText(String.valueOf(t.getLevel()));
+                } else { //gold ga cukup
+//                    Warning.setVisible(true);
+                }
+                System.out.println("Berhasil Upgrade Tower");
+            }
+        });
         
         UpgradeMelee.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
                 Troops m = troop.get(0);
                 int tempGold = u.getGold();
-                int bayar = ((Integer.parseInt(AtkMelee.getText()))*5) + 5;
-//                if(tempGold >= bayar){ // berhasil
+                int bayar = (m.getAtk()*5) + 5;
+                if(tempGold >= bayar){ // berhasil
                     tempGold-=bayar;
                     u.setGold(tempGold);
                     int atk = m.getAtk() + 5;
                     m.setAtk(atk);
                     int hp = m.getHP() + 10;
                     m.setHP(hp);
-//                } else { //gold ga cukup
+                    Gold.setText(String.valueOf(u.getGold()));
+                    HpMelee.setText(String.valueOf(m.getHP()));
+                    AtkMelee.setText(String.valueOf(m.getAtk()));
+                } else { //gold ga cukup
 //                    Warning.setVisible(true);
-//                }
+                }
                 System.out.println("Berhasil Upgrade Melee");
             }
         });
@@ -101,7 +125,7 @@ public class Kingdom extends javax.swing.JFrame {
         Gold.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
         Gold.setForeground(new java.awt.Color(255, 255, 51));
         Gold.setText("0");
-        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 30, 20, -1));
+        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 30, 20, -1));
 
         Warning.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Warning.setForeground(new java.awt.Color(255, 255, 255));
@@ -204,19 +228,6 @@ public class Kingdom extends javax.swing.JFrame {
     }//GEN-LAST:event_UpgradeMeleeActionPerformed
 
     private void UpgradeTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTowerActionPerformed
-        int tempGold = Integer.parseInt(Gold.getText());
-        int bayar = ((Integer.parseInt(LevelTower.getText())-1)*50) + 50;
-        if(tempGold >= bayar){ // berhasil
-            tempGold-=bayar;
-            Gold.setText(String.valueOf(tempGold));
-            int temp = Integer.parseInt(LevelTower.getText()) + 1;
-            LevelTower.setText(String.valueOf(temp));
-            int hp = Integer.parseInt(HpTower.getText())+ (temp*5) + 5;
-            HpTower.setText(String.valueOf(hp));
-        } else {
-//            Warning.setVisible(true);
-        }
-//        System.out.println("Berhasil Upgrade Tower");
     }//GEN-LAST:event_UpgradeTowerActionPerformed
 
     private void UpgradeTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTankActionPerformed

@@ -75,7 +75,8 @@ public class CartoonBattle {
                     //Kingdom <Jessica>
                     h.getKingdom().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            Kingdom k = new Kingdom(/*Parameter*/);
+//                            Kingdom k = new Kingdom(/*Parameter*/);
+                            Kingdom k = new Kingdom(u.get(u.size()-1));
                             k.setLocationRelativeTo(null);
                             k.setResizable(false);
                             h.setVisible(false);
