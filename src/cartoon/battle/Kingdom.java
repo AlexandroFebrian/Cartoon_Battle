@@ -55,6 +55,7 @@ public class Kingdom extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Warning = new javax.swing.JLabel();
         HpTower = new javax.swing.JLabel();
         LevelTower = new javax.swing.JLabel();
         AtkTank1 = new javax.swing.JLabel();
@@ -73,6 +74,11 @@ public class Kingdom extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Warning.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Warning.setForeground(new java.awt.Color(255, 255, 255));
+        Warning.setText("Warning GOLD ga cukup pas upgrade");
+        getContentPane().add(Warning, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, -1, -1));
 
         HpTower.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
         HpTower.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,5 +233,6 @@ public class Kingdom extends javax.swing.JFrame {
     private javax.swing.JButton UpgradeRanged;
     private javax.swing.JButton UpgradeTank;
     private javax.swing.JButton UpgradeTower;
+    private javax.swing.JLabel Warning;
     // End of variables declaration//GEN-END:variables
 }
