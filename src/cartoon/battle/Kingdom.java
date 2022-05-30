@@ -60,7 +60,7 @@ public class Kingdom extends javax.swing.JFrame {
                 } else { //gold ga cukup
 //                    Warning.setVisible(true);
                 }
-                System.out.println("Berhasil Upgrade Tower");
+//                System.out.println("Berhasil Upgrade Tower");
             }
         });
         
@@ -82,9 +82,35 @@ public class Kingdom extends javax.swing.JFrame {
                 } else { //gold ga cukup
 //                    Warning.setVisible(true);
                 }
-                System.out.println("Berhasil Upgrade Melee");
+//                System.out.println("Berhasil Upgrade Melee");
             }
         });
+        if(troop.size() == 2){
+            if(troop.get(1) instanceof Tank){
+                UpgradeTank.addMouseListener(new MouseAdapter(){
+                    public void mousePressed(MouseEvent me){
+                        Troops t = troop.get(1);
+                        int tempGold = u.getGold();
+                        int bayar = (t.getAtk()*5) + 5;
+                        if(tempGold >= bayar){ // berhasil
+                            tempGold-=bayar;
+                            u.setGold(tempGold);
+                            int atk = t.getAtk() + 5;
+                            t.setAtk(atk);
+                            int hp = t.getHP() + 10;
+                            t.setHP(hp);
+                            Gold.setText(String.valueOf(u.getGold()));
+                            HpTank.setText(String.valueOf(t.getHP()));
+                            AtkTank.setText(String.valueOf(t.getAtk()));
+                        } else { //gold ga cukup
+        //                    Warning.setVisible(true);
+                        }
+        //                System.out.println("Berhasil Upgrade Tank");
+                    }
+                });
+            }
+        }
+        
     }
     
 
