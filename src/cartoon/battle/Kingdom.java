@@ -180,6 +180,7 @@ public class Kingdom extends javax.swing.JFrame {
         } else { //gold ga cukup
 //            Warning.setVisible(true);
         }
+        System.out.println("Berhasil Upgrade Melee");
     }//GEN-LAST:event_UpgradeMeleeActionPerformed
 
     private void UpgradeTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTowerActionPerformed
@@ -193,6 +194,7 @@ public class Kingdom extends javax.swing.JFrame {
         } else {
 //            Warning.setVisible(true);
         }
+        System.out.println("Berhasil Upgrade Tower");
     }//GEN-LAST:event_UpgradeTowerActionPerformed
 
     /**
