@@ -4,6 +4,7 @@
  */
 package cartoon.battle;
 
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -16,6 +17,9 @@ public class Kingdom extends javax.swing.JFrame {
     /**
      * Creates new form Kingdom
      */
+    
+    private ArrayList<Troops> troop = new ArrayList<>();
+    
     public Kingdom() {
         initComponents();
         
@@ -24,10 +28,24 @@ public class Kingdom extends javax.swing.JFrame {
         this.setIconImage(img.getImage());
     }
     
-    public Kingdom(String gold) {
+    public Kingdom(String gold, String hpTower, String levelTower, ArrayList<Troops> t) {
         initComponents();
         
         Gold.setText(gold);
+        HpTower.setText(hpTower);
+        LevelTower.setText(levelTower);
+        troop = t;
+        
+//        if(troop.size() == 2){
+//            if(troop.get(1) instanceof Ranged){
+//                AddRange.setVisible(true);
+//            }else{
+//                AddTank.setVisible(true);
+//            }
+//        }else if(troop.size() == 3){
+//            AddRange.setVisible(true);
+//            AddTank.setVisible(true);
+//        }
         
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
@@ -48,8 +66,8 @@ public class Kingdom extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Tower = new javax.swing.JLabel();
         HpTower = new javax.swing.JLabel();
+        LevelTower = new javax.swing.JLabel();
         AtkTank1 = new javax.swing.JLabel();
         HpTank1 = new javax.swing.JLabel();
         AtkTank = new javax.swing.JLabel();
@@ -67,15 +85,15 @@ public class Kingdom extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Tower.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
-        Tower.setForeground(new java.awt.Color(255, 255, 255));
-        Tower.setText("0");
-        getContentPane().add(Tower, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 430, -1, -1));
-
         HpTower.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
         HpTower.setForeground(new java.awt.Color(255, 255, 255));
         HpTower.setText("0");
-        getContentPane().add(HpTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 300, -1, -1));
+        getContentPane().add(HpTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 430, -1, -1));
+
+        LevelTower.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
+        LevelTower.setForeground(new java.awt.Color(255, 255, 255));
+        LevelTower.setText("0");
+        getContentPane().add(LevelTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 300, -1, -1));
 
         AtkTank1.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
         AtkTank1.setForeground(new java.awt.Color(255, 255, 255));
@@ -110,6 +128,11 @@ public class Kingdom extends javax.swing.JFrame {
         UpgradeTower.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Tower.png"))); // NOI18N
         UpgradeTower.setBorderPainted(false);
         UpgradeTower.setContentAreaFilled(false);
+        UpgradeTower.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpgradeTowerActionPerformed(evt);
+            }
+        });
         getContentPane().add(UpgradeTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 530, -1, -1));
 
         UpgradeRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
@@ -125,9 +148,14 @@ public class Kingdom extends javax.swing.JFrame {
         UpgradeMelee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeMelee.setBorderPainted(false);
         UpgradeMelee.setContentAreaFilled(false);
+        UpgradeMelee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpgradeMeleeActionPerformed(evt);
+            }
+        });
         getContentPane().add(UpgradeMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
 
-        Gold.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        Gold.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         Gold.setText("x");
         getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 20, -1, -1));
 
@@ -141,6 +169,15 @@ public class Kingdom extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void UpgradeMeleeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeMeleeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpgradeMeleeActionPerformed
+
+    private void UpgradeTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTowerActionPerformed
+        int temp = Integer.parseInt(LevelTower.getText()) + 1;
+        LevelTower.setText(String.valueOf(temp));
+    }//GEN-LAST:event_UpgradeTowerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,7 +225,7 @@ public class Kingdom extends javax.swing.JFrame {
     private javax.swing.JLabel HpTank;
     private javax.swing.JLabel HpTank1;
     private javax.swing.JLabel HpTower;
-    private javax.swing.JLabel Tower;
+    private javax.swing.JLabel LevelTower;
     private javax.swing.JButton UpgradeMelee;
     private javax.swing.JButton UpgradeRanged;
     private javax.swing.JButton UpgradeTank;
