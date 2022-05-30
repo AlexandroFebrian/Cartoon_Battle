@@ -4,6 +4,8 @@
  */
 package cartoon.battle;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,19 +24,43 @@ public class Kingdom extends javax.swing.JFrame {
     
     public Kingdom() {
         initComponents();
-        
+            
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
         this.setIconImage(img.getImage());
     }
     
-    public Kingdom(String gold, String hpTower, String levelTower, ArrayList<Troops> t) {
+    public Kingdom(User u) {
         initComponents();
 //        Warning.setVisible(false);
-        Gold.setText(gold);
-        HpTower.setText(hpTower);
-        LevelTower.setText(levelTower);
-        troop = t;
+        Gold.setText(String.valueOf(u.getGold()));
+        HpTower.setText(String.valueOf(u.getTower().getHp()));
+        LevelTower.setText(String.valueOf(u.getTower().getLevel()));
+        troop = u.getTroop();
+        
+        //detail melee
+        HpMelee.setText(String.valueOf(troop.get(0).getHP()));
+        AtkMelee.setText(String.valueOf(troop.get(0).getAtk()));
+        
+        
+        UpgradeMelee.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                Troops m = troop.get(0);
+                int tempGold = u.getGold();
+                int bayar = ((Integer.parseInt(AtkMelee.getText()))*5) + 5;
+//                if(tempGold >= bayar){ // berhasil
+                    tempGold-=bayar;
+                    u.setGold(tempGold);
+                    int atk = m.getAtk() + 5;
+                    m.setAtk(atk);
+                    int hp = m.getHP() + 10;
+                    m.setHP(hp);
+//                } else { //gold ga cukup
+//                    Warning.setVisible(true);
+//                }
+                System.out.println("Berhasil Upgrade Melee");
+            }
+        });
     }
     
 
@@ -174,20 +200,7 @@ public class Kingdom extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void UpgradeMeleeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeMeleeActionPerformed
-        // TODO add your handling code here:
-        int tempGold = Integer.parseInt(Gold.getText());
-        int bayar = ((Integer.parseInt(AtkMelee.getText()))*5) + 5;
-        if(tempGold >= bayar){ // berhasil
-            tempGold-=bayar;
-            Gold.setText(String.valueOf(tempGold));
-            int atk = Integer.parseInt(AtkMelee.getText()) + 5;
-            AtkMelee.setText(String.valueOf(atk));
-            int hp = Integer.parseInt(HpMelee.getText()) + 10;
-            HpMelee.setText(String.valueOf(hp));
-        } else { //gold ga cukup
-//            Warning.setVisible(true);
-        }
-//        System.out.println("Berhasil Upgrade Melee");
+        // TODO add your handling code here: 
     }//GEN-LAST:event_UpgradeMeleeActionPerformed
 
     private void UpgradeTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTowerActionPerformed
