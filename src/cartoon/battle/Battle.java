@@ -258,7 +258,7 @@ public class Battle extends javax.swing.JFrame {
                 for(int i = 0; i < Trooplab.size(); i++){
                     if(Trooplab.get(i).getIcon() == Micon2 && Troop.get(i) instanceof Melee){
                         if(Enemylab.size() >= 1){
-                            if(Enemylab.get(0).getLocation().x >= Trooplab.get(i).getLocation().x && Enemylab.get(0).getLocation().x <= Trooplab.get(i).getLocation().x+25){
+                            if(Enemylab.get(0).getLocation().x >= Trooplab.get(i).getLocation().x && Enemylab.get(0).getLocation().x <= Trooplab.get(i).getLocation().x+20){
                                 if(EnemyList.get(0) <= 0){
                                     Trooplab.get(i).setIcon(Micon);
                                     getContentPane().remove(Enemylab.get(0));
@@ -270,7 +270,6 @@ public class Battle extends javax.swing.JFrame {
                                     i = 0;
                                 }else{
                                     EnemyList.set(0, EnemyList.get(0)-Troop.get(i).getAtk());
-                                    System.out.println(EnemyList.get(0));
                                 }
                             }else{
                                 Trooplab.get(i).setIcon(Micon);
@@ -278,32 +277,50 @@ public class Battle extends javax.swing.JFrame {
                         }else{
                             Trooplab.get(i).setIcon(Micon);
                         }
+                    }else if(Trooplab.get(i).getIcon() == Ricon2 && Troop.get(i) instanceof Ranged){
+                        if(Enemylab.size() >= 1){
+                            if(Enemylab.get(0).getLocation().x >= Trooplab.get(i).getLocation().x && Enemylab.get(0).getLocation().x <= Trooplab.get(i).getLocation().x+100){
+                                if(EnemyList.get(0) <= 0){
+                                    Trooplab.get(i).setIcon(Ricon);
+                                    getContentPane().remove(Enemylab.get(0));
+                                    EnemyList.remove(0);
+                                    Enemylab.remove(0);
+                                    EnemyX.remove(0);
+                                    getContentPane().validate();
+                                    getContentPane().repaint();
+                                    i = 0;
+                                }else{
+                                    EnemyList.set(0, EnemyList.get(0)-Troop.get(i).getAtk());
+                                }
+                            }else{
+                                Trooplab.get(i).setIcon(Ricon);
+                            }
+                        }else{
+                            Trooplab.get(i).setIcon(Ricon);
+                        }
+                    }else if(Trooplab.get(i).getIcon() == Ticon2 && Troop.get(i) instanceof Tank){
+                        if(Enemylab.size() >= 1){
+                            if(Enemylab.get(0).getLocation().x >= Trooplab.get(i).getLocation().x && Enemylab.get(0).getLocation().x <= Trooplab.get(i).getLocation().x+25){
+                                if(EnemyList.get(0) <= 0){
+                                    Trooplab.get(i).setIcon(Ticon);
+                                    getContentPane().remove(Enemylab.get(0));
+                                    EnemyList.remove(0);
+                                    Enemylab.remove(0);
+                                    EnemyX.remove(0);
+                                    getContentPane().validate();
+                                    getContentPane().repaint();
+                                    i = 0;
+                                }else{
+                                    EnemyList.set(0, EnemyList.get(0)-Troop.get(i).getAtk());
+                                }
+                            }else{
+                                Trooplab.get(i).setIcon(Ticon);
+                            }
+                        }else{
+                            Trooplab.get(i).setIcon(Ticon);
+                        }
                     }
                 }
-//                for(int i = 0; i < Enemylab.size(); i++){
-//                    if(Enemylab.get(i).getIcon() == Eicon2){
-//                        if(Troop.size() >= 1){
-//                            if(Trooplab.get(0).getLocation().x <= Enemylab.get(i).getLocation().x && Trooplab.get(0).getLocation().x >= Enemylab.get(i).getLocation().x-75){
-//                                if(Troop.get(0).getHP() <= 0){
-//                                    Enemylab.get(i).setIcon(Eicon);
-//                                    getContentPane().remove(Trooplab.get(0));
-//                                    Troop.remove(0);
-//                                    Trooplab.remove(0);
-//                                    TroopX.remove(0);
-//                                    getContentPane().validate();
-//                                    getContentPane().repaint();
-//                                    i = 0;
-//                                }else{
-//                                    Troop.get(0).setHP(Troop.get(0).getHP()-EnemyAtk);
-//                                }
-//                            }else{
-//                                Enemylab.get(i).setIcon(Eicon);
-//                            }
-//                        }else{
-//                            Enemylab.get(i).setIcon(Eicon);
-//                        }
-//                    }
-//                }
             }
         };
         
@@ -412,23 +429,6 @@ public class Battle extends javax.swing.JFrame {
         Trooplab.get(Trooplab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
         getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
     }//GEN-LAST:event_AddMeleeActionPerformed
-//                    Enemy.setLocation(Enemy.getLocation().x-1, Enemy.getLocation().y);
-//                    if (Trooplab.get(0).getLocation().x == Enemy.getLocation().x) {
-//                        if(Trooplab.size() == 1){
-//                            TroopT.stop();
-//                            TroopT = null;
-//                        }
-//                        remove(Trooplab.get(0));
-//                        Trooplab.remove(0);
-//                        validate();
-//                        repaint();
-//                        Trooplab.add(new JLabel());
-//                        Trooplab.get(i).setIcon(Micon2);
-//                        Enemy.setLocation(520, 430);
-//                        Trooplab.get(i).setBounds(Enemy.getLocation().x, 480, 68, 68); //x, y, lebar, tinggi
-//                        getContentPane().add(Trooplab.get(i), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
-//                        TroopT.stop();
-//                    }
 
     //Add Ranged
     private void AddRangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRangeActionPerformed
