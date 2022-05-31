@@ -81,6 +81,7 @@ public class Battle extends javax.swing.JFrame {
         AddRange.setVisible(false);
         AddTank.setVisible(false);
         
+        //Mengambil data troop dari user
         userT = t;
 //        t.add(new Tank());
 //        t.add(new Ranged());
@@ -173,7 +174,6 @@ public class Battle extends javax.swing.JFrame {
         
         EnemyAtkTime = new Timer(1000, Eatk);
         EnemyAtkTime.start();
-        
         
         //Troop gerak
         ActionListener Tmove = new ActionListener(){
@@ -300,7 +300,6 @@ public class Battle extends javax.swing.JFrame {
         Trooplab.get(Trooplab.size()-1).setIcon(Micon);
         Trooplab.get(Trooplab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
         getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
-        System.out.println(Troop.get(Troop.size()-1).getHP());
     }//GEN-LAST:event_AddMeleeActionPerformed
 //                    Enemy.setLocation(Enemy.getLocation().x-1, Enemy.getLocation().y);
 //                    if (Trooplab.get(0).getLocation().x == Enemy.getLocation().x) {
