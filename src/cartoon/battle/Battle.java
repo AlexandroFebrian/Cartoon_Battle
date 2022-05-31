@@ -40,8 +40,8 @@ public class Battle extends javax.swing.JFrame {
     private int SpawnTime = 0;
     
     private int EnemyHP = 20;
+    private int EnemyAtk = 4;
     private ArrayList<Integer> EnemyList = new ArrayList<>();
-//    private int EnemyAtk = 5;
     private Timer EnemyAtkTime;
     
     public javax.swing.JButton getBack() {
@@ -111,7 +111,7 @@ public class Battle extends javax.swing.JFrame {
                 }
             }
         };
-        EnemySpawnT = new Timer(1000, spawn);
+        EnemySpawnT = new Timer(1500, spawn);
         EnemySpawnT.start();
         
         //Enemy Gerak
@@ -123,51 +123,57 @@ public class Battle extends javax.swing.JFrame {
                     }else{
                         Enemylab.get(i).setLocation(EnemyX.get(i), 410);
                     }
-                    if(Trooplab.size() >= 1){
-                        if(Enemylab.get(i).getLocation().x == Trooplab.get(0).getLocation().x+75 && Enemylab.get(i).getIcon() != Eicon2){
-                            //Nyerang
+                    if(Enemylab.get(i).getIcon() == Eicon && Trooplab.size() == 0){
+                        Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
+                    }else if(Trooplab.size() >= 1){
+                        if(Trooplab.get(0).getLocation().x <= Enemylab.get(i).getLocation().x && Trooplab.get(0).getLocation().x >= Enemylab.get(i).getLocation().x-75 && Enemylab.get(i).getIcon() != Eicon2){
+                            //ganti icon nyerang
                             Enemylab.get(i).setIcon(Eicon2);
                         }
-                        else if(Enemylab.get(i).getIcon() == Eicon2){
-                            ActionListener Eatk = new ActionListener(){
-                                public void actionPerformed(ActionEvent event) {
-                                    Troop.get(0).setHP(Troop.get(0).getHP()-5);
-                                    System.out.println(Troop.get(0).getHP());
-                                }
-                            };
-                            
-                            if(EnemyAtkTime == null){
-                                EnemyAtkTime = new Timer(500, Eatk);
-                                EnemyAtkTime.start();
-                            }
-                            
-                            if(Troop.get(0).getHP() <= 0){
-                                getContentPane().remove(Trooplab.get(0));
-                                Troop.remove(0);
-                                Trooplab.remove(0);
-                                TroopX.remove(0);
-                                getContentPane().validate();
-                                getContentPane().repaint();
-                                EnemyAtkTime.stop();
-                                EnemyAtkTime = null;
-                                Enemylab.get(i).setIcon(Eicon);
-                            }
-                        }
-                        else{
+                        else if(Enemylab.get(i).getIcon() == Eicon){
                             Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
                         }
-                    }
-                    else{
-                        Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
                     }
                 }
             }
         };
         
-        if(EnemyMove == null){
-            EnemyMove = new Timer(20, Emove);
-            EnemyMove.start();
-        }
+        EnemyMove = new Timer(25, Emove);
+        EnemyMove.start();
+        
+        //Enemy attack
+        ActionListener Eatk = new ActionListener(){
+            public void actionPerformed(ActionEvent event) {
+                for(int i = 0; i < Enemylab.size(); i++){
+                    if(Enemylab.get(i).getIcon() == Eicon2){
+                        if(Troop.size() >= 1){
+                            if(Trooplab.get(0).getLocation().x <= Enemylab.get(i).getLocation().x && Trooplab.get(0).getLocation().x >= Enemylab.get(i).getLocation().x-75){
+                                if(Troop.get(0).getHP() <= 0){
+                                    Enemylab.get(i).setIcon(Eicon);
+                                    getContentPane().remove(Trooplab.get(0));
+                                    Troop.remove(0);
+                                    Trooplab.remove(0);
+                                    TroopX.remove(0);
+                                    getContentPane().validate();
+                                    getContentPane().repaint();
+                                    i = 0;
+                                }else{
+                                    Troop.get(0).setHP(Troop.get(0).getHP()-EnemyAtk);
+                                }
+                            }else{
+                                Enemylab.get(i).setIcon(Eicon);
+                            }
+                        }else{
+                            Enemylab.get(i).setIcon(Eicon);
+                        }
+                    }
+                }
+            }
+        };
+        
+        EnemyAtkTime = new Timer(1000, Eatk);
+        EnemyAtkTime.start();
+        
         
         //Troop gerak
         ActionListener Tmove = new ActionListener(){
@@ -285,12 +291,12 @@ public class Battle extends javax.swing.JFrame {
     private void AddMeleeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMeleeActionPerformed
         // TODO add your handling code here:
         TroopX.add(0);
-        Troop.add(userT.get(0));
+        Troop.add(new Melee(userT.get(0).getHP(), userT.get(0).getAtk()));
         Trooplab.add(new JLabel());
         Trooplab.get(Trooplab.size()-1).setIcon(Micon);
         Trooplab.get(Trooplab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
         getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
-        
+        System.out.println(Troop.get(Troop.size()-1).getHP());
     }//GEN-LAST:event_AddMeleeActionPerformed
 //                    Enemy.setLocation(Enemy.getLocation().x-1, Enemy.getLocation().y);
 //                    if (Trooplab.get(0).getLocation().x == Enemy.getLocation().x) {
