@@ -101,12 +101,20 @@ public class CartoonBattle {
                             b.getBack().addMouseListener(new MouseAdapter(){
                                 public void mousePressed(MouseEvent me){
                                     b.dispose();
-                                    if(b.getTroopT() != null){
-                                        b.getTroopT().stop();
-                                        b.setTroopT(null);
-                                        b.setTroop(new ArrayList<>());
-                                        b.setTrooplab(new ArrayList<>());
-                                    }
+                                    b.getTroopMove().stop();
+                                    b.setTroopMove(null);
+                                    b.getTroopAtkTime().stop();
+                                    b.setTroopAtkTime(null);
+                                    b.getEnemyMove().stop();
+                                    b.setEnemyMove(null);
+                                    b.getEnemySpawnT().stop();
+                                    b.setEnemySpawnT(null);
+                                    b.getEnemyAtkTime().stop();
+                                    b.setEnemyAtkTime(null);
+                                    b.getMineralT().stop();
+                                    b.setMineralT(null);
+                                    
+                                    
                                     h.setVisible(true);
                                 }
                             });

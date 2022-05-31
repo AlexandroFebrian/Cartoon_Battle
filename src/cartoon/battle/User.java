@@ -22,9 +22,11 @@ public class User implements Serializable {
     public User(String username) {
         this.username = username;
         this.levelEnemy = 1;
-        this.gold = 0;
+        this.gold = 100;
         this.skill = 0;
         this.troop.add(new Melee(30, 5));
+//        this.troop.add(new Ranged(100, 75));
+//        this.troop.add(new Tank(75, 20));
         this.tower = new Tower();
     }    
 
