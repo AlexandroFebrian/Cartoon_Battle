@@ -93,7 +93,7 @@ public class CartoonBattle {
                     //Battle <Febrian>
                     h.getBattle().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            Battle b = new Battle(u.get(u.size()-1).getTroop(), u.get(u.size()-1).getTower().getHp());
+                            Battle b = new Battle(u.get(u.size()-1));
                             b.setLocationRelativeTo(null);
                             b.setResizable(false);
                             h.setVisible(false);
@@ -103,6 +103,11 @@ public class CartoonBattle {
                                     b.dispose();
                                     b.StopAllTimer();
                                     h.setVisible(true);
+                                    if(b.getFinal().getText().equalsIgnoreCase("You Win")){
+                                        u.get(u.size()-1).setGold(u.get(u.size()-1).getGold()+50*u.get(u.size()-1).getLevelEnemy());
+                                        u.get(u.size()-1).setLevelEnemy(u.get(u.size()-1).getLevelEnemy()+1);
+                                        h.getGold().setText(String.valueOf(u.get(u.size()-1).getGold()));
+                                    }
                                 }
                             });
                         }

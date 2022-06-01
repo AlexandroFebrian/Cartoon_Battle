@@ -5,6 +5,7 @@
 package cartoon.battle;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -78,6 +79,12 @@ public class Home extends javax.swing.JFrame {
         return Kingdom;
     }
 
+    public JLabel getGold() {
+        return Gold;
+    }
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -143,7 +150,7 @@ public class Home extends javax.swing.JFrame {
         Gold.setForeground(new java.awt.Color(255, 255, 51));
         Gold.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Gold.setText("x");
-        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 50, -1, -1));
+        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 50, 240, -1));
 
         Username.setFont(new java.awt.Font("Lato Black", 1, 36)); // NOI18N
         Username.setText("<username>");
