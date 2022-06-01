@@ -47,11 +47,14 @@ public class Battle extends javax.swing.JFrame {
     
     private int EnemyHP = 20;
     private int EnemyAtk = 4;
+    private int EnemyTowerHP = 1000;
     private ArrayList<Integer> EnemyList = new ArrayList<>();
     private Timer EnemyAtkTime;
     
     private int Mineral = 0;
     private Timer MineralT;
+    
+    private int UserTowerHP;
     
     public javax.swing.JButton getBack() {
         return Back;
@@ -105,7 +108,40 @@ public class Battle extends javax.swing.JFrame {
         this.MineralT = MineralT;
     }
     
+    public void StopAllTimer(){
+        if(getTroopMove() != null){
+            getTroopMove().stop();
+            setTroopMove(null);
+        }
+        if(getTroopAtkTime() != null){
+            getTroopAtkTime().stop();
+            setTroopAtkTime(null);
+        }
+        if(getEnemyMove() != null){
+            getEnemyMove().stop();
+            setEnemyMove(null);
+        }
+        if(getEnemySpawnT() != null){
+            getEnemySpawnT().stop();
+            setEnemySpawnT(null);
+        }
+        if(getEnemyAtkTime() != null){
+            getEnemyAtkTime().stop();
+            setEnemyAtkTime(null);
+        }
+        if(getMineralT() != null){
+            getMineralT().stop();
+            setMineralT(null);
+        }
+    }
     
+    public void Win(){
+        StopAllTimer();
+        ETowerHP.setText("HP : 0");
+        Final.setVisible(true);
+        Final.setText("You Win");
+        Back.setLocation(600, 300);
+    }
     
     public Battle() {
         initComponents();
@@ -116,9 +152,13 @@ public class Battle extends javax.swing.JFrame {
         
     }
 
-    public Battle(ArrayList<Troops> t){
+    public Battle(ArrayList<Troops> t, int HP){
         initComponents();
         getContentPane().setLayout(null);
+        
+        UserTowerHP = HP;
+        UTowerHP.setText("HP : " + String.valueOf(UserTowerHP));
+        ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
         
         MineralT = new Timer(100, new ActionListener(){
             @Override
@@ -133,6 +173,7 @@ public class Battle extends javax.swing.JFrame {
         AddRange.setVisible(false);
         AddTank.setVisible(false);
         Laser.setVisible(false);
+        Final.setVisible(false);
         
         //Mengambil data troop dari user
         userT = t;
@@ -158,7 +199,7 @@ public class Battle extends javax.swing.JFrame {
                     EnemyList.add(EnemyHP);
                     Enemylab.add(new JLabel());
                     Enemylab.get(Enemylab.size()-1).setIcon(Eicon);
-                    Enemylab.get(Enemylab.size()-1).setBounds(1000, 419, 200, 133); //x, y, lebar, tinggi
+                    Enemylab.get(Enemylab.size()-1).setBounds(1030, 419, 200, 133); //x, y, lebar, tinggi
                     getContentPane().add(Enemylab.get(Enemylab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
                 }
             }
@@ -176,7 +217,11 @@ public class Battle extends javax.swing.JFrame {
                         Enemylab.get(i).setLocation(EnemyX.get(i), 419);
                     }
                     if(Enemylab.get(i).getIcon() == Eicon && Trooplab.size() == 0){
-                        Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
+                        if(Enemylab.get(i).getLocation().x <= 175 && Enemylab.get(i).getIcon() != Eicon2){
+                            Enemylab.get(i).setIcon(Eicon2);
+                        }else if(Enemylab.get(i).getIcon() == Eicon){
+                            Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
+                        }
                     }else if(Trooplab.size() >= 1){
                         if(Trooplab.get(0).getLocation().x <= Enemylab.get(i).getLocation().x && Trooplab.get(0).getLocation().x >= Enemylab.get(i).getLocation().x-75 && Enemylab.get(i).getIcon() != Eicon2){
                             //ganti icon nyerang
@@ -216,7 +261,19 @@ public class Battle extends javax.swing.JFrame {
                                 Enemylab.get(i).setIcon(Eicon);
                             }
                         }else{
-                            Enemylab.get(i).setIcon(Eicon);
+                            if(Enemylab.get(i).getLocation().x <= 175){
+                                UserTowerHP -= EnemyAtk;
+                                UTowerHP.setText("HP : " + String.valueOf(UserTowerHP));
+                                if(UserTowerHP <= 0){
+                                    StopAllTimer();
+                                    UTowerHP.setText("HP : 0");
+                                    Final.setVisible(true);
+                                    Final.setText("You Lose");
+                                    Back.setLocation(600, 300);
+                                }
+                            }else{
+                                Enemylab.get(i).setIcon(Eicon);
+                            }
                         }
                     }
                 }
@@ -243,7 +300,11 @@ public class Battle extends javax.swing.JFrame {
                     }
                     if(Troop.get(i) instanceof Melee){
                         if(Trooplab.get(i).getIcon() == Micon && Enemylab.size() == 0){
-                            Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
+                            if(Trooplab.get(i).getLocation().x >= 1010 && Trooplab.get(i).getIcon() != Micon2){
+                                Trooplab.get(i).setIcon(Micon2);
+                            }else if(Trooplab.get(i).getIcon() == Micon){
+                                Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
+                            }
                         }else if(Enemylab.size() >= 1){
                             if(Enemylab.get(0).getLocation().x >= Trooplab.get(i).getLocation().x && Enemylab.get(0).getLocation().x <= Trooplab.get(i).getLocation().x+20 && Trooplab.get(i).getIcon() != Micon2){
                                 //ganti icon nyerang
@@ -256,7 +317,11 @@ public class Battle extends javax.swing.JFrame {
                         }
                     }else if(Troop.get(i) instanceof Ranged){
                         if(Trooplab.get(i).getIcon() == Ricon && Enemylab.size() == 0){
-                            Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
+                            if(Trooplab.get(i).getLocation().x >= 780 && Trooplab.get(i).getIcon() != Ricon2){
+                                Trooplab.get(i).setIcon(Ricon2);
+                            }else if(Trooplab.get(i).getIcon() == Ricon){
+                                Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
+                            }
                         }else if(Enemylab.size() >= 1){
                             if(Enemylab.get(0).getLocation().x >= Trooplab.get(i).getLocation().x && Enemylab.get(0).getLocation().x <= Trooplab.get(i).getLocation().x+250 && Trooplab.get(i).getIcon() != Ricon2){
                                 //ganti icon nyerang
@@ -269,7 +334,11 @@ public class Battle extends javax.swing.JFrame {
                         }
                     }else{
                         if(Trooplab.get(i).getIcon() == Ticon && Enemylab.size() == 0){
-                            Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
+                            if(Trooplab.get(i).getLocation().x >= 955 && Trooplab.get(i).getIcon() != Ticon2){
+                                Trooplab.get(i).setIcon(Ticon2);
+                            }else if(Trooplab.get(i).getIcon() == Ticon){
+                                Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
+                            }
                         }else if(Enemylab.size() >= 1){
                             if(Enemylab.get(0).getLocation().x >= Trooplab.get(i).getLocation().x && Enemylab.get(0).getLocation().x <= Trooplab.get(i).getLocation().x+75 && Trooplab.get(i).getIcon() != Ticon2){
                                 //ganti icon nyerang
@@ -311,7 +380,15 @@ public class Battle extends javax.swing.JFrame {
                                 Trooplab.get(i).setIcon(Micon);
                             }
                         }else{
-                            Trooplab.get(i).setIcon(Micon);
+                            if(Trooplab.get(i).getLocation().x >= 1010){
+                                    EnemyTowerHP -= Troop.get(i).getAtk();
+                                    ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
+                                    if(EnemyTowerHP <= 0){
+                                        Win();
+                                    }
+                            }else{
+                                Trooplab.get(i).setIcon(Micon);
+                            }
                         }
                     }else if(Trooplab.get(i).getIcon() == Ricon2 && Troop.get(i) instanceof Ranged){
                         if(Enemylab.size() >= 1){
@@ -332,7 +409,15 @@ public class Battle extends javax.swing.JFrame {
                                 Trooplab.get(i).setIcon(Ricon);
                             }
                         }else{
-                            Trooplab.get(i).setIcon(Ricon);
+                            if(Trooplab.get(i).getLocation().x >= 780){
+                                    EnemyTowerHP -= Troop.get(i).getAtk();
+                                    ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
+                                    if(EnemyTowerHP <= 0){
+                                        Win();
+                                    }
+                            }else{
+                                Trooplab.get(i).setIcon(Ricon);
+                            }
                         }
                     }else if(Trooplab.get(i).getIcon() == Ticon2 && Troop.get(i) instanceof Tank){
                         if(Enemylab.size() >= 1){
@@ -353,7 +438,15 @@ public class Battle extends javax.swing.JFrame {
                                 Trooplab.get(i).setIcon(Ticon);
                             }
                         }else{
-                            Trooplab.get(i).setIcon(Ticon);
+                            if(Trooplab.get(i).getLocation().x >= 955){
+                                    EnemyTowerHP -= Troop.get(i).getAtk();
+                                    ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
+                                    if(EnemyTowerHP <= 0){
+                                        Win();
+                                    }
+                            }else{
+                                Trooplab.get(i).setIcon(Ticon);
+                            }
                         }
                     }
                 }
@@ -376,6 +469,9 @@ public class Battle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Final = new javax.swing.JLabel();
+        ETowerHP = new javax.swing.JLabel();
+        UTowerHP = new javax.swing.JLabel();
         Minerallab = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         Back = new javax.swing.JButton();
@@ -388,6 +484,27 @@ public class Battle extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Final.setBackground(new java.awt.Color(255, 255, 255));
+        Final.setFont(new java.awt.Font("Lato Black", 1, 24)); // NOI18N
+        Final.setForeground(new java.awt.Color(0, 0, 0));
+        Final.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Final.setText("WIN");
+        Final.setOpaque(true);
+        getContentPane().add(Final, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 170, 50));
+
+        ETowerHP.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        ETowerHP.setForeground(new java.awt.Color(0, 0, 0));
+        ETowerHP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ETowerHP.setText("HP : ");
+        getContentPane().add(ETowerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 590, 150, 30));
+
+        UTowerHP.setBackground(new java.awt.Color(0, 0, 0));
+        UTowerHP.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        UTowerHP.setForeground(new java.awt.Color(0, 0, 0));
+        UTowerHP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        UTowerHP.setText("HP : ");
+        getContentPane().add(UTowerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 600, 160, 30));
 
         Minerallab.setBackground(new java.awt.Color(0, 0, 0));
         Minerallab.setFont(new java.awt.Font("Lato Black", 1, 24)); // NOI18N
@@ -422,7 +539,7 @@ public class Battle extends javax.swing.JFrame {
                 AddMeleeActionPerformed(evt);
             }
         });
-        getContentPane().add(AddMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 580, 130, 120));
+        getContentPane().add(AddMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 580, 130, 120));
 
         AddRange.setBackground(new java.awt.Color(0, 0, 0));
         AddRange.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ranged Icon.png"))); // NOI18N
@@ -433,7 +550,7 @@ public class Battle extends javax.swing.JFrame {
                 AddRangeActionPerformed(evt);
             }
         });
-        getContentPane().add(AddRange, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 580, 130, 120));
+        getContentPane().add(AddRange, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 580, 130, 120));
 
         AddTank.setBackground(new java.awt.Color(0, 0, 0));
         AddTank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tank Icon.png"))); // NOI18N
@@ -444,7 +561,7 @@ public class Battle extends javax.swing.JFrame {
                 AddTankActionPerformed(evt);
             }
         });
-        getContentPane().add(AddTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 580, 130, 120));
+        getContentPane().add(AddTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 580, 130, 120));
 
         Laser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Laser.gif"))); // NOI18N
         getContentPane().add(Laser, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, -1));
@@ -572,8 +689,11 @@ private Timer las;
     private javax.swing.JButton AddTank;
     private javax.swing.JButton Back;
     private javax.swing.JLabel Background;
+    private javax.swing.JLabel ETowerHP;
+    private javax.swing.JLabel Final;
     private javax.swing.JLabel Laser;
     private javax.swing.JLabel Minerallab;
+    private javax.swing.JLabel UTowerHP;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

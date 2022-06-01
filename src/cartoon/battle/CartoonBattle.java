@@ -93,7 +93,7 @@ public class CartoonBattle {
                     //Battle <Febrian>
                     h.getBattle().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            Battle b = new Battle(u.get(u.size()-1).getTroop());
+                            Battle b = new Battle(u.get(u.size()-1).getTroop(), u.get(u.size()-1).getTower().getHp());
                             b.setLocationRelativeTo(null);
                             b.setResizable(false);
                             h.setVisible(false);
@@ -101,20 +101,7 @@ public class CartoonBattle {
                             b.getBack().addMouseListener(new MouseAdapter(){
                                 public void mousePressed(MouseEvent me){
                                     b.dispose();
-                                    b.getTroopMove().stop();
-                                    b.setTroopMove(null);
-                                    b.getTroopAtkTime().stop();
-                                    b.setTroopAtkTime(null);
-                                    b.getEnemyMove().stop();
-                                    b.setEnemyMove(null);
-                                    b.getEnemySpawnT().stop();
-                                    b.setEnemySpawnT(null);
-                                    b.getEnemyAtkTime().stop();
-                                    b.setEnemyAtkTime(null);
-                                    b.getMineralT().stop();
-                                    b.setMineralT(null);
-                                    
-                                    
+                                    b.StopAllTimer();
                                     h.setVisible(true);
                                 }
                             });
