@@ -34,7 +34,7 @@ public class Kingdom extends javax.swing.JFrame {
         initComponents();
         
         //buat test 
-        u.setGold(1000);         
+//        u.setGold(1000);         
         
 //        Warning.setVisible(false);
         Gold.setText(String.valueOf(u.getGold()));
@@ -59,10 +59,10 @@ public class Kingdom extends javax.swing.JFrame {
         UpgradeTank2.setVisible(false);
         
         // test lagi
-        if(troop.size() == 1){
-            troop.add(new Ranged(40,10));
-            troop.add(new Tank(60,5));
-        }
+//        if(troop.size() == 1){
+//            troop.add(new Ranged(40,10));
+//            troop.add(new Tank(60,5));
+//        }
         
         //detail melee
         HpMelee.setText(String.valueOf(troop.get(0).getHP()));
