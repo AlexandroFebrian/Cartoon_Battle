@@ -385,10 +385,10 @@ public class Kingdom extends javax.swing.JFrame {
         Gold.setText("0");
         getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 30, 240, -1));
 
-        Warning.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Warning.setFont(new java.awt.Font("Lato Black", 0, 18)); // NOI18N
         Warning.setForeground(new java.awt.Color(255, 255, 255));
         Warning.setText("Warning GOLD ga cukup pas upgrade");
-        getContentPane().add(Warning, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, -1, -1));
+        getContentPane().add(Warning, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
 
         HpTower.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
         HpTower.setForeground(new java.awt.Color(255, 255, 255));

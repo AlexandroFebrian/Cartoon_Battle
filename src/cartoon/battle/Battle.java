@@ -169,7 +169,7 @@ public class Battle extends javax.swing.JFrame {
         ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
         Level.setText("Level : " + String.valueOf(user.getLevelEnemy()));
         
-        MineralT = new Timer(50, new ActionListener(){
+        MineralT = new Timer(500, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(Mineral < MaxMineral){
@@ -530,8 +530,9 @@ public class Battle extends javax.swing.JFrame {
         getContentPane().add(UserHpBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 580, -1, 10));
 
         Level.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        Level.setForeground(new java.awt.Color(255, 255, 255));
         Level.setText("Level : ");
-        getContentPane().add(Level, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 140, 40));
+        getContentPane().add(Level, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 590, 110, 40));
 
         Final.setBackground(new java.awt.Color(255, 255, 255));
         Final.setFont(new java.awt.Font("Lato Black", 1, 24)); // NOI18N
