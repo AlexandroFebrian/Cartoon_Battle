@@ -38,6 +38,8 @@ public class Battle extends javax.swing.JFrame {
     private ArrayList<Troops> userT = new ArrayList<>();
     private ArrayList<Integer> TroopX = new ArrayList<>();
     private Timer TroopAtkTime;
+    private int UserTowerHP;
+    private int MaxMineral = 100;
     
     private ArrayList<JLabel> Enemylab = new ArrayList<>();
     private ArrayList<Integer> EnemyX = new ArrayList<>();
@@ -54,7 +56,6 @@ public class Battle extends javax.swing.JFrame {
     private int Mineral = 0;
     private Timer MineralT;
     
-    private int UserTowerHP;
     
     public javax.swing.JButton getBack() {
         return Back;
@@ -171,11 +172,13 @@ public class Battle extends javax.swing.JFrame {
         ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
         Level.setText("Level : " + String.valueOf(user.getLevelEnemy()));
         
-        MineralT = new Timer(100, new ActionListener(){
+        MineralT = new Timer(500, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                Mineral++;
-                Minerallab.setText(String.valueOf(Mineral));
+                if(Mineral < MaxMineral){
+                    Mineral++;
+                }
+                Minerallab.setText(String.valueOf(Mineral) + "/" + String.valueOf(MaxMineral));
             }
         });
         
@@ -526,8 +529,9 @@ public class Battle extends javax.swing.JFrame {
         Minerallab.setBackground(new java.awt.Color(0, 0, 0));
         Minerallab.setFont(new java.awt.Font("Lato Black", 1, 24)); // NOI18N
         Minerallab.setForeground(new java.awt.Color(0, 0, 0));
+        Minerallab.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Minerallab.setText("0");
-        getContentPane().add(Minerallab, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 20, 90, 40));
+        getContentPane().add(Minerallab, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 20, 110, 40));
 
         jButton1.setText("Delete");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -592,42 +596,51 @@ public class Battle extends javax.swing.JFrame {
     //Add Melee
     private void AddMeleeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMeleeActionPerformed
         // TODO add your handling code here:
-        TroopX.add(0);
-        Troop.add(new Melee(userT.get(0).getHP(), userT.get(0).getAtk()));
-        Trooplab.add(new JLabel());
-        Trooplab.get(Trooplab.size()-1).setIcon(Micon);
-        Trooplab.get(Trooplab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
-        getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
+        if(Mineral >= 10){
+            TroopX.add(0);
+            Troop.add(new Melee(userT.get(0).getHP(), userT.get(0).getAtk()));
+            Trooplab.add(new JLabel());
+            Trooplab.get(Trooplab.size()-1).setIcon(Micon);
+            Trooplab.get(Trooplab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
+            getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
+            Mineral -= 10;
+        }
     }//GEN-LAST:event_AddMeleeActionPerformed
 
     //Add Ranged
     private void AddRangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRangeActionPerformed
         // TODO add your handling code here:
-        if(userT.get(1) instanceof Ranged){
-            Troop.add(new Ranged(userT.get(1).getHP(), userT.get(1).getAtk()));
-        }else{
-            Troop.add(new Ranged(userT.get(2).getHP(), userT.get(2).getAtk()));
+        if(Mineral >= 30){
+            if(userT.get(1) instanceof Ranged){
+                Troop.add(new Ranged(userT.get(1).getHP(), userT.get(1).getAtk()));
+            }else{
+                Troop.add(new Ranged(userT.get(2).getHP(), userT.get(2).getAtk()));
+            }
+            TroopX.add(0);
+            Trooplab.add(new JLabel());
+            Trooplab.get(Trooplab.size()-1).setIcon(Ricon);
+            Trooplab.get(Trooplab.size()-1).setBounds(120, 435, 120, 120); //x, y, lebar, tinggi
+            getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
+            Mineral -= 30;
         }
-        TroopX.add(0);
-        Trooplab.add(new JLabel());
-        Trooplab.get(Trooplab.size()-1).setIcon(Ricon);
-        Trooplab.get(Trooplab.size()-1).setBounds(120, 435, 120, 120); //x, y, lebar, tinggi
-        getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
     }//GEN-LAST:event_AddRangeActionPerformed
 
     //Add Tank
     private void AddTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTankActionPerformed
         // TODO add your handling code here:
-        if(userT.get(1) instanceof Tank){
-            Troop.add(new Tank(userT.get(1).getHP(), userT.get(1).getAtk()));
-        }else{
-            Troop.add(new Tank(userT.get(2).getHP(), userT.get(2).getAtk()));
+        if(Mineral >= 20){
+            if(userT.get(1) instanceof Tank){
+                Troop.add(new Tank(userT.get(1).getHP(), userT.get(1).getAtk()));
+            }else{
+                Troop.add(new Tank(userT.get(2).getHP(), userT.get(2).getAtk()));
+            }
+            TroopX.add(0);
+            Trooplab.add(new JLabel());
+            Trooplab.get(Trooplab.size()-1).setIcon(Ticon);
+            Trooplab.get(Trooplab.size()-1).setBounds(119, 430, 130, 130); //x, y, lebar, tinggi
+            getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
+            Mineral -= 20;
         }
-        TroopX.add(0);
-        Trooplab.add(new JLabel());
-        Trooplab.get(Trooplab.size()-1).setIcon(Ticon);
-        Trooplab.get(Trooplab.size()-1).setBounds(119, 430, 130, 130); //x, y, lebar, tinggi
-        getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
     }//GEN-LAST:event_AddTankActionPerformed
 
     //Add Enemy
