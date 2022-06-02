@@ -383,7 +383,7 @@ public class Kingdom extends javax.swing.JFrame {
         Gold.setForeground(new java.awt.Color(255, 255, 51));
         Gold.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Gold.setText("0");
-        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 30, 240, -1));
+        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 27, 240, -1));
 
         Warning.setFont(new java.awt.Font("Lato Black", 0, 18)); // NOI18N
         Warning.setForeground(new java.awt.Color(255, 255, 255));
