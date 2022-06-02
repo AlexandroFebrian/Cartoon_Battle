@@ -115,6 +115,7 @@ public class Kingdom extends javax.swing.JFrame {
         if(troop.size() == 2){
             if(troop.get(1) instanceof Tank t){
                 AtkTank1.setVisible(true);
+                TankIcon1.setVisible(true);
                 HpTank1.setVisible(true);
                 UpgradeTank1.setVisible(true);
                 AtkTank1.setText(String.valueOf(t.getAtk()));
@@ -143,6 +144,7 @@ public class Kingdom extends javax.swing.JFrame {
             } else if(troop.get(1) instanceof Ranged r){
                 AtkRanged1.setVisible(true);
                 HpRanged1.setVisible(true);
+                RangedIcon1.setVisible(true);
                 UpgradeRanged1.setVisible(true);
                 AtkRanged1.setText(String.valueOf(r.getAtk()));
                 HpRanged1.setText(String.valueOf(r.getHP())); 
@@ -175,6 +177,7 @@ public class Kingdom extends javax.swing.JFrame {
                 AtkTank1.setVisible(true);
                 HpTank1.setVisible(true);
                 UpgradeTank1.setVisible(true);
+                TankIcon1.setVisible(true);
                 AtkTank1.setText(String.valueOf(t.getAtk()));
                 HpTank1.setText(String.valueOf(t.getHP())); 
                 
@@ -202,6 +205,7 @@ public class Kingdom extends javax.swing.JFrame {
                 AtkRanged1.setVisible(true);
                 HpRanged1.setVisible(true);
                 UpgradeRanged1.setVisible(true);
+                RangedIcon1.setVisible(true);
                 AtkRanged1.setText(String.valueOf(r.getAtk()));
                 HpRanged1.setText(String.valueOf(r.getHP())); 
                 
@@ -231,6 +235,7 @@ public class Kingdom extends javax.swing.JFrame {
                 AtkTank2.setVisible(true);
                 HpTank2.setVisible(true);
                 UpgradeTank2.setVisible(true);
+                TankIcon2.setVisible(true);
                 AtkTank2.setText(String.valueOf(t2.getAtk()));
                 HpTank2.setText(String.valueOf(t2.getHP()));
                 
@@ -258,6 +263,7 @@ public class Kingdom extends javax.swing.JFrame {
                 AtkRanged2.setVisible(true);
                 HpRanged2.setVisible(true);
                 UpgradeRanged2.setVisible(true);
+                RangedIcon2.setVisible(true);
                 AtkRanged2.setText(String.valueOf(r2.getAtk()));
                 HpRanged2.setText(String.valueOf(r2.getHP())); 
                 
