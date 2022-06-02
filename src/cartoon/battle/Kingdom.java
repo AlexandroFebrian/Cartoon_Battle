@@ -32,11 +32,37 @@ public class Kingdom extends javax.swing.JFrame {
     
     public Kingdom(User u) {
         initComponents();
+        
+        //buat test 
+        u.setGold(1000);         
+        
 //        Warning.setVisible(false);
         Gold.setText(String.valueOf(u.getGold()));
         HpTower.setText(String.valueOf(u.getTower().getHp()));
         LevelTower.setText(String.valueOf(u.getTower().getLevel()));
         troop = u.getTroop();
+        AtkRanged1.setVisible(false);
+        AtkRanged2.setVisible(false);
+        AtkTank1.setVisible(false);
+        AtkTank2.setVisible(false);
+        HpRanged1.setVisible(false);
+        HpRanged2.setVisible(false);
+        HpTank1.setVisible(false);
+        HpTank2.setVisible(false);
+        RangedIcon2.setVisible(false);
+        RangedIcon2.setVisible(false);
+        TankIcon2.setVisible(false);
+        TankIcon2.setVisible(false);
+        UpgradeRanged1.setVisible(false);
+        UpgradeRanged2.setVisible(false);
+        UpgradeTank1.setVisible(false);
+        UpgradeTank2.setVisible(false);
+        
+        // test lagi
+        if(troop.size() == 1){
+            troop.add(new Ranged(40,10));
+            troop.add(new Tank(60,5));
+        }
         
         //detail melee
         HpMelee.setText(String.valueOf(troop.get(0).getHP()));
@@ -87,10 +113,15 @@ public class Kingdom extends javax.swing.JFrame {
         });
         
         if(troop.size() == 2){
-            if(troop.get(1) instanceof Tank){
+            if(troop.get(1) instanceof Tank t){
+                AtkTank1.setVisible(true);
+                HpTank1.setVisible(true);
+                UpgradeTank1.setVisible(true);
+                AtkTank1.setText(String.valueOf(t.getAtk()));
+                HpTank1.setText(String.valueOf(t.getHP()));
+                
                 UpgradeTank1.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
-                        Troops t = troop.get(1);
                         int tempGold = u.getGold();
                         int bayar = (t.getAtk()*5) + 5;
                         if(tempGold >= bayar){ // berhasil
@@ -101,30 +132,35 @@ public class Kingdom extends javax.swing.JFrame {
                             int hp = t.getHP() + 10;
                             t.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
-                            HpTank2.setText(String.valueOf(t.getHP()));
-                            AtkTank2.setText(String.valueOf(t.getAtk()));
+                            HpTank1.setText(String.valueOf(t.getHP()));
+                            AtkTank1.setText(String.valueOf(t.getAtk()));
                         } else { //gold ga cukup
         //                    Warning.setVisible(true);
                         }
         //                System.out.println("Berhasil Upgrade Tank");
                     }
                 });
-            } else if(troop.get(1) instanceof Ranged){
-                UpgradeRanged2.addMouseListener(new MouseAdapter(){
+            } else if(troop.get(1) instanceof Ranged r){
+                AtkRanged1.setVisible(true);
+                HpRanged1.setVisible(true);
+                UpgradeRanged1.setVisible(true);
+                AtkRanged1.setText(String.valueOf(r.getAtk()));
+                HpRanged1.setText(String.valueOf(r.getHP())); 
+                
+                UpgradeRanged1.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
-                        Troops t = troop.get(1);
                         int tempGold = u.getGold();
-                        int bayar = (t.getAtk()*5) + 5;
+                        int bayar = (r.getAtk()*5) + 5;
                         if(tempGold >= bayar){ // berhasil
                             tempGold-=bayar;
                             u.setGold(tempGold);
-                            int atk = t.getAtk() + 5;
-                            t.setAtk(atk);
-                            int hp = t.getHP() + 10;
-                            t.setHP(hp);
+                            int atk = r.getAtk() + 5;
+                            r.setAtk(atk);
+                            int hp = r.getHP() + 10;
+                            r.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
-                            HpTank2.setText(String.valueOf(t.getHP()));
-                            AtkTank2.setText(String.valueOf(t.getAtk()));
+                            HpRanged1.setText(String.valueOf(r.getHP()));
+                            AtkRanged1.setText(String.valueOf(r.getAtk()));
                         } else { //gold ga cukup
         //                    Warning.setVisible(true);
                         }
@@ -135,10 +171,15 @@ public class Kingdom extends javax.swing.JFrame {
         }
         
         if(troop.size() == 3){
-            if(troop.get(1) instanceof Tank){
+            if(troop.get(1) instanceof Tank t){
+                AtkTank1.setVisible(true);
+                HpTank1.setVisible(true);
+                UpgradeTank1.setVisible(true);
+                AtkTank1.setText(String.valueOf(t.getAtk()));
+                HpTank1.setText(String.valueOf(t.getHP())); 
+                
                 UpgradeTank1.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
-                        Troops t = troop.get(1);
                         int tempGold = u.getGold();
                         int bayar = (t.getAtk()*5) + 5;
                         if(tempGold >= bayar){ // berhasil
@@ -149,74 +190,91 @@ public class Kingdom extends javax.swing.JFrame {
                             int hp = t.getHP() + 10;
                             t.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
-                            HpTank2.setText(String.valueOf(t.getHP()));
-                            AtkTank2.setText(String.valueOf(t.getAtk()));
+                            HpTank1.setText(String.valueOf(t.getHP()));
+                            AtkTank1.setText(String.valueOf(t.getAtk()));
                         } else { //gold ga cukup
         //                    Warning.setVisible(true);
                         }
         //                System.out.println("Berhasil Upgrade Tank");
                     }
                 });
-            } else if(troop.get(1) instanceof Ranged){
-                UpgradeRanged2.addMouseListener(new MouseAdapter(){
+            } else if(troop.get(1) instanceof Ranged r){
+                AtkRanged1.setVisible(true);
+                HpRanged1.setVisible(true);
+                UpgradeRanged1.setVisible(true);
+                AtkRanged1.setText(String.valueOf(r.getAtk()));
+                HpRanged1.setText(String.valueOf(r.getHP())); 
+                
+                UpgradeRanged1.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
-                        Troops t = troop.get(1);
                         int tempGold = u.getGold();
-                        int bayar = (t.getAtk()*5) + 5;
+                        int bayar = (r.getAtk()*5) + 5;
                         if(tempGold >= bayar){ // berhasil
                             tempGold-=bayar;
                             u.setGold(tempGold);
-                            int atk = t.getAtk() + 5;
-                            t.setAtk(atk);
-                            int hp = t.getHP() + 10;
-                            t.setHP(hp);
+                            int atk = r.getAtk() + 5;
+                            r.setAtk(atk);
+                            int hp = r.getHP() + 10;
+                            r.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
-                            HpTank2.setText(String.valueOf(t.getHP()));
-                            AtkTank2.setText(String.valueOf(t.getAtk()));
+                            HpRanged1.setText(String.valueOf(r.getHP()));
+                            AtkRanged1.setText(String.valueOf(r.getAtk()));
                         } else { //gold ga cukup
         //                    Warning.setVisible(true);
                         }
         //                System.out.println("Berhasil Upgrade Ranged");
                     }
                 });
-            } else if(troop.get(2) instanceof Tank){
-                UpgradeTank1.addMouseListener(new MouseAdapter(){
+            }
+            
+            if(troop.get(2) instanceof Tank t2){
+                AtkTank2.setVisible(true);
+                HpTank2.setVisible(true);
+                UpgradeTank2.setVisible(true);
+                AtkTank2.setText(String.valueOf(t2.getAtk()));
+                HpTank2.setText(String.valueOf(t2.getHP()));
+                
+                UpgradeTank2.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
-                        Troops t = troop.get(2);
                         int tempGold = u.getGold();
-                        int bayar = (t.getAtk()*5) + 5;
+                        int bayar = (t2.getAtk()*5) + 5;
                         if(tempGold >= bayar){ // berhasil
                             tempGold-=bayar;
                             u.setGold(tempGold);
-                            int atk = t.getAtk() + 5;
-                            t.setAtk(atk);
-                            int hp = t.getHP() + 10;
-                            t.setHP(hp);
+                            int atk = t2.getAtk() + 5;
+                            t2.setAtk(atk);
+                            int hp = t2.getHP() + 10;
+                            t2.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
-                            HpTank2.setText(String.valueOf(t.getHP()));
-                            AtkTank2.setText(String.valueOf(t.getAtk()));
+                            HpTank2.setText(String.valueOf(t2.getHP()));
+                            AtkTank2.setText(String.valueOf(t2.getAtk()));
                         } else { //gold ga cukup
         //                    Warning.setVisible(true);
                         }
         //                System.out.println("Berhasil Upgrade Tank");
                     }
                 });
-            } else if(troop.get(2) instanceof Ranged){
+            } else if(troop.get(2) instanceof Ranged r2){
+                AtkRanged2.setVisible(true);
+                HpRanged2.setVisible(true);
+                UpgradeRanged2.setVisible(true);
+                AtkRanged2.setText(String.valueOf(r2.getAtk()));
+                HpRanged2.setText(String.valueOf(r2.getHP())); 
+                
                 UpgradeRanged2.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
-                        Troops t = troop.get(2);
                         int tempGold = u.getGold();
-                        int bayar = (t.getAtk()*5) + 5;
+                        int bayar = (r2.getAtk()*5) + 5;
                         if(tempGold >= bayar){ // berhasil
                             tempGold-=bayar;
                             u.setGold(tempGold);
-                            int atk = t.getAtk() + 5;
-                            t.setAtk(atk);
-                            int hp = t.getHP() + 10;
-                            t.setHP(hp);
+                            int atk = r2.getAtk() + 5;
+                            r2.setAtk(atk);
+                            int hp = r2.getHP() + 10;
+                            r2.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
-                            HpTank2.setText(String.valueOf(t.getHP()));
-                            AtkTank2.setText(String.valueOf(t.getAtk()));
+                            HpRanged2.setText(String.valueOf(r2.getHP()));
+                            AtkRanged2.setText(String.valueOf(r2.getAtk()));
                         } else { //gold ga cukup
         //                    Warning.setVisible(true);
                         }
@@ -248,10 +306,10 @@ public class Kingdom extends javax.swing.JFrame {
         AtkTank2 = new javax.swing.JLabel();
         AtkTank1 = new javax.swing.JLabel();
         HpTank1 = new javax.swing.JLabel();
+        RangedIcon2 = new javax.swing.JLabel();
         RangedIcon1 = new javax.swing.JLabel();
-        RangedIcon = new javax.swing.JLabel();
+        TankIcon2 = new javax.swing.JLabel();
         TankIcon1 = new javax.swing.JLabel();
-        TankIcon = new javax.swing.JLabel();
         Gold = new javax.swing.JLabel();
         Warning = new javax.swing.JLabel();
         HpTower = new javax.swing.JLabel();
@@ -303,17 +361,17 @@ public class Kingdom extends javax.swing.JFrame {
         HpTank1.setText("0");
         getContentPane().add(HpTank1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
 
-        RangedIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ranged Icon.png"))); // NOI18N
-        getContentPane().add(RangedIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 520, -1, -1));
+        RangedIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ranged Icon.png"))); // NOI18N
+        getContentPane().add(RangedIcon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 520, -1, -1));
 
-        RangedIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ranged Icon.png"))); // NOI18N
-        getContentPane().add(RangedIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 360, -1, -1));
+        RangedIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ranged Icon.png"))); // NOI18N
+        getContentPane().add(RangedIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 360, -1, -1));
+
+        TankIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tank Icon.png"))); // NOI18N
+        getContentPane().add(TankIcon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 520, -1, -1));
 
         TankIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tank Icon.png"))); // NOI18N
-        getContentPane().add(TankIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 520, -1, -1));
-
-        TankIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tank Icon.png"))); // NOI18N
-        getContentPane().add(TankIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 360, -1, -1));
+        getContentPane().add(TankIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 360, -1, -1));
 
         Gold.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
         Gold.setForeground(new java.awt.Color(255, 255, 51));
@@ -501,10 +559,10 @@ public class Kingdom extends javax.swing.JFrame {
     private javax.swing.JLabel HpTank2;
     private javax.swing.JLabel HpTower;
     private javax.swing.JLabel LevelTower;
-    private javax.swing.JLabel RangedIcon;
     private javax.swing.JLabel RangedIcon1;
-    private javax.swing.JLabel TankIcon;
+    private javax.swing.JLabel RangedIcon2;
     private javax.swing.JLabel TankIcon1;
+    private javax.swing.JLabel TankIcon2;
     private javax.swing.JButton UpgradeMelee;
     private javax.swing.JButton UpgradeRanged1;
     private javax.swing.JButton UpgradeRanged2;
