@@ -668,9 +668,16 @@ private Timer las;
             public void actionPerformed(ActionEvent event) {
                 waktu++;
                 if(waktu == 1){
+                    for(int i = 0; i < Enemylab.size(); i++){
+                        getContentPane().remove(Enemylab.get(i));
+                    }
+                    Enemylab.clear();
+                    EnemyX.clear();
+                    EnemyList.clear();
+                    getContentPane().validate();
+                    getContentPane().repaint();
                     Laser.setVisible(false);
                     las.stop();
-                    
                 }
             }
         };
