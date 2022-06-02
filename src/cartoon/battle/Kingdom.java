@@ -88,7 +88,7 @@ public class Kingdom extends javax.swing.JFrame {
         
         if(troop.size() == 2){
             if(troop.get(1) instanceof Tank){
-                UpgradeTank.addMouseListener(new MouseAdapter(){
+                UpgradeTank1.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
                         Troops t = troop.get(1);
                         int tempGold = u.getGold();
@@ -101,8 +101,8 @@ public class Kingdom extends javax.swing.JFrame {
                             int hp = t.getHP() + 10;
                             t.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
-                            HpTank.setText(String.valueOf(t.getHP()));
-                            AtkTank.setText(String.valueOf(t.getAtk()));
+                            HpTank2.setText(String.valueOf(t.getHP()));
+                            AtkTank2.setText(String.valueOf(t.getAtk()));
                         } else { //gold ga cukup
         //                    Warning.setVisible(true);
                         }
@@ -110,7 +110,7 @@ public class Kingdom extends javax.swing.JFrame {
                     }
                 });
             } else if(troop.get(1) instanceof Ranged){
-                UpgradeRanged.addMouseListener(new MouseAdapter(){
+                UpgradeRanged2.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
                         Troops t = troop.get(1);
                         int tempGold = u.getGold();
@@ -123,8 +123,8 @@ public class Kingdom extends javax.swing.JFrame {
                             int hp = t.getHP() + 10;
                             t.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
-                            HpTank.setText(String.valueOf(t.getHP()));
-                            AtkTank.setText(String.valueOf(t.getAtk()));
+                            HpTank2.setText(String.valueOf(t.getHP()));
+                            AtkTank2.setText(String.valueOf(t.getAtk()));
                         } else { //gold ga cukup
         //                    Warning.setVisible(true);
                         }
@@ -136,7 +136,7 @@ public class Kingdom extends javax.swing.JFrame {
         
         if(troop.size() == 3){
             if(troop.get(1) instanceof Tank){
-                UpgradeTank.addMouseListener(new MouseAdapter(){
+                UpgradeTank1.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
                         Troops t = troop.get(1);
                         int tempGold = u.getGold();
@@ -149,8 +149,8 @@ public class Kingdom extends javax.swing.JFrame {
                             int hp = t.getHP() + 10;
                             t.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
-                            HpTank.setText(String.valueOf(t.getHP()));
-                            AtkTank.setText(String.valueOf(t.getAtk()));
+                            HpTank2.setText(String.valueOf(t.getHP()));
+                            AtkTank2.setText(String.valueOf(t.getAtk()));
                         } else { //gold ga cukup
         //                    Warning.setVisible(true);
                         }
@@ -158,7 +158,7 @@ public class Kingdom extends javax.swing.JFrame {
                     }
                 });
             } else if(troop.get(1) instanceof Ranged){
-                UpgradeRanged.addMouseListener(new MouseAdapter(){
+                UpgradeRanged2.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
                         Troops t = troop.get(1);
                         int tempGold = u.getGold();
@@ -171,8 +171,8 @@ public class Kingdom extends javax.swing.JFrame {
                             int hp = t.getHP() + 10;
                             t.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
-                            HpTank.setText(String.valueOf(t.getHP()));
-                            AtkTank.setText(String.valueOf(t.getAtk()));
+                            HpTank2.setText(String.valueOf(t.getHP()));
+                            AtkTank2.setText(String.valueOf(t.getAtk()));
                         } else { //gold ga cukup
         //                    Warning.setVisible(true);
                         }
@@ -180,7 +180,7 @@ public class Kingdom extends javax.swing.JFrame {
                     }
                 });
             } else if(troop.get(2) instanceof Tank){
-                UpgradeTank.addMouseListener(new MouseAdapter(){
+                UpgradeTank1.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
                         Troops t = troop.get(2);
                         int tempGold = u.getGold();
@@ -193,8 +193,8 @@ public class Kingdom extends javax.swing.JFrame {
                             int hp = t.getHP() + 10;
                             t.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
-                            HpTank.setText(String.valueOf(t.getHP()));
-                            AtkTank.setText(String.valueOf(t.getAtk()));
+                            HpTank2.setText(String.valueOf(t.getHP()));
+                            AtkTank2.setText(String.valueOf(t.getAtk()));
                         } else { //gold ga cukup
         //                    Warning.setVisible(true);
                         }
@@ -202,7 +202,7 @@ public class Kingdom extends javax.swing.JFrame {
                     }
                 });
             } else if(troop.get(2) instanceof Ranged){
-                UpgradeRanged.addMouseListener(new MouseAdapter(){
+                UpgradeRanged2.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
                         Troops t = troop.get(2);
                         int tempGold = u.getGold();
@@ -215,8 +215,8 @@ public class Kingdom extends javax.swing.JFrame {
                             int hp = t.getHP() + 10;
                             t.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
-                            HpTank.setText(String.valueOf(t.getHP()));
-                            AtkTank.setText(String.valueOf(t.getAtk()));
+                            HpTank2.setText(String.valueOf(t.getHP()));
+                            AtkTank2.setText(String.valueOf(t.getAtk()));
                         } else { //gold ga cukup
         //                    Warning.setVisible(true);
                         }
@@ -242,19 +242,29 @@ public class Kingdom extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        HpRanged1 = new javax.swing.JLabel();
+        AtkRanged1 = new javax.swing.JLabel();
+        HpTank2 = new javax.swing.JLabel();
+        AtkTank2 = new javax.swing.JLabel();
+        AtkTank1 = new javax.swing.JLabel();
+        HpTank1 = new javax.swing.JLabel();
+        RangedIcon1 = new javax.swing.JLabel();
+        RangedIcon = new javax.swing.JLabel();
+        TankIcon1 = new javax.swing.JLabel();
+        TankIcon = new javax.swing.JLabel();
         Gold = new javax.swing.JLabel();
         Warning = new javax.swing.JLabel();
         HpTower = new javax.swing.JLabel();
         LevelTower = new javax.swing.JLabel();
-        AtkRanged = new javax.swing.JLabel();
-        HpRanged = new javax.swing.JLabel();
-        AtkTank = new javax.swing.JLabel();
-        HpTank = new javax.swing.JLabel();
+        AtkRanged2 = new javax.swing.JLabel();
+        HpRanged2 = new javax.swing.JLabel();
         AtkMelee = new javax.swing.JLabel();
         HpMelee = new javax.swing.JLabel();
         UpgradeTower = new javax.swing.JButton();
-        UpgradeRanged = new javax.swing.JButton();
-        UpgradeTank = new javax.swing.JButton();
+        UpgradeRanged1 = new javax.swing.JButton();
+        UpgradeRanged2 = new javax.swing.JButton();
+        UpgradeTank1 = new javax.swing.JButton();
+        UpgradeTank2 = new javax.swing.JButton();
         UpgradeMelee = new javax.swing.JButton();
         Back = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
@@ -262,6 +272,48 @@ public class Kingdom extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        HpRanged1.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        HpRanged1.setForeground(new java.awt.Color(255, 255, 255));
+        HpRanged1.setText("0");
+        getContentPane().add(HpRanged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
+
+        AtkRanged1.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        AtkRanged1.setForeground(new java.awt.Color(255, 255, 255));
+        AtkRanged1.setText("0");
+        getContentPane().add(AtkRanged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, -1, -1));
+
+        HpTank2.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        HpTank2.setForeground(new java.awt.Color(255, 255, 255));
+        HpTank2.setText("0");
+        getContentPane().add(HpTank2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, -1, -1));
+
+        AtkTank2.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        AtkTank2.setForeground(new java.awt.Color(255, 255, 255));
+        AtkTank2.setText("0");
+        getContentPane().add(AtkTank2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 550, -1, -1));
+
+        AtkTank1.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        AtkTank1.setForeground(new java.awt.Color(255, 255, 255));
+        AtkTank1.setText("0");
+        getContentPane().add(AtkTank1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, -1, -1));
+
+        HpTank1.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        HpTank1.setForeground(new java.awt.Color(255, 255, 255));
+        HpTank1.setText("0");
+        getContentPane().add(HpTank1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
+
+        RangedIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ranged Icon.png"))); // NOI18N
+        getContentPane().add(RangedIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 520, -1, -1));
+
+        RangedIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ranged Icon.png"))); // NOI18N
+        getContentPane().add(RangedIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 360, -1, -1));
+
+        TankIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tank Icon.png"))); // NOI18N
+        getContentPane().add(TankIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 520, -1, -1));
+
+        TankIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tank Icon.png"))); // NOI18N
+        getContentPane().add(TankIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 360, -1, -1));
 
         Gold.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
         Gold.setForeground(new java.awt.Color(255, 255, 51));
@@ -284,25 +336,15 @@ public class Kingdom extends javax.swing.JFrame {
         LevelTower.setText("0");
         getContentPane().add(LevelTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 300, -1, -1));
 
-        AtkRanged.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
-        AtkRanged.setForeground(new java.awt.Color(255, 255, 255));
-        AtkRanged.setText("0");
-        getContentPane().add(AtkRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 550, -1, -1));
+        AtkRanged2.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        AtkRanged2.setForeground(new java.awt.Color(255, 255, 255));
+        AtkRanged2.setText("0");
+        getContentPane().add(AtkRanged2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 550, -1, -1));
 
-        HpRanged.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
-        HpRanged.setForeground(new java.awt.Color(255, 255, 255));
-        HpRanged.setText("0");
-        getContentPane().add(HpRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, -1, -1));
-
-        AtkTank.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
-        AtkTank.setForeground(new java.awt.Color(255, 255, 255));
-        AtkTank.setText("0");
-        getContentPane().add(AtkTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, -1, -1));
-
-        HpTank.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
-        HpTank.setForeground(new java.awt.Color(255, 255, 255));
-        HpTank.setText("0");
-        getContentPane().add(HpTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
+        HpRanged2.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        HpRanged2.setForeground(new java.awt.Color(255, 255, 255));
+        HpRanged2.setText("0");
+        getContentPane().add(HpRanged2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, -1, -1));
 
         AtkMelee.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
         AtkMelee.setForeground(new java.awt.Color(255, 255, 255));
@@ -324,25 +366,45 @@ public class Kingdom extends javax.swing.JFrame {
         });
         getContentPane().add(UpgradeTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 530, -1, -1));
 
-        UpgradeRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
-        UpgradeRanged.setBorderPainted(false);
-        UpgradeRanged.setContentAreaFilled(false);
-        UpgradeRanged.addActionListener(new java.awt.event.ActionListener() {
+        UpgradeRanged1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
+        UpgradeRanged1.setBorderPainted(false);
+        UpgradeRanged1.setContentAreaFilled(false);
+        UpgradeRanged1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpgradeRangedActionPerformed(evt);
+                UpgradeRanged1ActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 570, -1, -1));
+        getContentPane().add(UpgradeRanged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, -1, -1));
 
-        UpgradeTank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
-        UpgradeTank.setBorderPainted(false);
-        UpgradeTank.setContentAreaFilled(false);
-        UpgradeTank.addActionListener(new java.awt.event.ActionListener() {
+        UpgradeRanged2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
+        UpgradeRanged2.setBorderPainted(false);
+        UpgradeRanged2.setContentAreaFilled(false);
+        UpgradeRanged2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpgradeTankActionPerformed(evt);
+                UpgradeRanged2ActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, -1, -1));
+        getContentPane().add(UpgradeRanged2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 570, -1, -1));
+
+        UpgradeTank1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
+        UpgradeTank1.setBorderPainted(false);
+        UpgradeTank1.setContentAreaFilled(false);
+        UpgradeTank1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpgradeTank1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(UpgradeTank1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, -1, -1));
+
+        UpgradeTank2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
+        UpgradeTank2.setBorderPainted(false);
+        UpgradeTank2.setContentAreaFilled(false);
+        UpgradeTank2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpgradeTank2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(UpgradeTank2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 570, -1, -1));
 
         UpgradeMelee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeMelee.setBorderPainted(false);
@@ -372,13 +434,21 @@ public class Kingdom extends javax.swing.JFrame {
     private void UpgradeTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTowerActionPerformed
     }//GEN-LAST:event_UpgradeTowerActionPerformed
 
-    private void UpgradeTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTankActionPerformed
+    private void UpgradeTank1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTank1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UpgradeTankActionPerformed
+    }//GEN-LAST:event_UpgradeTank1ActionPerformed
 
-    private void UpgradeRangedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeRangedActionPerformed
+    private void UpgradeRanged2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeRanged2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UpgradeRangedActionPerformed
+    }//GEN-LAST:event_UpgradeRanged2ActionPerformed
+
+    private void UpgradeRanged1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeRanged1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpgradeRanged1ActionPerformed
+
+    private void UpgradeTank2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTank2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpgradeTank2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -417,19 +487,29 @@ public class Kingdom extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AtkMelee;
-    private javax.swing.JLabel AtkRanged;
-    private javax.swing.JLabel AtkTank;
+    private javax.swing.JLabel AtkRanged1;
+    private javax.swing.JLabel AtkRanged2;
+    private javax.swing.JLabel AtkTank1;
+    private javax.swing.JLabel AtkTank2;
     private javax.swing.JButton Back;
     private javax.swing.JLabel Background;
     private javax.swing.JLabel Gold;
     private javax.swing.JLabel HpMelee;
-    private javax.swing.JLabel HpRanged;
-    private javax.swing.JLabel HpTank;
+    private javax.swing.JLabel HpRanged1;
+    private javax.swing.JLabel HpRanged2;
+    private javax.swing.JLabel HpTank1;
+    private javax.swing.JLabel HpTank2;
     private javax.swing.JLabel HpTower;
     private javax.swing.JLabel LevelTower;
+    private javax.swing.JLabel RangedIcon;
+    private javax.swing.JLabel RangedIcon1;
+    private javax.swing.JLabel TankIcon;
+    private javax.swing.JLabel TankIcon1;
     private javax.swing.JButton UpgradeMelee;
-    private javax.swing.JButton UpgradeRanged;
-    private javax.swing.JButton UpgradeTank;
+    private javax.swing.JButton UpgradeRanged1;
+    private javax.swing.JButton UpgradeRanged2;
+    private javax.swing.JButton UpgradeTank1;
+    private javax.swing.JButton UpgradeTank2;
     private javax.swing.JButton UpgradeTower;
     private javax.swing.JLabel Warning;
     // End of variables declaration//GEN-END:variables
