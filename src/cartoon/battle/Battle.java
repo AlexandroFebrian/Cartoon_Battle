@@ -7,9 +7,6 @@ package cartoon.battle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.Timer;
@@ -172,7 +169,7 @@ public class Battle extends javax.swing.JFrame {
         ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
         Level.setText("Level : " + String.valueOf(user.getLevelEnemy()));
         
-        MineralT = new Timer(500, new ActionListener(){
+        MineralT = new Timer(50, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(Mineral < MaxMineral){
@@ -277,7 +274,8 @@ public class Battle extends javax.swing.JFrame {
                         }else{
                             if(Enemylab.get(i).getLocation().x <= 175){
                                 UserTowerHP -= EnemyAtk;
-                                UTowerHP.setText("HP : " + String.valueOf(UserTowerHP));
+                                UserHpBar.setValue((int)(UserTowerHP * 100) / user.getTower().getHp());
+//                                UTowerHP.setText("HP : " + String.valueOf(UserTowerHP));
                                 if(UserTowerHP <= 0){
                                     StopAllTimer();
                                     UTowerHP.setText("HP : 0");
@@ -396,7 +394,8 @@ public class Battle extends javax.swing.JFrame {
                         }else{
                             if(Trooplab.get(i).getLocation().x >= 1010){
                                     EnemyTowerHP -= Troop.get(i).getAtk();
-                                    ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
+                                    EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + (user.getLevelEnemy()-1)*100));
+//                                    ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
                                     if(EnemyTowerHP <= 0){
                                         Win(user);
                                     }
@@ -483,12 +482,16 @@ public class Battle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Level = new javax.swing.JLabel();
-        Final = new javax.swing.JLabel();
         ETowerHP = new javax.swing.JLabel();
         UTowerHP = new javax.swing.JLabel();
+        LaserValue = new javax.swing.JLabel();
+        EnemyHpBar = new javax.swing.JProgressBar();
+        UserHpBar = new javax.swing.JProgressBar();
+        Level = new javax.swing.JLabel();
+        Final = new javax.swing.JLabel();
         Minerallab = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        MineralIcon = new javax.swing.JLabel();
+        LaserIcon = new javax.swing.JButton();
         Back = new javax.swing.JButton();
         AddMelee = new javax.swing.JButton();
         AddRange = new javax.swing.JButton();
@@ -496,50 +499,66 @@ public class Battle extends javax.swing.JFrame {
         Laser = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
+        ETowerHP.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        ETowerHP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ETowerHP.setText("HP : ");
+
+        UTowerHP.setBackground(new java.awt.Color(0, 0, 0));
+        UTowerHP.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        UTowerHP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        UTowerHP.setText("HP : ");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        LaserValue.setFont(new java.awt.Font("Lato Black", 0, 28)); // NOI18N
+        LaserValue.setForeground(new java.awt.Color(255, 255, 255));
+        LaserValue.setText("0");
+        getContentPane().add(LaserValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(998, 668, -1, -1));
+
+        EnemyHpBar.setBackground(new java.awt.Color(255, 255, 255));
+        EnemyHpBar.setForeground(new java.awt.Color(0, 255, 0));
+        EnemyHpBar.setValue(100);
+        EnemyHpBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        getContentPane().add(EnemyHpBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 580, -1, 10));
+
+        UserHpBar.setBackground(new java.awt.Color(255, 255, 255));
+        UserHpBar.setForeground(new java.awt.Color(0, 255, 0));
+        UserHpBar.setValue(100);
+        UserHpBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        getContentPane().add(UserHpBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 580, -1, 10));
+
         Level.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
-        Level.setForeground(new java.awt.Color(0, 0, 0));
         Level.setText("Level : ");
         getContentPane().add(Level, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 140, 40));
 
         Final.setBackground(new java.awt.Color(255, 255, 255));
         Final.setFont(new java.awt.Font("Lato Black", 1, 24)); // NOI18N
-        Final.setForeground(new java.awt.Color(0, 0, 0));
         Final.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Final.setText("WIN");
         Final.setOpaque(true);
-        getContentPane().add(Final, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 170, 50));
-
-        ETowerHP.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
-        ETowerHP.setForeground(new java.awt.Color(0, 0, 0));
-        ETowerHP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ETowerHP.setText("HP : ");
-        getContentPane().add(ETowerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 590, 150, 30));
-
-        UTowerHP.setBackground(new java.awt.Color(0, 0, 0));
-        UTowerHP.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
-        UTowerHP.setForeground(new java.awt.Color(0, 0, 0));
-        UTowerHP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        UTowerHP.setText("HP : ");
-        getContentPane().add(UTowerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 600, 160, 30));
+        getContentPane().add(Final, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 170, 50));
 
         Minerallab.setBackground(new java.awt.Color(0, 0, 0));
-        Minerallab.setFont(new java.awt.Font("Lato Black", 1, 24)); // NOI18N
-        Minerallab.setForeground(new java.awt.Color(0, 0, 0));
+        Minerallab.setFont(new java.awt.Font("Lato Black", 1, 27)); // NOI18N
+        Minerallab.setForeground(new java.awt.Color(255, 255, 255));
         Minerallab.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Minerallab.setText("0");
-        getContentPane().add(Minerallab, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 20, 110, 40));
+        getContentPane().add(Minerallab, new org.netbeans.lib.awtextra.AbsoluteConstraints(1075, 39, 150, 40));
 
-        jButton1.setText("Delete");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        MineralIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Mineral.png"))); // NOI18N
+        getContentPane().add(MineralIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 20, -1, -1));
+
+        LaserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Laser Icon.png"))); // NOI18N
+        LaserIcon.setBorderPainted(false);
+        LaserIcon.setContentAreaFilled(false);
+        LaserIcon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                LaserIconActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 100, 120, 40));
+        getContentPane().add(LaserIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 580, -1, -1));
 
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
         Back.setBorderPainted(false);
@@ -654,7 +673,7 @@ public class Battle extends javax.swing.JFrame {
 
 int waktu;
 private Timer las;
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void LaserIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaserIconActionPerformed
         // TODO add your handling code here:0
 //        getContentPane().remove(Trooplab.get(Trooplab.size()-1));
 //        Troop.remove(Troop.get(Troop.size()-1));
@@ -683,7 +702,7 @@ private Timer las;
         };
         las = new Timer(1000, act);
         las.start();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_LaserIconActionPerformed
 
     /**
      * @param args the command line arguments
@@ -727,11 +746,15 @@ private Timer las;
     private javax.swing.JButton Back;
     private javax.swing.JLabel Background;
     private javax.swing.JLabel ETowerHP;
+    private javax.swing.JProgressBar EnemyHpBar;
     private javax.swing.JLabel Final;
     private javax.swing.JLabel Laser;
+    private javax.swing.JButton LaserIcon;
+    private javax.swing.JLabel LaserValue;
     private javax.swing.JLabel Level;
+    private javax.swing.JLabel MineralIcon;
     private javax.swing.JLabel Minerallab;
     private javax.swing.JLabel UTowerHP;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JProgressBar UserHpBar;
     // End of variables declaration//GEN-END:variables
 }
