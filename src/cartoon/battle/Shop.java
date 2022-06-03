@@ -50,10 +50,11 @@ public class Shop extends javax.swing.JFrame {
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        SkillCount.setFont(new java.awt.Font("Lato Black", 0, 38)); // NOI18N
+        SkillCount.setFont(new java.awt.Font("Lato Black", 0, 42)); // NOI18N
         SkillCount.setForeground(new java.awt.Color(255, 255, 255));
+        SkillCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SkillCount.setText("0");
-        getContentPane().add(SkillCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, -1, -1));
+        getContentPane().add(SkillCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 368, 40, -1));
 
         BuyRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
         BuyRanged.setBorderPainted(false);

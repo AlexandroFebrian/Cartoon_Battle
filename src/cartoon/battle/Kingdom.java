@@ -316,6 +316,7 @@ public class Kingdom extends javax.swing.JFrame {
         RangedIcon1 = new javax.swing.JLabel();
         TankIcon2 = new javax.swing.JLabel();
         TankIcon1 = new javax.swing.JLabel();
+        MeleeIcon = new javax.swing.JLabel();
         Gold = new javax.swing.JLabel();
         Warning = new javax.swing.JLabel();
         HpTower = new javax.swing.JLabel();
@@ -379,6 +380,9 @@ public class Kingdom extends javax.swing.JFrame {
         TankIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tank Icon.png"))); // NOI18N
         getContentPane().add(TankIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 360, -1, -1));
 
+        MeleeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Melee Icon.png"))); // NOI18N
+        getContentPane().add(MeleeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 200, -1, -1));
+
         Gold.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
         Gold.setForeground(new java.awt.Color(255, 255, 51));
         Gold.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -438,7 +442,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeRanged1ActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeRanged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, -1, -1));
+        getContentPane().add(UpgradeRanged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, -1, -1));
 
         UpgradeRanged2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeRanged2.setBorderPainted(false);
@@ -448,7 +452,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeRanged2ActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeRanged2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 570, -1, -1));
+        getContentPane().add(UpgradeRanged2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 568, -1, -1));
 
         UpgradeTank1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeTank1.setBorderPainted(false);
@@ -458,7 +462,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeTank1ActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeTank1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, -1, -1));
+        getContentPane().add(UpgradeTank1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, -1, -1));
 
         UpgradeTank2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeTank2.setBorderPainted(false);
@@ -468,7 +472,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeTank2ActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeTank2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 570, -1, -1));
+        getContentPane().add(UpgradeTank2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 568, -1, -1));
 
         UpgradeMelee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeMelee.setBorderPainted(false);
@@ -565,6 +569,7 @@ public class Kingdom extends javax.swing.JFrame {
     private javax.swing.JLabel HpTank2;
     private javax.swing.JLabel HpTower;
     private javax.swing.JLabel LevelTower;
+    private javax.swing.JLabel MeleeIcon;
     private javax.swing.JLabel RangedIcon1;
     private javax.swing.JLabel RangedIcon2;
     private javax.swing.JLabel TankIcon1;
