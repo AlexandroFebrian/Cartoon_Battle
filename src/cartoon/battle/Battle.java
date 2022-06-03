@@ -169,6 +169,8 @@ public class Battle extends javax.swing.JFrame {
         ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
         Level.setText("Level : " + String.valueOf(user.getLevelEnemy()));
         
+        LaserValue.setText(String.valueOf(user.getSkill() + 10));
+        
         MineralT = new Timer(500, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -483,15 +485,15 @@ public class Battle extends javax.swing.JFrame {
     private void initComponents() {
 
         UpgradeMineralValue = new javax.swing.JLabel();
-        UpgradeMineral = new javax.swing.JLabel();
+        UpgradeMineralIcon = new javax.swing.JLabel();
         LaserValue = new javax.swing.JLabel();
+        LaserIcon = new javax.swing.JLabel();
         EnemyHpBar = new javax.swing.JProgressBar();
         UserHpBar = new javax.swing.JProgressBar();
         Level = new javax.swing.JLabel();
         Final = new javax.swing.JLabel();
         Minerallab = new javax.swing.JLabel();
         MineralIcon = new javax.swing.JLabel();
-        LaserIcon = new javax.swing.JButton();
         Back = new javax.swing.JButton();
         AddMelee = new javax.swing.JButton();
         AddRange = new javax.swing.JButton();
@@ -510,13 +512,17 @@ public class Battle extends javax.swing.JFrame {
         UpgradeMineralValue.setText("50");
         getContentPane().add(UpgradeMineralValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 669, -1, -1));
 
-        UpgradeMineral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Mineral Icon.png"))); // NOI18N
-        getContentPane().add(UpgradeMineral, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 585, -1, -1));
+        UpgradeMineralIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Mineral Icon.png"))); // NOI18N
+        getContentPane().add(UpgradeMineralIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 585, -1, -1));
 
-        LaserValue.setFont(new java.awt.Font("Lato Black", 0, 28)); // NOI18N
+        LaserValue.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
         LaserValue.setForeground(new java.awt.Color(255, 255, 255));
+        LaserValue.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LaserValue.setText("0");
-        getContentPane().add(LaserValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(1018, 668, -1, -1));
+        getContentPane().add(LaserValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(1003, 666, 30, -1));
+
+        LaserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Laser Icon.png"))); // NOI18N
+        getContentPane().add(LaserIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 580, -1, -1));
 
         EnemyHpBar.setBackground(new java.awt.Color(255, 255, 255));
         EnemyHpBar.setForeground(new java.awt.Color(0, 255, 0));
@@ -551,16 +557,6 @@ public class Battle extends javax.swing.JFrame {
 
         MineralIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Mineral.png"))); // NOI18N
         getContentPane().add(MineralIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 20, -1, -1));
-
-        LaserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Laser Icon.png"))); // NOI18N
-        LaserIcon.setBorderPainted(false);
-        LaserIcon.setContentAreaFilled(false);
-        LaserIcon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LaserIconActionPerformed(evt);
-            }
-        });
-        getContentPane().add(LaserIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 580, -1, -1));
 
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
         Back.setBorderPainted(false);
@@ -686,37 +682,6 @@ public class Battle extends javax.swing.JFrame {
 
 int waktu;
 private Timer las;
-    private void LaserIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaserIconActionPerformed
-        // TODO add your handling code here:0
-//        getContentPane().remove(Trooplab.get(Trooplab.size()-1));
-//        Troop.remove(Troop.get(Troop.size()-1));
-//        Trooplab.remove(Trooplab.get(Trooplab.size()-1));
-//        TroopX.remove(TroopX.get(TroopX.size()-1));
-//        getContentPane().validate();
-//        getContentPane().repaint();
-        waktu = 0;
-        Laser.setVisible(true);
-        ActionListener act = new ActionListener(){
-            public void actionPerformed(ActionEvent event) {
-                waktu++;
-                if(waktu == 1){
-                    for(int i = 0; i < Enemylab.size(); i++){
-                        getContentPane().remove(Enemylab.get(i));
-                    }
-                    Enemylab.clear();
-                    EnemyX.clear();
-                    EnemyList.clear();
-                    getContentPane().validate();
-                    getContentPane().repaint();
-                    Laser.setVisible(false);
-                    las.stop();
-                }
-            }
-        };
-        las = new Timer(1000, act);
-        las.start();
-    }//GEN-LAST:event_LaserIconActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -762,13 +727,13 @@ private Timer las;
     private javax.swing.JProgressBar EnemyHpBar;
     private javax.swing.JLabel Final;
     private javax.swing.JLabel Laser;
-    private javax.swing.JButton LaserIcon;
+    private javax.swing.JLabel LaserIcon;
     private javax.swing.JLabel LaserValue;
     private javax.swing.JLabel Level;
     private javax.swing.JLabel MineralIcon;
     private javax.swing.JLabel Minerallab;
     private javax.swing.JLabel UTowerHP;
-    private javax.swing.JLabel UpgradeMineral;
+    private javax.swing.JLabel UpgradeMineralIcon;
     private javax.swing.JLabel UpgradeMineralValue;
     private javax.swing.JProgressBar UserHpBar;
     // End of variables declaration//GEN-END:variables
