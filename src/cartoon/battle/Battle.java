@@ -137,7 +137,7 @@ public class Battle extends javax.swing.JFrame {
         }
     }
 
-    private void Win(User user){
+    private void Win(){
         StopAllTimer();
         BlackBackground.setVisible(true);
         BattleResult.setVisible(true);
@@ -169,7 +169,6 @@ public class Battle extends javax.swing.JFrame {
         EnemyHP += (user.getLevelEnemy()-1)*15;
         EnemyAtk += (user.getLevelEnemy()-1)*4;
         EnemyTowerHP += (user.getLevelEnemy()-1)*100;
-        System.out.println("EnemyHp : " + EnemyTowerHP);
         Level.setText("Level : " + String.valueOf(user.getLevelEnemy()));
         
         UserTowerHP = user.getTower().getHp();
@@ -323,7 +322,7 @@ public class Battle extends javax.swing.JFrame {
                         }else if(Enemylab.size() >= 1){
                             if(Enemylab.get(0).getLocation().x >= Trooplab.get(i).getLocation().x && Enemylab.get(0).getLocation().x <= Trooplab.get(i).getLocation().x+20 && Trooplab.get(i).getIcon() != Micon2){
                                 //ganti icon nyerang
-                                Trooplab.get(i).setBounds(TroopX.get(i), 480, 105, 70); //x, y, lebar, tinggi
+//                                Trooplab.get(i).setBounds(TroopX.get(i), 480, 105, 70); //x, y, lebar, tinggi
                                 Trooplab.get(i).setIcon(Micon2);
                             }
                             else if(Trooplab.get(i).getIcon() == Micon){
@@ -340,7 +339,7 @@ public class Battle extends javax.swing.JFrame {
                         }else if(Enemylab.size() >= 1){
                             if(Enemylab.get(0).getLocation().x >= Trooplab.get(i).getLocation().x && Enemylab.get(0).getLocation().x <= Trooplab.get(i).getLocation().x+250 && Trooplab.get(i).getIcon() != Ricon2){
                                 //ganti icon nyerang
-                                Trooplab.get(i).setBounds(TroopX.get(i), 435, 300, 120); //x, y, lebar, tinggi
+//                                Trooplab.get(i).setBounds(TroopX.get(i), 435, 300, 120); //x, y, lebar, tinggi
                                 Trooplab.get(i).setIcon(Ricon2);
                             }
                             else if(Trooplab.get(i).getIcon() == Ricon){
@@ -357,7 +356,7 @@ public class Battle extends javax.swing.JFrame {
                         }else if(Enemylab.size() >= 1){
                             if(Enemylab.get(0).getLocation().x >= Trooplab.get(i).getLocation().x && Enemylab.get(0).getLocation().x <= Trooplab.get(i).getLocation().x+75 && Trooplab.get(i).getIcon() != Ticon2){
                                 //ganti icon nyerang
-                                Trooplab.get(i).setBounds(TroopX.get(i), 430, 195, 130); //x, y, lebar, tinggi
+//                                Trooplab.get(i).setBounds(TroopX.get(i), 430, 195, 130); //x, y, lebar, tinggi
                                 Trooplab.get(i).setIcon(Ticon2);
                             }
                             else if(Trooplab.get(i).getIcon() == Ticon){
@@ -399,7 +398,7 @@ public class Battle extends javax.swing.JFrame {
                                     EnemyTowerHP -= Troop.get(i).getAtk();
                                     EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
-                                        Win(user);
+                                        Win();
                                     }
                             }else{
                                 Trooplab.get(i).setIcon(Micon);
@@ -428,7 +427,7 @@ public class Battle extends javax.swing.JFrame {
                                     EnemyTowerHP -= Troop.get(i).getAtk();
                                     EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
-                                        Win(user);
+                                        Win();
                                     }
                             }else{
                                 Trooplab.get(i).setIcon(Ricon);
@@ -457,7 +456,7 @@ public class Battle extends javax.swing.JFrame {
                                     EnemyTowerHP -= Troop.get(i).getAtk();
                                     EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
-                                        Win(user);
+                                        Win();
                                     }
                             }else{
                                 Trooplab.get(i).setIcon(Ticon);
@@ -632,7 +631,7 @@ public class Battle extends javax.swing.JFrame {
             Troop.add(new Melee(userT.get(0).getHP(), userT.get(0).getAtk()));
             Trooplab.add(new JLabel());
             Trooplab.get(Trooplab.size()-1).setIcon(Micon);
-            Trooplab.get(Trooplab.size()-1).setBounds(150, 480, 68, 68); //x, y, lebar, tinggi
+            Trooplab.get(Trooplab.size()-1).setBounds(150, 480, 105, 70); //x, y, lebar, tinggi
             getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
             Mineral -= 10;
         }
@@ -650,7 +649,7 @@ public class Battle extends javax.swing.JFrame {
             TroopX.add(0);
             Trooplab.add(new JLabel());
             Trooplab.get(Trooplab.size()-1).setIcon(Ricon);
-            Trooplab.get(Trooplab.size()-1).setBounds(120, 435, 120, 120); //x, y, lebar, tinggi
+            Trooplab.get(Trooplab.size()-1).setBounds(120, 435, 300, 120); //x, y, lebar, tinggi
             getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
             Mineral -= 30;
         }
@@ -668,7 +667,7 @@ public class Battle extends javax.swing.JFrame {
             TroopX.add(0);
             Trooplab.add(new JLabel());
             Trooplab.get(Trooplab.size()-1).setIcon(Ticon);
-            Trooplab.get(Trooplab.size()-1).setBounds(119, 430, 130, 130); //x, y, lebar, tinggi
+            Trooplab.get(Trooplab.size()-1).setBounds(119, 430, 195, 130); //x, y, lebar, tinggi
             getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
             Mineral -= 20;
         }
