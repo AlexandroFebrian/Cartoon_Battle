@@ -66,6 +66,13 @@ public class Login extends javax.swing.JFrame {
         VolumeControl.setVisible(false);
         Back.setVisible(false);
         XMark.setVisible(false);
+        Help1.setVisible(false);
+        Help2.setVisible(false);
+        Help3.setVisible(false);
+        Help4.setVisible(false);
+        Help5.setVisible(false);
+        Help6.setVisible(false);
+        Tap.setVisible(false);
     }
     
     public void menuUtama() {
@@ -89,6 +96,13 @@ public class Login extends javax.swing.JFrame {
         Setting.setVisible(true);
         Help.setVisible(true);
         XMark.setVisible(false);
+        Help1.setVisible(false);
+        Help2.setVisible(false);
+        Help3.setVisible(false);
+        Help4.setVisible(false);
+        Help5.setVisible(false);
+        Help6.setVisible(false);
+        Tap.setVisible(false);
     }
     
     private void newGame() {
@@ -115,7 +129,45 @@ public class Login extends javax.swing.JFrame {
     }
     
     private void help() {
-        //Belum diisi
+        invisibleIcon();
+        Tap.setVisible(true);
+        Help1.setVisible(true);
+        Help1.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                Help1.setVisible(false);
+                Help2.setVisible(true);
+            }   
+        });
+        Help2.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                Help2.setVisible(false);
+                Help3.setVisible(true);
+            }   
+        });
+        Help3.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                Help3.setVisible(false);
+                Help4.setVisible(true);
+            }   
+        });
+        Help4.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                Help4.setVisible(false);
+                Help5.setVisible(true);
+            }   
+        });
+        Help5.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                Help5.setVisible(false);
+                Help6.setVisible(true);
+            }   
+        });
+        Help6.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                Help6.setVisible(false);
+                menuUtama();
+            }   
+        });
     }
     
     public void playMusic(Sound sound) {
@@ -151,9 +203,9 @@ public class Login extends javax.swing.JFrame {
         ActionListener act = new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 waktu++;
-                Troop.setLocation(Troop.getLocation().x + 48, Troop.getLocation().y);
-                Loading.setValue(waktu * 10);
-                if (waktu == 10) {
+                Troop.setLocation(Troop.getLocation().x + 5, Troop.getLocation().y);
+                Loading.setValue(waktu);
+                if (waktu == 100) {
                     menuUtama();
                     Back.addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
@@ -189,7 +241,7 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         };
-        t = new Timer(300, act);
+        t = new Timer(30, act);
         t.start();
     }
     
@@ -221,6 +273,13 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Tap = new javax.swing.JLabel();
+        Help1 = new javax.swing.JLabel();
+        Help2 = new javax.swing.JLabel();
+        Help3 = new javax.swing.JLabel();
+        Help4 = new javax.swing.JLabel();
+        Help5 = new javax.swing.JLabel();
+        Help6 = new javax.swing.JLabel();
         Troop = new javax.swing.JLabel();
         Cartoon = new javax.swing.JLabel();
         Loading = new javax.swing.JProgressBar();
@@ -245,6 +304,27 @@ public class Login extends javax.swing.JFrame {
         setTitle("Cartoon Battle");
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Tap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tap.png"))); // NOI18N
+        getContentPane().add(Tap, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 600, -1, -1));
+
+        Help1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help1.png"))); // NOI18N
+        getContentPane().add(Help1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Help2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help2.png"))); // NOI18N
+        getContentPane().add(Help2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Help3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help3.png"))); // NOI18N
+        getContentPane().add(Help3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Help4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help4.png"))); // NOI18N
+        getContentPane().add(Help4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Help5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help5.png"))); // NOI18N
+        getContentPane().add(Help5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Help6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help6.png"))); // NOI18N
+        getContentPane().add(Help6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Troop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Melee1.gif"))); // NOI18N
         getContentPane().add(Troop, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, -1, -1));
@@ -424,12 +504,19 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel BlackBackground;
     private javax.swing.JLabel Cartoon;
     private javax.swing.JButton Help;
+    private javax.swing.JLabel Help1;
+    private javax.swing.JLabel Help2;
+    private javax.swing.JLabel Help3;
+    private javax.swing.JLabel Help4;
+    private javax.swing.JLabel Help5;
+    private javax.swing.JLabel Help6;
     private javax.swing.JTextField IsiUser;
     private javax.swing.JButton Load;
     private javax.swing.JProgressBar Loading;
     private javax.swing.JButton New;
     private javax.swing.JButton Play;
     private javax.swing.JButton Setting;
+    private javax.swing.JLabel Tap;
     private javax.swing.JLabel Title;
     private javax.swing.JLabel Troop;
     private javax.swing.JLabel Username;
