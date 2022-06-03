@@ -306,12 +306,18 @@ public class Kingdom extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        TowerUpgradeCost = new javax.swing.JLabel();
+        Troop2UpgradeCost = new javax.swing.JLabel();
+        Troop1UpgradeCost = new javax.swing.JLabel();
+        MeleeUpgradeCost = new javax.swing.JLabel();
+        HpRanged2 = new javax.swing.JLabel();
+        AtkRanged2 = new javax.swing.JLabel();
         HpRanged1 = new javax.swing.JLabel();
         AtkRanged1 = new javax.swing.JLabel();
         HpTank2 = new javax.swing.JLabel();
         AtkTank2 = new javax.swing.JLabel();
-        AtkTank1 = new javax.swing.JLabel();
         HpTank1 = new javax.swing.JLabel();
+        AtkTank1 = new javax.swing.JLabel();
         RangedIcon2 = new javax.swing.JLabel();
         RangedIcon1 = new javax.swing.JLabel();
         TankIcon2 = new javax.swing.JLabel();
@@ -321,8 +327,6 @@ public class Kingdom extends javax.swing.JFrame {
         Warning = new javax.swing.JLabel();
         HpTower = new javax.swing.JLabel();
         LevelTower = new javax.swing.JLabel();
-        AtkRanged2 = new javax.swing.JLabel();
-        HpRanged2 = new javax.swing.JLabel();
         AtkMelee = new javax.swing.JLabel();
         HpMelee = new javax.swing.JLabel();
         UpgradeTower = new javax.swing.JButton();
@@ -332,41 +336,77 @@ public class Kingdom extends javax.swing.JFrame {
         UpgradeTank2 = new javax.swing.JButton();
         UpgradeMelee = new javax.swing.JButton();
         Back = new javax.swing.JButton();
+        TroopsBackground2 = new javax.swing.JLabel();
+        TroopsBackground1 = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TowerUpgradeCost.setFont(new java.awt.Font("Lato Black", 0, 30)); // NOI18N
+        TowerUpgradeCost.setForeground(new java.awt.Color(255, 255, 0));
+        TowerUpgradeCost.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TowerUpgradeCost.setText("0");
+        getContentPane().add(TowerUpgradeCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 563, 130, -1));
+
+        Troop2UpgradeCost.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        Troop2UpgradeCost.setForeground(new java.awt.Color(255, 255, 0));
+        Troop2UpgradeCost.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Troop2UpgradeCost.setText("0");
+        getContentPane().add(Troop2UpgradeCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 596, 130, -1));
+
+        Troop1UpgradeCost.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        Troop1UpgradeCost.setForeground(new java.awt.Color(255, 255, 0));
+        Troop1UpgradeCost.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Troop1UpgradeCost.setText("0");
+        getContentPane().add(Troop1UpgradeCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 435, 130, -1));
+
+        MeleeUpgradeCost.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        MeleeUpgradeCost.setForeground(new java.awt.Color(255, 255, 0));
+        MeleeUpgradeCost.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MeleeUpgradeCost.setText("0");
+        getContentPane().add(MeleeUpgradeCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 273, 130, -1));
+
+        HpRanged2.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        HpRanged2.setForeground(new java.awt.Color(255, 255, 255));
+        HpRanged2.setText("0");
+        getContentPane().add(HpRanged2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 524, -1, -1));
+
+        AtkRanged2.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        AtkRanged2.setForeground(new java.awt.Color(255, 255, 255));
+        AtkRanged2.setText("0");
+        getContentPane().add(AtkRanged2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 553, -1, -1));
+
         HpRanged1.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
         HpRanged1.setForeground(new java.awt.Color(255, 255, 255));
         HpRanged1.setText("0");
-        getContentPane().add(HpRanged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
+        getContentPane().add(HpRanged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 364, -1, -1));
 
         AtkRanged1.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
         AtkRanged1.setForeground(new java.awt.Color(255, 255, 255));
         AtkRanged1.setText("0");
-        getContentPane().add(AtkRanged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, -1, -1));
+        getContentPane().add(AtkRanged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 393, -1, -1));
 
         HpTank2.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
         HpTank2.setForeground(new java.awt.Color(255, 255, 255));
         HpTank2.setText("0");
-        getContentPane().add(HpTank2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, -1, -1));
+        getContentPane().add(HpTank2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 524, -1, -1));
 
         AtkTank2.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
         AtkTank2.setForeground(new java.awt.Color(255, 255, 255));
         AtkTank2.setText("0");
-        getContentPane().add(AtkTank2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 550, -1, -1));
-
-        AtkTank1.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
-        AtkTank1.setForeground(new java.awt.Color(255, 255, 255));
-        AtkTank1.setText("0");
-        getContentPane().add(AtkTank1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, -1, -1));
+        getContentPane().add(AtkTank2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 553, -1, -1));
 
         HpTank1.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
         HpTank1.setForeground(new java.awt.Color(255, 255, 255));
         HpTank1.setText("0");
-        getContentPane().add(HpTank1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
+        getContentPane().add(HpTank1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 364, -1, -1));
+
+        AtkTank1.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        AtkTank1.setForeground(new java.awt.Color(255, 255, 255));
+        AtkTank1.setText("0");
+        getContentPane().add(AtkTank1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 393, -1, -1));
 
         RangedIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ranged Icon.png"))); // NOI18N
         getContentPane().add(RangedIcon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 520, -1, -1));
@@ -384,15 +424,16 @@ public class Kingdom extends javax.swing.JFrame {
         getContentPane().add(MeleeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 200, -1, -1));
 
         Gold.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
-        Gold.setForeground(new java.awt.Color(255, 255, 51));
+        Gold.setForeground(new java.awt.Color(255, 255, 0));
         Gold.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Gold.setText("0");
-        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 27, 240, -1));
+        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 27, 240, -1));
 
+        Warning.setBackground(new java.awt.Color(255, 255, 255));
         Warning.setFont(new java.awt.Font("Lato Black", 0, 18)); // NOI18N
-        Warning.setForeground(new java.awt.Color(255, 255, 255));
-        Warning.setText("Warning GOLD ga cukup pas upgrade");
-        getContentPane().add(Warning, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
+        Warning.setForeground(new java.awt.Color(255, 51, 51));
+        Warning.setText("Warning GOLD ga cukup pas upgrade, kasi pengecekan upgrade cost sama kasi cost e terserah");
+        getContentPane().add(Warning, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
 
         HpTower.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
         HpTower.setForeground(new java.awt.Color(255, 255, 255));
@@ -404,25 +445,15 @@ public class Kingdom extends javax.swing.JFrame {
         LevelTower.setText("0");
         getContentPane().add(LevelTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 300, -1, -1));
 
-        AtkRanged2.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
-        AtkRanged2.setForeground(new java.awt.Color(255, 255, 255));
-        AtkRanged2.setText("0");
-        getContentPane().add(AtkRanged2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 550, -1, -1));
-
-        HpRanged2.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
-        HpRanged2.setForeground(new java.awt.Color(255, 255, 255));
-        HpRanged2.setText("0");
-        getContentPane().add(HpRanged2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, -1, -1));
-
         AtkMelee.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
         AtkMelee.setForeground(new java.awt.Color(255, 255, 255));
         AtkMelee.setText("0");
-        getContentPane().add(AtkMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, -1));
+        getContentPane().add(AtkMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 233, -1, -1));
 
         HpMelee.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
         HpMelee.setForeground(new java.awt.Color(255, 255, 255));
         HpMelee.setText("0");
-        getContentPane().add(HpMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
+        getContentPane().add(HpMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 204, -1, -1));
 
         UpgradeTower.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Tower.png"))); // NOI18N
         UpgradeTower.setBorderPainted(false);
@@ -432,7 +463,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeTowerActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 530, -1, -1));
+        getContentPane().add(UpgradeTower, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, -1, -1));
 
         UpgradeRanged1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeRanged1.setBorderPainted(false);
@@ -442,7 +473,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeRanged1ActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeRanged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, -1, -1));
+        getContentPane().add(UpgradeRanged1, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 402, -1, -1));
 
         UpgradeRanged2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeRanged2.setBorderPainted(false);
@@ -452,7 +483,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeRanged2ActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeRanged2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 568, -1, -1));
+        getContentPane().add(UpgradeRanged2, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 563, -1, -1));
 
         UpgradeTank1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeTank1.setBorderPainted(false);
@@ -462,7 +493,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeTank1ActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeTank1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, -1, -1));
+        getContentPane().add(UpgradeTank1, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 402, -1, -1));
 
         UpgradeTank2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeTank2.setBorderPainted(false);
@@ -472,7 +503,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeTank2ActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeTank2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 568, -1, -1));
+        getContentPane().add(UpgradeTank2, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 563, -1, -1));
 
         UpgradeMelee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Troop.png"))); // NOI18N
         UpgradeMelee.setBorderPainted(false);
@@ -482,12 +513,18 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeMeleeActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, -1, -1));
+        getContentPane().add(UpgradeMelee, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 240, -1, -1));
 
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
         Back.setBorderPainted(false);
         Back.setContentAreaFilled(false);
         getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        TroopsBackground2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/KingdomIconTroop.png"))); // NOI18N
+        getContentPane().add(TroopsBackground2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, -1, -1));
+
+        TroopsBackground1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/KingdomIconTroop.png"))); // NOI18N
+        getContentPane().add(TroopsBackground1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, -1, -1));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Kingdom Map.png"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -570,10 +607,16 @@ public class Kingdom extends javax.swing.JFrame {
     private javax.swing.JLabel HpTower;
     private javax.swing.JLabel LevelTower;
     private javax.swing.JLabel MeleeIcon;
+    private javax.swing.JLabel MeleeUpgradeCost;
     private javax.swing.JLabel RangedIcon1;
     private javax.swing.JLabel RangedIcon2;
     private javax.swing.JLabel TankIcon1;
     private javax.swing.JLabel TankIcon2;
+    private javax.swing.JLabel TowerUpgradeCost;
+    private javax.swing.JLabel Troop1UpgradeCost;
+    private javax.swing.JLabel Troop2UpgradeCost;
+    private javax.swing.JLabel TroopsBackground1;
+    private javax.swing.JLabel TroopsBackground2;
     private javax.swing.JButton UpgradeMelee;
     private javax.swing.JButton UpgradeRanged1;
     private javax.swing.JButton UpgradeRanged2;

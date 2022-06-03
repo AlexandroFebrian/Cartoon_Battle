@@ -37,6 +37,7 @@ public class Shop extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Gold = new javax.swing.JLabel();
         SkillCount = new javax.swing.JLabel();
         BuyRanged = new javax.swing.JButton();
         BuyTank = new javax.swing.JButton();
@@ -49,6 +50,12 @@ public class Shop extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Gold.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
+        Gold.setForeground(new java.awt.Color(255, 255, 0));
+        Gold.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Gold.setText("0");
+        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, 240, -1));
 
         SkillCount.setFont(new java.awt.Font("Lato Black", 0, 42)); // NOI18N
         SkillCount.setForeground(new java.awt.Color(255, 255, 255));
@@ -129,6 +136,7 @@ public class Shop extends javax.swing.JFrame {
     private javax.swing.JButton BuyRanged;
     private javax.swing.JButton BuySkill;
     private javax.swing.JButton BuyTank;
+    private javax.swing.JLabel Gold;
     private javax.swing.JLabel ShopRanged;
     private javax.swing.JLabel ShopTank;
     private javax.swing.JLabel SkillCount;

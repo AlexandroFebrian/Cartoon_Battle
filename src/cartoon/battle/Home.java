@@ -147,10 +147,10 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(BlackBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Gold.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
-        Gold.setForeground(new java.awt.Color(255, 255, 51));
+        Gold.setForeground(new java.awt.Color(255, 255, 0));
         Gold.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        Gold.setText("x");
-        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 50, 240, -1));
+        Gold.setText("0");
+        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 48, 240, -1));
 
         Username.setFont(new java.awt.Font("Lato Black", 1, 36)); // NOI18N
         Username.setText("<username>");
