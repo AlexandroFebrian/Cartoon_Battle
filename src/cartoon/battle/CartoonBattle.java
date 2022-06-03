@@ -104,8 +104,9 @@ public class CartoonBattle {
                                     b.dispose();
                                     b.StopAllTimer();
                                     h.setVisible(true);
-                                    if(b.getFinal().getText().equalsIgnoreCase("You Win")){
-                                        u.get(u.size()-1).setGold(u.get(u.size()-1).getGold()+50*u.get(u.size()-1).getLevelEnemy());
+                                    if(b.getEnemyTowerHP() <= 0){
+                                        int tempGold = u.get(u.size()-1).getGold()+50*u.get(u.size()-1).getLevelEnemy();
+                                        u.get(u.size()-1).setGold(tempGold);
                                         u.get(u.size()-1).setLevelEnemy(u.get(u.size()-1).getLevelEnemy()+1);
                                         h.getGold().setText(String.valueOf(u.get(u.size()-1).getGold()));
                                     }

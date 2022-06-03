@@ -106,8 +106,8 @@ public class Battle extends javax.swing.JFrame {
         this.MineralT = MineralT;
     }
     
-    public JLabel getFinal() {
-        return BattleResult;
+    public int getEnemyTowerHP() {
+        return EnemyTowerHP;
     }
     
     public void StopAllTimer(){
@@ -139,18 +139,20 @@ public class Battle extends javax.swing.JFrame {
 
     private void Win(){
         StopAllTimer();
-        BlackBackground.setVisible(true);
         BattleResult.setVisible(true);
-        BattleResult.setText("You Win");
-        Back.setLocation(600, 300);
+        Gold.setVisible(true);
+        BattleResult.setIcon(new ImageIcon("src\\images\\Win.png"));
+        Back.setBounds(520, 365, 280, 110);
+        Back.setIcon(new ImageIcon("src\\images\\Menu.png"));
     }
     
     private void Lose() {
         StopAllTimer();
-        BlackBackground.setVisible(true);
         BattleResult.setVisible(true);
-        BattleResult.setText("You Lose");
-        Back.setLocation(600, 300);
+        Gold.setVisible(true);
+        BattleResult.setIcon(new ImageIcon("src\\images\\Lose.png"));
+        Back.setBounds(520, 365, 280, 110);
+        Back.setIcon(new ImageIcon("src\\images\\Menu.png"));
     }
     
     public Battle() {
@@ -191,7 +193,7 @@ public class Battle extends javax.swing.JFrame {
         AddTank.setVisible(false);
         Laser.setVisible(false);
         BattleResult.setVisible(false);
-        BlackBackground.setVisible(false);
+        Gold.setVisible(false);
         
         //Mengambil data troop dari user
         userT = user.getTroop();
@@ -399,6 +401,7 @@ public class Battle extends javax.swing.JFrame {
                                     EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
                                         Win();
+                                        Gold.setText(String.valueOf(user.getGold()+50*user.getLevelEnemy()));
                                     }
                             }else{
                                 Trooplab.get(i).setIcon(Micon);
@@ -483,8 +486,9 @@ public class Battle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Gold = new javax.swing.JLabel();
+        Back = new javax.swing.JButton();
         BattleResult = new javax.swing.JLabel();
-        BlackBackground = new javax.swing.JLabel();
         UpgradeMineralValue = new javax.swing.JLabel();
         UpgradeMineralIcon = new javax.swing.JToggleButton();
         LaserValue = new javax.swing.JLabel();
@@ -494,7 +498,6 @@ public class Battle extends javax.swing.JFrame {
         Level = new javax.swing.JLabel();
         Minerallab = new javax.swing.JLabel();
         MineralIcon = new javax.swing.JLabel();
-        Back = new javax.swing.JButton();
         AddMelee = new javax.swing.JButton();
         AddRange = new javax.swing.JButton();
         AddTank = new javax.swing.JButton();
@@ -505,13 +508,25 @@ public class Battle extends javax.swing.JFrame {
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Gold.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
+        Gold.setText("0");
+        getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 322, 120, -1));
+
+        Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
+        Back.setBorderPainted(false);
+        Back.setContentAreaFilled(false);
+        Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 100, 100));
+
         BattleResult.setBackground(new java.awt.Color(255, 255, 255));
         BattleResult.setFont(new java.awt.Font("Lato Black", 1, 24)); // NOI18N
         BattleResult.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(BattleResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, -1, -1));
-
-        BlackBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Black.png"))); // NOI18N
-        getContentPane().add(BlackBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        BattleResult.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Win.png"))); // NOI18N
+        getContentPane().add(BattleResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         UpgradeMineralValue.setFont(new java.awt.Font("Lato Black", 0, 18)); // NOI18N
         UpgradeMineralValue.setForeground(new java.awt.Color(255, 255, 255));
@@ -570,16 +585,6 @@ public class Battle extends javax.swing.JFrame {
 
         MineralIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Mineral.png"))); // NOI18N
         getContentPane().add(MineralIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 20, -1, -1));
-
-        Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
-        Back.setBorderPainted(false);
-        Back.setContentAreaFilled(false);
-        Back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 100, 100));
 
         AddMelee.setBackground(new java.awt.Color(0, 0, 0));
         AddMelee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Melee Icon.png"))); // NOI18N
@@ -750,8 +755,8 @@ private Timer las;
     private javax.swing.JButton Back;
     private javax.swing.JLabel Background;
     private javax.swing.JLabel BattleResult;
-    private javax.swing.JLabel BlackBackground;
     private javax.swing.JProgressBar EnemyHpBar;
+    private javax.swing.JLabel Gold;
     private javax.swing.JLabel Laser;
     private javax.swing.JButton LaserIcon;
     private javax.swing.JLabel LaserValue;
