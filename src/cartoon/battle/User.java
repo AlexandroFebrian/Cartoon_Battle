@@ -24,9 +24,7 @@ public class User implements Serializable {
         this.levelEnemy = 1;
         this.gold = 0;
         this.skill = 0;
-        this.troop.add(new Melee(30, 5));
-//        this.troop.add(new Ranged(100, 75));
-//        this.troop.add(new Tank(75, 20));
+        this.troop.add(new Melee());
         this.tower = new Tower();
     }    
 
@@ -67,7 +65,7 @@ public class User implements Serializable {
         return troop;
     }
     
-    //menerima parameter new tank/range
+    //Hanya menerima parameter new Tank()/new Range()
     public void addTroop(Troops troop) {
         this.troop.add(troop);
     }

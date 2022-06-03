@@ -12,6 +12,10 @@ import java.io.Serializable;
  */
 public class Melee extends Troops implements Serializable {
     //HP, ATK
+    public Melee() {
+        super(25, 4);
+    }
+    
     public Melee(int HP, int Atk) {
         super(HP, Atk);
     }

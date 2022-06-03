@@ -20,14 +20,14 @@ public class Battle extends javax.swing.JFrame {
     /**
      * Creates new form Battle
      */
-    private ImageIcon Micon = new ImageIcon("src\\images\\Melee1.gif");
-    private ImageIcon Micon2 = new ImageIcon("src\\images\\Melee2.gif");
-    private ImageIcon Ricon = new ImageIcon("src\\images\\Ranged1.gif");
-    private ImageIcon Ricon2 = new ImageIcon("src\\images\\Ranged2.gif");
-    private ImageIcon Ticon = new ImageIcon("src\\images\\Tank1.gif");
-    private ImageIcon Ticon2 = new ImageIcon("src\\images\\Tank2.gif");
-    private ImageIcon Eicon = new ImageIcon("src\\images\\Enemy1.gif");
-    private ImageIcon Eicon2 = new ImageIcon("src\\images\\Enemy2.gif");
+    private final ImageIcon Micon = new ImageIcon("src\\images\\Melee1.gif");
+    private final ImageIcon Micon2 = new ImageIcon("src\\images\\Melee2.gif");
+    private final ImageIcon Ricon = new ImageIcon("src\\images\\Ranged1.gif");
+    private final ImageIcon Ricon2 = new ImageIcon("src\\images\\Ranged2.gif");
+    private final ImageIcon Ticon = new ImageIcon("src\\images\\Tank1.gif");
+    private final ImageIcon Ticon2 = new ImageIcon("src\\images\\Tank2.gif");
+    private final ImageIcon Eicon = new ImageIcon("src\\images\\Enemy1.gif");
+    private final ImageIcon Eicon2 = new ImageIcon("src\\images\\Enemy2.gif");
     
     private ArrayList<JLabel> Trooplab = new ArrayList<>();
     private ArrayList<Troops> Troop = new ArrayList<>();
@@ -107,7 +107,7 @@ public class Battle extends javax.swing.JFrame {
     }
     
     public JLabel getFinal() {
-        return Final;
+        return BattleResult;
     }
     
     public void StopAllTimer(){
@@ -141,8 +141,8 @@ public class Battle extends javax.swing.JFrame {
         StopAllTimer();
         BlackBackground.setVisible(true);
         ETowerHP.setText("HP : 0");
-        Final.setVisible(true);
-        Final.setText("You Win");
+        BattleResult.setVisible(true);
+        BattleResult.setText("You Win");
         Back.setLocation(600, 300);
     }
     
@@ -150,8 +150,8 @@ public class Battle extends javax.swing.JFrame {
         StopAllTimer();
         BlackBackground.setVisible(true);
         UTowerHP.setText("HP : 0");
-        Final.setVisible(true);
-        Final.setText("You Lose");
+        BattleResult.setVisible(true);
+        BattleResult.setText("You Lose");
         Back.setLocation(600, 300);
     }
     
@@ -171,11 +171,11 @@ public class Battle extends javax.swing.JFrame {
         EnemyHP += (user.getLevelEnemy()-1)*15;
         EnemyAtk += (user.getLevelEnemy()-1)*4;
         EnemyTowerHP += (user.getLevelEnemy()-1)*100;
+        ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
+        Level.setText("Level : " + String.valueOf(user.getLevelEnemy()));
         
         UserTowerHP = user.getTower().getHp();
         UTowerHP.setText("HP : " + String.valueOf(UserTowerHP));
-        ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
-        Level.setText("Level : " + String.valueOf(user.getLevelEnemy()));
         
         LaserValue.setText(String.valueOf(user.getSkill()));
         
@@ -194,7 +194,7 @@ public class Battle extends javax.swing.JFrame {
         AddRange.setVisible(false);
         AddTank.setVisible(false);
         Laser.setVisible(false);
-        Final.setVisible(false);
+        BattleResult.setVisible(false);
         BlackBackground.setVisible(false);
         
         //Mengambil data troop dari user
@@ -400,7 +400,7 @@ public class Battle extends javax.swing.JFrame {
                         }else{
                             if(Trooplab.get(i).getLocation().x >= 1010){
                                     EnemyTowerHP -= Troop.get(i).getAtk();
-                                    EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + (user.getLevelEnemy()-1)*100));
+                                    EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
                                         Win(user);
                                     }
@@ -487,7 +487,7 @@ public class Battle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Final = new javax.swing.JLabel();
+        BattleResult = new javax.swing.JLabel();
         BlackBackground = new javax.swing.JLabel();
         UpgradeMineralValue = new javax.swing.JLabel();
         UpgradeMineralIcon = new javax.swing.JToggleButton();
@@ -511,12 +511,10 @@ public class Battle extends javax.swing.JFrame {
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Final.setBackground(new java.awt.Color(255, 255, 255));
-        Final.setFont(new java.awt.Font("Lato Black", 1, 24)); // NOI18N
-        Final.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Final.setText("WIN");
-        Final.setOpaque(true);
-        getContentPane().add(Final, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 170, 50));
+        BattleResult.setBackground(new java.awt.Color(255, 255, 255));
+        BattleResult.setFont(new java.awt.Font("Lato Black", 1, 24)); // NOI18N
+        BattleResult.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(BattleResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, -1, -1));
 
         BlackBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Black.png"))); // NOI18N
         getContentPane().add(BlackBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -768,10 +766,10 @@ private Timer las;
     private javax.swing.JButton AddTank;
     private javax.swing.JButton Back;
     private javax.swing.JLabel Background;
+    private javax.swing.JLabel BattleResult;
     private javax.swing.JLabel BlackBackground;
     private javax.swing.JLabel ETowerHP;
     private javax.swing.JProgressBar EnemyHpBar;
-    private javax.swing.JLabel Final;
     private javax.swing.JLabel Laser;
     private javax.swing.JButton LaserIcon;
     private javax.swing.JLabel LaserValue;

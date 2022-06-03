@@ -12,6 +12,10 @@ import java.io.Serializable;
  */
 public class Ranged extends Troops implements Serializable {
     //HP, ATK
+    public Ranged() {
+        super(100, 50);
+    }
+    
     public Ranged(int HP, int Atk) {
         super(HP, Atk);
     }

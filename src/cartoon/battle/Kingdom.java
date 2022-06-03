@@ -32,6 +32,15 @@ public class Kingdom extends javax.swing.JFrame {
     
     public Kingdom(User u) {
         initComponents();
+        //Upgrade Cost Melee = current level * 50
+            //Upgrade Melee {Hp + 5, Atk + 1)
+        //Upgrade Cost Tank = current level * 100
+            //Upgrade Tank {Hp + 20, Atk + 2)
+        //Upgrade Cost Ranged = current level * 200
+            //Upgrade Melee {Hp + 8, Atk + 10)
+        //Upgrade Cost Tower = 100 + (current level * 100)
+            //Upgrade Melee {Lv + 1, Hp + 100)
+        
         
         //buat test 
 //        u.setGold(1000);         
@@ -49,14 +58,20 @@ public class Kingdom extends javax.swing.JFrame {
         HpRanged2.setVisible(false);
         HpTank1.setVisible(false);
         HpTank2.setVisible(false);
+        RangedIcon1.setVisible(false);
         RangedIcon2.setVisible(false);
-        RangedIcon2.setVisible(false);
-        TankIcon2.setVisible(false);
+        TankIcon1.setVisible(false);
         TankIcon2.setVisible(false);
         UpgradeRanged1.setVisible(false);
         UpgradeRanged2.setVisible(false);
         UpgradeTank1.setVisible(false);
         UpgradeTank2.setVisible(false);
+        TroopsBackground1.setVisible(false);
+        TroopsBackground2.setVisible(false);
+        Troop1UpgradeCost.setVisible(false);
+        Troop2UpgradeCost.setVisible(false);
+        Warning.setVisible(false);
+        XMark.setVisible(false);
         
         // test lagi
 //        if(troop.size() == 1){
@@ -76,7 +91,7 @@ public class Kingdom extends javax.swing.JFrame {
                 if(tempGold >= bayar){ // berhasil
                     tempGold -= bayar;
                     u.setGold(tempGold);
-                    int level= t.getLevel() + 1;
+                    int level = t.getLevel() + 1;
                     t.setLevel(level);
                     int hp = t.getHp() + (level*5) + 5;
                     t.setHp(hp);
@@ -84,7 +99,8 @@ public class Kingdom extends javax.swing.JFrame {
                     HpTower.setText(String.valueOf(t.getHp()));
                     LevelTower.setText(String.valueOf(t.getLevel()));
                 } else { //gold ga cukup
-//                    Warning.setVisible(true);
+                    Warning.setVisible(true);
+                    XMark.setVisible(true);
                 }
 //                System.out.println("Berhasil Upgrade Tower");
             }
@@ -113,7 +129,8 @@ public class Kingdom extends javax.swing.JFrame {
         });
         
         if(troop.size() == 2){
-            if(troop.get(1) instanceof Tank t){
+            if(troop.get(1) instanceof Tank){
+                Tank t = (Tank)troop.get(1);
                 AtkTank1.setVisible(true);
                 TankIcon1.setVisible(true);
                 HpTank1.setVisible(true);
@@ -141,7 +158,8 @@ public class Kingdom extends javax.swing.JFrame {
         //                System.out.println("Berhasil Upgrade Tank");
                     }
                 });
-            } else if(troop.get(1) instanceof Ranged r){
+            } else if(troop.get(1) instanceof Ranged){
+                Ranged r = (Ranged)troop.get(1);
                 AtkRanged1.setVisible(true);
                 HpRanged1.setVisible(true);
                 RangedIcon1.setVisible(true);
@@ -173,7 +191,8 @@ public class Kingdom extends javax.swing.JFrame {
         }
         
         if(troop.size() == 3){
-            if(troop.get(1) instanceof Tank t){
+            if(troop.get(1) instanceof Tank){
+                Tank t = (Tank)troop.get(1);
                 AtkTank1.setVisible(true);
                 HpTank1.setVisible(true);
                 UpgradeTank1.setVisible(true);
@@ -201,7 +220,8 @@ public class Kingdom extends javax.swing.JFrame {
         //                System.out.println("Berhasil Upgrade Tank");
                     }
                 });
-            } else if(troop.get(1) instanceof Ranged r){
+            } else if(troop.get(1) instanceof Ranged){
+                Ranged r = (Ranged)troop.get(1);
                 AtkRanged1.setVisible(true);
                 HpRanged1.setVisible(true);
                 UpgradeRanged1.setVisible(true);
@@ -231,7 +251,8 @@ public class Kingdom extends javax.swing.JFrame {
                 });
             }
             
-            if(troop.get(2) instanceof Tank t2){
+            if(troop.get(2) instanceof Tank){
+                Tank t2 = (Tank)troop.get(2);
                 AtkTank2.setVisible(true);
                 HpTank2.setVisible(true);
                 UpgradeTank2.setVisible(true);
@@ -259,7 +280,8 @@ public class Kingdom extends javax.swing.JFrame {
         //                System.out.println("Berhasil Upgrade Tank");
                     }
                 });
-            } else if(troop.get(2) instanceof Ranged r2){
+            } else if(troop.get(2) instanceof Ranged){
+                Ranged r2 = (Ranged)troop.get(2);
                 AtkRanged2.setVisible(true);
                 HpRanged2.setVisible(true);
                 UpgradeRanged2.setVisible(true);
@@ -306,6 +328,8 @@ public class Kingdom extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        XMark = new javax.swing.JButton();
+        Warning = new javax.swing.JLabel();
         TowerUpgradeCost = new javax.swing.JLabel();
         Troop2UpgradeCost = new javax.swing.JLabel();
         Troop1UpgradeCost = new javax.swing.JLabel();
@@ -324,7 +348,6 @@ public class Kingdom extends javax.swing.JFrame {
         TankIcon1 = new javax.swing.JLabel();
         MeleeIcon = new javax.swing.JLabel();
         Gold = new javax.swing.JLabel();
-        Warning = new javax.swing.JLabel();
         HpTower = new javax.swing.JLabel();
         LevelTower = new javax.swing.JLabel();
         AtkMelee = new javax.swing.JLabel();
@@ -343,6 +366,22 @@ public class Kingdom extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        XMark.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/X Mark.png"))); // NOI18N
+        XMark.setBorderPainted(false);
+        XMark.setContentAreaFilled(false);
+        XMark.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                XMarkActionPerformed(evt);
+            }
+        });
+        getContentPane().add(XMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 130, -1, -1));
+
+        Warning.setBackground(new java.awt.Color(255, 255, 255));
+        Warning.setFont(new java.awt.Font("Lato Black", 0, 18)); // NOI18N
+        Warning.setForeground(new java.awt.Color(255, 51, 51));
+        Warning.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Warning Gold.png"))); // NOI18N
+        getContentPane().add(Warning, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         TowerUpgradeCost.setFont(new java.awt.Font("Lato Black", 0, 30)); // NOI18N
         TowerUpgradeCost.setForeground(new java.awt.Color(255, 255, 0));
@@ -428,12 +467,6 @@ public class Kingdom extends javax.swing.JFrame {
         Gold.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Gold.setText("0");
         getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 27, 240, -1));
-
-        Warning.setBackground(new java.awt.Color(255, 255, 255));
-        Warning.setFont(new java.awt.Font("Lato Black", 0, 18)); // NOI18N
-        Warning.setForeground(new java.awt.Color(255, 51, 51));
-        Warning.setText("Warning GOLD ga cukup pas upgrade, kasi pengecekan upgrade cost sama kasi cost e terserah");
-        getContentPane().add(Warning, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
 
         HpTower.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
         HpTower.setForeground(new java.awt.Color(255, 255, 255));
@@ -555,6 +588,12 @@ public class Kingdom extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_UpgradeTank2ActionPerformed
 
+    private void XMarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XMarkActionPerformed
+        // TODO add your handling code here:
+        Warning.setVisible(false);
+        XMark.setVisible(false);
+    }//GEN-LAST:event_XMarkActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -624,5 +663,6 @@ public class Kingdom extends javax.swing.JFrame {
     private javax.swing.JButton UpgradeTank2;
     private javax.swing.JButton UpgradeTower;
     private javax.swing.JLabel Warning;
+    private javax.swing.JButton XMark;
     // End of variables declaration//GEN-END:variables
 }

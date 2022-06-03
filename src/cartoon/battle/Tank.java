@@ -12,6 +12,10 @@ import java.io.Serializable;
  */
 public class Tank extends Troops implements Serializable {
     //HP, ATK
+    public Tank() {
+        super(150, 10);
+    }
+    
     public Tank(int HP, int Atk) {
         super(HP, Atk);
     }
