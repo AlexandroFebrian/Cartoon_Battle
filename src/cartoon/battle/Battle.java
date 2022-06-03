@@ -6,6 +6,7 @@ package cartoon.battle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -49,6 +50,8 @@ public class Battle extends javax.swing.JFrame {
     private int EnemyTowerHP = 1000;
     private ArrayList<Integer> EnemyList = new ArrayList<>();
     private Timer EnemyAtkTime;
+    
+    private ArrayList<Sound> EnemySound = new ArrayList<>();
     
     private int Mineral = 0;
     private Timer MineralT;
@@ -137,8 +140,9 @@ public class Battle extends javax.swing.JFrame {
         }
     }
 
-    private void Win(){
+    private void Win(Sound sound){
         StopAllTimer();
+        sound.changeMusicResult(new File("src\\music\\Win.wav"));
         BattleResult.setVisible(true);
         Gold.setVisible(true);
         BattleResult.setIcon(new ImageIcon("src\\images\\Win.png"));
@@ -146,8 +150,9 @@ public class Battle extends javax.swing.JFrame {
         Back.setIcon(new ImageIcon("src\\images\\Menu.png"));
     }
     
-    private void Lose() {
+    private void Lose(Sound sound) {
         StopAllTimer();
+        sound.changeMusicResult(new File("src\\music\\Lose.wav"));
         BattleResult.setVisible(true);
         Gold.setVisible(true);
         BattleResult.setIcon(new ImageIcon("src\\images\\Lose.png"));
@@ -164,7 +169,7 @@ public class Battle extends javax.swing.JFrame {
         
     }
 
-    public Battle(User user){
+    public Battle(User user, Sound sound){
         initComponents();
         getContentPane().setLayout(null);
         
@@ -215,6 +220,7 @@ public class Battle extends javax.swing.JFrame {
                 SpawnTime+=1;
                 if(SpawnTime == 5){
                     SpawnTime = 0;
+                    EnemySound.add(new Sound(new File("src\\music\\Enemy.wav"), true));
                     EnemyX.add(0);
                     EnemyList.add(EnemyHP);
                     Enemylab.add(new JLabel());
@@ -241,6 +247,7 @@ public class Battle extends javax.swing.JFrame {
                             Enemylab.get(i).setIcon(Eicon2);
                         }else if(Enemylab.get(i).getIcon() == Eicon){
                             Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
+                            EnemySound.get(i).stop();
                         }
                     }else if(Trooplab.size() >= 1){
                         if(Trooplab.get(0).getLocation().x <= Enemylab.get(i).getLocation().x && Trooplab.get(0).getLocation().x >= Enemylab.get(i).getLocation().x-75 && Enemylab.get(i).getIcon() != Eicon2){
@@ -249,6 +256,7 @@ public class Battle extends javax.swing.JFrame {
                         }
                         else if(Enemylab.get(i).getIcon() == Eicon){
                             Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
+                            EnemySound.get(i).stop();
                         }
                     }
                 }
@@ -280,15 +288,18 @@ public class Battle extends javax.swing.JFrame {
                             }else{
                                 Enemylab.get(i).setIcon(Eicon);
                             }
+                            EnemySound.get(i).start();
                         }else{
                             if(Enemylab.get(i).getLocation().x <= 175){
+                                EnemySound.get(i).start();
                                 UserTowerHP -= EnemyAtk;
                                 UserHpBar.setValue((int)(UserTowerHP * 100) / user.getTower().getHp());
                                 if(UserTowerHP <= 0){
-                                    Lose();
+                                    Lose(sound);
                                 }
                             }else{
                                 Enemylab.get(i).setIcon(Eicon);
+                                EnemySound.get(i).stop();
                             }
                         }
                     }
@@ -383,6 +394,8 @@ public class Battle extends javax.swing.JFrame {
                                 if(EnemyList.get(0) <= 0){
                                     Trooplab.get(i).setIcon(Micon);
                                     getContentPane().remove(Enemylab.get(0));
+                                    EnemySound.get(0).stop();
+                                    EnemySound.remove(0);
                                     EnemyList.remove(0);
                                     Enemylab.remove(0);
                                     EnemyX.remove(0);
@@ -400,7 +413,7 @@ public class Battle extends javax.swing.JFrame {
                                     EnemyTowerHP -= Troop.get(i).getAtk();
                                     EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
-                                        Win();
+                                        Win(sound);
                                         Gold.setText(String.valueOf(user.getGold()+50*user.getLevelEnemy()));
                                     }
                             }else{
@@ -413,6 +426,8 @@ public class Battle extends javax.swing.JFrame {
                                 if(EnemyList.get(0) <= 0){
                                     Trooplab.get(i).setIcon(Ricon);
                                     getContentPane().remove(Enemylab.get(0));
+                                    EnemySound.get(0).stop();
+                                    EnemySound.remove(0);
                                     EnemyList.remove(0);
                                     Enemylab.remove(0);
                                     EnemyX.remove(0);
@@ -430,7 +445,8 @@ public class Battle extends javax.swing.JFrame {
                                     EnemyTowerHP -= Troop.get(i).getAtk();
                                     EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
-                                        Win();
+                                        Win(sound);
+                                        Gold.setText(String.valueOf(user.getGold()+50*user.getLevelEnemy()));
                                     }
                             }else{
                                 Trooplab.get(i).setIcon(Ricon);
@@ -442,6 +458,8 @@ public class Battle extends javax.swing.JFrame {
                                 if(EnemyList.get(0) <= 0){
                                     Trooplab.get(i).setIcon(Ticon);
                                     getContentPane().remove(Enemylab.get(0));
+                                    EnemySound.get(0).stop();
+                                    EnemySound.remove(0);
                                     EnemyList.remove(0);
                                     Enemylab.remove(0);
                                     EnemyX.remove(0);
@@ -459,7 +477,8 @@ public class Battle extends javax.swing.JFrame {
                                     EnemyTowerHP -= Troop.get(i).getAtk();
                                     EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
-                                        Win();
+                                        Win(sound);
+                                        Gold.setText(String.valueOf(user.getGold()+50*user.getLevelEnemy()));
                                     }
                             }else{
                                 Trooplab.get(i).setIcon(Ticon);

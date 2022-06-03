@@ -21,7 +21,7 @@ public class CartoonBattle {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Sound sound = new Sound(new File("src\\music\\Good Night, Liyue.wav"));
+        Sound sound = new Sound(new File("src\\music\\Home.wav"));
         Login l = new Login(sound);
         ArrayList <User> u = new ArrayList<>();
         
@@ -75,7 +75,6 @@ public class CartoonBattle {
                     //Kingdom <Jessica>
                     h.getKingdom().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-//                            Kingdom k = new Kingdom(/*Parameter*/);
                             Kingdom k = new Kingdom(u.get(u.size()-1));
                             k.setLocationRelativeTo(null);
                             k.setResizable(false);
@@ -94,13 +93,15 @@ public class CartoonBattle {
                     //Battle <Febrian>
                     h.getBattle().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            Battle b = new Battle(u.get(u.size()-1));
+                            sound.changeMusic(new File("src\\music\\Battle.wav"));
+                            Battle b = new Battle(u.get(u.size()-1), sound);
                             b.setLocationRelativeTo(null);
                             b.setResizable(false);
                             h.setVisible(false);
                             b.setVisible(true);
                             b.getBack().addMouseListener(new MouseAdapter(){
                                 public void mousePressed(MouseEvent me){
+                                    sound.changeMusic(new File("src\\music\\Home.wav"));
                                     b.dispose();
                                     b.StopAllTimer();
                                     h.setVisible(true);
