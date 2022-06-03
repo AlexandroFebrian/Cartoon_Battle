@@ -20,7 +20,7 @@ public class Kingdom extends javax.swing.JFrame {
      * Creates new form Kingdom
      */
     
-    private ArrayList<Troops> troop = new ArrayList<>();
+    private ArrayList<Troops> Troop = new ArrayList<>();
     
     public Kingdom() {
         initComponents();
@@ -31,25 +31,18 @@ public class Kingdom extends javax.swing.JFrame {
     }
     
     public Kingdom(User u) {
-        initComponents();
-        //Upgrade Cost Melee = current level * 50
-            //Upgrade Melee {Hp + 5, Atk + 1)
-        //Upgrade Cost Tank = current level * 100
-            //Upgrade Tank {Hp + 20, Atk + 2)
-        //Upgrade Cost Ranged = current level * 200
-            //Upgrade Melee {Hp + 8, Atk + 10)
-        //Upgrade Cost Tower = 100 + (current level * 100)
-            //Upgrade Melee {Lv + 1, Hp + 100)
+        initComponents();        
         
+        //buat test
+//        u.setGold(10000000);
         
-        //buat test 
-//        u.setGold(1000);         
-        
-//        Warning.setVisible(false);
         Gold.setText(String.valueOf(u.getGold()));
         HpTower.setText(String.valueOf(u.getTower().getHp()));
         LevelTower.setText(String.valueOf(u.getTower().getLevel()));
-        troop = u.getTroop();
+        TowerUpgradeCost.setText(String.valueOf(((u.getTower().getLevel() - 1)*50) + 100));
+        
+        Troop = u.getTroop();
+        MeleeUpgradeCost.setText(String.valueOf((Troop.get(0).getAtk() * 5) + 5));
         AtkRanged1.setVisible(false);
         AtkRanged2.setVisible(false);
         AtkTank1.setVisible(false);
@@ -74,30 +67,31 @@ public class Kingdom extends javax.swing.JFrame {
         XMark.setVisible(false);
         
         // test lagi
-//        if(troop.size() == 1){
-//            troop.add(new Ranged(40,10));
-//            troop.add(new Tank(60,5));
+//        if(Troop.size() == 1){
+//            Troop.add(new Tank());
+//            Troop.add(new Ranged());
 //        }
         
         //detail melee
-        HpMelee.setText(String.valueOf(troop.get(0).getHP()));
-        AtkMelee.setText(String.valueOf(troop.get(0).getAtk()));
+        HpMelee.setText(String.valueOf(Troop.get(0).getHP()));
+        AtkMelee.setText(String.valueOf(Troop.get(0).getAtk()));
         
         UpgradeTower.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
                 Tower t = u.getTower();
                 int tempGold = u.getGold();
-                int bayar = ((t.getLevel()-1)*50) + 50;
+                int bayar = ((t.getLevel()-1)*50) + 100;
                 if(tempGold >= bayar){ // berhasil
                     tempGold -= bayar;
                     u.setGold(tempGold);
                     int level = t.getLevel() + 1;
                     t.setLevel(level);
-                    int hp = t.getHp() + (level*5) + 5;
+                    int hp = t.getHp() + (level * 5 + 100);
                     t.setHp(hp);
                     Gold.setText(String.valueOf(u.getGold()));
                     HpTower.setText(String.valueOf(t.getHp()));
                     LevelTower.setText(String.valueOf(t.getLevel()));
+                    TowerUpgradeCost.setText(String.valueOf(((level-1)*50) + 100));
                 } else { //gold ga cukup
                     Warning.setVisible(true);
                     XMark.setVisible(true);
@@ -108,208 +102,234 @@ public class Kingdom extends javax.swing.JFrame {
         
         UpgradeMelee.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
-                Troops m = troop.get(0);
+                Troops m = Troop.get(0);
                 int tempGold = u.getGold();
-                int bayar = (m.getAtk()*5) + 5;
+                int bayar = (m.getAtk() * 5) + 5;
                 if(tempGold >= bayar){ // berhasil
                     tempGold-=bayar;
                     u.setGold(tempGold);
-                    int atk = m.getAtk() + 5;
+                    int atk = m.getAtk() + (bayar + m.getHP()) / m.getAtk();
                     m.setAtk(atk);
-                    int hp = m.getHP() + 10;
+                    int hp = m.getHP() + bayar * 10 / m.getHP();
                     m.setHP(hp);
                     Gold.setText(String.valueOf(u.getGold()));
                     HpMelee.setText(String.valueOf(m.getHP()));
                     AtkMelee.setText(String.valueOf(m.getAtk()));
+                    MeleeUpgradeCost.setText(String.valueOf((m.getAtk() * 5) + 5));
                 } else { //gold ga cukup
-//                    Warning.setVisible(true);
+                    Warning.setVisible(true);
+                    XMark.setVisible(true);
                 }
 //                System.out.println("Berhasil Upgrade Melee");
             }
         });
         
-        if(troop.size() == 2){
-            if(troop.get(1) instanceof Tank){
-                Tank t = (Tank)troop.get(1);
+        if(Troop.size() == 2){
+            if(Troop.get(1) instanceof Tank){
+                Tank t = (Tank)Troop.get(1);
                 AtkTank1.setVisible(true);
                 TankIcon1.setVisible(true);
                 HpTank1.setVisible(true);
                 UpgradeTank1.setVisible(true);
                 AtkTank1.setText(String.valueOf(t.getAtk()));
                 HpTank1.setText(String.valueOf(t.getHP()));
+                Troop1UpgradeCost.setText(String.valueOf((t.getAtk() * 6) + 6));
                 
                 UpgradeTank1.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
                         int tempGold = u.getGold();
-                        int bayar = (t.getAtk()*5) + 5;
+                        int bayar = (t.getAtk()*6) + 6;
                         if(tempGold >= bayar){ // berhasil
                             tempGold-=bayar;
                             u.setGold(tempGold);
-                            int atk = t.getAtk() + 5;
+                            int atk = t.getAtk() + (bayar + t.getHP()) / t.getAtk();
                             t.setAtk(atk);
-                            int hp = t.getHP() + 10;
+                            int hp = t.getHP() + bayar * 100 / t.getHP();
                             t.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
                             HpTank1.setText(String.valueOf(t.getHP()));
                             AtkTank1.setText(String.valueOf(t.getAtk()));
+                            Troop1UpgradeCost.setText(String.valueOf((t.getAtk() * 6) + 6));
                         } else { //gold ga cukup
-        //                    Warning.setVisible(true);
+                            Warning.setVisible(true);
+                            XMark.setVisible(true);
                         }
         //                System.out.println("Berhasil Upgrade Tank");
                     }
                 });
-            } else if(troop.get(1) instanceof Ranged){
-                Ranged r = (Ranged)troop.get(1);
+            } else if(Troop.get(1) instanceof Ranged){
+                Ranged r = (Ranged)Troop.get(1);
                 AtkRanged1.setVisible(true);
                 HpRanged1.setVisible(true);
                 RangedIcon1.setVisible(true);
                 UpgradeRanged1.setVisible(true);
                 AtkRanged1.setText(String.valueOf(r.getAtk()));
-                HpRanged1.setText(String.valueOf(r.getHP())); 
+                HpRanged1.setText(String.valueOf(r.getHP()));
+                Troop1UpgradeCost.setText(String.valueOf((r.getAtk() * 2) + 11));
                 
                 UpgradeRanged1.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
                         int tempGold = u.getGold();
-                        int bayar = (r.getAtk()*5) + 5;
+                        int bayar = (r.getAtk()*2) + 11;
                         if(tempGold >= bayar){ // berhasil
                             tempGold-=bayar;
                             u.setGold(tempGold);
-                            int atk = r.getAtk() + 5;
+                            int atk = r.getAtk() + (bayar * 10 + r.getHP()) / r.getAtk();
                             r.setAtk(atk);
-                            int hp = r.getHP() + 10;
+                            int hp = r.getHP() + bayar * 8 / r.getHP();
                             r.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
                             HpRanged1.setText(String.valueOf(r.getHP()));
                             AtkRanged1.setText(String.valueOf(r.getAtk()));
+                            Troop1UpgradeCost.setText(String.valueOf((r.getAtk() * 2) + 11));
                         } else { //gold ga cukup
-        //                    Warning.setVisible(true);
+                            Warning.setVisible(true);
+                            XMark.setVisible(true);
                         }
         //                System.out.println("Berhasil Upgrade Ranged");
                     }
                 });
             }
+            TroopsBackground1.setVisible(true);
+            Troop1UpgradeCost.setVisible(true);
         }
         
-        if(troop.size() == 3){
-            if(troop.get(1) instanceof Tank){
-                Tank t = (Tank)troop.get(1);
+        if(Troop.size() == 3){
+            if(Troop.get(1) instanceof Tank){
+                Tank t = (Tank)Troop.get(1);
                 AtkTank1.setVisible(true);
+                TankIcon1.setVisible(true);
                 HpTank1.setVisible(true);
                 UpgradeTank1.setVisible(true);
-                TankIcon1.setVisible(true);
                 AtkTank1.setText(String.valueOf(t.getAtk()));
-                HpTank1.setText(String.valueOf(t.getHP())); 
+                HpTank1.setText(String.valueOf(t.getHP()));
+                Troop1UpgradeCost.setText(String.valueOf((t.getAtk() * 6) + 6));
                 
                 UpgradeTank1.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
                         int tempGold = u.getGold();
-                        int bayar = (t.getAtk()*5) + 5;
+                        int bayar = (t.getAtk()*6) + 6;
                         if(tempGold >= bayar){ // berhasil
                             tempGold-=bayar;
                             u.setGold(tempGold);
-                            int atk = t.getAtk() + 5;
+                            int atk = t.getAtk() + (bayar + t.getHP()) / t.getAtk();
                             t.setAtk(atk);
-                            int hp = t.getHP() + 10;
+                            int hp = t.getHP() + bayar * 100 / t.getHP();
                             t.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
                             HpTank1.setText(String.valueOf(t.getHP()));
                             AtkTank1.setText(String.valueOf(t.getAtk()));
+                            Troop1UpgradeCost.setText(String.valueOf((t.getAtk() * 6) + 6));
                         } else { //gold ga cukup
-        //                    Warning.setVisible(true);
+                            Warning.setVisible(true);
+                            XMark.setVisible(true);
                         }
         //                System.out.println("Berhasil Upgrade Tank");
                     }
                 });
-            } else if(troop.get(1) instanceof Ranged){
-                Ranged r = (Ranged)troop.get(1);
+            } else if(Troop.get(1) instanceof Ranged){
+                Ranged r = (Ranged)Troop.get(1);
                 AtkRanged1.setVisible(true);
                 HpRanged1.setVisible(true);
-                UpgradeRanged1.setVisible(true);
                 RangedIcon1.setVisible(true);
+                UpgradeRanged1.setVisible(true);
                 AtkRanged1.setText(String.valueOf(r.getAtk()));
-                HpRanged1.setText(String.valueOf(r.getHP())); 
+                HpRanged1.setText(String.valueOf(r.getHP()));
+                Troop1UpgradeCost.setText(String.valueOf((r.getAtk() * 2) + 11));
                 
                 UpgradeRanged1.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
                         int tempGold = u.getGold();
-                        int bayar = (r.getAtk()*5) + 5;
+                        int bayar = (r.getAtk()*2) + 11;
                         if(tempGold >= bayar){ // berhasil
                             tempGold-=bayar;
                             u.setGold(tempGold);
-                            int atk = r.getAtk() + 5;
+                            int atk = r.getAtk() + (bayar * 10 + r.getHP()) / r.getAtk();
                             r.setAtk(atk);
-                            int hp = r.getHP() + 10;
+                            int hp = r.getHP() + bayar * 8 / r.getHP();
                             r.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
                             HpRanged1.setText(String.valueOf(r.getHP()));
                             AtkRanged1.setText(String.valueOf(r.getAtk()));
+                            Troop1UpgradeCost.setText(String.valueOf((r.getAtk() * 2) + 11));
                         } else { //gold ga cukup
-        //                    Warning.setVisible(true);
+                            Warning.setVisible(true);
+                            XMark.setVisible(true);
                         }
         //                System.out.println("Berhasil Upgrade Ranged");
                     }
                 });
             }
             
-            if(troop.get(2) instanceof Tank){
-                Tank t2 = (Tank)troop.get(2);
+            if(Troop.get(2) instanceof Tank){
+                Tank t2 = (Tank)Troop.get(2);
                 AtkTank2.setVisible(true);
                 HpTank2.setVisible(true);
                 UpgradeTank2.setVisible(true);
                 TankIcon2.setVisible(true);
                 AtkTank2.setText(String.valueOf(t2.getAtk()));
                 HpTank2.setText(String.valueOf(t2.getHP()));
+                Troop2UpgradeCost.setText(String.valueOf((t2.getAtk() * 6) + 6));
                 
                 UpgradeTank2.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
                         int tempGold = u.getGold();
-                        int bayar = (t2.getAtk()*5) + 5;
+                        int bayar = (t2.getAtk()*6) + 6;
                         if(tempGold >= bayar){ // berhasil
                             tempGold-=bayar;
                             u.setGold(tempGold);
-                            int atk = t2.getAtk() + 5;
+                            int atk = t2.getAtk() + (bayar + t2.getHP()) / t2.getAtk();
                             t2.setAtk(atk);
-                            int hp = t2.getHP() + 10;
+                            int hp = t2.getHP() + bayar * 100 / t2.getHP();
                             t2.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
                             HpTank2.setText(String.valueOf(t2.getHP()));
                             AtkTank2.setText(String.valueOf(t2.getAtk()));
+                            Troop2UpgradeCost.setText(String.valueOf((t2.getAtk() * 6) + 6));
                         } else { //gold ga cukup
-        //                    Warning.setVisible(true);
+                            Warning.setVisible(true);
+                            XMark.setVisible(true);
                         }
         //                System.out.println("Berhasil Upgrade Tank");
                     }
                 });
-            } else if(troop.get(2) instanceof Ranged){
-                Ranged r2 = (Ranged)troop.get(2);
+            } else if(Troop.get(2) instanceof Ranged){
+                Ranged r2 = (Ranged)Troop.get(2);
                 AtkRanged2.setVisible(true);
                 HpRanged2.setVisible(true);
                 UpgradeRanged2.setVisible(true);
                 RangedIcon2.setVisible(true);
                 AtkRanged2.setText(String.valueOf(r2.getAtk()));
                 HpRanged2.setText(String.valueOf(r2.getHP())); 
+                Troop2UpgradeCost.setText(String.valueOf((r2.getAtk() * 2) + 11));
                 
                 UpgradeRanged2.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
                         int tempGold = u.getGold();
-                        int bayar = (r2.getAtk()*5) + 5;
+                        int bayar = (r2.getAtk() * 2) + 11;
                         if(tempGold >= bayar){ // berhasil
                             tempGold-=bayar;
                             u.setGold(tempGold);
-                            int atk = r2.getAtk() + 5;
+                            int atk = r2.getAtk() + (bayar * 10 + r2.getHP()) / r2.getAtk();
                             r2.setAtk(atk);
-                            int hp = r2.getHP() + 10;
+                            int hp = r2.getHP() + bayar * 8 / r2.getHP();
                             r2.setHP(hp);
                             Gold.setText(String.valueOf(u.getGold()));
                             HpRanged2.setText(String.valueOf(r2.getHP()));
                             AtkRanged2.setText(String.valueOf(r2.getAtk()));
+                            Troop2UpgradeCost.setText(String.valueOf((r2.getAtk() * 2) + 11));
                         } else { //gold ga cukup
-        //                    Warning.setVisible(true);
+                            Warning.setVisible(true);
+                            XMark.setVisible(true);
                         }
         //                System.out.println("Berhasil Upgrade Ranged");
                     }
                 });
             }
+            TroopsBackground1.setVisible(true);
+            Troop1UpgradeCost.setVisible(true);
+            TroopsBackground2.setVisible(true);
+            Troop2UpgradeCost.setVisible(true);
         }
         
     }
@@ -570,6 +590,7 @@ public class Kingdom extends javax.swing.JFrame {
     }//GEN-LAST:event_UpgradeMeleeActionPerformed
 
     private void UpgradeTowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTowerActionPerformed
+        // TODO add your handling code here: 
     }//GEN-LAST:event_UpgradeTowerActionPerformed
 
     private void UpgradeTank1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeTank1ActionPerformed

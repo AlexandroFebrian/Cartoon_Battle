@@ -140,7 +140,6 @@ public class Battle extends javax.swing.JFrame {
     private void Win(User user){
         StopAllTimer();
         BlackBackground.setVisible(true);
-        ETowerHP.setText("HP : 0");
         BattleResult.setVisible(true);
         BattleResult.setText("You Win");
         Back.setLocation(600, 300);
@@ -149,7 +148,6 @@ public class Battle extends javax.swing.JFrame {
     private void Lose() {
         StopAllTimer();
         BlackBackground.setVisible(true);
-        UTowerHP.setText("HP : 0");
         BattleResult.setVisible(true);
         BattleResult.setText("You Lose");
         Back.setLocation(600, 300);
@@ -171,11 +169,10 @@ public class Battle extends javax.swing.JFrame {
         EnemyHP += (user.getLevelEnemy()-1)*15;
         EnemyAtk += (user.getLevelEnemy()-1)*4;
         EnemyTowerHP += (user.getLevelEnemy()-1)*100;
-        ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
+        System.out.println("EnemyHp : " + EnemyTowerHP);
         Level.setText("Level : " + String.valueOf(user.getLevelEnemy()));
         
         UserTowerHP = user.getTower().getHp();
-        UTowerHP.setText("HP : " + String.valueOf(UserTowerHP));
         
         LaserValue.setText(String.valueOf(user.getSkill()));
         
@@ -429,7 +426,7 @@ public class Battle extends javax.swing.JFrame {
                         }else{
                             if(Trooplab.get(i).getLocation().x >= 780){
                                     EnemyTowerHP -= Troop.get(i).getAtk();
-                                    ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
+                                    EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
                                         Win(user);
                                     }
@@ -458,7 +455,7 @@ public class Battle extends javax.swing.JFrame {
                         }else{
                             if(Trooplab.get(i).getLocation().x >= 955){
                                     EnemyTowerHP -= Troop.get(i).getAtk();
-                                    ETowerHP.setText("HP : " + String.valueOf(EnemyTowerHP));
+                                    EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
                                         Win(user);
                                     }
@@ -504,8 +501,6 @@ public class Battle extends javax.swing.JFrame {
         AddTank = new javax.swing.JButton();
         Laser = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
-        ETowerHP = new javax.swing.JLabel();
-        UTowerHP = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cartoon Battle");
@@ -625,17 +620,6 @@ public class Battle extends javax.swing.JFrame {
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Battle Map.png"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        ETowerHP.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
-        ETowerHP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ETowerHP.setText("HP : ");
-        getContentPane().add(ETowerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 590, 150, 30));
-
-        UTowerHP.setBackground(new java.awt.Color(0, 0, 0));
-        UTowerHP.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
-        UTowerHP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        UTowerHP.setText("HP : ");
-        getContentPane().add(UTowerHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 600, 160, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -768,7 +752,6 @@ private Timer las;
     private javax.swing.JLabel Background;
     private javax.swing.JLabel BattleResult;
     private javax.swing.JLabel BlackBackground;
-    private javax.swing.JLabel ETowerHP;
     private javax.swing.JProgressBar EnemyHpBar;
     private javax.swing.JLabel Laser;
     private javax.swing.JButton LaserIcon;
@@ -776,7 +759,6 @@ private Timer las;
     private javax.swing.JLabel Level;
     private javax.swing.JLabel MineralIcon;
     private javax.swing.JLabel Minerallab;
-    private javax.swing.JLabel UTowerHP;
     private javax.swing.JToggleButton UpgradeMineralIcon;
     private javax.swing.JLabel UpgradeMineralValue;
     private javax.swing.JProgressBar UserHpBar;
