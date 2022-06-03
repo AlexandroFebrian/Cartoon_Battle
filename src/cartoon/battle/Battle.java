@@ -39,6 +39,8 @@ public class Battle extends javax.swing.JFrame {
     private int UserTowerHP;
     private int MaxMineral = 100;
     
+    private ArrayList<Sound> TroopSound = new ArrayList<>();
+    
     private ArrayList<JLabel> Enemylab = new ArrayList<>();
     private ArrayList<Integer> EnemyX = new ArrayList<>();
     private Timer EnemyMove;
@@ -138,6 +140,15 @@ public class Battle extends javax.swing.JFrame {
             getMineralT().stop();
             setMineralT(null);
         }
+        for (int i = 0; i < TroopSound.size(); i++) {
+            TroopSound.get(i).stop();
+        }
+        TroopSound.clear();
+        for (int i = 0; i < EnemySound.size(); i++) {
+            EnemySound.get(i).stop();
+        }
+        EnemySound.clear();
+        Trooplab.clear();
     }
 
     private void Win(Sound sound){
@@ -182,7 +193,7 @@ public class Battle extends javax.swing.JFrame {
         
         LaserValue.setText(String.valueOf(user.getSkill()));
         
-        MineralT = new Timer(500, new ActionListener(){
+        MineralT = new Timer(50, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(Mineral < MaxMineral){
@@ -242,7 +253,7 @@ public class Battle extends javax.swing.JFrame {
                     }else{
                         Enemylab.get(i).setLocation(EnemyX.get(i), 419);
                     }
-                    if(Enemylab.get(i).getIcon() == Eicon && Trooplab.size() == 0){
+                    if(Enemylab.get(i).getIcon() == Eicon && Trooplab.isEmpty()){
                         if(Enemylab.get(i).getLocation().x <= 175 && Enemylab.get(i).getIcon() != Eicon2){
                             Enemylab.get(i).setIcon(Eicon2);
                         }else if(Enemylab.get(i).getIcon() == Eicon){
@@ -276,6 +287,8 @@ public class Battle extends javax.swing.JFrame {
                                 if(Troop.get(0).getHP() <= 0){
                                     Enemylab.get(i).setIcon(Eicon);
                                     getContentPane().remove(Trooplab.get(0));
+                                    TroopSound.get(0).stop();
+                                    TroopSound.remove(0);
                                     Troop.remove(0);
                                     Trooplab.remove(0);
                                     TroopX.remove(0);
@@ -299,7 +312,6 @@ public class Battle extends javax.swing.JFrame {
                                 }
                             }else{
                                 Enemylab.get(i).setIcon(Eicon);
-                                EnemySound.get(i).stop();
                             }
                         }
                     }
@@ -326,10 +338,11 @@ public class Battle extends javax.swing.JFrame {
                         }
                     }
                     if(Troop.get(i) instanceof Melee){
-                        if(Trooplab.get(i).getIcon() == Micon && Enemylab.size() == 0){
+                        if(Trooplab.get(i).getIcon() == Micon && Enemylab.isEmpty()){
                             if(Trooplab.get(i).getLocation().x >= 1010 && Trooplab.get(i).getIcon() != Micon2){
                                 Trooplab.get(i).setIcon(Micon2);
                             }else if(Trooplab.get(i).getIcon() == Micon){
+                                TroopSound.get(i).stop();
                                 Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
                             }
                         }else if(Enemylab.size() >= 1){
@@ -339,14 +352,16 @@ public class Battle extends javax.swing.JFrame {
                                 Trooplab.get(i).setIcon(Micon2);
                             }
                             else if(Trooplab.get(i).getIcon() == Micon){
+                                TroopSound.get(i).stop();
                                 Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
                             }
                         }
                     }else if(Troop.get(i) instanceof Ranged){
-                        if(Trooplab.get(i).getIcon() == Ricon && Enemylab.size() == 0){
+                        if(Trooplab.get(i).getIcon() == Ricon && Enemylab.isEmpty()){
                             if(Trooplab.get(i).getLocation().x >= 780 && Trooplab.get(i).getIcon() != Ricon2){
                                 Trooplab.get(i).setIcon(Ricon2);
                             }else if(Trooplab.get(i).getIcon() == Ricon){
+                                TroopSound.get(i).stop();
                                 Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
                             }
                         }else if(Enemylab.size() >= 1){
@@ -356,14 +371,16 @@ public class Battle extends javax.swing.JFrame {
                                 Trooplab.get(i).setIcon(Ricon2);
                             }
                             else if(Trooplab.get(i).getIcon() == Ricon){
+                                TroopSound.get(i).stop();
                                 Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
                             }
                         }
                     }else{
-                        if(Trooplab.get(i).getIcon() == Ticon && Enemylab.size() == 0){
+                        if(Trooplab.get(i).getIcon() == Ticon && Enemylab.isEmpty()){
                             if(Trooplab.get(i).getLocation().x >= 955 && Trooplab.get(i).getIcon() != Ticon2){
                                 Trooplab.get(i).setIcon(Ticon2);
                             }else if(Trooplab.get(i).getIcon() == Ticon){
+                                TroopSound.get(i).stop();
                                 Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
                             }
                         }else if(Enemylab.size() >= 1){
@@ -373,6 +390,7 @@ public class Battle extends javax.swing.JFrame {
                                 Trooplab.get(i).setIcon(Ticon2);
                             }
                             else if(Trooplab.get(i).getIcon() == Ticon){
+                                TroopSound.get(i).stop();
                                 Trooplab.get(i).setLocation(Trooplab.get(i).getLocation().x+1, Trooplab.get(i).getLocation().y);
                             }
                         }
@@ -405,11 +423,13 @@ public class Battle extends javax.swing.JFrame {
                                 }else{
                                     EnemyList.set(0, EnemyList.get(0)-Troop.get(i).getAtk());
                                 }
+                                TroopSound.get(i).start();
                             }else{
                                 Trooplab.get(i).setIcon(Micon);
                             }
                         }else{
                             if(Trooplab.get(i).getLocation().x >= 1010){
+                                    TroopSound.get(i).start();
                                     EnemyTowerHP -= Troop.get(i).getAtk();
                                     EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
@@ -437,11 +457,13 @@ public class Battle extends javax.swing.JFrame {
                                 }else{
                                     EnemyList.set(0, EnemyList.get(0)-Troop.get(i).getAtk());
                                 }
+                                TroopSound.get(i).start();
                             }else{
                                 Trooplab.get(i).setIcon(Ricon);
                             }
                         }else{
                             if(Trooplab.get(i).getLocation().x >= 780){
+                                    TroopSound.get(i).start();
                                     EnemyTowerHP -= Troop.get(i).getAtk();
                                     EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
@@ -469,11 +491,13 @@ public class Battle extends javax.swing.JFrame {
                                 }else{
                                     EnemyList.set(0, EnemyList.get(0)-Troop.get(i).getAtk());
                                 }
+                                TroopSound.get(i).start();
                             }else{
                                 Trooplab.get(i).setIcon(Ticon);
                             }
                         }else{
                             if(Trooplab.get(i).getLocation().x >= 955){
+                                    TroopSound.get(i).start();
                                     EnemyTowerHP -= Troop.get(i).getAtk();
                                     EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
@@ -651,6 +675,7 @@ public class Battle extends javax.swing.JFrame {
     private void AddMeleeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMeleeActionPerformed
         // TODO add your handling code here:
         if(Mineral >= 10){
+            TroopSound.add(new Sound(new File("src\\music\\Melee.wav"), true));
             TroopX.add(0);
             Troop.add(new Melee(userT.get(0).getHP(), userT.get(0).getAtk()));
             Trooplab.add(new JLabel());
@@ -670,6 +695,7 @@ public class Battle extends javax.swing.JFrame {
             }else{
                 Troop.add(new Ranged(userT.get(2).getHP(), userT.get(2).getAtk()));
             }
+            TroopSound.add(new Sound(new File("src\\music\\Ranged.wav"), true));
             TroopX.add(0);
             Trooplab.add(new JLabel());
             Trooplab.get(Trooplab.size()-1).setIcon(Ricon);
@@ -688,6 +714,7 @@ public class Battle extends javax.swing.JFrame {
             }else{
                 Troop.add(new Tank(userT.get(2).getHP(), userT.get(2).getAtk()));
             }
+            TroopSound.add(new Sound(new File("src\\music\\Tank.wav"), true));
             TroopX.add(0);
             Trooplab.add(new JLabel());
             Trooplab.get(Trooplab.size()-1).setIcon(Ticon);
@@ -705,8 +732,10 @@ public class Battle extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_UpgradeMineralIconActionPerformed
 
-int waktu;
-private Timer las;
+    private int waktu;
+    private Timer las;
+    private Sound sou = new Sound(new File("src\\music\\Laser.wav"), true);
+
     private void LaserIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaserIconActionPerformed
         // TODO add your handling code here:
         waktu = 0;
@@ -724,12 +753,15 @@ private Timer las;
                     getContentPane().validate();
                     getContentPane().repaint();
                     Laser.setVisible(false);
+                } else if (waktu == 2) {
+                    sou.stop();
                     las.stop();
                 }
             }
         };
         las = new Timer(1000, act);
         las.start();
+        sou.start();
     }//GEN-LAST:event_LaserIconActionPerformed
 
     /**
