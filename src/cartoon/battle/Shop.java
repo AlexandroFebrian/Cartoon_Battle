@@ -39,9 +39,12 @@ public class Shop extends javax.swing.JFrame {
 
         Gold = new javax.swing.JLabel();
         SkillCount = new javax.swing.JLabel();
+        RangedCost = new javax.swing.JLabel();
         BuyRanged = new javax.swing.JButton();
+        TankCost = new javax.swing.JLabel();
         BuyTank = new javax.swing.JButton();
-        BuySkill = new javax.swing.JButton();
+        LaserCost = new javax.swing.JLabel();
+        BuyLaser = new javax.swing.JButton();
         ShopRanged = new javax.swing.JLabel();
         ShopTank = new javax.swing.JLabel();
         Back = new javax.swing.JButton();
@@ -63,20 +66,38 @@ public class Shop extends javax.swing.JFrame {
         SkillCount.setText("0");
         getContentPane().add(SkillCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 368, 40, -1));
 
+        RangedCost.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
+        RangedCost.setForeground(new java.awt.Color(255, 255, 0));
+        RangedCost.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        RangedCost.setText("0");
+        getContentPane().add(RangedCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 525, 140, -1));
+
         BuyRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
         BuyRanged.setBorderPainted(false);
         BuyRanged.setContentAreaFilled(false);
-        getContentPane().add(BuyRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 490, -1, -1));
+        getContentPane().add(BuyRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(852, 480, -1, -1));
+
+        TankCost.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
+        TankCost.setForeground(new java.awt.Color(255, 255, 0));
+        TankCost.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        TankCost.setText("0");
+        getContentPane().add(TankCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(608, 525, 140, -1));
 
         BuyTank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
         BuyTank.setBorderPainted(false);
         BuyTank.setContentAreaFilled(false);
-        getContentPane().add(BuyTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 490, -1, -1));
+        getContentPane().add(BuyTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 480, -1, -1));
 
-        BuySkill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
-        BuySkill.setBorderPainted(false);
-        BuySkill.setContentAreaFilled(false);
-        getContentPane().add(BuySkill, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, -1, -1));
+        LaserCost.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
+        LaserCost.setForeground(new java.awt.Color(255, 255, 0));
+        LaserCost.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LaserCost.setText("0");
+        getContentPane().add(LaserCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 525, 140, -1));
+
+        BuyLaser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
+        BuyLaser.setBorderPainted(false);
+        BuyLaser.setContentAreaFilled(false);
+        getContentPane().add(BuyLaser, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 480, -1, -1));
 
         ShopRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Shop Ranged.png"))); // NOI18N
         getContentPane().add(ShopRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, -1, -1));
@@ -133,12 +154,15 @@ public class Shop extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
     private javax.swing.JLabel Background;
+    private javax.swing.JButton BuyLaser;
     private javax.swing.JButton BuyRanged;
-    private javax.swing.JButton BuySkill;
     private javax.swing.JButton BuyTank;
     private javax.swing.JLabel Gold;
+    private javax.swing.JLabel LaserCost;
+    private javax.swing.JLabel RangedCost;
     private javax.swing.JLabel ShopRanged;
     private javax.swing.JLabel ShopTank;
     private javax.swing.JLabel SkillCount;
+    private javax.swing.JLabel TankCost;
     // End of variables declaration//GEN-END:variables
 }
