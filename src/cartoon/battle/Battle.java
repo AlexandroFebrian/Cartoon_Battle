@@ -106,6 +106,10 @@ public class Battle extends javax.swing.JFrame {
         this.MineralT = MineralT;
     }
     
+    public JLabel getFinal() {
+        return Final;
+    }
+    
     public void StopAllTimer(){
         if(getTroopMove() != null){
             getTroopMove().stop();
@@ -132,20 +136,22 @@ public class Battle extends javax.swing.JFrame {
             setMineralT(null);
         }
     }
-    
-    public void Win(User user){
+
+    private void Win(User user){
         StopAllTimer();
         ETowerHP.setText("HP : 0");
         Final.setVisible(true);
         Final.setText("You Win");
         Back.setLocation(600, 300);
     }
-
-    public JLabel getFinal() {
-        return Final;
+    
+    private void Lose() {
+        StopAllTimer();
+        UTowerHP.setText("HP : 0");
+        Final.setVisible(true);
+        Final.setText("You Lose");
+        Back.setLocation(600, 300);
     }
-    
-    
     
     public Battle() {
         initComponents();
@@ -279,11 +285,7 @@ public class Battle extends javax.swing.JFrame {
                                 UserHpBar.setValue((int)(UserTowerHP * 100) / user.getTower().getHp());
 //                                UTowerHP.setText("HP : " + String.valueOf(UserTowerHP));
                                 if(UserTowerHP <= 0){
-                                    StopAllTimer();
-                                    UTowerHP.setText("HP : 0");
-                                    Final.setVisible(true);
-                                    Final.setText("You Lose");
-                                    Back.setLocation(600, 300);
+                                    Lose();
                                 }
                             }else{
                                 Enemylab.get(i).setIcon(Eicon);
