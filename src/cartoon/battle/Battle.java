@@ -193,7 +193,8 @@ public class Battle extends javax.swing.JFrame {
         
         LaserValue.setText(String.valueOf(user.getSkill()));
         
-        MineralT = new Timer(50, new ActionListener(){
+        //Mineral
+        MineralT = new Timer(250, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(Mineral < MaxMineral){
@@ -434,7 +435,7 @@ public class Battle extends javax.swing.JFrame {
                                     EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
                                         Win(sound);
-                                        Gold.setText(String.valueOf(user.getGold()+50*user.getLevelEnemy()));
+                                        Gold.setText("+" + String.valueOf(50*user.getLevelEnemy()));
                                     }
                             }else{
                                 Trooplab.get(i).setIcon(Micon);
@@ -468,7 +469,7 @@ public class Battle extends javax.swing.JFrame {
                                     EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
                                         Win(sound);
-                                        Gold.setText(String.valueOf(user.getGold()+50*user.getLevelEnemy()));
+                                        Gold.setText("+" + String.valueOf(50*user.getLevelEnemy()));
                                     }
                             }else{
                                 Trooplab.get(i).setIcon(Ricon);
@@ -502,7 +503,7 @@ public class Battle extends javax.swing.JFrame {
                                     EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
                                     if(EnemyTowerHP <= 0){
                                         Win(sound);
-                                        Gold.setText(String.valueOf(user.getGold()+50*user.getLevelEnemy()));
+                                        Gold.setText("+" + String.valueOf(50*user.getLevelEnemy()));
                                     }
                             }else{
                                 Trooplab.get(i).setIcon(Ticon);
@@ -552,7 +553,7 @@ public class Battle extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Gold.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
-        Gold.setText("0");
+        Gold.setText("+0");
         getContentPane().add(Gold, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 322, 120, -1));
 
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
