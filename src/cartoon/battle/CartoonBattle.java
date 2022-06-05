@@ -58,7 +58,7 @@ public class CartoonBattle {
                     //Shop <Daniello>
                     h.getShop().addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            Shop s = new Shop(/*Parameter*/);
+                            Shop s = new Shop(u.get(u.size()-1));
                             s.setLocationRelativeTo(null);
                             s.setResizable(false);
                             h.setVisible(false);

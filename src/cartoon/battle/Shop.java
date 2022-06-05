@@ -4,6 +4,9 @@
  */
 package cartoon.battle;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -15,13 +18,77 @@ public class Shop extends javax.swing.JFrame {
 
     /**
      * Creates new form Shop
-     */
+     */       
     public Shop() {
         initComponents();
         
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
         this.setIconImage(img.getImage());
+    }
+    
+    public Shop(User user){
+        initComponents();
+        
+        //Icon Image <Wajib di tiap form>
+        ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
+        this.setIconImage(img.getImage());
+        
+        //buat test
+        user.setGold(10000000);
+               
+        Gold.setText(String.valueOf(user.getGold()));            
+        BuyTank.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                int tempGold = user.getGold();
+                if (tempGold >= 1500) {
+                    tempGold-=1500;
+                    user.setGold(tempGold);
+                    Gold.setText(String.valueOf(user.getGold()));
+                    ShopTank.setVisible(false);
+                    BuyTank.setVisible(false);
+                    TankCost.setVisible(false);
+                    
+                } else { //gold ga cukup
+                    ShopTank.setVisible(true);
+                    BuyTank.setVisible(true);
+                    TankCost.setVisible(true);
+                }
+            }
+        });
+        BuyRanged.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                int tempGold = user.getGold();
+                if (tempGold >= 1000) {
+                    tempGold-=1000;
+                    user.setGold(tempGold);
+                    Gold.setText(String.valueOf(user.getGold()));
+                    ShopRanged.setVisible(false);
+                    BuyRanged.setVisible(false);
+                    RangedCost.setVisible(false);
+                    
+                } else { //gold ga cukup
+                    ShopRanged.setVisible(true);
+                    BuyRanged.setVisible(true);
+                    RangedCost.setVisible(true);
+                }
+            }
+        });
+        BuyLaser.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                int tempGold = user.getGold();                
+                if (tempGold >= 150) {
+                    tempGold-=150;                    
+                    user.setGold(tempGold);
+                    Gold.setText(String.valueOf(user.getGold()));                                                           
+                    user.addSkill();
+                    SkillCount.setText(String.valueOf(user.getSkill()));                                                            
+                    
+                } else { //gold ga cukup
+                    
+                }
+            }
+        });
     }
 
     public JButton getBack() {
@@ -69,34 +136,49 @@ public class Shop extends javax.swing.JFrame {
         RangedCost.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
         RangedCost.setForeground(new java.awt.Color(255, 255, 0));
         RangedCost.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        RangedCost.setText("0");
+        RangedCost.setText("1500");
         getContentPane().add(RangedCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 525, 140, -1));
 
         BuyRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
         BuyRanged.setBorderPainted(false);
         BuyRanged.setContentAreaFilled(false);
+        BuyRanged.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuyRangedActionPerformed(evt);
+            }
+        });
         getContentPane().add(BuyRanged, new org.netbeans.lib.awtextra.AbsoluteConstraints(852, 480, -1, -1));
 
         TankCost.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
         TankCost.setForeground(new java.awt.Color(255, 255, 0));
         TankCost.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TankCost.setText("0");
+        TankCost.setText("1000");
         getContentPane().add(TankCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(608, 525, 140, -1));
 
         BuyTank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
         BuyTank.setBorderPainted(false);
         BuyTank.setContentAreaFilled(false);
+        BuyTank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuyTankActionPerformed(evt);
+            }
+        });
         getContentPane().add(BuyTank, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 480, -1, -1));
 
         LaserCost.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
         LaserCost.setForeground(new java.awt.Color(255, 255, 0));
         LaserCost.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LaserCost.setText("0");
+        LaserCost.setText("150");
         getContentPane().add(LaserCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 525, 140, -1));
 
         BuyLaser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
         BuyLaser.setBorderPainted(false);
         BuyLaser.setContentAreaFilled(false);
+        BuyLaser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuyLaserActionPerformed(evt);
+            }
+        });
         getContentPane().add(BuyLaser, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 480, -1, -1));
 
         ShopRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Shop Ranged.png"))); // NOI18N
@@ -115,6 +197,18 @@ public class Shop extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BuyTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyTankActionPerformed
+        
+    }//GEN-LAST:event_BuyTankActionPerformed
+
+    private void BuyRangedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyRangedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BuyRangedActionPerformed
+
+    private void BuyLaserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyLaserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BuyLaserActionPerformed
 
     /**
      * @param args the command line arguments
