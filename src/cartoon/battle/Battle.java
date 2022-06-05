@@ -186,9 +186,9 @@ public class Battle extends javax.swing.JFrame {
         initComponents();
         getContentPane().setLayout(null);
         
-        EnemyHP += (user.getLevelEnemy()-1)*25;
+        EnemyHP += (user.getLevelEnemy()-1)*20;
         EnemyAtk += (user.getLevelEnemy()-1)*5;
-        EnemyTowerHP += (user.getLevelEnemy()-1)*100;
+        EnemyTowerHP += (user.getLevelEnemy()-1)*150;
         Level.setText("Level : " + String.valueOf(user.getLevelEnemy()));
         
         UserTowerHP = user.getTower().getHp();
