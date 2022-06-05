@@ -47,17 +47,19 @@ public class Battle extends javax.swing.JFrame {
     private Timer EnemySpawnT;
     private int SpawnTime = 0;
     
-    private int EnemyHP = 20;
-    private int EnemyAtk = 4;
+    private int EnemyHP = 30;
+    private int EnemyAtk = 5;
     private int EnemyTowerHP = 1000;
     private ArrayList<Integer> EnemyList = new ArrayList<>();
     private Timer EnemyAtkTime;
+    private int EnemySpawnSpeed = 2000;
     
     private ArrayList<Sound> EnemySound = new ArrayList<>();
     
     private int Mineral = 0;
     private Timer MineralT;
-    
+    private int MineralSpeed = 250;
+    private int MineralPrice = 25;
     
     public javax.swing.JButton getBack() {
         return Back;
@@ -184,17 +186,18 @@ public class Battle extends javax.swing.JFrame {
         initComponents();
         getContentPane().setLayout(null);
         
-        EnemyHP += (user.getLevelEnemy()-1)*15;
-        EnemyAtk += (user.getLevelEnemy()-1)*4;
+        EnemyHP += (user.getLevelEnemy()-1)*25;
+        EnemyAtk += (user.getLevelEnemy()-1)*5;
         EnemyTowerHP += (user.getLevelEnemy()-1)*100;
         Level.setText("Level : " + String.valueOf(user.getLevelEnemy()));
         
         UserTowerHP = user.getTower().getHp();
         
         LaserValue.setText(String.valueOf(user.getSkill()));
+        UpgradeMineralValue.setText(String.valueOf(MineralPrice));
         
         //Mineral
-        MineralT = new Timer(250, new ActionListener(){
+        MineralT = new Timer(MineralSpeed, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(Mineral < MaxMineral){
@@ -211,6 +214,7 @@ public class Battle extends javax.swing.JFrame {
         Laser.setVisible(false);
         BattleResult.setVisible(false);
         Gold.setVisible(false);
+        WarningText.setVisible(false);
         
         //Mengambil data troop dari user
         userT = user.getTroop();
@@ -227,6 +231,10 @@ public class Battle extends javax.swing.JFrame {
         }
         
         //Spawn Enemy
+        EnemySpawnSpeed -= (user.getLevelEnemy()-1)*50;
+        if(EnemySpawnSpeed < 1000){
+            EnemySpawnSpeed = 1000;
+        }
         ActionListener spawn = new ActionListener(){
             public void actionPerformed(ActionEvent event) {
                 SpawnTime+=1;
@@ -242,7 +250,7 @@ public class Battle extends javax.swing.JFrame {
                 }
             }
         };
-        EnemySpawnT = new Timer(1500, spawn);
+        EnemySpawnT = new Timer(EnemySpawnSpeed, spawn);
         EnemySpawnT.start();
         
         //Enemy Gerak
@@ -532,9 +540,10 @@ public class Battle extends javax.swing.JFrame {
 
         Gold = new javax.swing.JLabel();
         Back = new javax.swing.JButton();
+        WarningText = new javax.swing.JLabel();
         BattleResult = new javax.swing.JLabel();
         UpgradeMineralValue = new javax.swing.JLabel();
-        UpgradeMineralIcon = new javax.swing.JToggleButton();
+        UpgradeMineral = new javax.swing.JButton();
         LaserValue = new javax.swing.JLabel();
         LaserIcon = new javax.swing.JButton();
         EnemyHpBar = new javax.swing.JProgressBar();
@@ -566,6 +575,12 @@ public class Battle extends javax.swing.JFrame {
         });
         getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 100, 100));
 
+        WarningText.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
+        WarningText.setForeground(new java.awt.Color(255, 0, 0));
+        WarningText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        WarningText.setText("...");
+        getContentPane().add(WarningText, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 490, 50));
+
         BattleResult.setBackground(new java.awt.Color(255, 255, 255));
         BattleResult.setFont(new java.awt.Font("Lato Black", 1, 24)); // NOI18N
         BattleResult.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -574,18 +589,18 @@ public class Battle extends javax.swing.JFrame {
 
         UpgradeMineralValue.setFont(new java.awt.Font("Lato Black", 0, 18)); // NOI18N
         UpgradeMineralValue.setForeground(new java.awt.Color(255, 255, 255));
-        UpgradeMineralValue.setText("50");
-        getContentPane().add(UpgradeMineralValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 669, -1, -1));
+        UpgradeMineralValue.setText("0");
+        getContentPane().add(UpgradeMineralValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 669, 50, -1));
 
-        UpgradeMineralIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Mineral Icon.png"))); // NOI18N
-        UpgradeMineralIcon.setBorderPainted(false);
-        UpgradeMineralIcon.setContentAreaFilled(false);
-        UpgradeMineralIcon.addActionListener(new java.awt.event.ActionListener() {
+        UpgradeMineral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Upgrade Mineral Icon.png"))); // NOI18N
+        UpgradeMineral.setBorderPainted(false);
+        UpgradeMineral.setContentAreaFilled(false);
+        UpgradeMineral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpgradeMineralIconActionPerformed(evt);
+                UpgradeMineralActionPerformed(evt);
             }
         });
-        getContentPane().add(UpgradeMineralIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 581, -1, -1));
+        getContentPane().add(UpgradeMineral, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 580, 120, 120));
 
         LaserValue.setFont(new java.awt.Font("Lato Black", 0, 24)); // NOI18N
         LaserValue.setForeground(new java.awt.Color(255, 255, 255));
@@ -684,6 +699,22 @@ public class Battle extends javax.swing.JFrame {
             Trooplab.get(Trooplab.size()-1).setBounds(150, 480, 105, 70); //x, y, lebar, tinggi
             getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
             Mineral -= 10;
+        }else if(TimerCek == null){
+            WarningText.setText("Not enough energy!");
+            WarningText.setVisible(true);
+            waktu = 0;
+            ActionListener act = new ActionListener(){
+                public void actionPerformed(ActionEvent event) {
+                    waktu++;
+                    if(waktu == 2){
+                        WarningText.setVisible(false);
+                        TimerCek.stop();
+                        TimerCek = null;
+                    }
+                }
+            };
+            TimerCek = new Timer(1000, act);
+            TimerCek.start();
         }
     }//GEN-LAST:event_AddMeleeActionPerformed
 
@@ -703,6 +734,22 @@ public class Battle extends javax.swing.JFrame {
             Trooplab.get(Trooplab.size()-1).setBounds(120, 435, 300, 120); //x, y, lebar, tinggi
             getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
             Mineral -= 30;
+        }else if(TimerCek == null){
+            WarningText.setText("Not enough energy!");
+            WarningText.setVisible(true);
+            waktu = 0;
+            ActionListener act = new ActionListener(){
+                public void actionPerformed(ActionEvent event) {
+                    waktu++;
+                    if(waktu == 2){
+                        WarningText.setVisible(false);
+                        TimerCek.stop();
+                        TimerCek = null;
+                    }
+                }
+            };
+            TimerCek = new Timer(1000, act);
+            TimerCek.start();
         }
     }//GEN-LAST:event_AddRangeActionPerformed
 
@@ -722,6 +769,22 @@ public class Battle extends javax.swing.JFrame {
             Trooplab.get(Trooplab.size()-1).setBounds(119, 430, 195, 130); //x, y, lebar, tinggi
             getContentPane().add(Trooplab.get(Trooplab.size()-1), new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1), 1);
             Mineral -= 20;
+        }else if(TimerCek == null){
+            WarningText.setText("Not enough energy!");
+            WarningText.setVisible(true);
+            waktu = 0;
+            ActionListener act = new ActionListener(){
+                public void actionPerformed(ActionEvent event) {
+                    waktu++;
+                    if(waktu == 2){
+                        WarningText.setVisible(false);
+                        TimerCek.stop();
+                        TimerCek = null;
+                    }
+                }
+            };
+            TimerCek = new Timer(1000, act);
+            TimerCek.start();
         }
     }//GEN-LAST:event_AddTankActionPerformed
     
@@ -729,41 +792,119 @@ public class Battle extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BackActionPerformed
 
-    private void UpgradeMineralIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeMineralIconActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UpgradeMineralIconActionPerformed
-
     private int waktu;
-    private Timer las;
+    private Timer TimerCek = null;
     private Sound sou = new Sound(new File("src\\music\\Laser.wav"), true);
+    private boolean UseLaser = true;
 
     private void LaserIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaserIconActionPerformed
         // TODO add your handling code here:
-        waktu = 0;
-        Laser.setVisible(true);
-        ActionListener act = new ActionListener(){
-            public void actionPerformed(ActionEvent event) {
-                waktu++;
-                if(waktu == 1){
-                    for(int i = 0; i < Enemylab.size(); i++){
-                        getContentPane().remove(Enemylab.get(i));
+        if(UseLaser == true && !LaserValue.getText().equals("0") && TimerCek == null){
+            UseLaser = false;
+            LaserValue.setText(String.valueOf(Integer.parseInt(LaserValue.getText())-1));
+            waktu = 0;
+            Laser.setVisible(true);
+            ActionListener act = new ActionListener(){
+                public void actionPerformed(ActionEvent event) {
+                    waktu++;
+                    if(waktu == 1){
+                        for(int i = 0; i < Enemylab.size(); i++){
+                            getContentPane().remove(Enemylab.get(i));
+                        }
+                        Enemylab.clear();
+                        EnemyX.clear();
+                        EnemyList.clear();
+                        getContentPane().validate();
+                        getContentPane().repaint();
+                        Laser.setVisible(false);
+                    } else if (waktu == 2) {
+                        sou.stop();
+                        TimerCek.stop();
+                        sou = null;
+                        TimerCek = null;
                     }
-                    Enemylab.clear();
-                    EnemyX.clear();
-                    EnemyList.clear();
-                    getContentPane().validate();
-                    getContentPane().repaint();
-                    Laser.setVisible(false);
-                } else if (waktu == 2) {
-                    sou.stop();
-                    las.stop();
                 }
-            }
-        };
-        las = new Timer(1000, act);
-        las.start();
-        sou.start();
+            };
+            TimerCek = new Timer(1000, act);
+            TimerCek.start();
+            sou.start();
+        }else if(UseLaser == false && TimerCek == null){
+            WarningText.setText("Laser has been used!");
+            WarningText.setVisible(true);
+            waktu = 0;
+            ActionListener act = new ActionListener(){
+                public void actionPerformed(ActionEvent event) {
+                    waktu++;
+                    if(waktu == 2){
+                        WarningText.setVisible(false);
+                        TimerCek.stop();
+                        TimerCek = null;
+                    }
+                }
+            };
+            TimerCek = new Timer(1000, act);
+            TimerCek.start();
+        }else if(LaserValue.getText().equals("0") && TimerCek == null){
+            WarningText.setText("You don't have any laser!");
+            WarningText.setVisible(true);
+            waktu = 0;
+            ActionListener act = new ActionListener(){
+                public void actionPerformed(ActionEvent event) {
+                    waktu++;
+                    if(waktu == 2){
+                        WarningText.setVisible(false);
+                        TimerCek.stop();
+                        TimerCek = null;
+                    }
+                }
+            };
+            TimerCek = new Timer(1000, act);
+            TimerCek.start();
+        }
     }//GEN-LAST:event_LaserIconActionPerformed
+
+    private void UpgradeMineralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeMineralActionPerformed
+        // TODO add your handling code here:
+        if(Mineral >= MineralPrice){
+            Mineral -= MineralPrice;
+            MineralSpeed -= 25;
+            if(MineralSpeed < 50){
+                MineralSpeed = 50;
+            }
+            MaxMineral += 25;
+            MineralPrice += 25;
+            UpgradeMineralValue.setText(String.valueOf(MineralPrice));
+            
+            MineralT.stop();
+            MineralT = null;
+            MineralT = new Timer(MineralSpeed, new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(Mineral < MaxMineral){
+                        Mineral++;
+                    }
+                    Minerallab.setText(String.valueOf(Mineral) + "/" + String.valueOf(MaxMineral));
+                }
+            });
+            MineralT.start();
+        }else if(TimerCek == null){
+            WarningText.setText("Not enough energy!");
+            WarningText.setVisible(true);
+            waktu = 0;
+            ActionListener act = new ActionListener(){
+                public void actionPerformed(ActionEvent event) {
+                    waktu++;
+                    if(waktu == 2){
+                        WarningText.setVisible(false);
+                        TimerCek.stop();
+                        TimerCek = null;
+                    }
+                }
+            };
+            TimerCek = new Timer(1000, act);
+            TimerCek.start();
+        }
+    }//GEN-LAST:event_UpgradeMineralActionPerformed
 
     /**
      * @param args the command line arguments
@@ -815,8 +956,9 @@ public class Battle extends javax.swing.JFrame {
     private javax.swing.JLabel Level;
     private javax.swing.JLabel MineralIcon;
     private javax.swing.JLabel Minerallab;
-    private javax.swing.JToggleButton UpgradeMineralIcon;
+    private javax.swing.JButton UpgradeMineral;
     private javax.swing.JLabel UpgradeMineralValue;
     private javax.swing.JProgressBar UserHpBar;
+    private javax.swing.JLabel WarningText;
     // End of variables declaration//GEN-END:variables
 }
