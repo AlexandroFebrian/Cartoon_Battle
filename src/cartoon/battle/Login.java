@@ -4,12 +4,16 @@
  */
 package cartoon.battle;
 
+import static cartoon.battle.CartoonBattle.u;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
@@ -73,6 +77,17 @@ public class Login extends javax.swing.JFrame {
         Help5.setVisible(false);
         Help6.setVisible(false);
         Tap.setVisible(false);
+        LoadGameBackground.setVisible(false);
+        UserIndex0.setVisible(false);
+        UserNameIndex0.setVisible(false);
+        UserIndex1.setVisible(false);
+        UserNameIndex1.setVisible(false);
+        UserIndex2.setVisible(false);
+        UserNameIndex2.setVisible(false);
+        UserIndex3.setVisible(false);
+        UserNameIndex3.setVisible(false);
+        UserIndex4.setVisible(false);
+        UserNameIndex4.setVisible(false); 
     }
     
     public void menuUtama() {
@@ -103,6 +118,17 @@ public class Login extends javax.swing.JFrame {
         Help5.setVisible(false);
         Help6.setVisible(false);
         Tap.setVisible(false);
+        LoadGameBackground.setVisible(false);
+        UserIndex0.setVisible(false);
+        UserNameIndex0.setVisible(false);
+        UserIndex1.setVisible(false);
+        UserNameIndex1.setVisible(false);
+        UserIndex2.setVisible(false);
+        UserNameIndex2.setVisible(false);
+        UserIndex3.setVisible(false);
+        UserNameIndex3.setVisible(false);
+        UserIndex4.setVisible(false);
+        UserNameIndex4.setVisible(false);
     }
     
     private void newGame() {
@@ -117,8 +143,127 @@ public class Login extends javax.swing.JFrame {
         Play.setVisible(true);
     }
     
-    private void loadGame() {
-        //Belum diisi
+    private void loadGame(ArrayList <User> u) {
+        LoadGameBackground.setVisible(true);
+        Back.setVisible(true);
+        if (!u.isEmpty()) {
+            UserIndex0.setVisible(true);
+            UserNameIndex0.setVisible(true);
+            if (u.size() > 1) {
+                UserIndex1.setVisible(true);
+                UserNameIndex1.setVisible(true);
+                if (u.size() > 2) {
+                    UserIndex2.setVisible(true);
+                    UserNameIndex2.setVisible(true);
+                    if (u.size() > 3) {
+                        UserIndex3.setVisible(true);
+                        UserNameIndex3.setVisible(true);
+                        if (u.size() > 4) {
+                            UserIndex4.setVisible(true);
+                            UserNameIndex4.setVisible(true);
+                        }
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < u.size(); i++) {
+            if (i == 0) {
+                UserNameIndex0.setText(u.get(i).getUsername());
+            } else if (i == 1) {
+                UserNameIndex1.setText(u.get(i).getUsername());
+            } else if (i == 2) {
+                UserNameIndex2.setText(u.get(i).getUsername());
+            } else if (i == 3) {
+                UserNameIndex3.setText(u.get(i).getUsername());
+            } else if (i == 4) {
+                UserNameIndex4.setText(u.get(i).getUsername());
+            }
+        }
+        /*if (!l.getIsiUser().getText().equals("")) {
+            if (u.size() == 5) {
+                JOptionPane.showMessageDialog(l, "The oldest save would be deleted!", "Warning",  JOptionPane.WARNING_MESSAGE);
+                u.remove(0);
+            }
+            u.add(new User(l.getIsiUser().getText()));
+            l.setVisible(false);
+            Home h = new Home(u.get(u.size() - 1).getUsername(), String.valueOf(u.get(u.size() - 1).getGold()), sound);
+            h.setLocationRelativeTo(null);
+            h.setResizable(false);
+            h.setVisible(true);
+
+            //Logout
+            h.getLogout().addMouseListener(new MouseAdapter(){
+                public void mousePressed(MouseEvent me){
+                    h.setVisible(false);
+                    l.setVisible(true);
+                    l.playMusic(sound);
+                    l.menuUtama();
+                }
+            });
+
+            //Shop <Daniello>
+            h.getShop().addMouseListener(new MouseAdapter(){
+                public void mousePressed(MouseEvent me){
+                    Shop s = new Shop(u.get(u.size()-1));
+                    s.setLocationRelativeTo(null);
+                    s.setResizable(false);
+                    h.setVisible(false);
+                    s.setVisible(true);
+                    s.getBack().addMouseListener(new MouseAdapter(){
+                        public void mousePressed(MouseEvent me){
+                            s.dispose();
+                            h.setVisible(true);
+                        }
+                    });
+                }
+            });
+
+            //Kingdom <Jessica>
+            h.getKingdom().addMouseListener(new MouseAdapter(){
+                public void mousePressed(MouseEvent me){
+                    Kingdom k = new Kingdom(u.get(u.size()-1));
+                    k.setLocationRelativeTo(null);
+                    k.setResizable(false);
+                    h.setVisible(false);
+                    k.setVisible(true);
+                    k.getBack().addMouseListener(new MouseAdapter(){
+                        public void mousePressed(MouseEvent me){
+                            k.dispose();
+                            h.setVisible(true);
+                            h.getGold().setText(String.valueOf(u.get(u.size()-1).getGold()));
+                        }
+                    });
+                }
+            });
+
+            //Battle <Febrian>
+            h.getBattle().addMouseListener(new MouseAdapter(){
+                public void mousePressed(MouseEvent me){
+                    sound.changeMusic(new File("src\\music\\Battle.wav"));
+                    Battle b = new Battle(u.get(u.size()-1), sound);
+                    b.setLocationRelativeTo(null);
+                    b.setResizable(false);
+                    h.setVisible(false);
+                    b.setVisible(true);
+                    b.getBack().addMouseListener(new MouseAdapter(){
+                        public void mousePressed(MouseEvent me){
+                            sound.changeMusic(new File("src\\music\\Home.wav"));
+                            b.dispose();
+                            b.StopAllTimer();
+                            h.setVisible(true);
+                            if(b.getEnemyTowerHP() <= 0){
+                                int tempGold = u.get(u.size()-1).getGold()+50*u.get(u.size()-1).getLevelEnemy();
+                                u.get(u.size()-1).setGold(tempGold);
+                                u.get(u.size()-1).setLevelEnemy(u.get(u.size()-1).getLevelEnemy()+1);
+                                h.getGold().setText(String.valueOf(u.get(u.size()-1).getGold()));
+                            }
+                        }
+                    });
+                }
+            });
+        } else {
+            l.warnMessage();
+        }*/
     }
     
     private void setting() {
@@ -180,7 +325,7 @@ public class Login extends javax.swing.JFrame {
         });
     }
     
-    public Login(Sound sound) {
+    public Login(Sound sound, ArrayList <User> u) {
         initComponents();
         
         //JTextField Limit
@@ -219,7 +364,7 @@ public class Login extends javax.swing.JFrame {
                     });
                     Load.addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            loadGame();
+                            loadGame(u);
                         }
                     });
                     Setting.addMouseListener(new MouseAdapter(){
@@ -273,6 +418,18 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        UserNameIndex4 = new javax.swing.JLabel();
+        UserNameIndex3 = new javax.swing.JLabel();
+        UserNameIndex2 = new javax.swing.JLabel();
+        UserNameIndex1 = new javax.swing.JLabel();
+        UserNameIndex0 = new javax.swing.JLabel();
+        Back = new javax.swing.JButton();
+        UserIndex4 = new javax.swing.JButton();
+        UserIndex3 = new javax.swing.JButton();
+        UserIndex2 = new javax.swing.JButton();
+        UserIndex1 = new javax.swing.JButton();
+        UserIndex0 = new javax.swing.JButton();
+        LoadGameBackground = new javax.swing.JLabel();
         Tap = new javax.swing.JLabel();
         Help1 = new javax.swing.JLabel();
         Help2 = new javax.swing.JLabel();
@@ -296,7 +453,6 @@ public class Login extends javax.swing.JFrame {
         Warning = new javax.swing.JLabel();
         IsiUser = new javax.swing.JTextField();
         Username = new javax.swing.JLabel();
-        Back = new javax.swing.JButton();
         Play = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
 
@@ -304,6 +460,69 @@ public class Login extends javax.swing.JFrame {
         setTitle("Cartoon Battle");
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        UserNameIndex4.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
+        UserNameIndex4.setForeground(new java.awt.Color(255, 255, 255));
+        UserNameIndex4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        UserNameIndex4.setText("User.get(4)");
+        getContentPane().add(UserNameIndex4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 350, -1));
+
+        UserNameIndex3.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
+        UserNameIndex3.setForeground(new java.awt.Color(255, 255, 255));
+        UserNameIndex3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        UserNameIndex3.setText("User.get(3)");
+        getContentPane().add(UserNameIndex3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 360, -1));
+
+        UserNameIndex2.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
+        UserNameIndex2.setForeground(new java.awt.Color(255, 255, 255));
+        UserNameIndex2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        UserNameIndex2.setText("User.get(2)");
+        getContentPane().add(UserNameIndex2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 330, -1));
+
+        UserNameIndex1.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
+        UserNameIndex1.setForeground(new java.awt.Color(255, 255, 255));
+        UserNameIndex1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        UserNameIndex1.setText("User.get(1)");
+        getContentPane().add(UserNameIndex1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 480, 340, -1));
+
+        UserNameIndex0.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
+        UserNameIndex0.setForeground(new java.awt.Color(255, 255, 255));
+        UserNameIndex0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        UserNameIndex0.setText("User.get(0)");
+        getContentPane().add(UserNameIndex0, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 595, 280, -1));
+
+        Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
+        Back.setBorderPainted(false);
+        Back.setContentAreaFilled(false);
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        UserIndex4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Load Game User.png"))); // NOI18N
+        UserIndex4.setBorderPainted(false);
+        UserIndex4.setContentAreaFilled(false);
+        getContentPane().add(UserIndex4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
+
+        UserIndex3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Load Game User.png"))); // NOI18N
+        UserIndex3.setBorderPainted(false);
+        UserIndex3.setContentAreaFilled(false);
+        getContentPane().add(UserIndex3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, -1, -1));
+
+        UserIndex2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Load Game User.png"))); // NOI18N
+        UserIndex2.setBorderPainted(false);
+        UserIndex2.setContentAreaFilled(false);
+        getContentPane().add(UserIndex2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 368, -1, -1));
+
+        UserIndex1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Load Game User.png"))); // NOI18N
+        UserIndex1.setBorderPainted(false);
+        UserIndex1.setContentAreaFilled(false);
+        getContentPane().add(UserIndex1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, -1, -1));
+
+        UserIndex0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Load Game User.png"))); // NOI18N
+        UserIndex0.setBorderPainted(false);
+        UserIndex0.setContentAreaFilled(false);
+        getContentPane().add(UserIndex0, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 585, -1, -1));
+
+        LoadGameBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Load Game Background.png"))); // NOI18N
+        getContentPane().add(LoadGameBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Tap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tap.png"))); // NOI18N
         getContentPane().add(Tap, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 600, -1, -1));
@@ -416,11 +635,6 @@ public class Login extends javax.swing.JFrame {
         Username.setText("Username");
         getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, -1, -1));
 
-        Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
-        Back.setBorderPainted(false);
-        Back.setContentAreaFilled(false);
-        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-
         Play.setFont(new java.awt.Font("Lato Black", 1, 48)); // NOI18N
         Play.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Play.png"))); // NOI18N
         Play.setBorderPainted(false);
@@ -512,6 +726,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Help6;
     private javax.swing.JTextField IsiUser;
     private javax.swing.JButton Load;
+    private javax.swing.JLabel LoadGameBackground;
     private javax.swing.JProgressBar Loading;
     private javax.swing.JButton New;
     private javax.swing.JButton Play;
@@ -519,6 +734,16 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Tap;
     private javax.swing.JLabel Title;
     private javax.swing.JLabel Troop;
+    private javax.swing.JButton UserIndex0;
+    private javax.swing.JButton UserIndex1;
+    private javax.swing.JButton UserIndex2;
+    private javax.swing.JButton UserIndex3;
+    private javax.swing.JButton UserIndex4;
+    private javax.swing.JLabel UserNameIndex0;
+    private javax.swing.JLabel UserNameIndex1;
+    private javax.swing.JLabel UserNameIndex2;
+    private javax.swing.JLabel UserNameIndex3;
+    private javax.swing.JLabel UserNameIndex4;
     private javax.swing.JLabel Username;
     private javax.swing.JLabel Volume;
     private javax.swing.JSlider VolumeControl;

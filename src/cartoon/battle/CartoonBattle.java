@@ -7,6 +7,8 @@ package cartoon.battle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -19,11 +21,21 @@ public class CartoonBattle {
     /**
      * @param args the command line arguments
      */
+    
+    static ArrayList <User> u = new ArrayList<>();
+    
     public static void main(String[] args) {
         // TODO code application logic here
+        try {
+            FileInputStream fin = new FileInputStream("user.dat");
+            ObjectInputStream ois = new ObjectInputStream(fin);
+            ArrayList <User> read = (ArrayList <User>) ois.readObject();
+            u = read;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         Sound sound = new Sound(new File("src\\music\\Home.wav"));
-        Login l = new Login(sound);
-        ArrayList <User> u = new ArrayList<>();
+        Login l = new Login(sound, u);
         
         //Set tampilan form di tengah
         l.setLocationRelativeTo(null);
