@@ -6,7 +6,6 @@ package cartoon.battle;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -34,46 +33,66 @@ public class Shop extends javax.swing.JFrame {
         ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
         this.setIconImage(img.getImage());
         
-        //buat test
-        user.setGold(10000000);
-               
-        Gold.setText(String.valueOf(user.getGold()));            
-        BuyTank.addMouseListener(new MouseAdapter(){
-            public void mousePressed(MouseEvent me){
-                int tempGold = user.getGold();
-                if (tempGold >= 1500) {
-                    tempGold-=1500;
-                    user.setGold(tempGold);
-                    Gold.setText(String.valueOf(user.getGold()));
-                    ShopTank.setVisible(false);
-                    BuyTank.setVisible(false);
-                    TankCost.setVisible(false);
-                    
-                } else { //gold ga cukup
-                    ShopTank.setVisible(true);
-                    BuyTank.setVisible(true);
-                    TankCost.setVisible(true);
-                }
+        //Tampilan awal
+        Warning.setVisible(false);
+        XMark.setVisible(false);
+        ShopRanged.setVisible(true);
+        BuyRanged.setVisible(true);
+        RangedCost.setVisible(true);
+        ShopRanged.setVisible(true);
+        BuyRanged.setVisible(true);
+        RangedCost.setVisible(true);
+
+        
+        Gold.setText(String.valueOf(user.getGold()));
+        for (int i = 0; i < user.getTroop().size(); i++) {
+            if (user.getTroop().get(i) instanceof Tank) {
+                ShopTank.setVisible(false);
+                BuyTank.setVisible(false);
+                TankCost.setVisible(false);
+            } else if (user.getTroop().get(i) instanceof Ranged) {
+                ShopRanged.setVisible(false);
+                BuyRanged.setVisible(false);
+                RangedCost.setVisible(false);
             }
-        });
-        BuyRanged.addMouseListener(new MouseAdapter(){
+        }
+        
+        BuyTank.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
                 int tempGold = user.getGold();
                 if (tempGold >= 1000) {
                     tempGold-=1000;
                     user.setGold(tempGold);
+                    user.addTank();
+                    Gold.setText(String.valueOf(user.getGold()));
+                    ShopTank.setVisible(false);
+                    BuyTank.setVisible(false);
+                    TankCost.setVisible(false);
+                } else { //gold ga cukup
+                    Warning.setVisible(true);
+                    XMark.setVisible(true);
+                }
+            }
+        });
+        
+        BuyRanged.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                int tempGold = user.getGold();
+                if (tempGold >= 1500) {
+                    tempGold-=1500;
+                    user.setGold(tempGold);
+                    user.addRanged();
                     Gold.setText(String.valueOf(user.getGold()));
                     ShopRanged.setVisible(false);
                     BuyRanged.setVisible(false);
                     RangedCost.setVisible(false);
-                    
                 } else { //gold ga cukup
-                    ShopRanged.setVisible(true);
-                    BuyRanged.setVisible(true);
-                    RangedCost.setVisible(true);
+                    Warning.setVisible(true);
+                    XMark.setVisible(true);
                 }
             }
         });
+        
         BuyLaser.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
                 int tempGold = user.getGold();                
@@ -82,10 +101,10 @@ public class Shop extends javax.swing.JFrame {
                     user.setGold(tempGold);
                     Gold.setText(String.valueOf(user.getGold()));                                                           
                     user.addSkill();
-                    SkillCount.setText(String.valueOf(user.getSkill()));                                                            
-                    
+                    SkillCount.setText(String.valueOf(user.getSkill()));
                 } else { //gold ga cukup
-                    
+                    Warning.setVisible(true);
+                    XMark.setVisible(true);
                 }
             }
         });
@@ -104,6 +123,8 @@ public class Shop extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        XMark = new javax.swing.JButton();
+        Warning = new javax.swing.JLabel();
         Gold = new javax.swing.JLabel();
         SkillCount = new javax.swing.JLabel();
         RangedCost = new javax.swing.JLabel();
@@ -121,6 +142,19 @@ public class Shop extends javax.swing.JFrame {
         setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        XMark.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/X Mark.png"))); // NOI18N
+        XMark.setBorderPainted(false);
+        XMark.setContentAreaFilled(false);
+        XMark.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                XMarkActionPerformed(evt);
+            }
+        });
+        getContentPane().add(XMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 140, -1, -1));
+
+        Warning.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Warning Gold.png"))); // NOI18N
+        getContentPane().add(Warning, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         Gold.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
         Gold.setForeground(new java.awt.Color(255, 255, 0));
         Gold.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -131,7 +165,7 @@ public class Shop extends javax.swing.JFrame {
         SkillCount.setForeground(new java.awt.Color(255, 255, 255));
         SkillCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SkillCount.setText("0");
-        getContentPane().add(SkillCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 368, 40, -1));
+        getContentPane().add(SkillCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 80, -1));
 
         RangedCost.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
         RangedCost.setForeground(new java.awt.Color(255, 255, 0));
@@ -199,7 +233,7 @@ public class Shop extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuyTankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyTankActionPerformed
-        
+        // TODO add your handling code here:
     }//GEN-LAST:event_BuyTankActionPerformed
 
     private void BuyRangedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyRangedActionPerformed
@@ -209,6 +243,12 @@ public class Shop extends javax.swing.JFrame {
     private void BuyLaserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyLaserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BuyLaserActionPerformed
+
+    private void XMarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XMarkActionPerformed
+        // TODO add your handling code here:
+        Warning.setVisible(false);
+        XMark.setVisible(false);
+    }//GEN-LAST:event_XMarkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,5 +298,7 @@ public class Shop extends javax.swing.JFrame {
     private javax.swing.JLabel ShopTank;
     private javax.swing.JLabel SkillCount;
     private javax.swing.JLabel TankCost;
+    private javax.swing.JLabel Warning;
+    private javax.swing.JButton XMark;
     // End of variables declaration//GEN-END:variables
 }

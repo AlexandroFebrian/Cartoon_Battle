@@ -23,10 +23,8 @@ public class User implements Serializable {
         this.username = username;
         this.levelEnemy = 1;
         this.gold = 0;
-        this.skill = 0;
+        skill = 0;
         this.troop.add(new Melee());
-//        this.troop.add(new Tank());
-//        this.troop.add(new Ranged());
         this.tower = new Tower();
     }    
 
