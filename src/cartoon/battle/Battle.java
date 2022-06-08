@@ -579,7 +579,7 @@ public class Battle extends javax.swing.JFrame {
         WarningText.setForeground(new java.awt.Color(255, 0, 0));
         WarningText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         WarningText.setText("...");
-        getContentPane().add(WarningText, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 490, 50));
+        getContentPane().add(WarningText, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 20, 490, 50));
 
         BattleResult.setBackground(new java.awt.Color(255, 255, 255));
         BattleResult.setFont(new java.awt.Font("Lato Black", 1, 24)); // NOI18N
