@@ -42,7 +42,7 @@ public class CartoonBattle {
         l.setResizable(false);
         l.setVisible(true);
         
-        //Masuk Home
+        //Menu New Game
         l.getPlay().addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
                 if (!l.getIsiUser().getText().equals("")) {
