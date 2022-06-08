@@ -143,7 +143,7 @@ public class Login extends javax.swing.JFrame {
         Play.setVisible(true);
     }
     
-    private void loadGame(ArrayList <User> u) {
+    private void loadGame(ArrayList <User> u, Sound s) {
         LoadGameBackground.setVisible(true);
         Back.setVisible(true);
         if (!u.isEmpty()) {
@@ -179,92 +179,33 @@ public class Login extends javax.swing.JFrame {
                 UserNameIndex4.setText(u.get(i).getUsername());
             }
         }
-        /*if (!l.getIsiUser().getText().equals("")) {
-            if (u.size() == 5) {
-                JOptionPane.showMessageDialog(l, "The oldest save would be deleted!", "Warning",  JOptionPane.WARNING_MESSAGE);
-                u.remove(0);
-            }
-            u.add(new User(l.getIsiUser().getText()));
-            l.setVisible(false);
-            Home h = new Home(u.get(u.size() - 1).getUsername(), String.valueOf(u.get(u.size() - 1).getGold()), sound);
-            h.setLocationRelativeTo(null);
-            h.setResizable(false);
-            h.setVisible(true);
-
-            //Logout
-            h.getLogout().addMouseListener(new MouseAdapter(){
-                public void mousePressed(MouseEvent me){
-                    h.setVisible(false);
-                    l.setVisible(true);
-                    l.playMusic(sound);
-                    l.menuUtama();
-                }
-            });
-
-            //Shop <Daniello>
-            h.getShop().addMouseListener(new MouseAdapter(){
-                public void mousePressed(MouseEvent me){
-                    Shop s = new Shop(u.get(u.size()-1));
-                    s.setLocationRelativeTo(null);
-                    s.setResizable(false);
-                    h.setVisible(false);
-                    s.setVisible(true);
-                    s.getBack().addMouseListener(new MouseAdapter(){
-                        public void mousePressed(MouseEvent me){
-                            s.dispose();
-                            h.setVisible(true);
-                        }
-                    });
-                }
-            });
-
-            //Kingdom <Jessica>
-            h.getKingdom().addMouseListener(new MouseAdapter(){
-                public void mousePressed(MouseEvent me){
-                    Kingdom k = new Kingdom(u.get(u.size()-1));
-                    k.setLocationRelativeTo(null);
-                    k.setResizable(false);
-                    h.setVisible(false);
-                    k.setVisible(true);
-                    k.getBack().addMouseListener(new MouseAdapter(){
-                        public void mousePressed(MouseEvent me){
-                            k.dispose();
-                            h.setVisible(true);
-                            h.getGold().setText(String.valueOf(u.get(u.size()-1).getGold()));
-                        }
-                    });
-                }
-            });
-
-            //Battle <Febrian>
-            h.getBattle().addMouseListener(new MouseAdapter(){
-                public void mousePressed(MouseEvent me){
-                    sound.changeMusic(new File("src\\music\\Battle.wav"));
-                    Battle b = new Battle(u.get(u.size()-1), sound);
-                    b.setLocationRelativeTo(null);
-                    b.setResizable(false);
-                    h.setVisible(false);
-                    b.setVisible(true);
-                    b.getBack().addMouseListener(new MouseAdapter(){
-                        public void mousePressed(MouseEvent me){
-                            sound.changeMusic(new File("src\\music\\Home.wav"));
-                            b.dispose();
-                            b.StopAllTimer();
-                            h.setVisible(true);
-                            if(b.getEnemyTowerHP() <= 0){
-                                int tempGold = u.get(u.size()-1).getGold()+50*u.get(u.size()-1).getLevelEnemy();
-                                u.get(u.size()-1).setGold(tempGold);
-                                u.get(u.size()-1).setLevelEnemy(u.get(u.size()-1).getLevelEnemy()+1);
-                                h.getGold().setText(String.valueOf(u.get(u.size()-1).getGold()));
-                            }
-                        }
-                    });
-                }
-            });
-        } else {
-            l.warnMessage();
-        }*/
+        UserIndex0.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                homeUser(u.get(0), s);
+            }   
+        });
+        UserIndex1.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                homeUser(u.get(1), s);
+            }   
+        });
+        UserIndex2.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                homeUser(u.get(2), s);
+            }   
+        });
+        UserIndex3.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                homeUser(u.get(3), s);
+            }   
+        });
+        UserIndex4.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                homeUser(u.get(4), s);
+            }   
+        });
     }
+    
     
     private void setting() {
         BlackBackground.setVisible(true);
@@ -325,6 +266,86 @@ public class Login extends javax.swing.JFrame {
         });
     }
     
+    private void homeUser(User u, Sound sound) {
+        Login l = this;
+        l.setVisible(false);
+        Home h = new Home(u.getUsername(), String.valueOf(u.getGold()), sound);
+        h.setLocationRelativeTo(null);
+        h.setResizable(false);
+        h.setVisible(true);
+
+        //Logout
+        h.getLogout().addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                h.setVisible(false);
+                l.setVisible(true);
+                l.playMusic(sound);
+                l.menuUtama();
+            }
+        });
+
+        //Shop <Daniello>
+        h.getShop().addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                Shop s = new Shop(u);
+                s.setLocationRelativeTo(null);
+                s.setResizable(false);
+                h.setVisible(false);
+                s.setVisible(true);
+                s.getBack().addMouseListener(new MouseAdapter(){
+                    public void mousePressed(MouseEvent me){
+                        s.dispose();
+                        h.setVisible(true);
+                    }
+                });
+            }
+        });
+
+        //Kingdom <Jessica>
+        h.getKingdom().addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                Kingdom k = new Kingdom(u);
+                k.setLocationRelativeTo(null);
+                k.setResizable(false);
+                h.setVisible(false);
+                k.setVisible(true);
+                k.getBack().addMouseListener(new MouseAdapter(){
+                    public void mousePressed(MouseEvent me){
+                        k.dispose();
+                        h.setVisible(true);
+                        h.getGold().setText(String.valueOf(u.getGold()));
+                    }
+                });
+            }
+        });
+
+        //Battle <Febrian>
+        h.getBattle().addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                sound.changeMusic(new File("src\\music\\Battle.wav"));
+                Battle b = new Battle(u, sound);
+                b.setLocationRelativeTo(null);
+                b.setResizable(false);
+                h.setVisible(false);
+                b.setVisible(true);
+                b.getBack().addMouseListener(new MouseAdapter(){
+                    public void mousePressed(MouseEvent me){
+                        sound.changeMusic(new File("src\\music\\Home.wav"));
+                        b.dispose();
+                        b.StopAllTimer();
+                        h.setVisible(true);
+                        if(b.getEnemyTowerHP() <= 0){
+                            int tempGold = u.getGold()+50*u.getLevelEnemy();
+                            u.setGold(tempGold);
+                            u.setLevelEnemy(u.getLevelEnemy()+1);
+                            h.getGold().setText(String.valueOf(u.getGold()));
+                        }
+                    }
+                });
+            }
+        });
+    }
+    
     public Login(Sound sound, ArrayList <User> u) {
         initComponents();
         
@@ -364,7 +385,7 @@ public class Login extends javax.swing.JFrame {
                     });
                     Load.addMouseListener(new MouseAdapter(){
                         public void mousePressed(MouseEvent me){
-                            loadGame(u);
+                            loadGame(u, sound);
                         }
                     });
                     Setting.addMouseListener(new MouseAdapter(){
