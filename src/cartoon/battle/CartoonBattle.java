@@ -79,6 +79,7 @@ public class CartoonBattle {
                                 public void mousePressed(MouseEvent me){
                                     s.dispose();
                                     h.setVisible(true);
+                                    h.getGold().setText(String.valueOf(u.get(u.size()-1).getGold()));
                                 }
                             });
                         }
