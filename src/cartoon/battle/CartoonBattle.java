@@ -64,7 +64,7 @@ public class CartoonBattle {
                         public void mousePressed(MouseEvent me){
                             h.setVisible(false);
                             l.setVisible(true);
-                            l.playMusic(sound);
+                            l.playMusic(sound); 
                             l.menuUtama();
                         }
                     });
