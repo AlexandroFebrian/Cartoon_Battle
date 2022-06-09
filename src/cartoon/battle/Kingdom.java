@@ -6,9 +6,12 @@ package cartoon.battle;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import static cartoon.battle.CartoonBattle.listUser;
 
 /**
  *
@@ -22,6 +25,18 @@ public class Kingdom extends javax.swing.JFrame {
     
     private ArrayList<Troops> Troop = new ArrayList<>();
     
+    private void save() {
+        try {            
+            FileOutputStream fout = new FileOutputStream("user.dat");
+            ObjectOutputStream oos = new ObjectOutputStream(fout);
+            oos.writeObject(listUser);
+            oos.close();
+            fout.close();
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
     public Kingdom() {
         initComponents();
             
@@ -31,10 +46,7 @@ public class Kingdom extends javax.swing.JFrame {
     }
     
     public Kingdom(User u) {
-        initComponents();        
-        
-        //buat test
-//        u.setGold(10000000);
+        initComponents();
         
         Gold.setText(String.valueOf(u.getGold()));
         HpTower.setText(String.valueOf(u.getTower().getHp()));
@@ -66,12 +78,6 @@ public class Kingdom extends javax.swing.JFrame {
         Warning.setVisible(false);
         XMark.setVisible(false);
         
-        // test lagi
-//        if(Troop.size() == 1){
-//            Troop.add(new Tank());
-//            Troop.add(new Ranged());
-//        }
-        
         //detail melee
         HpMelee.setText(String.valueOf(Troop.get(0).getHP()));
         AtkMelee.setText(String.valueOf(Troop.get(0).getAtk()));
@@ -96,7 +102,7 @@ public class Kingdom extends javax.swing.JFrame {
                     Warning.setVisible(true);
                     XMark.setVisible(true);
                 }
-//                System.out.println("Berhasil Upgrade Tower");
+                save();
             }
         });
         
@@ -120,7 +126,7 @@ public class Kingdom extends javax.swing.JFrame {
                     Warning.setVisible(true);
                     XMark.setVisible(true);
                 }
-//                System.out.println("Berhasil Upgrade Melee");
+                save();
             }
         });
         
@@ -154,7 +160,7 @@ public class Kingdom extends javax.swing.JFrame {
                             Warning.setVisible(true);
                             XMark.setVisible(true);
                         }
-        //                System.out.println("Berhasil Upgrade Tank");
+                        save();
                     }
                 });
             } else if(Troop.get(1) instanceof Ranged){
@@ -186,7 +192,7 @@ public class Kingdom extends javax.swing.JFrame {
                             Warning.setVisible(true);
                             XMark.setVisible(true);
                         }
-        //                System.out.println("Berhasil Upgrade Ranged");
+                        save();
                     }
                 });
             }
@@ -224,7 +230,7 @@ public class Kingdom extends javax.swing.JFrame {
                             Warning.setVisible(true);
                             XMark.setVisible(true);
                         }
-        //                System.out.println("Berhasil Upgrade Tank");
+                        save();
                     }
                 });
             } else if(Troop.get(1) instanceof Ranged){
@@ -256,7 +262,7 @@ public class Kingdom extends javax.swing.JFrame {
                             Warning.setVisible(true);
                             XMark.setVisible(true);
                         }
-        //                System.out.println("Berhasil Upgrade Ranged");
+                        save();
                     }
                 });
             }
@@ -290,7 +296,7 @@ public class Kingdom extends javax.swing.JFrame {
                             Warning.setVisible(true);
                             XMark.setVisible(true);
                         }
-        //                System.out.println("Berhasil Upgrade Tank");
+                        save();
                     }
                 });
             } else if(Troop.get(2) instanceof Ranged){
@@ -322,7 +328,7 @@ public class Kingdom extends javax.swing.JFrame {
                             Warning.setVisible(true);
                             XMark.setVisible(true);
                         }
-        //                System.out.println("Berhasil Upgrade Ranged");
+                        save();
                     }
                 });
             }

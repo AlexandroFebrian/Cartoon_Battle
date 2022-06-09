@@ -6,8 +6,11 @@ package cartoon.battle;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import static cartoon.battle.CartoonBattle.listUser;
 
 /**
  *
@@ -17,7 +20,20 @@ public class Shop extends javax.swing.JFrame {
 
     /**
      * Creates new form Shop
-     */       
+     */
+    
+    private void save() {
+        try {            
+            FileOutputStream fout = new FileOutputStream("user.dat");
+            ObjectOutputStream oos = new ObjectOutputStream(fout);
+            oos.writeObject(listUser);
+            oos.close();
+            fout.close();
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
     public Shop() {
         initComponents();
         
@@ -72,6 +88,7 @@ public class Shop extends javax.swing.JFrame {
                     Warning.setVisible(true);
                     XMark.setVisible(true);
                 }
+                save();
             }
         });
         
@@ -90,6 +107,7 @@ public class Shop extends javax.swing.JFrame {
                     Warning.setVisible(true);
                     XMark.setVisible(true);
                 }
+                save();
             }
         });
         
@@ -106,6 +124,7 @@ public class Shop extends javax.swing.JFrame {
                     Warning.setVisible(true);
                     XMark.setVisible(true);
                 }
+                save();
             }
         });
     }

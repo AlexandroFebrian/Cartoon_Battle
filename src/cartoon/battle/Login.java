@@ -4,16 +4,16 @@
  */
 package cartoon.battle;
 
-import static cartoon.battle.CartoonBattle.u;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
@@ -21,6 +21,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
+import static cartoon.battle.CartoonBattle.listUser;
 
 /**
  *
@@ -339,6 +340,15 @@ public class Login extends javax.swing.JFrame {
                             u.setGold(tempGold);
                             u.setLevelEnemy(u.getLevelEnemy()+1);
                             h.getGold().setText(String.valueOf(u.getGold()));
+                        }
+                        try {            
+                            FileOutputStream fout = new FileOutputStream("user.dat");
+                            ObjectOutputStream oos = new ObjectOutputStream(fout);
+                            oos.writeObject(listUser);
+                            oos.close();
+                            fout.close();
+                        }catch (Exception e) {
+                            System.out.println(e);
                         }
                     }
                 });
