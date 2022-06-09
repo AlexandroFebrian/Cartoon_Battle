@@ -6,6 +6,8 @@ package cartoon.battle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -116,6 +118,12 @@ public class Battle extends javax.swing.JFrame {
     public int getEnemyTowerHP() {
         return EnemyTowerHP;
     }
+
+    public JLabel getLaserValue() {
+        return LaserValue;
+    }
+    
+    
     
     public void StopAllTimer(){
         if(getTroopMove() != null){
@@ -525,6 +533,74 @@ public class Battle extends javax.swing.JFrame {
         TroopAtkTime = new Timer(750, Tatk);
         TroopAtkTime.start();
         
+        LaserIcon.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent me){
+                if(UseLaser == true && !LaserValue.getText().equals("0") && TimerCek == null){
+                    user.minSkill();
+                    UseLaser = false;
+                    LaserValue.setText(String.valueOf(Integer.parseInt(LaserValue.getText())-1));
+                    waktu = 0;
+                    Laser.setVisible(true);
+                    ActionListener act = new ActionListener(){
+                        public void actionPerformed(ActionEvent event) {
+                            waktu++;
+                            if(waktu == 1){
+                                for(int i = 0; i < Enemylab.size(); i++){
+                                    getContentPane().remove(Enemylab.get(i));
+                                }
+                                Enemylab.clear();
+                                EnemyX.clear();
+                                EnemyList.clear();
+                                getContentPane().validate();
+                                getContentPane().repaint();
+                                Laser.setVisible(false);
+                            } else if (waktu == 2) {
+                                sou.stop();
+                                TimerCek.stop();
+                                sou = null;
+                                TimerCek = null;
+                            }
+                        }
+                    };
+                    TimerCek = new Timer(1000, act);
+                    TimerCek.start();
+                    sou.start();
+                }else if(UseLaser == false && TimerCek == null){
+                    WarningText.setText("Laser has been used!");
+                    WarningText.setVisible(true);
+                    waktu = 0;
+                    ActionListener act = new ActionListener(){
+                        public void actionPerformed(ActionEvent event) {
+                            waktu++;
+                            if(waktu == 2){
+                                WarningText.setVisible(false);
+                                TimerCek.stop();
+                                TimerCek = null;
+                            }
+                        }
+                    };
+                    TimerCek = new Timer(1000, act);
+                    TimerCek.start();
+                }else if(LaserValue.getText().equals("0") && TimerCek == null){
+                    WarningText.setText("You don't have any laser!");
+                    WarningText.setVisible(true);
+                    waktu = 0;
+                    ActionListener act = new ActionListener(){
+                        public void actionPerformed(ActionEvent event) {
+                            waktu++;
+                            if(waktu == 2){
+                                WarningText.setVisible(false);
+                                TimerCek.stop();
+                                TimerCek = null;
+                            }
+                        }
+                    };
+                    TimerCek = new Timer(1000, act);
+                    TimerCek.start();
+                }
+            }
+        });
+        
         //Icon Image <Wajib di tiap form>
         ImageIcon img = new ImageIcon("src\\images\\Icon.jpg");
         this.setIconImage(img.getImage());
@@ -799,68 +875,69 @@ public class Battle extends javax.swing.JFrame {
 
     private void LaserIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaserIconActionPerformed
         // TODO add your handling code here:
-        if(UseLaser == true && !LaserValue.getText().equals("0") && TimerCek == null){
-            UseLaser = false;
-            LaserValue.setText(String.valueOf(Integer.parseInt(LaserValue.getText())-1));
-            waktu = 0;
-            Laser.setVisible(true);
-            ActionListener act = new ActionListener(){
-                public void actionPerformed(ActionEvent event) {
-                    waktu++;
-                    if(waktu == 1){
-                        for(int i = 0; i < Enemylab.size(); i++){
-                            getContentPane().remove(Enemylab.get(i));
-                        }
-                        Enemylab.clear();
-                        EnemyX.clear();
-                        EnemyList.clear();
-                        getContentPane().validate();
-                        getContentPane().repaint();
-                        Laser.setVisible(false);
-                    } else if (waktu == 2) {
-                        sou.stop();
-                        TimerCek.stop();
-                        sou = null;
-                        TimerCek = null;
-                    }
-                }
-            };
-            TimerCek = new Timer(1000, act);
-            TimerCek.start();
-            sou.start();
-        }else if(UseLaser == false && TimerCek == null){
-            WarningText.setText("Laser has been used!");
-            WarningText.setVisible(true);
-            waktu = 0;
-            ActionListener act = new ActionListener(){
-                public void actionPerformed(ActionEvent event) {
-                    waktu++;
-                    if(waktu == 2){
-                        WarningText.setVisible(false);
-                        TimerCek.stop();
-                        TimerCek = null;
-                    }
-                }
-            };
-            TimerCek = new Timer(1000, act);
-            TimerCek.start();
-        }else if(LaserValue.getText().equals("0") && TimerCek == null){
-            WarningText.setText("You don't have any laser!");
-            WarningText.setVisible(true);
-            waktu = 0;
-            ActionListener act = new ActionListener(){
-                public void actionPerformed(ActionEvent event) {
-                    waktu++;
-                    if(waktu == 2){
-                        WarningText.setVisible(false);
-                        TimerCek.stop();
-                        TimerCek = null;
-                    }
-                }
-            };
-            TimerCek = new Timer(1000, act);
-            TimerCek.start();
-        }
+//        if(UseLaser == true && !LaserValue.getText().equals("0") && TimerCek == null){
+//            
+//            UseLaser = false;
+//            LaserValue.setText(String.valueOf(Integer.parseInt(LaserValue.getText())-1));
+//            waktu = 0;
+//            Laser.setVisible(true);
+//            ActionListener act = new ActionListener(){
+//                public void actionPerformed(ActionEvent event) {
+//                    waktu++;
+//                    if(waktu == 1){
+//                        for(int i = 0; i < Enemylab.size(); i++){
+//                            getContentPane().remove(Enemylab.get(i));
+//                        }
+//                        Enemylab.clear();
+//                        EnemyX.clear();
+//                        EnemyList.clear();
+//                        getContentPane().validate();
+//                        getContentPane().repaint();
+//                        Laser.setVisible(false);
+//                    } else if (waktu == 2) {
+//                        sou.stop();
+//                        TimerCek.stop();
+//                        sou = null;
+//                        TimerCek = null;
+//                    }
+//                }
+//            };
+//            TimerCek = new Timer(1000, act);
+//            TimerCek.start();
+//            sou.start();
+//        }else if(UseLaser == false && TimerCek == null){
+//            WarningText.setText("Laser has been used!");
+//            WarningText.setVisible(true);
+//            waktu = 0;
+//            ActionListener act = new ActionListener(){
+//                public void actionPerformed(ActionEvent event) {
+//                    waktu++;
+//                    if(waktu == 2){
+//                        WarningText.setVisible(false);
+//                        TimerCek.stop();
+//                        TimerCek = null;
+//                    }
+//                }
+//            };
+//            TimerCek = new Timer(1000, act);
+//            TimerCek.start();
+//        }else if(LaserValue.getText().equals("0") && TimerCek == null){
+//            WarningText.setText("You don't have any laser!");
+//            WarningText.setVisible(true);
+//            waktu = 0;
+//            ActionListener act = new ActionListener(){
+//                public void actionPerformed(ActionEvent event) {
+//                    waktu++;
+//                    if(waktu == 2){
+//                        WarningText.setVisible(false);
+//                        TimerCek.stop();
+//                        TimerCek = null;
+//                    }
+//                }
+//            };
+//            TimerCek = new Timer(1000, act);
+//            TimerCek.start();
+//        }
     }//GEN-LAST:event_LaserIconActionPerformed
 
     private void UpgradeMineralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeMineralActionPerformed

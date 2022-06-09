@@ -297,6 +297,7 @@ public class Login extends javax.swing.JFrame {
                     public void mousePressed(MouseEvent me){
                         s.dispose();
                         h.setVisible(true);
+                        h.getGold().setText(String.valueOf(u.getGold()));
                     }
                 });
             }
