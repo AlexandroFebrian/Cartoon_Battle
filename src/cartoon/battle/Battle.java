@@ -71,7 +71,7 @@ public class Battle extends javax.swing.JFrame {
     private Sound sou = new Sound(new File("src\\music\\Laser.wav"), true);
     private boolean UseLaser = true;
     
-    int idx = -1;
+    int idx = 0;
     
     public javax.swing.JButton getBack() {
         return Back;
@@ -175,7 +175,7 @@ public class Battle extends javax.swing.JFrame {
         Back.setIcon(new ImageIcon("src\\images\\Menu.png"));
     }
     
-    private void Lose(Sound sound) {
+    private void Lose(Sound sound, User user) {
         StopAllTimer();
         sound.changeMusicResult(new File("src\\music\\Lose.wav"));
         BattleResult.setVisible(true);
@@ -183,6 +183,7 @@ public class Battle extends javax.swing.JFrame {
         BattleResult.setIcon(new ImageIcon("src\\images\\Lose.png"));
         Back.setBounds(520, 365, 280, 110);
         Back.setIcon(new ImageIcon("src\\images\\Menu.png"));
+        user.setGold(user.getGold() + 10 * (user.getLevelEnemy() - 1));
     }
     
     private void save() {
@@ -345,11 +346,14 @@ public class Battle extends javax.swing.JFrame {
                             EnemySound.get(i).start();
                         }else{
                             if(Enemylab.get(i).getLocation().x <= 175){
-                                EnemySound.get(i).start();
+                                if (i < EnemySound.size()) {
+                                    EnemySound.get(i).start();
+                                }
                                 UserTowerHP -= EnemyAtk;
                                 UserHpBar.setValue((int)(UserTowerHP * 100) / user.getTower().getHp());
                                 if(UserTowerHP <= 0){
-                                    Lose(sound);
+                                    Lose(sound, user);
+                                    Gold.setText("+" + String.valueOf(10*(user.getLevelEnemy() - 1)));
                                 }
                             }else{
                                 Enemylab.get(i).setIcon(Eicon);

@@ -341,8 +341,8 @@ public class Login extends javax.swing.JFrame {
                             int tempGold = u.getGold()+50*u.getLevelEnemy();
                             u.setGold(tempGold);
                             u.setLevelEnemy(u.getLevelEnemy()+1);
-                            h.getGold().setText(String.valueOf(u.getGold()));
                         }
+                        h.getGold().setText(String.valueOf(u.getGold()));
                         try {            
                             FileOutputStream fout = new FileOutputStream("user.dat");
                             ObjectOutputStream oos = new ObjectOutputStream(fout);

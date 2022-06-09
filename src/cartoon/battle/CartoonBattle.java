@@ -124,8 +124,8 @@ public class CartoonBattle {
                                         int tempGold = listUser.get(listUser.size()-1).getGold()+50*listUser.get(listUser.size()-1).getLevelEnemy();
                                         listUser.get(listUser.size()-1).setGold(tempGold);
                                         listUser.get(listUser.size()-1).setLevelEnemy(listUser.get(listUser.size()-1).getLevelEnemy()+1);
-                                        h.getGold().setText(String.valueOf(listUser.get(listUser.size()-1).getGold()));
                                     }
+                                    h.getGold().setText(String.valueOf(listUser.get(listUser.size()-1).getGold()));
                                     save();
                                 }
                             });
