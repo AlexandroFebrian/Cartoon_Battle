@@ -324,7 +324,7 @@ public class Battle extends javax.swing.JFrame {
                 for(int i = 0; i < Enemylab.size(); i++){
                     if(Enemylab.get(i).getIcon() == Eicon2){
                         if(Troop.size() >= 1){
-                            if(Trooplab.get(idx).getLocation().x <= Enemylab.get(i).getLocation().x && Trooplab.get(idx).getLocation().x >= Enemylab.get(i).getLocation().x-50){
+                            if(Trooplab.get(idx).getLocation().x <= Enemylab.get(i).getLocation().x && Trooplab.get(idx).getLocation().x >= Enemylab.get(i).getLocation().x-75){
                                 if(Troop.get(idx).getHP() <= 0){
                                     Enemylab.get(i).setIcon(Eicon);
                                     getContentPane().remove(Trooplab.get(idx));
