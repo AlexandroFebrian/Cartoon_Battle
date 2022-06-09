@@ -63,6 +63,11 @@ public class Battle extends javax.swing.JFrame {
     private int MineralSpeed = 250;
     private int MineralPrice = 25;
     
+    private int waktu;
+    private Timer TimerCek = null;
+    private Sound sou = new Sound(new File("src\\music\\Laser.wav"), true);
+    private boolean UseLaser = true;
+    
     public javax.swing.JButton getBack() {
         return Back;
     }
@@ -118,12 +123,6 @@ public class Battle extends javax.swing.JFrame {
     public int getEnemyTowerHP() {
         return EnemyTowerHP;
     }
-
-    public JLabel getLaserValue() {
-        return LaserValue;
-    }
-    
-    
     
     public void StopAllTimer(){
         if(getTroopMove() != null){
@@ -763,6 +762,7 @@ public class Battle extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+   
     //Add Melee
     private void AddMeleeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMeleeActionPerformed
         // TODO add your handling code here:
@@ -868,10 +868,6 @@ public class Battle extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BackActionPerformed
 
-    private int waktu;
-    private Timer TimerCek = null;
-    private Sound sou = new Sound(new File("src\\music\\Laser.wav"), true);
-    private boolean UseLaser = true;
 
     private void LaserIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaserIconActionPerformed
         // TODO add your handling code here:
