@@ -4,11 +4,14 @@
  */
 package cartoon.battle;
 
+import static cartoon.battle.CartoonBattle.listUser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -178,6 +181,18 @@ public class Battle extends javax.swing.JFrame {
         BattleResult.setIcon(new ImageIcon("src\\images\\Lose.png"));
         Back.setBounds(520, 365, 280, 110);
         Back.setIcon(new ImageIcon("src\\images\\Menu.png"));
+    }
+    
+    private void save() {
+        try {            
+            FileOutputStream fout = new FileOutputStream("user.dat");
+            ObjectOutputStream oos = new ObjectOutputStream(fout);
+            oos.writeObject(listUser);
+            oos.close();
+            fout.close();
+        }catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
     public Battle() {
@@ -447,7 +462,7 @@ public class Battle extends javax.swing.JFrame {
                             if(Trooplab.get(i).getLocation().x >= 1010){
                                     TroopSound.get(i).start();
                                     EnemyTowerHP -= Troop.get(i).getAtk();
-                                    EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
+                                    EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 150)));
                                     if(EnemyTowerHP <= 0){
                                         Win(sound);
                                         Gold.setText("+" + String.valueOf(50*user.getLevelEnemy()));
@@ -481,7 +496,7 @@ public class Battle extends javax.swing.JFrame {
                             if(Trooplab.get(i).getLocation().x >= 780){
                                     TroopSound.get(i).start();
                                     EnemyTowerHP -= Troop.get(i).getAtk();
-                                    EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
+                                    EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 150)));
                                     if(EnemyTowerHP <= 0){
                                         Win(sound);
                                         Gold.setText("+" + String.valueOf(50*user.getLevelEnemy()));
@@ -515,7 +530,7 @@ public class Battle extends javax.swing.JFrame {
                             if(Trooplab.get(i).getLocation().x >= 955){
                                     TroopSound.get(i).start();
                                     EnemyTowerHP -= Troop.get(i).getAtk();
-                                    EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 100)));
+                                    EnemyHpBar.setValue((int)(EnemyTowerHP * 100) / (1000 + ((user.getLevelEnemy() - 1) * 150)));
                                     if(EnemyTowerHP <= 0){
                                         Win(sound);
                                         Gold.setText("+" + String.valueOf(50*user.getLevelEnemy()));
@@ -597,6 +612,7 @@ public class Battle extends javax.swing.JFrame {
                     TimerCek = new Timer(1000, act);
                     TimerCek.start();
                 }
+                save();
             }
         });
         
