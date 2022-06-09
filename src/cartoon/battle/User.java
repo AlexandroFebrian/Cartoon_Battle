@@ -23,6 +23,9 @@ public class User implements Serializable {
         this.username = username;
         this.levelEnemy = 1;
         this.gold = 0;
+        if (username.equalsIgnoreCase("admin")) {
+            this.gold = 999999999;
+        }
         skill = 0;
         this.troop.add(new Melee());
         this.tower = new Tower();

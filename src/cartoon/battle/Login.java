@@ -167,6 +167,7 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         }
+        
         for (int i = 0; i < u.size(); i++) {
             if (i == 0) {
                 UserNameIndex0.setText(u.get(i).getUsername());
@@ -497,13 +498,13 @@ public class Login extends javax.swing.JFrame {
         UserNameIndex4.setForeground(new java.awt.Color(255, 255, 255));
         UserNameIndex4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         UserNameIndex4.setText("User.get(4)");
-        getContentPane().add(UserNameIndex4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 350, -1));
+        getContentPane().add(UserNameIndex4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 600, 350, -1));
 
         UserNameIndex3.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
         UserNameIndex3.setForeground(new java.awt.Color(255, 255, 255));
         UserNameIndex3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         UserNameIndex3.setText("User.get(3)");
-        getContentPane().add(UserNameIndex3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 360, -1));
+        getContentPane().add(UserNameIndex3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 360, -1));
 
         UserNameIndex2.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
         UserNameIndex2.setForeground(new java.awt.Color(255, 255, 255));
@@ -515,13 +516,13 @@ public class Login extends javax.swing.JFrame {
         UserNameIndex1.setForeground(new java.awt.Color(255, 255, 255));
         UserNameIndex1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         UserNameIndex1.setText("User.get(1)");
-        getContentPane().add(UserNameIndex1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 480, 340, -1));
+        getContentPane().add(UserNameIndex1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 340, -1));
 
         UserNameIndex0.setFont(new java.awt.Font("Lato Black", 0, 36)); // NOI18N
         UserNameIndex0.setForeground(new java.awt.Color(255, 255, 255));
         UserNameIndex0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         UserNameIndex0.setText("User.get(0)");
-        getContentPane().add(UserNameIndex0, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 595, 280, -1));
+        getContentPane().add(UserNameIndex0, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 280, -1));
 
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Back.png"))); // NOI18N
         Back.setBorderPainted(false);
@@ -531,12 +532,12 @@ public class Login extends javax.swing.JFrame {
         UserIndex4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Load Game User.png"))); // NOI18N
         UserIndex4.setBorderPainted(false);
         UserIndex4.setContentAreaFilled(false);
-        getContentPane().add(UserIndex4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
+        getContentPane().add(UserIndex4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, -1, -1));
 
         UserIndex3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Load Game User.png"))); // NOI18N
         UserIndex3.setBorderPainted(false);
         UserIndex3.setContentAreaFilled(false);
-        getContentPane().add(UserIndex3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, -1, -1));
+        getContentPane().add(UserIndex3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, -1, -1));
 
         UserIndex2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Load Game User.png"))); // NOI18N
         UserIndex2.setBorderPainted(false);
@@ -546,12 +547,12 @@ public class Login extends javax.swing.JFrame {
         UserIndex1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Load Game User.png"))); // NOI18N
         UserIndex1.setBorderPainted(false);
         UserIndex1.setContentAreaFilled(false);
-        getContentPane().add(UserIndex1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, -1, -1));
+        getContentPane().add(UserIndex1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, -1, -1));
 
         UserIndex0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Load Game User.png"))); // NOI18N
         UserIndex0.setBorderPainted(false);
         UserIndex0.setContentAreaFilled(false);
-        getContentPane().add(UserIndex0, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 585, -1, -1));
+        getContentPane().add(UserIndex0, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
 
         LoadGameBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Load Game Background.png"))); // NOI18N
         getContentPane().add(LoadGameBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
