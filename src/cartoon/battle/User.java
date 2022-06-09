@@ -15,7 +15,7 @@ public class User implements Serializable {
     private String username;
     private int levelEnemy;
     private int gold;
-    private static int skill;
+    private int skill;
     private ArrayList <Troops> troop = new ArrayList<>();
     private Tower tower;
 
@@ -87,6 +87,4 @@ public class User implements Serializable {
     public void minSkill() {
         this.skill--;
     }
-    
-    
 }
