@@ -61,6 +61,7 @@ public class Shop extends javax.swing.JFrame {
 
         
         Gold.setText(String.valueOf(user.getGold()));
+        SkillCount.setText(String.valueOf(user.getSkill()));
         for (int i = 0; i < user.getTroop().size(); i++) {
             if (user.getTroop().get(i) instanceof Tank) {
                 ShopTank.setVisible(false);
