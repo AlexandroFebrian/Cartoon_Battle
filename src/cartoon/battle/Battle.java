@@ -875,69 +875,6 @@ public class Battle extends javax.swing.JFrame {
 
     private void LaserIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaserIconActionPerformed
         // TODO add your handling code here:
-//        if(UseLaser == true && !LaserValue.getText().equals("0") && TimerCek == null){
-//            
-//            UseLaser = false;
-//            LaserValue.setText(String.valueOf(Integer.parseInt(LaserValue.getText())-1));
-//            waktu = 0;
-//            Laser.setVisible(true);
-//            ActionListener act = new ActionListener(){
-//                public void actionPerformed(ActionEvent event) {
-//                    waktu++;
-//                    if(waktu == 1){
-//                        for(int i = 0; i < Enemylab.size(); i++){
-//                            getContentPane().remove(Enemylab.get(i));
-//                        }
-//                        Enemylab.clear();
-//                        EnemyX.clear();
-//                        EnemyList.clear();
-//                        getContentPane().validate();
-//                        getContentPane().repaint();
-//                        Laser.setVisible(false);
-//                    } else if (waktu == 2) {
-//                        sou.stop();
-//                        TimerCek.stop();
-//                        sou = null;
-//                        TimerCek = null;
-//                    }
-//                }
-//            };
-//            TimerCek = new Timer(1000, act);
-//            TimerCek.start();
-//            sou.start();
-//        }else if(UseLaser == false && TimerCek == null){
-//            WarningText.setText("Laser has been used!");
-//            WarningText.setVisible(true);
-//            waktu = 0;
-//            ActionListener act = new ActionListener(){
-//                public void actionPerformed(ActionEvent event) {
-//                    waktu++;
-//                    if(waktu == 2){
-//                        WarningText.setVisible(false);
-//                        TimerCek.stop();
-//                        TimerCek = null;
-//                    }
-//                }
-//            };
-//            TimerCek = new Timer(1000, act);
-//            TimerCek.start();
-//        }else if(LaserValue.getText().equals("0") && TimerCek == null){
-//            WarningText.setText("You don't have any laser!");
-//            WarningText.setVisible(true);
-//            waktu = 0;
-//            ActionListener act = new ActionListener(){
-//                public void actionPerformed(ActionEvent event) {
-//                    waktu++;
-//                    if(waktu == 2){
-//                        WarningText.setVisible(false);
-//                        TimerCek.stop();
-//                        TimerCek = null;
-//                    }
-//                }
-//            };
-//            TimerCek = new Timer(1000, act);
-//            TimerCek.start();
-//        }
     }//GEN-LAST:event_LaserIconActionPerformed
 
     private void UpgradeMineralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpgradeMineralActionPerformed
