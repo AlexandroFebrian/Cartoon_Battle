@@ -71,6 +71,8 @@ public class Battle extends javax.swing.JFrame {
     private Sound sou = new Sound(new File("src\\music\\Laser.wav"), true);
     private boolean UseLaser = true;
     
+    int idx = -1;
+    
     public javax.swing.JButton getBack() {
         return Back;
     }
@@ -276,6 +278,7 @@ public class Battle extends javax.swing.JFrame {
         EnemySpawnT.start();
         
         //Enemy Gerak
+        
         ActionListener Emove = new ActionListener(){
             public void actionPerformed(ActionEvent event) {
                 for(int i = 0; i < Enemylab.size(); i++){
@@ -292,11 +295,18 @@ public class Battle extends javax.swing.JFrame {
                             EnemySound.get(i).stop();
                         }
                     }else if(Trooplab.size() >= 1){
-                        if(Trooplab.get(0).getLocation().x <= Enemylab.get(i).getLocation().x && Trooplab.get(0).getLocation().x >= Enemylab.get(i).getLocation().x-75 && Enemylab.get(i).getIcon() != Eicon2){
-                            //ganti icon nyerang
-                            Enemylab.get(i).setIcon(Eicon2);
+                        for(int j = 0; j < Trooplab.size(); j++){
+                            if(Trooplab.get(j).getLocation().x <= Enemylab.get(i).getLocation().x && Trooplab.get(j).getLocation().x >= Enemylab.get(i).getLocation().x-75 && Enemylab.get(i).getIcon() != Eicon2){
+                                //ganti icon nyerang
+                                idx = j;
+                                Enemylab.get(i).setIcon(Eicon2);
+                            }
                         }
-                        else if(Enemylab.get(i).getIcon() == Eicon){
+//                        if(Trooplab.get(idx).getLocation().x <= Enemylab.get(i).getLocation().x && Trooplab.get(idx).getLocation().x >= Enemylab.get(i).getLocation().x-75 && Enemylab.get(i).getIcon() != Eicon2){
+//                            //ganti icon nyerang
+//                            Enemylab.get(i).setIcon(Eicon2);
+//                        }
+                        if(Enemylab.get(i).getIcon() == Eicon){
                             Enemylab.get(i).setLocation(Enemylab.get(i).getLocation().x-1, Enemylab.get(i).getLocation().y);
                             EnemySound.get(i).stop();
                         }
@@ -314,20 +324,20 @@ public class Battle extends javax.swing.JFrame {
                 for(int i = 0; i < Enemylab.size(); i++){
                     if(Enemylab.get(i).getIcon() == Eicon2){
                         if(Troop.size() >= 1){
-                            if(Trooplab.get(0).getLocation().x <= Enemylab.get(i).getLocation().x && Trooplab.get(0).getLocation().x >= Enemylab.get(i).getLocation().x-50){
-                                if(Troop.get(0).getHP() <= 0){
+                            if(Trooplab.get(idx).getLocation().x <= Enemylab.get(i).getLocation().x && Trooplab.get(idx).getLocation().x >= Enemylab.get(i).getLocation().x-50){
+                                if(Troop.get(idx).getHP() <= 0){
                                     Enemylab.get(i).setIcon(Eicon);
-                                    getContentPane().remove(Trooplab.get(0));
-                                    TroopSound.get(0).stop();
-                                    TroopSound.remove(0);
-                                    Troop.remove(0);
-                                    Trooplab.remove(0);
-                                    TroopX.remove(0);
+                                    getContentPane().remove(Trooplab.get(idx));
+                                    TroopSound.get(idx).stop();
+                                    TroopSound.remove(idx);
+                                    Troop.remove(idx);
+                                    Trooplab.remove(idx);
+                                    TroopX.remove(idx);
                                     getContentPane().validate();
                                     getContentPane().repaint();
                                     i = 0;
                                 }else{
-                                    Troop.get(0).setHP(Troop.get(0).getHP()-EnemyAtk);
+                                    Troop.get(idx).setHP(Troop.get(idx).getHP()-EnemyAtk);
                                 }
                             }else{
                                 Enemylab.get(i).setIcon(Eicon);
