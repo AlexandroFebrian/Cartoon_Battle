@@ -111,7 +111,7 @@ public class Home extends javax.swing.JFrame {
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Caroon Battle");
+        setTitle("Cartoon Battle");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         VolumeControl.setBackground(new java.awt.Color(0, 208, 196));
