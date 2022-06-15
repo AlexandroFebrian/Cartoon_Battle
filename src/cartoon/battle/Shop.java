@@ -96,8 +96,8 @@ public class Shop extends javax.swing.JFrame {
         BuyRanged.addMouseListener(new MouseAdapter(){
             public void mousePressed(MouseEvent me){
                 int tempGold = user.getGold();
-                if (tempGold >= 1500) {
-                    tempGold-=1500;
+                if (tempGold >= 2500) {
+                    tempGold-=2500;
                     user.setGold(tempGold);
                     user.addRanged();
                     Gold.setText(String.valueOf(user.getGold()));

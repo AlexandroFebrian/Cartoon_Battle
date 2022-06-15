@@ -177,7 +177,7 @@ public class Kingdom extends javax.swing.JFrame {
                     public void mousePressed(MouseEvent me){
                         int tempGold = u.getGold();
                         int constanta = (r.getAtk()*2) + 11;
-                        int bayar = (r.getAtk() * 5) + 11;
+                        int bayar = (r.getAtk() * 6) + 11;
                         if(tempGold >= bayar){ // berhasil
                             tempGold-=bayar;
                             u.setGold(tempGold);
@@ -188,7 +188,7 @@ public class Kingdom extends javax.swing.JFrame {
                             Gold.setText(String.valueOf(u.getGold()));
                             HpRanged1.setText(String.valueOf(r.getHP()));
                             AtkRanged1.setText(String.valueOf(r.getAtk()));
-                            Troop1UpgradeCost.setText(String.valueOf((r.getAtk() * 5) + 11));
+                            Troop1UpgradeCost.setText(String.valueOf((r.getAtk() * 6) + 11));
                         } else { //gold ga cukup
                             Warning.setVisible(true);
                             XMark.setVisible(true);
@@ -248,7 +248,7 @@ public class Kingdom extends javax.swing.JFrame {
                     public void mousePressed(MouseEvent me){
                         int tempGold = u.getGold();
                         int constanta = (r.getAtk()*2) + 11;
-                        int bayar = (r.getAtk() * 5) + 11;
+                        int bayar = (r.getAtk() * 6) + 11;
                         if(tempGold >= bayar){ // berhasil
                             tempGold-=bayar;
                             u.setGold(tempGold);
@@ -259,7 +259,7 @@ public class Kingdom extends javax.swing.JFrame {
                             Gold.setText(String.valueOf(u.getGold()));
                             HpRanged1.setText(String.valueOf(r.getHP()));
                             AtkRanged1.setText(String.valueOf(r.getAtk()));
-                            Troop1UpgradeCost.setText(String.valueOf((r.getAtk() * 5) + 11));
+                            Troop1UpgradeCost.setText(String.valueOf((r.getAtk() * 6) + 11));
                         } else { //gold ga cukup
                             Warning.setVisible(true);
                             XMark.setVisible(true);
@@ -309,7 +309,7 @@ public class Kingdom extends javax.swing.JFrame {
                 RangedIcon2.setVisible(true);
                 AtkRanged2.setText(String.valueOf(r2.getAtk()));
                 HpRanged2.setText(String.valueOf(r2.getHP())); 
-                Troop2UpgradeCost.setText(String.valueOf((r2.getAtk() * 5) + 11));
+                Troop2UpgradeCost.setText(String.valueOf((r2.getAtk() * 6) + 11));
                 
                 UpgradeRanged2.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
@@ -326,7 +326,7 @@ public class Kingdom extends javax.swing.JFrame {
                             Gold.setText(String.valueOf(u.getGold()));
                             HpRanged2.setText(String.valueOf(r2.getHP()));
                             AtkRanged2.setText(String.valueOf(r2.getAtk()));
-                            Troop2UpgradeCost.setText(String.valueOf((r2.getAtk() * 5) + 11));
+                            Troop2UpgradeCost.setText(String.valueOf((r2.getAtk() * 6) + 11));
                         } else { //gold ga cukup
                             Warning.setVisible(true);
                             XMark.setVisible(true);
