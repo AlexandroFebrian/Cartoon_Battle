@@ -190,7 +190,7 @@ public class Shop extends javax.swing.JFrame {
         RangedCost.setFont(new java.awt.Font("Lato Black", 1, 30)); // NOI18N
         RangedCost.setForeground(new java.awt.Color(255, 255, 0));
         RangedCost.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        RangedCost.setText("1500");
+        RangedCost.setText("2500");
         getContentPane().add(RangedCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 525, 140, -1));
 
         BuyRanged.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Buy.png"))); // NOI18N
