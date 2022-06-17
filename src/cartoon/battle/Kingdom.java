@@ -171,7 +171,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeRanged1.setVisible(true);
                 AtkRanged1.setText(String.valueOf(r.getAtk()));
                 HpRanged1.setText(String.valueOf(r.getHP()));
-                Troop1UpgradeCost.setText(String.valueOf((r.getAtk() * 5) + 11));
+                Troop1UpgradeCost.setText(String.valueOf((r.getAtk() * 6) + 11));
                 
                 UpgradeRanged1.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
@@ -242,7 +242,7 @@ public class Kingdom extends javax.swing.JFrame {
                 UpgradeRanged1.setVisible(true);
                 AtkRanged1.setText(String.valueOf(r.getAtk()));
                 HpRanged1.setText(String.valueOf(r.getHP()));
-                Troop1UpgradeCost.setText(String.valueOf((r.getAtk() * 5) + 11));
+                Troop1UpgradeCost.setText(String.valueOf((r.getAtk() * 6) + 11));
                 
                 UpgradeRanged1.addMouseListener(new MouseAdapter(){
                     public void mousePressed(MouseEvent me){
@@ -315,7 +315,7 @@ public class Kingdom extends javax.swing.JFrame {
                     public void mousePressed(MouseEvent me){
                         int tempGold = u.getGold();
                         int constanta = (r2.getAtk() * 2) + 11;
-                        int bayar = (r2.getAtk() * 5) + 11;
+                        int bayar = (r2.getAtk() * 6) + 11;
                         if(tempGold >= bayar){ // berhasil
                             tempGold-=bayar;
                             u.setGold(tempGold);
